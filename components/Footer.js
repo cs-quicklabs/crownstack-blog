@@ -19,11 +19,11 @@ export default function Footer() {
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
+          <p href="/">{siteMetadata.title}</p>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
+          <Link href="https://crownstack-website-new.vercel.app/">
+            Crownstack Technologies Pvt Ltd
           </Link>
         </div>
       </div>
