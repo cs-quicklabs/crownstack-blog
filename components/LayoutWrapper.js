@@ -27,7 +27,7 @@ const LayoutWrapper = ({ children }) => {
                   {theme === 'dark' ? (
                     <Image
                       src={Logo}
-                      objectFit="contain"
+                      objectFit="cover"
                       alt="Landscape picture"
                       width={250}
                       height={60}
@@ -35,7 +35,7 @@ const LayoutWrapper = ({ children }) => {
                   ) : (
                     <Image
                       src={Logolight}
-                      objectFit="contain"
+                      objectFit="cover"
                       alt="Landscape picture"
                       width={250}
                       height={60}

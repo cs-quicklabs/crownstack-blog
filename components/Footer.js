@@ -11,16 +11,16 @@ export default function Footer() {
 
   return (
     <footer className="mt-6">
-      <div className="flex justify-center ">
-        <Link href="https://crownstack-website-new.vercel.app/">
-          {theme === 'dark' ? (
-            <Image alt="Crownstack" src={Darkimage} width={250} height={60} />
-          ) : (
-            <Image alt="Crownstack" src={Lightimg} width={250} height={60} />
-          )}
-        </Link>
-      </div>
       <div className="mt-4 flex flex-col items-center">
+        <div className="flex justify-center ">
+          <Link href="https://crownstack-website-new.vercel.app/">
+            {theme === 'dark' ? (
+              <Image objectFit="cover" alt="Crownstack" src={Darkimage} width={250} height={60} />
+            ) : (
+              <Image objectFit="cover" alt="Crownstack" src={Lightimg} width={250} height={60} />
+            )}
+          </Link>
+        </div>
         <div className="mb-3 flex space-x-4">
           <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
           <SocialIcon kind="github" href={siteMetadata.github} size="6" />
