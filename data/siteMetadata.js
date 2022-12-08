@@ -1,5 +1,5 @@
 const siteMetadata = {
-  title: 'Crownstack Blogs',
+  title: 'Crownstack Blog',
   author: 'All rights reserved',
   description: '',
   language: 'en-us',
