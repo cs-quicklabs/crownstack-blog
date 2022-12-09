@@ -1,29 +1,46 @@
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '../public/static/images/full-logo.jpg'
+import Logo from '../public/static/images/Logo-dark.png'
+import Logolight from '../public/static/images/Logo-light.png'
 import Link from './Link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 
 const LayoutWrapper = ({ children }) => {
+  const { theme } = useTheme()
   return (
     <SectionContainer>
       <div className="flex h-screen flex-col justify-between">
         <header className="flex items-center justify-between py-10">
           <div>
-            <Link href="/" aria-label={siteMetadata.headerTitle}>
+            <Link
+              href="https://crownstack-website-new.vercel.app/"
+              aria-label={siteMetadata.headerTitle}
+              target="_blank"
+            >
               <div className="flex items-center justify-between">
                 <div className="mr-3">
-                  <Image
-                    src={Logo}
-                    objectFit="contain"
-                    alt="Landscape picture"
-                    width={200}
-                    height={60}
-                  />
+                  {theme === 'dark' ? (
+                    <Image
+                      src={Logo}
+                      objectFit="cover"
+                      alt="Landscape picture"
+                      width={250}
+                      height={60}
+                    />
+                  ) : (
+                    <Image
+                      src={Logolight}
+                      objectFit="cover"
+                      alt="Landscape picture"
+                      width={250}
+                      height={60}
+                    />
+                  )}
                 </div>
                 {typeof siteMetadata.headerTitle === 'string' ? (
                   <div className="hidden h-6 text-2xl font-semibold sm:block">
