@@ -1,6 +1,6 @@
 ---
 name: Aashish Dhawan
-avatar: /static/images/aashish.jpeg
+avatar: /static/images/aashishdhawan.jpeg
 occupation: Co-founder
 company: Crownstack Technologies
 email: address@yoursite.com
