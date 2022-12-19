@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="mt-6">
       <div className="mt-4 flex flex-col items-center">
         <div className="flex justify-center ">
-          <Link href="https://crownstack-website-new.vercel.app/">
+          <Link href="https://crownstack.com/">
             {theme === 'dark' ? (
               <Image objectFit="cover" alt="Crownstack" src={Darkimage} width={250} height={60} />
             ) : (
@@ -37,9 +37,7 @@ export default function Footer() {
           <p href="/">{siteMetadata.title}</p>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://crownstack-website-new.vercel.app/">
-            Crownstack Technologies Pvt Ltd
-          </Link>
+          <Link href="https://crownstack.com/">Crownstack Technologies Pvt Ltd</Link>
         </div>
       </div>
     </footer>
@@ -72,7 +70,7 @@ export default function Footer() {
 //           <p href="/">{siteMetadata.title}</p>
 //         </div>
 //         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-//           <Link href="https://crownstack-website-new.vercel.app/">
+//           <Link href="https://crownstack.com/">
 //             Crownstack Technologies Pvt Ltd
 //           </Link>
 //         </div>

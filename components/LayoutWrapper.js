@@ -18,7 +18,7 @@ const LayoutWrapper = ({ children }) => {
         <header className="flex items-center justify-between py-10">
           <div>
             <Link
-              href="https://crownstack-website-new.vercel.app/"
+              href="https://crownstack.com/"
               aria-label={siteMetadata.headerTitle}
               target="_blank"
             >
