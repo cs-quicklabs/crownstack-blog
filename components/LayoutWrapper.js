@@ -18,9 +18,9 @@ const LayoutWrapper = ({ children }) => {
         <header className="flex items-center justify-between py-10">
           <div>
             <Link
-              href="https://crownstack.com/"
+              href="https://blog.crownstack.com/"
               aria-label={siteMetadata.headerTitle}
-              target="_blank"
+              target=""
             >
               <div className="flex items-center justify-between">
                 <div className="mr-3">
