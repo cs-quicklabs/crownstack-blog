@@ -30,7 +30,7 @@ const LayoutWrapper = ({ children }) => {
                       objectFit="cover"
                       alt="Landscape picture"
                       width={250}
-                      height={60}
+                      height={55}
                     />
                   ) : (
                     <Image
@@ -38,7 +38,7 @@ const LayoutWrapper = ({ children }) => {
                       objectFit="cover"
                       alt="Landscape picture"
                       width={250}
-                      height={60}
+                      height={55}
                     />
                   )}
                 </div>

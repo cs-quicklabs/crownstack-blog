@@ -15,13 +15,13 @@ export default function Footer() {
         <div className="flex justify-center ">
           <Link href="https://crownstack.com/">
             {theme === 'dark' ? (
-              <Image objectFit="cover" alt="Crownstack" src={Darkimage} width={250} height={60} />
+              <Image objectFit="cover" alt="Crownstack" src={Darkimage} width={250} height={55} />
             ) : (
-              <Image objectFit="cover" alt="Crownstack" src={Lightimg} width={250} height={60} />
+              <Image objectFit="cover" alt="Crownstack" src={Lightimg} width={250} height={55} />
             )}
           </Link>
         </div>
-        <div className="mb-3 flex space-x-4">
+        <div className="mb-3 ml-2 flex space-x-4">
           <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
           <SocialIcon kind="github" href={siteMetadata.github} size="6" />
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size="6" />
@@ -34,10 +34,12 @@ export default function Footer() {
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
-          <p href="/">{siteMetadata.title}</p>
+          <div>Crownstack Technologies Pvt Ltd</div>
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://crownstack.com/">Crownstack Technologies Pvt Ltd</Link>
+        <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <div>sales@crownstack.com</div>
+          <div>{` • `}</div>
+          <div>hr@crownstack.com</div>
         </div>
       </div>
     </footer>
