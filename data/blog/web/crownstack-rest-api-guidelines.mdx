@@ -119,13 +119,13 @@ This information should be passed in an API response body in the following or si
 {
 	"errors":[
 		{
-						"code":'UNIQUE-CODE-WE-INTERNALLY-USE-TO-IDENTIFY-AN-ERROR',
+			"code":'UNIQUE-CODE-WE-INTERNALLY-USE-TO-IDENTIFY-AN-ERROR',
 			"message":'AN-EXPLANATORY-MESSAGE-FOR-USER-TO-UNDERSTAND-THE-ERROR',
-					},
-					{
+		},
+		{
 			 "code":'ER007',
-						 "message":'Address length exceeded the maximum characters of 500.',
-		 }
+			 "message":'Address length exceeded the maximum characters of 500.',
+		}
 	]
 }
 ```
@@ -472,10 +472,10 @@ You may read more about HATEOAS [here](https://docs.microsoft.com/en-us/azure/ar
 ## Other Important Points
 
 1. Specify actions via verb, not in API URL. Example if you want to load details of a product, don't use API endpoint as:
-```
-GET /api/v2/load-product-info
-```
-Instead use a proper HTTP Method (GET, POST, PUT, PATCH, DELETE) to describe the action you want to perform on that resource.
+	```
+	GET /api/v2/load-product-info
+	```
+	Instead use a proper HTTP Method (GET, POST, PUT, PATCH, DELETE) to describe the action you want to perform on that resource.
 
 2. Following right naming for endpoints. Use the plural form of the resource as an endpoint. Example for Attributes resource, the endpoint should be /attributes (not /attribute).
 
