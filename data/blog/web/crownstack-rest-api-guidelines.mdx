@@ -1,0 +1,505 @@
+---
+title: "Crownstack's REST API design guidelines and best practices"
+date: '2022-12-24'
+lastmod: '2022-12-24'
+tags: ['restapi', 'api', 'guide']
+draft: false
+summary: "This is Crownstack's official design guidelines and best practices we recommend to use while creating RESTful APIs."
+layout: PostSimple
+images: []
+authors: ['varunkumar']
+---
+
+## Why is this design guide created?
+
+We created this guide to document the standards and best practices to follow while developing REST APIs in any Back-End technology.
+
+By comparing the recommendations from various sources, we have created this guide as a rule book that should be followed to ensure platform-independent REST API uniformity in Crownstack.
+
+## REST API Vocabulary
+
+| Term | Definition |
+| ---- | ---------- |
+| Host | The domain name (including optional subdomain) under which the APIs are called. Example: `www.crownstack.com`, `api.crownstack.com` |
+| Scheme | The transfer protocol (HTTP or HTTPS) being used in the API. |
+| Basepath / URI | The constant prefix which will always be there while consuming any API. Example: `/api`, `/api/v1/` |
+| HTTP Verb / HTTP Method | The API method being used to call the API. Example GET, POST, PUT, PATCH, DELETE, OPTIONS, etc. |
+| Endpoint | The relative URL of the API (without the Host). Example: `/orders`, `/users/3` and `/products/77/reviews` |
+| Resources | The individual entity in the system that we can access and manipulate via the REST API. For example for an e-commerce application, possible resources are Orders, Users, Products, Attributes, etc. |
+| Actions | Apart from resources, we may need API endpoints to perform specific tasks like formatting supplied data, converting price from one currency to another, wild card searching, running some back-end tasks, etc. <br /><br />**Note**:<br />You must prefix all the actions with /actions to separate them from resources. Example: `/api/v2/actions/search`, `/api/actions/convert`, `/api/actions/run` |
+
+## Anatomy of a REST API request
+
+While sending an API request, we should know different parts of the API request and their proper usage. An HTTP request consists of:
+- Request Headers
+- HTTP Method
+- Endpoint
+- Request Body
+
+### Request Headers
+
+The headers sent via calling the API. Some common headers are:
+- Accept
+- Authorization
+- User-Agent
+- Accept-Encoding
+- Accept-Charset
+
+### HTTP Method
+
+The method tells what action to perform on the resource at the given API endpoint. The most common HTTP methods are:
+
+| HTTP Method | Description | Example |
+| ----------- | ----------- | ------- |
+| GET | Use the GET method to get data of a particular resource. | ```GET		/users``` will give information of all the users<br /><br /> ```GET		/users/33``` will give information of User ID 33 |
+| POST | POST is being used for many tasks. The primary task is to create a resource instance, but POST is also commonly used for non-creation tasks like Login, Logout, or any operation in which data should not be passed in the URL. | ```POST		/orders``` will create an order based on the data being passed in the request body<br /><br />```POST		/products``` will create a product taking data from the request body |
+| PUT | Use PUT to replace a resource data (if it already exists) or create a resource (if it doesn't exist). We need to pass every parameter in the request body of the resource. If no value is available for a parameter, use NULL. | ```PUT		/orders``` will create a new order if an order with given data doesn't exists, else, replaces data of that resource by the passed data |
+| PATCH | Use PATCH to update the data of the resource, specified in the body. We may pass only that data which we want to update, not every parameter of the resource has to be passed. | ```PATCH  /users/32``` will update only that data of User ID 32 which is passed in the request body |
+| DELETE | Use DELETE to delete a resource. | ```DELETE		/products/44``` will delete Product ID 44 from the system |
+
+
+### Request Body
+
+The data being passed while calling the API is sent in as a request body.
+
+## Anatomy of a REST API Response
+
+After processing the API request of the client, the server sends API response that should contain the following parts:
+- Response Headers
+- Status Code
+- Response Body
+
+### Response Headers
+
+Response headers contain the metadata which may be useful in handling the response properly. Some common headers API can send in return of the API request:
+- Server
+- Content-Type (must use)
+- Content-Length
+
+
+**Note**:
+You must send at least Content-Type header while crafting your API responses.
+
+### Status Code
+
+Proper status code helps clients to know the result of the API call. We can indicate success or failure of API operation via sending proper status code.
+
+**Note**:
+You must send proper status code while crafting your API responses.
+
+| Status code | Meaning |
+| ----------- | ------- |
+| 200 | This means the result of API call is OK |
+| 201 | Used when a resource is created via POST or PUT method |
+| 204 | When there is no response body to return. Useful when the API call does not need to return any data |
+| 301 | Means Permanent Redirection |
+| 302 | Means Temporary Redirection |
+| 400 | When request data is invalid / out of range / incomplete |
+| 401 | When the clients tries to call an API for which they are not authorized to call |
+| 403 | When the specific API is not allowed to make |
+| 404 | When the API endpoint is invalid |
+| 406 | If the request header Accept does not match the Content-Type header of the response. We cannot send data in this case as we do not support the format in which client wants the data |
+| 422 | When server is unable to process your requested action |
+| 500 | Server Error. This means while performing action on the API call, some unexpected error occurred on the server side due to which execution stopped |
+
+### Response Body
+
+If the API response needs to give the client some data, that data is sent in the response body.
+
+## API Responses when an error occurs
+
+In case some error occurs when executing the API request, you MUST send the following in response:
+
+### Proper Status Code (4xx, 5xx error codes)
+
+### Details of the error that occurred
+
+This information should be passed in an API response body in the following or similar format:
+```php
+{
+	"errors":[
+		{
+						"code":'UNIQUE-CODE-WE-INTERNALLY-USE-TO-IDENTIFY-AN-ERROR',
+			"message":'AN-EXPLANATORY-MESSAGE-FOR-USER-TO-UNDERSTAND-THE-ERROR',
+					},
+					{
+			 "code":'ER007',
+						 "message":'Address length exceeded the maximum characters of 500.',
+		 }
+	]
+}
+```
+
+## Filtering Response Data
+
+If an API request needs to load data after applying some filters, you may use the following way to mention the filters:
+```
+GET		/api/v2/users?type=guest&max_age=36
+```
+
+```
+GET		/orders?user_id=12&product_id=12,23,78&min_value=200
+```
+
+## Limiting Response Data (Pagination)
+
+If an API request returns too many rows, we need to limit the number of rows returned to save network bandwidth, processing time and load on the server to craft the response.
+Use combination offset (starting from 0) & limit to apply pagination / limiting the results. Example:-
+
+
+```
+GET		/users/limit=20&offset=12
+```
+Will give data of 20 users, starting from the 11th user
+
+**Note**:
+If an API request is going to return a large number of results and the client has not given any limit and offset, auto-apply limit and offset(as 0) is the response. Also mention:-
+ - the total number of records this API call can give
+ - number of records being given per page
+
+**Note**:
+Always have an upper bound on limit. Don’t allow the client to set a limit bigger than the upper bound you set.
+
+## Sorting Response Data
+
+If the client wants the returned data to be sorted, use sort query parameter to implement sorting. Example:
+
+```
+GET		/users?sort=name
+```
+By Default sort by ascending order
+
+<br />
+
+```
+GET		/products?sort=stock:desc
+```
+Sorting result in descending order
+
+<br />
+
+If you need to sort by multiple columns, comma separate sort parameters. Example:
+
+```
+GET	/orders?sort=id,orderDate:desc,orderTotal:asc,productTotal:desc
+```
+
+<br />
+
+## Serving resources that have too many fields
+
+If a resource has many fields, divide the fields into 2 sections: mandatory and optional. Always return the mandatory fields only (like ID, Name, Email, Phone) if the API request does not have `fields` query parameters. Example:
+
+```
+GET		/users
+```
+Will return ID, Name, Email & Phone only
+
+<br />
+
+If the `fields` query parameter is included in the API request, only return the fields required. Example:
+
+```
+GET		/users?fields=id,email,phone,address,num_of_orders
+```
+Will return the above requested fields
+
+**Note**:
+Also check confidential information is not returned even if mentioned if fields parameter value. Example if the API requests password, throw a 403 error along with the error description.
+
+## Handling relationships between Resources
+
+Almost always API resources are related to other resources. For example, order resources are related to `products`, `users`, `shipping_partners`, etc.
+
+We may have special endpoints to give information about these relationships between resources. Example:
+
+```
+/orders/5/products
+```
+Should give list of products in order number 5
+
+<br />
+
+```
+/products/89/orders
+```
+Should give list of orders that have product 89 in it
+
+<br />
+
+```
+/products/4/attributes
+```
+Should give list of attributes for this product
+
+<br />
+
+
+```
+/products/566/reviews
+```
+Should give list of reviews for product number 566
+
+<br />
+
+**Note**:
+If the related resource (like products or attributes) can exist independent of the related resource (orders or products respectively), we need to have separate endpoints to manage these types of resources.
+
+If the related resource (reviews) cannot exist independent of the related resource (products), we need to use the relationship as a resource. Example:
+```
+GET		/product-reviews
+```
+
+```
+GET		/product-reviews/45889
+```
+Get information about product review id 45899
+
+<br />
+
+
+```
+POST		/product-reviews
+```
+
+<br />
+
+**Note**:
+If a relation is almost every time requested for a particular resource, we may include that relation’s data in the API call. For example, when loading details of an order, we almost always need the list of products ordered in that order. So we will include products data as well in response of the order’s details:
+```
+{
+	"orderID":376,
+	"userId":3,
+	"orderValue":1660,
+	...
+	...
+	...
+	"products":[
+		{
+			"id":23,
+			"quantity":2
+		},
+		{
+			"id":43120,
+			"quantity":1
+		},
+	]
+}
+```
+
+## Versioning the APIs
+
+### Why have different versions of an API?
+
+With time and modifications in project, the following scenario occurs:
+
+1. Data of resources may change (like the addition of more columns in database table)
+2. Modifying the format of the response (like formatting the address as address_line_1, address_line_2, city, state, pincode)
+3. The relationships between resources might change with time (like the addition of one more table to store recommended products of a particular product)
+
+To save your APis from breaking the clients’ applications due to modifications like above, you should manage versions of your APIs.
+
+### How to mention versions of your APIs?
+
+#### Versioning via URL
+
+```
+GET		/v1/users/3
+```
+Version 1 of the API
+
+<br />
+
+```
+GET		/v2/users/3
+```
+Version 2 of the API
+
+#### Versioning via Query String
+
+```
+GET		/users/3?version=1
+```
+Version 1 of the API
+
+<br />
+
+```
+GET		/users/3?version=2
+```
+Version 2 of the API
+
+#### Versioning via passing a Request Header
+
+```
+Custom-Header: api-version=1
+```
+Version 1 of the API
+
+<br />
+
+```
+Custom-Header: api-version=2
+```
+Version 2 of the API
+
+## Implementing Hypermedia Control (HATEOAS)
+
+**Note**:
+This is optional to implement, use wherever required.
+
+
+Full Form: **Hypertext As The Engine Of Application State**
+
+When a GET request is made, we can also mention other API endpoints related to that resource to inform the user how to interact with this resource. Example:
+
+```
+{
+	"id":2,
+	"name":'Varun Kumar',
+	
+	...
+	...
+	...
+
+	"links":[
+		{
+			"rel":"self",
+			"href":"https://website.com/users/2",
+			"action":"GET",
+			"types":["text/xml","application/json"]
+		},
+		{
+			"rel":"self",
+			"href":"https://website.com/users/2",
+			"action":"PUT",
+			"types":["application/x-www-form-urlencoded"]
+		},
+		{
+			"rel":"self",
+			"href":"https://website.com/users/2",
+			"action":"DELETE",
+			"types":[]
+		},
+	]
+}
+```
+
+If a resource (for example Orders) is related to other resources (like Users, Products), we should mention all available operations available on the related resources as well. Example:
+
+```
+"orderID":376,
+"userId":3,
+"orderValue":1660,
+...
+...
+...
+"products":[
+	{
+		"id":23,
+		"quantity":2
+	},
+	{
+		"id":43120,
+		"quantity":1
+	},
+],
+links:[
+	{
+		"rel":"users",
+		"href":"https://website.com/users/3",
+		"action":"GET",
+		"types":["text/xml","application/json"]
+	},
+	{
+		"rel":"users",
+		"href":"https://website.com/users/3",
+		"action":"PUT",
+		"types":["application/x-www-form-urlencoded"]
+	},
+	{
+		"rel":"users",
+		"href":"https://website.com/users/3",
+		"action":"DELETE",
+		"types":[]
+	},
+	{
+		"rel":"products",
+		"id":23,
+		"href":"https://website.com/products/23",
+		"action":"GET",
+		"types":["text/xml","application/json"]
+	},
+	{
+		"rel":"products",
+		"id":23,
+		"href":"https://website.com/products/23",
+		"action":"PUT",
+		"types":["application/x-www-form-urlencoded"]
+	},
+	{
+		"rel":"products",
+		"href":"https://website.com/products/23",
+		"action":"DELETE",
+		"types":[]
+	},
+	{
+		"rel":"products",
+		"id":43120,
+		"href":"https://website.com/products/43120",
+		"action":"GET",
+		"types":["text/xml","application/json"]
+	},
+	{
+		"rel":"products",
+		"id":43120,
+		"href":"https://website.com/products/43120",
+		"action":"PUT",
+		"types":["application/x-www-form-urlencoded"]
+	},
+	{
+		"rel":"products",
+		"id":43120,
+		"href":"https://website.com/products/43120",
+		"action":"DELETE",
+		"types":[]
+	},
+]
+```
+
+You may read more about HATEOAS [here](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design#use-hateoas-to-enable-navigation-to-related-resources).
+
+## Other Important Points
+
+1. Specify actions via verb, not in API URL. Example if you want to load details of a product, don't use API endpoint as:
+```
+GET /api/v2/load-product-info
+```
+Instead use a proper HTTP Method (GET, POST, PUT, PATCH, DELETE) to describe the action you want to perform on that resource.
+
+2. Following right naming for endpoints. Use the plural form of the resource as an endpoint. Example for Attributes resource, the endpoint should be /attributes (not /attribute).
+
+3. If the response is going to take a long time, use Asynchronous Operations in that case.
+
+	Sometimes a POST, PUT, PATCH, or DELETE operation might require processing that takes a while to complete. If you wait for completion before sending a response to the client, it may cause unacceptable latency. If so, consider making the operation asynchronous. Return HTTP status code 202 (Accepted) to indicate the request was accepted for processing but is not completed.
+
+	You should expose an endpoint that returns the status of an asynchronous request, so the client can monitor the status by polling the status endpoint. Include the URI of the status endpoint in the Location header of the 202 response. For example:
+
+	```
+	HTTP/1.1    202 Accepted
+	```
+
+	```
+	Location:   /api/status/12345
+	```
+
+	If the client sends a GET request to this endpoint, the response should contain the current status of the request. Optionally, it could also include an estimated time to completion or a link to cancel the operation.
+
+4. An idempotent HTTP method is an HTTP method that can be called many times without different outcomes. It would not matter if the method is called only once, or ten times over. The result should be the same. It essentially means that the result of a successfully performed request is independent of the number of times it is executed. For example, in arithmetic, adding zero to a number is idempotent operation.
+
+## References for further reading
+
+1. [Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html)
+2. [Idempotent In REST](https://restfulapi.net/idempotent-rest-apis/)
+3. [REST API Design Guide by National Bank of Belgium](https://github.com/NationalBankBelgium/REST-API-Design-Guide/wiki/REST)
+4. [Best Practices in REST API Design by Microsoft](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
