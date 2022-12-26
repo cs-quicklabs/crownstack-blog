@@ -8,7 +8,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/aashishdhawan/crownstack-tailwind-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/Logo-light.png',
   email: 'contact@crownstack.com',
   twitter: 'https://twitter.com/crownstack',
   facebook: 'https://www.facebook.com/crownstack/',
