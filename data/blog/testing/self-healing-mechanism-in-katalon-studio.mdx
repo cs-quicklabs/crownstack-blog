@@ -1,0 +1,128 @@
+---
+title: 'Self Healing mechanism in Katalon Studio'
+date: 2023-03-03T15:32:14Z
+lastmod: '2023-03-03'
+tags: ['testing', 'QA Automation']
+draft: false
+summary: 'In this guide, we are going to talk about the self-healing mechanism, which plays a crucial role in ensuring the stability and reliability of automated tests in Katalon Studio.'
+layout: PostSimple
+authors: ['shalini-pandey']
+---
+
+## Overview
+
+In this guide, we are going to talk about the self-healing mechanism, which plays a crucial role in ensuring the stability and reliability of automated tests in Katalon Studio.
+
+## What is Katalon Studio?
+
+Katalon Studio is a powerful, all-in-one test automation solution for web and mobile applications. It offers a wide range of features and capabilities for testers to create, execute, and manage their automated tests. One of the most notable features of Katalon Studio is its self-healing mechanism, which plays a crucial role in ensuring the stability and reliability of automated tests.
+
+## What is self-healing mechanism?
+
+The self-healing mechanism is a technology that helps software automatically recover from unexpected failures or errors. In the context of Katalon Studio, the self-healing mechanism refers to the ability of the tool to automatically detect and fix broken test cases. This mechanism is designed to handle test failures caused by issues such as changes in the application under test, changes in the testing environment, or other unexpected events.
+
+## How self-healing works in Katalon Studio?
+
+Katalon Studio's self-healing mechanism is based on the use of smart object recognition and dynamic locators. The tool uses advanced image recognition algorithms to identify objects in the application under test and accurately locate them on the screen. When changes occur in the application, the tool automatically detects the changes and updates the locators accordingly. This ensures that the test cases continue to run without failure, even in the face of changes in the application.
+
+In addition to object recognition, Katalon Studio also includes a powerful object repository that allows users to manage and organize their objects. The repository provides a centralized location for storing object information, including locators, properties, and test data. This makes it easy for users to maintain their test cases, even in the face of changes in the application or testing environment.
+
+## How to enable Katalon Studio's Self healing?
+
+Self Healing is enabled in Katalon Studio by default. Check the Self Healing menu in the toolbar. If it has Disable Self-healing option, then the self-healing is enabled for your project. Or, Navigate to Project > Settings > Self Healing> WebUI and then turn on or off the Self Healing option.
+
+Self Healing in Katalon Studio currently supports 4 locator methods:
+
+1. XPath
+2. CSS Selector
+3. Attribute
+4. Images
+
+![Katlon Studio Project Settings](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/Katlon-Studio-Project-Settings.png "Katlon Studio Project Settings")
+
+By simply selecting and unchecking the checkboxes, one can choose to employ one or more element location methods. The order of different approaches can also be prioritized by moving some of them up and down.
+
+What do we understand by priority, then, is a pretty obvious point that is raised by this. Priority, to put it simply, is the order in which Katalon Studio will search for alternatives.
+
+## An example of self-healing in Katalon Studio
+
+First, let's say you have a test case that interacts with a particular object in your application, such as a button or text field. You've recorded your test case and everything seems to be working fine.
+
+For example:
+
+1. Created a test case named “Self Healing” using record mode in Katalon Studio - the expected functionality got captured by performing the respective actions.
+
+![Self-healing test case](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/self-healing-test-case.png "Self-healing test case")
+
+2. Now we can see all the locators recorded while performing the test recording in the **Object Repository** folder in the repository named **"Page_CURA Healthcare Service"**
+
+![Page_CURA Healthcare Service](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/page-cura-healthcare-service.png "Page_CURA Healthcare Service")
+
+However, over time, the application changes. Maybe the button you're interacting with is moved to a different location on the page, or the field ID is changed. When you run your test case again, it fails because the object can no longer be found.
+
+3. In our test case as well, one of the recorded locators got changed by the rigorous changing in the code by the developers and as a result, the test case named **"Self Healing"** is failing again and again.
+
+This is where self-healing comes in. If you've enabled self-healing in your Katalon Studio project, the test will automatically try to recover from the error by searching for the object using alternative methods. These alternative methods may include looking for the object by name, label, or other attributes.
+
+And if self-healing is not enabled from the settings and your test case is failing again and again, you can just check the Self-healing insights from the bottom action tabs and can directly approve the proposed locator via the Approve button
+
+4. As the test case is failing again and again - we have checked the self-healing insight tab beside the log viewer tab and we can see that the self healing insight has some suggestions for us in order to successfully test our application.
+
+![Self-healing Insights](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/self-healing-insights.png "Self-healing Insights")
+
+5. Now what we need to do is simply:
+	1. identify the **Test Object ID** in the **Object Repository** and replace the **Broken locator** with the **Proposed locator**
+	2. Save the changes in the Object Repository and Rerun the test case 
+
+Or - In the Self Healing Insight, we can see 3 action buttons at the right bottom of the page - Just click on the “APPROVE” button, and it will change the broken locator with the proposed one and automatically saves the changes.
+
+Now re-run the test case and voila! The test case got passed which is failing again and again due to the broken locator.
+
+![Re-run the test case](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/re-run-the-test-case.png "Re-run the test case")
+
+## Self-healing Insights
+
+After you run your test with self-healing, you can see the Self-healing Report in the Log Viewer.
+
+Next to the Log Viewer tab, the Self-healing Insights tab displays a table with all the suggestions to replace broken locators. The table includes:
+
+1. **Test Object ID**: The ID of broken test objects
+2. **Broken Locator**: The default locator that could not detect the object during execution
+3. **Proposed Locator**: The alternative locator that located the object during execution. The proposed locator is the newly generated smart XPath of that element if the object is found by using its screenshot
+4. **Recovered By**: The Selection Method that Katalon Studio used for detecting the object
+5. **Screenshot**: When finding an object with its alternative locator, Katalon would capture a screenshot of the test object for you to verify whether the found object is the wanted one. Click Preview to check the healed object
+6. **Select**: Decide which locator for you to take action
+
+![Log viewer tab](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/log-viewer-tab.png "Log viewer tab")
+
+During the test run, the locator replacement is temporary. In Self-Healing Insights, you can discover broken locators that have been recovered at runtime.
+
+##  Benefits of self-healing mechanism in Katalon Studio
+
+The self-healing mechanism in Katalon Studio provides a number of benefits for testers and test automation professionals. Some of the key benefits include:
+
+### Increased stability and reliability
+
+The self-healing mechanism helps to ensure that test cases continue to run successfully, even in the face of changes in the application or testing environment. This improves the stability and reliability of the test automation process.
+
+### Improved maintenance
+
+The object repository and smart object recognition feature in Katalon Studio make it easy to maintain test cases, even in the face of 
+changes in the application. This reduces the time and effort required to maintain test cases, freeing up more time for other tasks.
+
+### Better test coverage
+
+With the self-healing mechanism in place, test cases are less likely to fail due to changes in the application or testing environment. 
+
+This allows testers to focus on better test coverage, rather than worrying about test failures.
+
+## Limitations of self-healing mechanism in Katalon Studio
+
+1. Only available for Web UI testing
+2. **Image-based testing**: You must choose which details will be recorded as images during recording and spying in order to build an image property. It can be challenging to predict which components can fail during execution. This requires you to manually capture each one or to select which elements are likely to be durable and should be image-backed up
+
+Self-healing is a powerful feature that can save a lot of time and effort in maintaining test cases over the long term. However, it's important to remember that self-healing is not foolproof, and there may be cases where it can't recover from an error. Therefore, it's still important to regularly review and update your test cases as necessary to ensure they remain accurate and reliable.
+
+## Conclusion
+
+The self-healing mechanism in Katalon Studio is a powerful feature that helps to ensure the stability and reliability of automated tests. With advanced object recognition and a centralized object repository, Katalon Studio makes it easy for testers to maintain their test cases, even in the face of changes in the application or testing environment. Whether you are a beginner or an experienced test automation professional, Katalon Studio is the tool you need to get the job done.
