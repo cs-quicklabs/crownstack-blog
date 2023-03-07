@@ -82,7 +82,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                disabled={!buttonDisabled}
+                disabled={buttonDisabled}
                 className="flex items-center rounded-r-md border border-primary bg-primary px-4 py-2 text-white transition duration-150 ease-in-out hover:border-opacity-80 hover:bg-opacity-80 hover:shadow-xl focus:border-opacity-100 focus:bg-opacity-100 active:border-opacity-90 active:bg-opacity-90"
               >
                 {buttonDisabled && (
