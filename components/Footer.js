@@ -51,7 +51,7 @@ export default function Footer() {
     <footer className="mt-6">
       <div className="mt-4 flex flex-col items-center">
         <div className="mb-4">
-          <div className="mb-4 text-base font-medium text-gray-600 dark:text-gray-300 md:text-lg md:leading-6">
+          <div className="mb-4 text-center text-base font-medium text-gray-600 dark:text-gray-300 sm:font-semibold md:text-lg md:leading-6">
             Subscribe to our newsletter for more updates
           </div>
           <form onSubmit={handleSubmit}>
@@ -76,14 +76,14 @@ export default function Footer() {
                   }
                 }}
                 placeholder="Enter email address"
-                className={`w-full flex-1 rounded-l-md border border-r-0 bg-white px-4 py-2 text-gray-900 focus:border-r-0 focus:outline-none focus:ring-0 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100 ${
+                className={`w-full flex-1 rounded-l-md border border-r-0 bg-white px-[3] py-1.5 text-gray-900 placeholder:text-sm focus:border-r-0 focus:outline-none focus:ring-0 dark:border-gray-900 dark:bg-gray-800 dark:text-gray-100 sm:px-4 sm:py-2 placeholder:sm:text-base ${
                   isValidEmail ? 'border-gray-400' : 'border-red-600'
                 }`}
               />
               <button
                 type="submit"
                 disabled={buttonDisabled}
-                className="flex items-center rounded-r-md border border-primary bg-primary px-4 py-2 text-white transition duration-150 ease-in-out hover:border-opacity-80 hover:bg-opacity-80 hover:shadow-xl focus:border-opacity-100 focus:bg-opacity-100 active:border-opacity-90 active:bg-opacity-90"
+                className="flex items-center rounded-r-md border border-primary bg-primary px-2 py-2 text-sm text-white transition duration-150 ease-in-out hover:border-opacity-80 hover:bg-opacity-80 hover:shadow-xl focus:border-opacity-100 focus:bg-opacity-100 active:border-opacity-90 active:bg-opacity-90 sm:px-4 sm:py-2 sm:text-base"
               >
                 {buttonDisabled && (
                   <span>
@@ -131,17 +131,14 @@ export default function Footer() {
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size="6" />
           <SocialIcon kind="twitter" href={siteMetadata.twitter} size="6" />
         </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-4 flex flex-wrap justify-center gap-x-2 text-sm text-gray-500 dark:text-gray-400 sm:mb-2">
           <div>{siteMetadata.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <div>Crownstack Technologies Pvt Ltd</div>
+          <div>{` • © ${new Date().getFullYear()}`}</div>
+          <div>{` • `}Crownstack Technologies Pvt Ltd</div>
         </div>
-        <div className="mb-8 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-8 flex flex-wrap justify-center gap-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>sales@crownstack.com</div>
-          <div>{` • `}</div>
-          <div>hr@crownstack.com</div>
+          <div>{` • `}hr@crownstack.com</div>
         </div>
       </div>
     </footer>
