@@ -15,6 +15,16 @@ class MyDocument extends Document {
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         </Head>
         <body className="bg-white text-black antialiased dark:bg-gray-900 dark:text-white">
+          {/* Google Tag Manager (noscript) */}
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-PF3PNGS"
+              height="0"
+              width="0"
+              style="display:none;visibility:hidden"
+            ></iframe>
+          </noscript>
+          {/* End Google Tag Manager (noscript) */}
           <Main />
           <NextScript />
         </body>
