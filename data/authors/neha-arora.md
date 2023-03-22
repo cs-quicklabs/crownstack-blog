@@ -5,7 +5,7 @@ occupation: Quality Analyst Team Lead
 company: Crownstack Technologies
 email: neha.arora@crownstack.com
 twitter: 
-linkedin: 
+linkedin: https://www.linkedin.com/in/neha-arora-08985718/
 github: 
 ---
 
