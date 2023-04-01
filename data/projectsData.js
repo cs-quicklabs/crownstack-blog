@@ -17,12 +17,6 @@ const projectsData = [
     imgSrc: '/static/images/products/kutumb.jpg',
     href: 'https://www.kutumb.me',
   },
-  {
-    title: 'Quicklook - One page personal profile builder',
-    description: `Quicklook helps you to build your one page personal profile where you can link all your social profiles along with adding other important details.`,
-    imgSrc: '/static/images/products/quicklook.jpg',
-    href: 'https://www.quicklook.me',
-  },
 ]
 
 export default projectsData
