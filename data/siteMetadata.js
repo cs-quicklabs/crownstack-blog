@@ -1,6 +1,6 @@
 const siteMetadata = {
   title: 'Crownstack Blog',
-  author: 'All rights reserved',
+  author: 'Crownstack',
   description: '',
   language: 'en-us',
   theme: 'system', // system, dark or light
