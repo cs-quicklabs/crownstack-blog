@@ -67,7 +67,7 @@ const LayoutWrapper = ({ children }) => {
             <ThemeSwitch />
             <div>
               <div className="prose ml-2 text-lg text-primary hover:text-primary hover:underline dark:hover:text-primary">
-                <a href="https://calendly.com/aashish-dhawan/15min">Talk to Us → </a>
+                <a href="https://calendly.com/aashish-dhawan/15min">Talk to Sales → </a>
               </div>
             </div>
             <MobileNav />
