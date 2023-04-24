@@ -18,9 +18,9 @@ const LayoutWrapper = ({ children }) => {
         <header className="flex items-center justify-between py-10">
           <div>
             <Link
-              href="https://blog.crownstack.com/"
+              href="https://www.crownstack.com/"
               aria-label={siteMetadata.headerTitle}
-              target=""
+              target="_blank"
             >
               <div className="flex items-center justify-between">
                 <div className="mr-3">
@@ -65,6 +65,11 @@ const LayoutWrapper = ({ children }) => {
               ))}
             </div>
             <ThemeSwitch />
+            <div>
+              <div className="prose ml-2 text-lg text-primary hover:text-primary hover:underline dark:hover:text-primary">
+                <a href="https://calendly.com/aashish-dhawan/15min">Talk to Sales → </a>
+              </div>
+            </div>
             <MobileNav />
           </div>
         </header>

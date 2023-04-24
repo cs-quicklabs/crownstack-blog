@@ -1,6 +1,6 @@
 const siteMetadata = {
   title: 'Crownstack Blog',
-  author: 'All rights reserved',
+  author: 'Crownstack',
   description: '',
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -8,7 +8,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/aashishdhawan/crownstack-tailwind-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/social-banner.png',
   email: 'contact@crownstack.com',
   twitter: 'https://twitter.com/crownstack',
   facebook: 'https://www.facebook.com/crownstack/',
@@ -21,7 +21,7 @@ const siteMetadata = {
     plausibleDataDomain: 'blog.crownstack.com', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: false, // true or false
     umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: 'GTM-PF3PNGS', // e.g. UA-000000-2 or G-XXXXXXX
     posthogAnalyticsId: '', // posthog.init e.g. phc_5yXvArzvRdqtZIsHkEm3Fkkhm3d0bEYUXCaFISzqPSQ
   },
   newsletter: {

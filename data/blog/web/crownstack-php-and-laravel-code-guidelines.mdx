@@ -4,7 +4,7 @@ date: '2022-12-24'
 lastmod: '2022-12-24'
 tags: ['php', 'laravel', 'guide']
 draft: false
-summary: "This is Crownstack's official guideline for PHP and Laravel."
+summary: "This is Crownstack's official guideline for PHP and Laravel best coding practices."
 layout: PostSimple
 images: []
 authors: ['varun-kumar']
@@ -14,7 +14,7 @@ authors: ['varun-kumar']
 
 ## About Laravel
 
-First and foremost, Laravel provides the most value when you write things the way Laravel intended you to write. If there's a documented way to achieve something, follow it. Whenever you do something differently, make sure you have a justification for *why* you didn't follow the defaults.
+First and foremost, Laravel provides the most value when you write things the way Laravel intended you to write. If there's a documented way to achieve something, follow it. Whenever you do something differently, make sure you have a justification for _why_ you didn't follow the defaults.
 
 ## General PHP Rules
 
@@ -53,7 +53,6 @@ public function scopeArchived(Builder $query): void {
 }
 ```
 
-
 ## Typed properties
 
 You should type a property whenever possible. Don't use a docblock.
@@ -73,10 +72,10 @@ class Foo {
 
 ## Enums
 
-Values in enums should use PascalCase. 
+Values in enums should use PascalCase.
 
 ```php
-enum Suit {  
+enum Suit {
     case Clubs;
     case Diamonds;
     case Hearts;
@@ -178,13 +177,12 @@ function someFunction(array $myArray) {
 }
 ```
 
-
 In this example, `typedArgument` needs a docblock too:
 
 ```php
 /**
  * @param $myArray array<int, MyObject>
- * @param int $typedArgument 
+ * @param int $typedArgument
  */
 function someFunction(array $myArray, int $typedArgument) {
 
@@ -286,7 +284,6 @@ $greeting = "Hi, I am {$name}.";
 $greeting = 'Hi, I am ' . $name . '.';
 ```
 
-
 ## Ternary operators
 
 Every portion of a ternary expression should be on its own line unless it's a really short expression.
@@ -330,7 +327,6 @@ if (! $goodCondition) {
 
 // do work
 ```
-
 
 ```php
 // Bad
@@ -387,7 +383,7 @@ Another option to refactor an `else` away is using a ternary
 
 if ($condition) {
     $this->doSomething();
-} 
+}
 else {
     $this->doSomethingElse();
 }
@@ -403,11 +399,9 @@ $condition
     : $this->doSomethingElse();
 ```
 
-
 ### Compound ifs
 
 In general, separate `if` statements should be preferred over a compound condition. This makes debugging code easier.
-
 
 ```php
 // Good
@@ -589,7 +583,7 @@ return [
         'secret' => env('SES_AWS_SECRET_ACCESS_KEY'),
         'region' => env('SES_AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-    
+
     'github' => [
         'username' => env('GITHUB_USERNAME'),
         'token' => env('GITHUB_TOKEN'),
@@ -598,10 +592,10 @@ return [
         'redirect' => env('GITHUB_CALLBACK_URL'),
         'docs_access_token' => env('GITHUB_ACCESS_TOKEN'),
     ],
-    
+
     'weyland_yutani' => [
         'token' => env('WEYLAND_YUTANI_TOKEN')
-    ],   
+    ],
 ];
 ```
 
@@ -611,7 +605,7 @@ return [
 return [
     'weyland_yutani' => [
         'token' => env('WEYLAND_YUTANI_TOKEN')
-    ],  
+    ],
 ]
 ```
 
@@ -681,7 +675,7 @@ Route::get('open-source', 'OpenSourceController@index');
 
 ```html
 <a href="{{ action([\App\Http\Controllers\OpenSourceController::class, 'index']) }}">
-    Open Source
+  Open Source
 </a>
 ```
 
@@ -830,7 +824,6 @@ public function rules()
 }
 ```
 
-
 All custom validation rules must use snake_case:
 
 ```php
@@ -844,17 +837,13 @@ Validator::extend('organisation_type', function ($attribute, $value) {
 Indent using four spaces.
 
 ```html
-<a href="/open-source">
-    Open Source
-</a>
+<a href="/open-source"> Open Source </a>
 ```
 
 Don't add spaces after control structures.
 
 ```html
-@if($condition)
-    Something
-@endif
+@if($condition) Something @endif
 ```
 
 ## Authorization
@@ -869,9 +858,7 @@ Gate::define('editPost', function ($user, $post) {
 
 ```html
 @can('editPost', $post)
-    <a href="{{ route('posts.edit', $post) }}">
-        Edit
-    </a>
+<a href="{{ route('posts.edit', $post) }}"> Edit </a>
 @endcan
 ```
 

@@ -17,7 +17,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
       <article>
         <div>
           <header>
-            <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700">
+            <div className="space-y-1 border-b border-gray-200 pb-8 text-center dark:border-gray-700">
               <dl>
                 <div>
                   <dt className="sr-only">Published on</dt>
@@ -29,6 +29,26 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>
+              <dl className="">
+                <dt className="sr-only">Authors</dt>
+                <dd className="mt-4">
+                  <div className="flex flex-wrap justify-center space-x-2">
+                    <div className="flex items-center justify-center text-sm font-medium text-gray-400">
+                      Written by :
+                    </div>
+                    {authorDetails.map((author) => (
+                      <>
+                        <div className="flex items-center justify-center" key={author.name}>
+                          <dl className="whitespace-nowrap text-base font-bold leading-5 text-gray-700">
+                            <dt className="sr-only">Name</dt>
+                            <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
+                          </dl>
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                </dd>
+              </dl>
             </div>
           </header>
           <div
