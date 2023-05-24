@@ -1,0 +1,110 @@
+---
+title: "Crownstack's Git workflow"
+date: '2023-04-15'
+lastmod: '2023-04-15'
+tags: ['git', 'git workflow', 'guide']
+draft: false
+summary: "This is Crownstack's official guideline on how to use Git workflow for projects."
+layout: PostSimple
+images: []
+authors: ['varun-kumar']
+---
+
+## What is a Git workflow?
+
+Git workflow can be defined as a system on how to use Git by developer teams that helps in achieving the following goals:
+
+1. Multiple primary branches for each and every application environment. Example **development**, **qa**, **staging** and **main**
+2. Ability for multiple developers to work on different features independently
+3. Ability for multiple developers to work on common features without creating (minimum, if not any) conflicts
+4. Ability to quickly hotfix high priority production bugs after testing
+5. Allowing multi-stage testing of new features and improvements
+
+## Why Git workflows are important?
+
+Git workflows are heavily used in software development teams where multiple developers are able to work together in developing a software. Following a proper git workflow ensures that we are able to seamlessly integrate our code with other developers' code. This ultimately helps big teams to ship new features, improvements and bug fixes quickly.
+
+## Git workflow at Crownstack
+
+We at Crownstack have crafted our Git workflow we use for most our projects. This workflow should fit fine for any software project (back-end, front-end or mobile application) where one or more developers collaborate together or individually to create and ship new code quickly.
+
+### Application environments
+
+![Application environments](/static/images/blogs/web/crownstack-git-workflow/application-environments.png)
+
+Every application has multiple environments, most commonly:
+
+* **Development environment**: where developers first release and test their code themselves
+* **QA environment**: when developers have tested their code and they find it working correctly, they pass their code to QA team for QA testing
+* **Staging environment**: where QAs approve the code on QA environment, code is moved to staging environment. Staging environment is mostly used by client approval, or a final round of testing on this pre-production environment
+* **Production environment**: once developer, QA and client testing is done, code is finally made live for actual customers released on production environment for customers
+
+### Setting up primary branches for every application environment
+
+Primary git branches are branches that points to the latest code in the above application environments. It is recommended to create equal number of primary branches as many application environments the application has.
+
+![Primary branches for every application environment](/static/images/blogs/web/crownstack-git-workflow/primary-branches-for-every-application-environment.png)
+
+Also, the git branches except the one for production environment (most commonly `main` or `master` git branch) should be branched out from `main` or `master` branch in reverse order of code flow for different environments. This means that:
+
+Git branch | Branched out from | Code points to environment
+:---: | :---: | :---:
+main | Created by default in Git | Production environment
+staging | main | Staging environment
+qa | staging | QA environment
+development | qa | Development environment
+
+![Primary branches and application environments](/static/images/blogs/web/crownstack-git-workflow/primary-branches-and-application-environments.png)
+
+### Types of code and their git branches (non-primary git branches)
+
+All the code developers creates, it can be classified into one of the following types. For every code type, the non-primary git branch name should be named accordingly:
+
+Git branch | Type of code
+:---: | :---
+`feature/*` | Branch created when a new feature is being developed. One feature branch should represent complete code developed for one single feature
+`epic/*` | When the functionality being implemented is quite big that it will be divided into multiple individual features, an epic branch is created. Then multiple feature branches are branched out from this epic branch
+`hotfix/*` | When a high priority production bug fix comes up that needs to be resolved quickly
+`bugfix/*` | When a bug has been reported, but it's not high priority to be fixed and deployed on urgent priority
+
+### Where to branch out non-primary branches from?
+
+
+We recommend that all the non-primary branches should be branched out from `main` or `master` branch of the repository. The reasons for this are:
+
+1. `main` or `master` serves as the most stable and thoroughly tested project code
+2. Code that reaches `main` or `master` is ensured to present in all the primary branches as the code flows from one primary branch to another and finally to `main` or `master`. Hence it will not create any possible merge conflicts or merging unwanted code in other primary branches
+
+### Moving code from non-primary branches to primary branches
+
+#### For `feature/*` or `bugfix/*` branches
+
+![Moving code from feature or bugfix branches to primary branches](/static/images/blogs/web/crownstack-git-workflow/moving-code-from-feature-or-bugfix-branches-to-primary-branches.png)
+
+`feature/*` branches usually contains development of one single feature. For example integrating the project with another back-end system using their APIs like SEMRush, AWS Comprehend, etc. Usually one feature is developed by one developer.
+
+`bugfix/*` branches are used to fix bugs in already completed and deployed feature. Usually these bugs are not super-urgent to fix on highest priority, for these kind of bugs, we have `hotfix/*` branches.
+
+Once branching out a feature or bugfix branch from `main` or `master`, developers can now write code in this branch, then merge it back to primary branches one by one. Starting with `development` branch all the way up to `main` or `master`, while merging new branch's code in every primary branch, the testing and approvals by relevant testers is required to move code to next level.
+
+#### For `epic/*` branches
+
+![Moving code from epic branches to primary branches](/static/images/blogs/web/crownstack-git-workflow/moving-code-from-epic-branches-to-primary-branches.png)
+
+As briefly touched above, epic branches are created when the functionality being developed is too large, will span out for multiple weeks or months, and may require multiple people to work on it together. For example let's say creating a fully-automated algorithm to auto-assign nearby drivers to deliver delivery orders placed. Big features are complex, takes a lot of time in development and testing. Most commonly we see multiple people are assigned to work together to complete these big features. That's where epic branches becomes useful.
+
+Epic branch in itself serve as a primary branch for individual features developed to complete the main functionality. Once an `epic/*` branch is created from `main` or `master`, multiple `feature/*` branches are branched out from the `epic/*` branch that developers use to create their part of the code, and merge their code back to the parent `epic/*` branch.
+
+Once the `epic/*` has new code, `epic/*` is merged into primary branch so that whole epic functionality can be tested thoroughly. This also helps in dividing a big chunk of workload into smaller tasks that individual developers can work on independently.
+
+#### For `hotfix/*` branches
+
+![Moving code from hotfix branches to primary branches](/static/images/blogs/web/crownstack-git-workflow/moving-code-from-hotfix-branches-to-primary-branches.png)
+
+Hotfix branches are used when the project is encountering a major production bug that's impacting the business. In these cases usually the team will not have too much time to deploy and test the bug fix on every primary branch in incremental way. Instead we would need fastest way of testing the bugfix quickly and push the fix on production as soon as possible.
+
+So after branching out from `main` or `master`, we would quickly fix the bug and test it directly on `staging` branch. Once the hotfix has been tested in `staging`, it is immediately moved to `main` or `master`. Parallelly the hotfix is now merged on `development` and `qa` to maintain code consistency and more thorough QA testing.
+
+## Conclusion
+
+Based on our past work experience we at Crownstack have engineered the above Git workflow for our teams to work, test and deliver good quality code to customers. We strongly recommend to use at least one type of Git workflow in every application you build. Adapting the above Git workflow has always proven very useful to us, and we hope the same for you too!
