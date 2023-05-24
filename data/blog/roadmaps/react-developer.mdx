@@ -1,0 +1,669 @@
+---
+title: 'React Developer Roadmap'
+date: 2023-05-24T15:32:14Z
+lastmod: '2023-05-24'
+tags: ['roadmaps', 'guide', 'react']
+draft: false
+summary: 'React Developer learning roadmap.'
+layout: PostSimple
+authors: ['aashishdhawan']
+---
+
+## Overview
+
+Everything that is there to learn about React and the ecosystem.
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Level 1: React Components
+
+Components are the building blocks of React applications. They let us split the UI into independent, reusable pieces, and think about each piece in isolation.
+Visit the following resources to learn more:
+
+- **[Components and Props](https://reactjs.org/docs/components-and-props.html)**
+- **[Components in Depth](https://reactjs.org/docs/react-component.html)**
+- **[Explore the different types of components in React](https://www.robinwieruch.de/react-component-types/)**
+- **[What is the difference between components, elements, and instances?](https://www.robinwieruch.de/react-element-component/)**
+
+![components.png](/static/images/roadmaps/react/components.png)
+
+### Class Components
+
+Components can either be created using the class based approach or a functional approach. These components are simple classes (made up of multiple functions that add functionality to the application). All class based components are child classes for the Component class of ReactJS.
+Although the class components are supported in React, it is encouraged to write functional components and make use of hooks in modern React applications.
+Visit the following resources to learn more:
+• **[Components and Props](https://react.dev/learn/thinking-in-react#props-vs-state)**
+• **[Is There Any Reason to Still Use React Class Components?](https://medium.com/geekculture/is-there-any-reason-to-still-use-react-class-components-9b6a1e6aa9ef)**
+• **[Functional Components vs Class Components in React](https://www.freecodecamp.org/news/functional-components-vs-class-components-in-react)**
+• **[Migrate Class Components to Functional Components with Hooks in React](https://www.robinwieruch.de/react-hooks-migration/)**
+
+### Functional Components
+
+Functional components are some of the more common components that will come across while working in React. These are simply JavaScript functions. We can create a functional component to React by writing a JavaScript function. These functions may or may not receive data as parameters. In the functional Components, the return value is the JSX code to render to the DOM tree. Functional components can also have state which is managed using React hooks.
+Visit the following resources to learn more:
+• **[Components and Props](https://reactjs.org/docs/components-and-props.html#function-and-class-components)**
+• **[Your first component](https://react.dev/learn/your-first-component)**
+• **[Passing props to a component](https://react.dev/learn/passing-props-to-a-component)**
+• **[Functional Components in React (1)](https://www.geeksforgeeks.org/reactjs-functional-components/)**
+• **[Functional Components in React (2)](https://www.robinwieruch.de/react-function-component/)**
+
+### **Props and States**
+
+Props (short for “properties”) and state are both plain JavaScript objects. While both hold information that influences the output of component render, they are different in one important way: props get passed to the component (similar to function parameters) whereas state is managed within the component (similar to variables declared within a function).
+Visit the following resources to learn more:
+• **[Component State](https://reactjs.org/docs/faq-state.html)**
+• **[How to use Props in React](https://www.robinwieruch.de/react-pass-props-to-component/)**
+• **[What is the difference between state and props in React?](https://stackoverflow.com/questions/27991366/what-is-the-difference-between-state-and-props-in-react)**
+• **[How to update state from props in React](https://www.robinwieruch.de/react-derive-state-props/)**
+• **[Putting props to useState](https://tkdodo.eu/blog/putting-props-to-use-state)**
+
+### Composition and Inheritance
+
+React has a powerful composition model, and it is recommended to use composition instead of inheritance to reuse code between components.
+Visit the following resources to learn more:
+
+- **[Composition vs Inheritance](https://reactjs.org/docs/composition-vs-inheritance.html)**
+- **[How to perform component composition in React](https://www.robinwieruch.de/react-component-composition/)**
+- **[Achieving Reusability With React Composition](https://formidable.com/blog/2021/react-composition/)**
+
+### **Refs**
+
+Refs provide a way to access DOM nodes or React elements created in the render method.
+
+In the typical React dataflow, props are the only way that parent components interact with their children. To modify a child, you re-render it with new props. However, there are a few cases where you need to imperatively modify a child outside of the typical dataflow. The child to be modified could be an instance of a React component, or it could be a DOM element. For both of these cases, React provides an escape hatch.
+Visit the following resources to learn more:
+
+- **[Refs and DOM](https://reactjs.org/docs/refs-and-the-dom.html)**
+- **[Referencing Values with Refs](https://react.dev/learn/referencing-values-with-refs)**
+- **[Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)**
+- **[Examples of using refs in React](https://www.robinwieruch.de/react-ref/)**
+- **[The Complete Guide to useRef() and Refs in React](https://dmitripavlutin.com/react-useref-guide/)**
+- **[Learn useRef in 11 Minutes - Web Dev Simplified](https://www.youtube.com/watch?v=t2ypzz6gJm0)**
+
+### Events
+
+Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
+• React events are named using camelCase, rather than lowercase.
+• With JSX you pass a function as the event handler, rather than a string.
+Visit the following resources to learn more:
+• **[Handling Events in React](https://reactjs.org/docs/handling-events.html)**
+• **[Synthetic Events in React](https://reactjs.org/docs/events.html)**
+• **[Responding to Events](https://react.dev/learn/responding-to-events)**
+• **[React Event Handler](https://www.robinwieruch.de/react-event-handler/)**
+
+### **Higher Order Component**
+
+A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nature.
+
+Concretely, a higher-order component is a function that takes a component and returns a new component. Visit the following resources to learn more:
+
+- **[High-Order Components](https://reactjs.org/docs/higher-order-components.html)**
+- **[How to create a Higher-Order Component](https://www.robinwieruch.de/react-higher-order-components/)**
+
+## Level 2: React Routers and State management
+
+Routing is an essential concept in Single Page Applications (SPA). When your application is divided into separated logical sections, and all of them are under their own URL, your users can easily share links among each other. Visit the following resources to learn more:
+
+- **[How to use Routing in React JS: A Comprehensive Guide.](https://teachingbee.in/how-to-use-routing-in-react-js/)**
+- **[React Router 6 – Tutorial for Beginners.](https://www.youtube.com/watch?v=59IXY5IDrBA)**
+
+### **React Router**
+
+React router is the most famous library when it comes to implementing routing in React applications. Visit the following resources to learn more:
+
+- **[React Router — Official Website](https://reactrouter.com/)**
+- **[Getting Started Guide](https://reactrouter.com/docs/en/v6/getting-started/tutorial)**
+- **[React Router v6 in 1 hour](https://youtu.be/0cSVuySEB0A)**
+- **[How to use React Router v6](https://www.robinwieruch.de/react-router/)**
+- **[React Router Cheat Sheet](https://stackdiary.com/guides/react-router-cheat-sheet-reference/)**
+
+### Reach Router
+
+Reach Router is a small, simple router for React that borrows from React Router, Ember, and Preact Router. Reach Router has a small footprint, supports only simple route patterns by design, and has strong (but experimental) accessibility features.
+Visit the following resources to learn more:
+• **[Reach Router — Official Website](https://reach.tech/router/)**
+• **[Getting Started Guide](https://reach.tech/router/tutorial/01-intro)**
+
+### State Management in React
+
+Application state management is the process of maintaining knowledge of an application’s inputs across multiple related data flows that form a complete business transaction — or a session — to understand the condition of the app at any given moment. In computer science, an input is information put into the program by the user and state refers to the condition of an application according to its stored inputs — saved as variables or constants. State can also be described as the collection of preserved information that forms a complete session.
+
+Visit the following resources to learn more:
+
+- **[What is State Management?](https://www.techtarget.com/searchapparchitecture/definition/state-management)**
+- **[Overview of State in React](https://www.robinwieruch.de/react-state/)**
+
+![state-management.png](/static/images/roadmaps/react/state-management.png)
+
+### Context
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+In a typical React application, data is passed top-down (parent to child) via props, but such usage can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+Visit the following resources to learn more:
+• **[Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context)**
+• **[State with useContext and useState/useReducer](https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/)**
+
+### Zustand
+
+Zustand is a small, fast and scalable bearbones state-management solution using simplified flux principles. Has a comfy api based on hooks, isn’t boilerplatey or opinionated.
+
+Zustand is often used as an alternative to other state management libraries, such as Redux and MobX, because of its simplicity and small size. It is particularly well-suited for small to medium-sized applications, where the complexity of larger state management libraries is not required.
+
+Visit the following resources to learn more:
+
+- **[Zustand - Official Website](https://github.com/pmndrs/zustand)**
+
+### **MobX**
+
+MobX is an open source state management tool. MobX, a simple, scalable, and standalone state management library, follows functional reactive programming (FRP) implementation and prevents inconsistent state by ensuring that all derivations are performed automatically.
+
+Visit the following resources to learn more:
+
+- **[MobX Official Website](https://mobx.js.org/)**
+- **[Intro to MobX Tutorial](https://www.youtube.com/watch?v=WQQq1QbYlAw)**
+
+### Redux Toolkit
+
+Redux is a predictable state container for JavaScript apps. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as **[live code editing combined with a time traveling debugger](https://github.com/reduxjs/redux-devtools)**.
+
+Redux Toolkit (RTK) is a library for managing state in JavaScript applications. It is an opinionated set of tools and utilities for building Redux applications, and it is designed to make it easier and faster to build Redux applications.
+
+RTK is often used as an alternative to writing Redux applications from scratch, as it provides a set of conventions and utilities that can make it easier and faster to build Redux applications.
+
+Visit the following resources to learn more:
+
+- **[Redux Toolkit - ReduxJS](https://redux-toolkit.js.org/)**
+- **[Official Website](https://redux.js.org/)**
+- **[Official Getting Started to Redux](https://redux.js.org/introduction/getting-started)**
+- **[Redux Toolkit Official Website](https://redux-toolkit.js.org/)**
+- **[Official Tutorial to Learn Redux](https://redux.js.org/tutorials/essentials/part-1-overview-concepts)**
+- **[Fundamentals of Redux Course from Dan Abramov](https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867)**
+- **[Redux Tutorial - Beginner to Advanced](https://youtube.com/watch?v=zrs7u6bdbUw)**
+
+### Recoil
+
+Recoil is a library for managing state in React applications.
+
+Recoil is designed to be easy to use and efficient, with a focus on improving the performance and scalability of large, complex React applications. It is based on the concept of atoms and selectors, which are used to manage the state of a component. Atoms represent the state of a component, and selectors are used to derive new state from atoms.
+
+Visit the following resources to learn more:
+• **[Recoil - Official Website](https://recoiljs.org/)**
+
+## Level 3: Forms and React Hooks
+
+Although you can build forms using vanilla React, it normally requires a lot of boilerplate code. This is because the form is built using a combination of state and props. To make it easier to manage forms, we use some sort of library.
+Visit the following resources to learn more:
+• **[How to use Forms in React](https://www.robinwieruch.de/react-form/)**
+
+### **React hook form**
+
+React hook form is an opensource form library for react. Performant, flexible and extensible forms with easy-to-use validation.
+
+Visit the following resources to learn more:
+
+- **[React Hook Form: Official Website](https://react-hook-form.com/)**
+- **[react-hook-form/react-hook-form](https://github.com/react-hook-form/react-hook-form)**
+
+### Formik
+
+Formik is another famous opensource form library that helps with getting values in and out of form state, validation and error messages, and handling form submissions.
+Visit the following resources to learn more:
+• **[Official Website — Formik](https://formik.org/)**
+• **[Getting Started](https://formik.org/docs/overview)**
+• **[formik/formik](https://github.com/formik/formik)**
+
+### Final Form
+
+High performance subscription-based form state management for React.
+Visit the following resources to learn more:
+• **[Final Form — Official Website](https://final-form.org/react)**
+• **[final-form / react-final-form](https://github.com/final-form/react-final-form)**
+
+### React Hooks
+
+_Hooks_ let you use different React features from your components. You can either use the built-in Hooks or combine them to build your own. This page lists all built-in Hooks in React. You can find more about built-in react hooks [here](https://react.dev/reference/react)
+
+Visit the following resources to learn more:
+
+- **[useCallback](https://react.dev/reference/react/useCallback)**
+- **[useContext](https://react.dev/reference/react/useContext)**
+- **[useDebugValue](https://react.dev/reference/react/useDebugValue)**
+- **[useDeferredValue](https://react.dev/reference/react/useDeferredValue)**
+- **[useEffect](https://react.dev/reference/react/useEffect)**
+- **[useId](https://react.dev/reference/react/useId)**
+- **[useImperativeHandle](https://react.dev/reference/react/useImperativeHandle)**
+- **[useInsertionEffect](https://react.dev/reference/react/useInsertionEffect)**
+- **[useLayoutEffect](https://react.dev/reference/react/useLayoutEffect)**
+- **[useReducer](https://react.dev/reference/react/useReducer)**
+- **[useRef](https://react.dev/reference/react/useRef)**
+- **[useState](https://react.dev/reference/react/useState)**
+- **[useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore)**
+- **[useTransition](https://react.dev/reference/react/useTransition)**
+- **[useCallback Hook by Example](https://www.robinwieruch.de/react-usecallback-hook/)**
+- **[useMemo Hook by Example](https://www.robinwieruch.de/react-usememo-hook/)**
+- **[useContext Hook by Example](https://www.robinwieruch.de/react-usecontext-hook/)**
+- **[useReducer Hook by Example](https://www.robinwieruch.de/react-usereducer-hook/)**
+- **[useReducer vs useState Hook](https://www.robinwieruch.de/react-usereducer-vs-usestate/)**
+
+### **Writing Custom Hooks**
+
+Building your own Hooks lets you extract component logic into reusable functions.
+
+Visit the following resources to learn more:
+
+- **[Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)**
+- **[How to create a custom Hook (1)](https://www.freecodecamp.org/news/how-to-create-react-hooks/)**
+- **[How to create a custom Hook (2) followed by Examples](https://www.robinwieruch.de/react-custom-hook/)**
+
+## Level 4: **CSS frameworks**
+
+A CSS framework provides the user with a fully functional CSS stylesheet, allowing them to create a web page by simply coding the HTML with appropriate classes, structure, and IDs. Classes for popular website features like as the footer, slider, navigation bar, hamburger menu, column-based layouts, and so on are already included in the framework.
+
+Visit the following resources to learn more:
+
+• **[CSS Frameworks Introduction](https://en.wikipedia.org/wiki/CSS_framework)**
+• **[What are the benefits of using a css framework](https://css-tricks.com/what-are-the-benefits-of-using-a-css-framework/)**
+
+![CSS Frameworks.png](/static/images/roadmaps/react/CSS_Frameworks.png)
+
+### **Mantine (Recommended)**
+
+Mantine is a React components library with more than 100 customizable components and 40 hooks to cover you in any situation.
+
+Visit the following resources to learn more:
+
+- **[Mantine Website](https://mantine.dev/)**
+- **[Usage with Create React App](https://mantine.dev/guides/cra/)**
+- **[5 Mantine Hooks for UI management](https://blog.logrocket.com/5-mantine-hooks-simplifying-ui-management-react/)**
+
+### \***\*Tailwind CSS (Recommended)\*\***
+
+CSS Framework that provides atomic CSS classes to help you style components e.g. **`flex`**, **`pt-4`**, **`text-center`** and **`rotate-90`** that can be composed to build any design, directly in your markup.
+Visit the following resources to learn more:
+• **[Tailwind Website](https://tailwindcss.com/)**
+• **[Tailwind CSS Full Course for Beginners](https://www.youtube.com/watch?v=lCxcTsOHrjo)**
+• **[Tailwind CSS Crash Course](https://www.youtube.com/watch?v=UBOj6rqRUME)**
+• **[Should You Use Tailwind CSS?](https://www.youtube.com/watch?v=hdGsFpZ0J2E)**
+• **[Official Screencasts](https://www.youtube.com/c/TailwindLabs/videos)**
+
+### Chakra UI
+
+Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.
+Visit the following resources to learn more:
+• **[Chakra UI Website](https://chakra-ui.com/)**
+• **[Chakra UI Official Getting Started](https://chakra-ui.com/docs/getting-started)**
+• **[Why You Should Start Using Chakra UI](https://www.freecodecamp.org/news/why-should-you-start-using-chakraui/)**
+• **[Build a Modern User Interface with Chakra UI](https://egghead.io/courses/build-a-modern-user-interface-with-chakra-ui-fac68106)**
+• **[Official Getting Started Video](https://youtu.be/wI2vqXsjsIo)**
+• **[Chakra UI Crash Course](https://youtu.be/s-bIsz-NR3c)**
+
+###
+
+### **Material UI**
+
+Material-UI is an open-source framework that features React components that implement Google’s Material Design.
+
+Visit the following resources to learn more:
+
+- **[Official Website](https://mui.com/)**
+- **[Official Documentation](https://mui.com/getting-started/installation/)**
+- **[Material UI React Tutorial](https://www.youtube.com/watch?v=vyJU9efvUtQ)**
+
+### **Daisy UI**
+
+Component library around Tailwind CSS that comes with several built-in components.
+
+Visit the following resources to learn more:
+
+- **[DaisyUI Website](https://daisyui.com/)**
+- **[DaisyUI Documentation](https://daisyui.com/docs/install/)**
+
+### Radix UI
+
+An open-source UI component library for building high-quality, accessible design systems and web apps.
+Visit the following resources to learn more:
+• **[Official Website](https://www.radix-ui.com/)**
+• **[Official Documentation](https://www.radix-ui.com/docs/primitives/overview/introduction)**
+
+### **Bootstrap (Recommended)**
+
+Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+
+Visit the following resources to learn more:
+
+- **[Bootstrap Website](https://getbootstrap.com/)**
+- **[Bootstrap Official Blog](https://blog.getbootstrap.com/2022/07/19/bootstrap-5-2-0/)**
+- **[Bootstrap CSS Framework - Full Course for Beginners](https://www.youtube.com/watch?v=-qfEOE4vtxE)**
+
+### **Bulma**
+
+Bulma is a free, open source framework that provides ready-to-use frontend components that you can easily combine to build responsive web interfaces.
+
+Visit the following resources to learn more:
+
+- **[Bulma Website](https://bulma.io/)**
+- **[Learn Bulma CSS](https://scrimba.com/learn/bulma)**
+- **[How To Build A ? Responsive Blog Design With Bulma CSS](https://www.freecodecamp.org/news/how-to-build-a-responsive-blog-design-with-bulma-css-c2257a17c16b)**
+- **[Bulma CSS Tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9iXItWKbaQxcyDT1u6E7a8a)**
+-
+
+### Shadcn UI
+
+Re-usable components built using Radix UI and Tailwind CSS. This is **NOT** a component library. It's a collection of re-usable components that you can copy and paste into your apps. You can read more about it [here](https://ui.shadcn.com/docs)
+
+## Level 5: API Calls
+
+APIs, short for Application Programming Interfaces, are software-to-software interfaces. Meaning, they allow different applications to talk to each other and exchange information or functionality. This allows businesses to access another business’s data, piece of code, software, or services in order to extend the functionality of their own products — all while saving time and money. There are several options available to make API calls from your React.js applications.
+
+Visit the following resources to learn more:
+
+- **[AJAX and APIs](https://reactjs.org/docs/faq-ajax.html)**
+- **[How to fetch data in React](https://www.robinwieruch.de/react-hooks-fetch-data/)**
+
+![Api_calls.png](/static/images/roadmaps/react/Api_calls.png)
+
+### **urql**
+
+urql (Universal React Query Library) is a library for managing GraphQL data in React applications. It is developed and maintained by Formidable Labs and is available as open-source software.
+
+urql is designed to be easy to use and flexible, with a simple API for performing GraphQL queries and mutations. It is based on the concept of a client, which is used to manage the GraphQL data for an application. • **[urql - Formidable Labs](https://formidable.com/open-source/urql/)**
+
+### Relay
+
+Relay is a JavaScript client used in the browser to fetch GraphQL data. It’s a JavaScript framework developed by Facebook for managing and fetching data in React applications. It is built with scalability in mind in order to power complex applications like Facebook. The ultimate goal of GraphQL and Relay is to deliver instant UI-response interactions.
+
+Visit the following resources to learn more:
+
+- **[Official Website](https://relay.dev/)**
+- **[Introduction to Relay modern](https://relay.dev/docs/)**
+
+### Apollo (Recommended)
+
+Apollo is a platform for building a unified graph, a communication layer that helps you manage the flow of data between your application clients (such as web and native apps) and your back-end services.
+
+Visit the following resources to learn more:
+
+- **[Apollo Website](https://www.apollographql.com/)**
+- **[Official Docs](https://www.apollographql.com/docs/)**
+- **[Official YouTube Channel](https://www.youtube.com/c/ApolloGraphQL/)**
+- **[GraphQL With React Tutorial - Apollo Client](https://www.youtube.com/watch?v=YyUWW04HwKY)**
+
+### SWR
+
+SWR is a React Hooks library for data fetching. The name “SWR” is derived from stale-while-revalidate, a cache invalidation strategy popularized by HTTP RFC 5861. SWR first returns the data from cache (stale), then sends the request (revalidate), and finally comes with the up-to-date data again.
+
+With just one hook, you can significantly simplify the data fetching logic in your project.
+
+Visit the following resources to learn more:
+
+- **[SWR: React Hooks for Data Fetching](https://swr.vercel.app/)**
+
+### React Query
+
+Powerful asynchronous state management, server-state utilities and data fetching for TS/JS, React, Solid, Svelte and Vue.
+
+Visit the following resources to learn more:
+
+- **[TanStack Query](https://github.com/TanStack/query)**
+- **[React Query in 100 Seconds](https://www.youtube.com/watch?v=novnyCaa7To)**
+- **[React Query Tutorial for Beginners - Complete Playlist](https://www.youtube.com/playlist?list=PLC3y8-rFHvwjTELCrPrcZlo6blLBUspd2)**
+
+### Axios (Recommended)
+
+The most common way for frontend programs to communicate with servers is through the HTTP protocol. You are probably familiar with the Fetch API and the XMLHttpRequest interface, which allows you to fetch resources and make HTTP requests.
+Axios is a client HTTP API based on the XMLHttpRequest interface provided by browsers.
+Visit the following resources to learn more:
+• **[Axios Getting Started](https://axios-http.com/docs/intro)**
+• **[How To Use Axios With React: The Definitive Guide](https://www.freecodecamp.org/news/how-to-use-axios-with-react/)**
+• **[How to make HTTP requests with Axios](https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/#why)**
+
+### Superagent
+
+Small progressive client-side HTTP request library, and Node.js module with the same API, supporting many high-level HTTP client features
+
+Visit the following resources to learn more:
+
+- **[Official Website](https://visionmedia.github.io/superagent/)**
+- **[GitHub Repository](https://github.com/visionmedia/superagent)**
+
+### RTK Query
+
+**[RTK Query](https://redux-toolkit.js.org/rtk-query/overview)** is a data fetching and caching tool that is included in the Redux Toolkit package. It is designed to simplify common use cases for fetching data, including caching, polling, and invalidation.
+Visit the following resources to learn more:
+• **[RTK Query - Official Website](https://redux-toolkit.js.org/rtk-query/overview)**
+
+## Level 6: React Frameworks
+
+Server-side rendering (SSR) is a technique for rendering a JavaScript application on the server, rather than in the browser. This can improve the performance and user experience of a web application, as the initial render of the application is done on the server and the content is sent to the browser as a fully-rendered HTML page.
+There are several frameworks and libraries available for server-side rendering React applications, most common being:
+• **[Next.js](https://nextjs.org/)**
+• **[Remix](https://remix.run/)**
+
+![frameworks.png](/static/images/roadmaps/react/frameworks.png)
+
+### Remix.run
+
+Remix is a full stack web framework that lets you focus on the user interface and work back through web standards to deliver a fast, slick, and resilient user experience. People are gonna love using your stuff.
+
+Visit the following resources to learn more:
+
+- **[Official Website](https://remix.run/)**
+- **[Official Docs for Getting Started](https://remix.run/docs/en/v1#getting-started)**
+
+### Next.js (Recommended)
+
+Next.js is an open-source development framework built on top of Node.js enabling React based web applications functionalities such as server-side rendering and generating static websites.
+Visit the following resources to learn more:
+• **[Official Website](https://nextjs.org/)**
+• **[Official Docs for Getting Started](https://nextjs.org/docs/getting-started)**
+• **[Next.js Full course](https://www.youtube.com/watch?v=9P8mASSREYM&list=PLC3y8-rFHvwgC9mj0qv972IO5DmD-H0ZH)**
+• **[Mastering Next.js](https://masteringnextjs.com/)**
+• **[Next.js for Beginners - freeCodeCamp](https://youtu.be/1WmNXEVia8I)**
+• **[The Next.js Handbook — freeCodeCamp](https://www.freecodecamp.org/news/the-next-js-handbook/)**
+
+### RedwoodJs
+
+Redwood is the full-stack web framework designed to help you grow from side project to startup. Redwood features an end-to-end development workflow that weaves together the best parts of [React](https://reactjs.org/), [GraphQL](https://graphql.org/), [Prisma](https://www.prisma.io/), [TypeScript](https://www.typescriptlang.org/), [Jest](https://jestjs.io/), and [Storybook](https://storybook.js.org/). For full inspiration and vision, see Redwood's [README](https://github.com/redwoodjs/redwood/blob/main/README.md).
+
+## Level 7: Testing your applications
+
+Before delivering your application to users, you need to be sure that your app meets the requirements it was designed for, and that it doesn’t do any weird, unintended things (called ‘bugs’). To accomplish this, we ‘test’ our applications in different ways.
+
+Visit the following resources to learn more:
+
+- **[A comprehensive dive into software testing.](https://www.softwaretestingmaterial.com/software-testing/)**
+- **[The different types of software tests](https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing)**
+- **[Testing React apps with Jest](https://jestjs.io/docs/tutorial-react)**
+  ![Testing Web Applications.png](/static/images/roadmaps/react/Testing_Web_Applications.png)
+
+### **Vitest**
+
+Vitest is a fast Vite-native unit test framework with out-of-box ESM, TypeScript and JSX support. Works on React, Vue, Svelte and more projects created with Vite
+
+Visit the following resources to learn more:
+
+- **[Vitest Website](https://vitest.dev/)**
+- **[Testing with Vitest](https://www.youtube.com/watch?v=cM_AeQHzlGg)**
+
+### **React Testing Library**
+
+The React Testing Library is a very lightweight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices. Its primary guiding principle is: The more your tests resemble the way your software is used, the more confidence they can give you.
+
+Visit the following resources to learn more:
+
+- **[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)**
+
+### Mocha
+
+Mocha is a feature-rich JavaScript test framework running on [Node.js](https://nodejs.org/) and in the browser, making asynchronous testing *simple* and *fun*. Mocha tests run serially, allowing for flexible and accurate reporting, while mapping uncaught exceptions to the correct test cases. Hosted on [GitHub](https://github.com/mochajs/mocha).
+
+### Chai
+
+Chai is a BDD / TDD assertion library for [node](http://nodejs.org/) and the browser that can be delightfully paired with any javascript testing framework. Chai has several interfaces that allow the developer to choose the most comfortable. The chain-capable BDD styles provide an expressive language & readable style, while the TDD assert style provides a more classical feel. Learn more [here](https://www.chaijs.com/)
+
+### Enzyme
+
+Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output.
+
+Enzyme's API is meant to be intuitive and flexible by mimicking jQuery's API for DOM manipulation and traversal. Learn more about Enzyme [here](https://enzymejs.github.io/enzyme/)
+
+### **Jest (Recommended)**
+
+Jest is a delightful JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
+
+Visit the following resources to learn more:
+
+- **[Jest Website](https://jestjs.io/)**
+
+### **Playwright (Recommended)**
+
+Playwright is an open-source test automation library initially developed by Microsoft contributors. It supports programming languages such as Java, Python, C#, and NodeJS. Playwright comes with Apache 2.0 License and is most popular with NodeJS with Javascript/Typescript.
+
+Visit the following resources to learn more:
+
+- **[Playwright Website](https://playwright.dev/)**
+- **[Playwright Tutorial: Learn Basics and Setup](https://www.browserstack.com/guide/playwright-tutorial)**
+- **[Playwright, a Time-Saving End-to-End Testing Framework](https://thenewstack.io/playwright-a-time-saving-end-to-end-testing-framework/)**
+
+### Selenium
+
+Selenium is an open-source tool that automates web browsers. It provides a single interface that lets you write test scripts in programming languages like Ruby, Java, NodeJS, PHP, Perl, Python, and C#, among others.
+Visit the following resources to learn more:
+• **[Seleniums Official Website](https://www.selenium.dev/)**
+• **[Selenium Tutorial](https://www.browserstack.com/selenium)**
+
+### **Cypress (Recommended)**
+
+Cypress framework is a JavaScript-based end-to-end testing framework built on top of Mocha – a feature-rich JavaScript test framework running on and in the browser, making asynchronous testing simple and convenient. It also uses a BDD/TDD assertion library and a browser to pair with any JavaScript testing framework.
+
+Visit the following resources to learn more:
+
+- **[Official Website](https://www.cypress.io/)**
+- **[Official Documentation](https://docs.cypress.io/guides/overview/why-cypress#Other)**
+- **[Cypress End-to-End Testing](https://www.youtube.com/watch?v=7N63cMKosIE)**
+
+### **Puppeteer**
+
+Puppeteer is a Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium.
+
+Visit the following resources to learn more:
+
+- **[Puppetter](https://developer.chrome.com/docs/puppeteer/)**
+- **[Puppetter Tutorial](https://www.freecodecamp.org/news/how-to-use-puppeteer-with-nodejs/)**
+
+### **Nightwatch**
+
+Nightwatch.js is an open-source automated testing framework that is powered by Node.js and provides complete E2E (end to end) solutions to automation testing with Selenium Javascript be it for web apps, browser apps, and websites.
+
+Visit the following resources to learn more:
+
+- **[Nightwatch.js Website](https://nightwatchjs.org/)**
+- **[NightwatchJS Tutorial: Get Started with Automation Testing](https://www.browserstack.com/guide/nightwatch-framework-tutorial)**
+
+### Cucumber
+
+[Cucumber](https://cucumber.io/) is a tool for running automated tests written in plain language. Because they're written in plain language, they can be read by anyone on your team. Because they can be read by anyone, you can use them to help improve communication, collaboration and trust on your team.
+
+## Level 8: Introduction to Static Site Generators
+
+A static site generator is a tool that generates a full static HTML website based on raw data and a set of templates. Essentially, a static site generator automates the task of coding individual HTML pages and gets those pages ready to serve to users ahead of time. Because these HTML pages are pre-built, they can load very quickly in users’ browsers.
+
+Visit the following resources to learn more:
+
+- **[What is a static site generator?](https://www.cloudflare.com/learning/performance/static-site-generator/)**
+- **[Next.js SSG](https://nextjs.org/docs/advanced-features/static-html-export)**
+- **[Gatsby SSG](https://www.gatsbyjs.com/docs/glossary/static-site-generator/)**
+- **[SSG — An 11ty, Vite And JAM Sandwich](https://www.smashingmagazine.com/2021/10/building-ssg-11ty-vite-jam-sandwich/)**
+- **[Get Back to Basics With Static Website Generators](https://thenewstack.io/get-back-basics-static-website-generators/)**
+
+![Introduction to Static Site Generators.png](/static/images/roadmaps/react/Introduction_to_Static_Site_Generators.png)
+
+### **Eleventy**
+
+Eleventy (11ty) is a simple to use, easy to customize, highly performant and powerful static site generator with a helpful set of plugins (e.g. navigation, build-time image transformations, cache assets). Pages can be built and written with a variety of template languages (HTML, Markdown, JavaScript, Liquid, Nunjucks, Handlebars, Mustache, EJS, Haml, Pug or JS template literals). But it also offers the possibility to dynamically create pages from local data or external sources that are compiled at build time. It has zero client-side JavaScript dependencies.
+
+Visit the following resources to learn more:
+
+- **[Official Website](https://www.11ty.dev/)**
+- **[A collection of 11ty starters, projects, plugins, and resources](https://11ty.rocks/)**
+- **[Introduction to Eleventy](https://www.youtube.com/watch?v=-dM6AmNmMFA)**
+
+### Astro
+
+Astro is an all-in-one web framework for building fast, content-focused websites. Astro combines the power of a modern component-based framework with the performance and flexibility of a static site generator.
+• Component Islands: A new web architecture for building faster websites.
+• Server-first API design: Move expensive hydration off of your users’ devices.
+• Zero JS, by default: No JavaScript runtime overhead to slow you down.
+• Edge-ready: Deploy anywhere, even a global edge runtime like Deno or Cloudflare.
+• Customizable: Tailwind, MDX, and 100+ other integrations to choose from.
+• UI-agnostic: Supports React, Preact, Svelte, Vue, Solid, Lit and more.
+Visit the following resources to learn more:
+• **[Official Astro Website](https://astro.build/)**
+• **[Official Astro Docs](https://docs.astro.build/)**
+
+### Next.js
+
+Next.js is an open-source development framework built on top of Node.js enabling React based web applications functionalities such as server-side rendering and generating static websites.
+Visit the following resources to learn more:
+• **[Official Website](https://nextjs.org/)**
+• **[Official Docs for Getting Started](https://nextjs.org/docs/getting-started)**
+• **[The Next.js Handbook — FreeCodeCamp](https://www.freecodecamp.org/news/the-next-js-handbook/)**
+• **[Mastering Next.js](https://masteringnextjs.com/)**
+• **[Next.js for Beginners - Full Course at freeCodeCamp YouTube Channel](https://youtu.be/1WmNXEVia8I)**
+
+### GatsbyJs
+
+Gatsby is a React-based open source framework with performance, scalability and security built-in. Visit the following resources to learn more:
+
+- **[Gatsby Website](https://www.gatsbyjs.com/)**
+- **[Gatsby Docs](https://www.gatsbyjs.com/docs)**
+- **[Gatsby Tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9hw1g77I35ZivVLe8k2nvjB)**
+- **[Getting Started with Gatsby, the Cloud Native Static Site Generator](https://thenewstack.io/getting-started-with-gatsby-the-cloud-native-static-site-generator/)**
+- **[Static Site Revolution: Top Websites Built with Gatsby](https://thenewstack.io/static-site-revolution-top-websites-built-with-gatsby/)**
+
+### VuePress
+
+VuePress is composed of two parts: a minimalistic static site generator (opens new window)with a Vue-powered theming system and Plugin API, and a default theme optimized for writing technical documentation. It was created to support the documentation needs of Vue’s own sub projects.
+Visit the following resources to learn more:
+• **[Official Website](https://vuepress.vuejs.org/)**
+• **[Official Docs for Getting Started](https://vuepress.vuejs.org/guide/getting-started.html)**
+• **[Introduction to VuePress](https://www.youtube.com/watch?v=lIv1ItUzktc)**
+
+### Jekyll
+
+Jekyll is a static site generator. It takes text written in your favorite markup language and uses layouts to create a static website. You can tweak the site’s look and feel, URLs, the data displayed on the page, and more.
+Visit the following resources to learn more:
+• **[Jekyll Website](https://jekyllrb.com/)**
+• **[Jekyll Docs](https://jekyllrb.com/docs/)**
+
+### Hugo
+
+Hugo is the world’s fastest static website engine. It’s written in Go (aka Golang) and developed by bep, spf13 and friends.
+
+Visit the following resources to learn more:
+
+- **[Official Website](https://gohugo.io/)**
+- **[Official Docs for Getting Started](https://gohugo.io/documentation/)**
+- **[Introduction to Hugo - Static Site Generator](https://www.youtube.com/watch?v=qtIqKaDlqXo&list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)**
+- **[Tutorial: Use Hugo to Generate a Static Website](https://thenewstack.io/tutorial-use-hugo-to-generate-a-static-website/)**
+
+### Nuxt.Js
+
+Nuxt.js is an open-source development framework built on top of Node.js enabling Vue based web applications functionalities such as server-side rendering and generating static websites.
+Visit the following resources to learn more:
+• **[Official Website](https://nuxtjs.org/)**
+• **[Official Docs for Getting Started](https://nuxtjs.org/docs/get-started)**
+• **[Mastering Nuxt.js](https://masteringnuxt.com/)**
+• **[Vue.js for Beginners - Full Course at freeCodeCamp YouTube Channel](https://www.youtube.com/watch?v=FXpIoQ_rT_c)**
+
+### Remix
+
+Remix is a full stack web framework that lets you focus on the user interface and work back through web standards to deliver a fast, slick, and resilient user experience. People are gonna love using your stuff.
+Visit the following resources to learn more:
+• **[Official Website](https://remix.run/)**
+• **[Official Docs for Getting Started](https://remix.run/docs/en/v1#getting-started)**
+
+## References for further reading
+
+1. [React roadmap 1](https://roadmap.sh/react)
+2. [React roadmap 2 ](https://github.com/adam-golab/react-developer-roadmap)
