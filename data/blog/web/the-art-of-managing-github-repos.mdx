@@ -1,0 +1,127 @@
+---
+title: 'The art of managing github repositories'
+date: '2023-06-23'
+lastmod: '2023-06-23'
+tags: ['git', 'guide']
+draft: false
+summary: 'How to maintain your github respositories.'
+layout: PostSimple
+images: []
+authors: ['aashish-dhawan']
+---
+
+## Overview
+
+Git is a popular version control system that allows developers to manage and track changes in their code. As a developer, managing Git repositories is an essential skill to have, as it enables you to collaborate with other developers and keep track of changes made to your codebase. As team members grow in your team and more and more developers start using your repository, there has to be some disciple and principles shared among all developers to make collaboration work smoothly. This becomes even more important when you have open source projects where number of people collaborating and using your code can be large and without proper management things become chaotic. Here are some common tips to manage your Github repositories and make life easier for everyone.
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## Managing READMEs
+
+Github [READMEs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) are generally used to share information about your project, how to use it along with other information you wish to share. These are generally [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) files to create rich text content and most commonly the first thing people will read when they want to know more about the project. Therefore a lot of communication problem could be solved if proper information is presented in READMEs.
+
+Depending upon who the target audience is (internal teams or open source project) we can decide what to add in READMEs and what to hide. Although there are some common things which make it great, like `project title`, `description`, `How to Install`, `How to run test Cases`, `How to run project` and `how to deploy builds` . This information should be enough for your team members to get started although you could always add more if needed. On the other hand, if you are open sourcing your project, you might want to add `License`, `How to contribute`, `How to use the APIs`, along with some nice screenshots if needed. You could also use some templates to write good READMEs like [template 1](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) , [Template 2](https://gist.github.com/akashnimare/7b065c12d9750578de8e705fb4771d2f) and [Template 3](https://healeycodes.com/writing-an-awesome-github-readme)
+
+## Managing Branches
+
+A well-defined branching strategy makes it easier to manage Git repositories. A consistent branching strategy should outline how and when to create branches, merge branches, and release code. It also helps to ensure that all developers are on the same page, making collaboration easy. Read more about [Crownstack’s Git Workflow](https://blog.crownstack.com/blog/web/crownstack-git-workflow)
+
+## Writing good commit messages
+
+Regular commits are essential in Git repositories management. Committing frequently means that you have a detailed history of changes, making it easier to track down bugs and revert changes if necessary. It also helps to ensure that you have a backup of your code.
+
+Here are some common blog posts you could read about writing good commit messages
+
+1. [How to write better git commit messages](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
+2. [Good git commit messages](https://www.gitkraken.com/learn/git/best-practices/git-commit-message)
+
+Apart from these, here are some common rule to make better commits
+
+1. Do not mix two different types of commit into one. For example do not mix `refactor` and `bug` types of commit into one. It makes it hard to review these commits.
+2. Commits should be atomic and should be doing one thing completely, so that even if you have to `revert` it, you should be able to do it because your commits are atomic.
+
+The image below shows how good atomic commit look like
+
+![Image](/static/images/blogs/web/github.png)
+
+## Use Git Hooks
+
+Git hooks are scripts that are executed before or after particular Git events such as committing or pushing code. Hooks can be used to enforce code quality standards, run automated tests, and check for security vulnerabilities. [Read more about githooks here](https://www.atlassian.com/git/tutorials/git-hooks)
+
+The most common use of git hooks is run code linters like Husky or prettier to ensure a properly formatted code is pushed into the repository. If this is being used by all team members this ensures that everyone is pushing the formatted and clean code into repository
+
+## Regularly Clean up the Repository
+
+Regularly cleaning up Git repositories helps to keep them optimized and efficient. Removing old branches, merging completed branches, and deleting unnecessary files can help to reduce repository size and improve performance. Here are the things which can be done to keep your repos fresh and in pristine conditions
+
+1. Delete all merged branches if they are not needed.
+2. Keep updating READMEs and other documents as needed so that no information is old or misleading.
+3. If there are pull request pending, see if those need to be merged or if not, see if they can be deleted. Try to keep open PRs to minimum.
+4. Merge PRs generated by Dependabot or other bots if they can be, or delete those.
+5. Ensure release tags and release notes are properly managed.
+6. If there are pages in Wiki, ensure those pages are being updated regularly.
+7. If issues are reported and maintained in Git repositories itself, those should be attended to as quickly as possible.
+
+## Using Gitignore
+
+Using a Gitignore file can help to exclude certain files, directories, or patterns from being tracked in your repository. This can help to prevent unnecessary files from being committed and pushed to your repository.
+
+For every framework or tech stack, the list of files which need to be ignored could be different. Please ensure you are excluding all such files. Git also gives you option to generate `gitignore` when you are creating new git repositories.
+
+More often than not, you might have to add new files in `.gitignore` and in such cases you might to refresh the git tree and push the code again. Learn [here](https://stackoverflow.com/questions/38450276/force-git-to-update-gitignore) how to do that.
+
+## Use Git Tags
+
+Tagging is generally used to capture a point in history that is used for a marked version release (i.e. v1.0.1). A tag is like a branch that doesn’t change. Unlike branches, tags, after being created, have no further history of commits. To know more about how git tags work and how to use them, please [read more about git tags here](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag)
+
+## Managing Dependencies
+
+Projects generally take months to build (or years) and by the time you are done with project, the dependencies you are using in the project might have their newer versions released which may or may not be compatible with other libraries you are using. Additionally, the older ones might have security vulnerabilities which might put the project on risk. Therefore it becomes important to keep upgrading your dependencies. Luckily, github provides Dependabot to manage your dependencies and will create Pull request for you to merge. All you have to do is enable dependabot alerts in your repos.
+
+![Untitled](/static/images/blogs/web/github_1.png)
+
+Once this is done, you will PRs created by Dependabot like this
+
+![Untitled](/static/images/blogs/web/github_2.png)
+
+## Managing Pull Requests
+
+Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
+
+Sometimes you want to run through a checklist before you create a PR. For this pull request template come handy. Learn more about pull request templates from below resources
+
+1. [Pull request templates](https://axolo.co/blog/p/part-3-github-pull-request-template)
+
+Pull request are generally peer reviewed and therefore both the Author and reviewer has to work in team to merge bug free code. Here are some best practices for code reviews
+
+1. [Best Practices for Peer code reviews](https://smartbear.com/learn/code-review/best-practices-for-peer-code-review/)
+2. [Best Practices for Peer Code Reviews 2](https://www.michaelagreiler.com/code-review-best-practices/)
+
+## Managing Sensitive Information
+
+Always ensure that no sensitive information is being stored in your github repos. Ensure that you are not exposing you production `.env` variable, neither any sensitive information is stored in any JSON, XML, YML file. Here are some of the blogs/guides for further reference.
+
+[Removing sensitive information from Github](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
+
+[Managing Encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+
+[Github Security Best practices](https://snyk.io/blog/ten-git-hub-security-best-practices/)
+
+[Security Hardening for Github Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
+
+## Managing Security **Vulnerabilities**
+
+As the time passes by and as new security vulnerabilities are discovered, our code base is at increased risk and that risk has to be mitigated by fixing those security vulnerabilities. The good think is Github will let you know these security risks if you have enabled Dependabot security alert features. Most of these security threats can be mitigated by updating dependencies to latest version which have those security fixes available.
+
+![Untitled](/static/images/blogs/web/github_3.png)
+
+When working with legacy code base, check how many security issues are pending and fix those by upgrading to latest version of dependencies. Once this major work is done, you can periodically check for security threats and merge the upgrades.
+
+## Release management
+
+You can create new releases with release notes, @mentions of contributors, and links to binary files, as well as edit or delete existing releases. You can also create, modify, and delete releases by using the Releases API. For more information, see "[Releases](https://docs.github.com/en/rest/releases/releases)" in the REST API documentation.
+
+Here are some links for further reading
+
+1. [Github release management](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+2. [Github Releases](https://www.toolsqa.com/git/github-releases/)
