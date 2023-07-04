@@ -714,3 +714,146 @@ Eager loading is a performance optimization technique in Eloquent that helps red
 
 --- 
 
+## Exercise
+
+  
+
+To practice your Laravel skills and solidify your understanding of the concepts covered in Level 1, it's highly recommended to work on a hands-on exercise. The exercise involves creating a simple CRUD (Create, Read, Update, Delete) application using resource controllers in Laravel.
+
+
+Follow the step-by-step tutorial provided by DigitalOcean to build a simple Laravel CRUD application:
+
+  
+
+**Tutorial Link:** [Simple Laravel CRUD with Resource Controllers](https://www.digitalocean.com/community/tutorials/simple-laravel-crud-with-resource-controllers)
+
+  
+
+By following this tutorial, you'll gain practical experience in working with Laravel's resource controllers and performing CRUD operations on a database. This exercise will reinforce your understanding of routing, controllers, requests, and database interactions in Laravel.
+
+  
+
+Take your time to go through the tutorial, understand the concepts, and implement the application. Feel free to experiment and modify the code to further enhance your learning. Happy coding!
+
+  
+
+Remember to refer to the official Laravel documentation for more details and explanations on each topic covered in Level 1.
+
+---
+
+# Level 2: The Advanced Beginner
+
+Congratulations on completing Level 1: The Beginner Level! You have built a solid foundation in Laravel development. Now, let's explore Level 2: The Advanced Beginner, where we'll dive deeper into Laravel's advanced features and tackle more complex concepts. 
+
+The roadmap for Level 2 includes the following topics:
+
+## Routing
+
+-  **Route Model Binding:**
+Route model binding in Laravel allows you to bind route parameters to model instances. This feature simplifies the process of retrieving model data based on route parameters, as Laravel automatically resolves the model instance for you. By leveraging route model binding, you can directly work with model instances in your route callbacks or controller methods, making it more convenient to perform operations on specific models.
+
+- **Fallback Routes:**
+Fallback routes in Laravel provide a mechanism to define routes that will be used when no other routes match the incoming request. This is particularly useful for handling 404 errors or creating custom error pages. With fallback routes, you can define a catch-all route that handles requests that don't match any other defined routes, allowing you to gracefully handle unexpected or invalid URLs.
+
+By exploring these advanced routing features in Laravel, you'll have more control and flexibility in defining and handling your application's routes. Make sure to refer to the Laravel documentation for detailed explanations and examples of each topic.
+
+**Resources**: 
+- [Route Model Binding Documentation](https://laravel.com/docs/10.x/routing#route-model-binding)
+- [Fallback Routes Documentation](https://laravel.com/docs/10.x/routing#fallback-routes)
+
+---
+
+## Middleware
+
+- **Custom Middlewares:** 
+Laravel allows you to create custom middlewares to add additional layers of logic and functionality to your application's HTTP requests and responses. By creating custom middleware, you can perform tasks such as authentication, authorization, request validation, and more. This gives you the ability to customize and extend the behavior of your application's HTTP layer according to your specific requirements.
+
+- **Middleware Groups:** 
+Middleware groups provide a convenient way to group multiple middlewares together and apply them to routes or route groups. This allows for more organized and reusable middleware configurations. By defining middleware groups, you can easily apply common sets of middleware to specific routes or groups of routes, reducing duplication and simplifying your middleware management.
+
+By understanding and utilizing custom middlewares and middleware groups, you'll have more control over the behavior and flow of your application's HTTP layer. Make sure to refer to the Laravel documentation for detailed explanations and examples of each topic.
+
+**Resources**: 
+- [Defining Middleware Documentation](https://laravel.com/docs/10.x/middleware#defining-middleware)
+- [Middleware Groups Documentation](https://laravel.com/docs/10.x/middleware#middleware-groups)
+
+--- 
+
+## Advanced Database
+
+- **Seeders & Factories:** 
+Seeders and factories are essential tools in Laravel for generating dummy data or populating your database with initial data. With seeders, you can define data sets and easily insert them into your database, making it convenient for testing or setting up a fresh application installation. Model factories provide a way to define the structure and attributes of your model instances, allowing you to create realistic data for testing purposes.
+
+- **Eloquent Query Scopes**
+Eloquent query scopes allow you to define reusable query logic within your Eloquent models. Query scopes encapsulate commonly used query constraints, making it easier to work with complex database queries. By defining query scopes, you can improve code readability, promote code reuse, and simplify the process of applying specific query constraints throughout your application.
+
+- **Polymorphic Relationships:**
+Polymorphic relationships in Laravel enable a model to belong to multiple other models through a single association. This is useful in scenarios where a model can be associated with various other models. With polymorphic relationships, you can create flexible and dynamic associations in your database structure, allowing for a wide range of relationships between your models.
+
+- **Accessors & Mutators:**
+Accessors and mutators are methods in Eloquent models that allow you to manipulate attribute values when getting or setting them. Accessors provide a convenient way to format or transform attribute values before retrieving them, while mutators allow you to modify attribute values before saving them to the database. This feature gives you fine-grained control over how attribute values are handled in your application.
+
+- **Collections:**
+Laravel collections provide a powerful utility for working with arrays of data. Collections offer a wide range of methods for manipulating, filtering, and transforming data, making it easier to perform common data operations. By utilizing collections, you can write cleaner and more expressive code when working with datasets retrieved from the database.
+
+- **Soft Deletes:**
+Soft deletes in Laravel allow you to mark records as deleted without permanently removing them from the database. Soft deletes provide a convenient way to handle deletion of records while still retaining the option to restore them if needed. This feature is especially useful for scenarios where you want to keep a history of deleted records or provide a trash functionality in your application.
+
+By exploring these advanced database features in Laravel, you'll gain a deeper understanding of working with databases and harness the power of Eloquent ORM. Make sure to refer to the Laravel documentation for detailed explanations and examples of each topic.
+
+**Resources**:
+- [Database Seeders Documentation](https://laravel.com/docs/10.x/seeding)
+- [Laravel Documentation - Model Factories](https://laravel.com/docs/10.x/database-testing#model-factories)
+- [Query Scopes Documentation](https://laravel.com/docs/10.x/eloquent#query-scopes)
+- [Polymorphic Relationships Documentation](https://laravel.com/docs/10.x/eloquent-relationships#polymorphic-relationships)
+- [Accessors & Mutators Documentation](https://laravel.com/docs/10.x/eloquent-mutators)
+- [Collections Documentation](https://laravel.com/docs/10.x/collections)
+- [Soft Deletes Documentation](https://laravel.com/docs/10.x/eloquent#soft-deleting)
+
+---
+
+## API Development
+
+- **API Basics:**
+Learn the fundamentals of building APIs in Laravel. This includes understanding how to create API routes, handle API requests, and return JSON responses. You'll explore concepts such as route prefixing, versioning, and content negotiation to ensure a well-designed and flexible API.
+
+- **API Routes & Controllers:**
+Discover the process of defining dedicated routes and controllers for your API endpoints. By separating your API routes from your web routes, you can have a structured and organized API design. Learn how to handle different HTTP methods, route parameters, and request validation within your API controllers.
+- **API Resource Transformations:**
+Understand how to use API resources in Laravel to transform and format your Eloquent models into custom data structures. API resources allow you to control the data and structure of the response, ensuring consistency and providing a tailored representation of your data for API consumers.
+
+By mastering API basics, defining API routes and controllers, and utilizing API resource transformations, you'll be equipped to build robust and well-structured APIs in Laravel. Make sure to refer to the Laravel documentation for detailed explanations and examples of each topic.
+
+**Resources**
+- [API Basics Documentation](https://laravel.com/docs/10.x/eloquent-serialization#api-basics)
+- [API Resource Routes Documentation](https://laravel.com/docs/10.x/controllers#api-resource-routes)
+- [API Resources Documentation](https://laravel.com/docs/10.x/eloquent-resources)
+---
+
+## Error Handling and Debugging
+
+- **Debugging Errors:**
+Learn techniques and best practices for debugging errors in Laravel applications. You'll discover how to use breakpoints, inspect variables, and trace the flow of your code to identify and fix issues. Additionally, we'll explore logging techniques to capture valuable information during debugging.
+
+- **Log Files in Laravel:** 
+Understand how to utilize Laravel's logging system to capture and store logs from your application. Logging allows you to record important information, errors, and application events. By leveraging log files, you can analyze and monitor the behavior of your application, making it easier to debug and resolve issues.
+
+- **Try-Catch & Laravel Exceptions:** 
+Explore error handling using try-catch blocks and learn about Laravel's exception handling mechanism. By encapsulating potentially error-prone code in try-catch blocks, you can gracefully handle exceptions and provide meaningful responses to users. Laravel's exception handling further allows you to centralize error handling and define custom exception handlers.
+- **Local Debugging Tools:**
+Discover popular local debugging tools for Laravel that provide additional insights and debugging capabilities during development. Tools like Debugbar, Telescope, and Ray offer features such as request inspection, database query monitoring, and real-time debugging. By leveraging these tools, you can gain valuable information about your application's behavior and easily diagnose issues.
+- **Customizing Error Pages and Messages:**
+Learn how to customize error pages and error messages in Laravel to provide a consistent and branded experience to your users. You can create custom error pages that match your application's design and layout, ensuring a seamless user experience even when errors occur. Additionally, you can customize error messages to provide clearer instructions and guidance to users.
+ 
+By mastering error handling techniques, utilizing logging systems, leveraging try-catch blocks and Laravel exceptions, exploring local debugging tools, and customizing error pages and messages, you'll be equipped to effectively handle and debug errors in your Laravel applications.
+ **Resources:**
+ - [Debugging Documentation](https://laravel.com/docs/10.x/errors#debugging)
+ - [Logging Documentation](https://laravel.com/docs/10.x/logging)
+ -  [Exceptions Documentation](https://laravel.com/docs/10.x/errors#the-exception-handler)
+ -  [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar)
+ - [Laravel Telescope](https://laravel.com/docs/10.x/telescope)
+ - [Laravel Ray](https://spatie.be/docs/laravel-ray)
+ - [Custom Error Pages Documentation](https://laravel.com/docs/10.x/errors#custom-http-error-pages)
+
+---
+
