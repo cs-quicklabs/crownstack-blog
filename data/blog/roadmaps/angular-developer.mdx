@@ -267,3 +267,140 @@ Visit the following resources to learn more:
 - [Demystifying JavaScript Promises](https://blog.greenroots.info/series/javascript-promises)
 
 
+## **Level 4: Typescript Basics** 
+In order to enter into the world of Angular application development, typescript is necessary and it is the primary language here. Typescript is a superset of JavaScript. It comes with design-time support which is useful for type safety and tooling. Since browsers cannot execute the TypeScript directly, it will be ‘Transpiled' into JavaScript using the tsc compiler. 
+
+Visit the following resources to learn more: 
+- [Typescript a Beginners Guide](https://medium.com/jspoint/typescript-a-beginners-guide-6956fe8bcf9e)
+- [TypeScript Playground](https://www.typescriptlang.org/play)
+
+### **What is Typescript?** 
+TypeScript is a strongly typed, object-oriented, compiled programming language that builds on JavaScript. It is a superset of the JavaScript language, designed to give you better tooling at any scale. TypeScript calls itself “JavaScript with syntax for types.” In short, it is JavaScript with some additional features. The secret to the success of TypeScript is in the type checking, ensuring that the data flowing through the program is of the correct kind of data. 
+
+Visit the following resources to learn more: 
+- [What is TypeScript](https://thenewstack.io/what-is-typescript/)
+- [W3Schools - TypeScript Tutorial](https://www.w3schools.com/typescript/)
+- [Tutorials point - TypeScript Tutorial](https://www.tutorialspoint.com/typescript/index.htm)
+- [TypeScript Crash Course for Beginners](https://www.youtube.com/watch?v=d56mG7DezGs)
+
+### **Why use Typescript?** 
+TypeScript extends JavaScript, providing a better developer experience. The benefits of using TypeScript over JavaScript include.Static typing - TypeScript comes with optional static typing and a type inference system, which means that a variable declared with no type may be inferred by TypeScript based on its value. Object-oriented programming - TypeScript supports object-oriented programming concepts like classes, inheritance, etc. Compile time checks - JavaScript is an interpreted programming language. There is no compilation involved. Hence, the errors get caught during the runtime. Since TypeScript compiles into JavaScript, errors get reported during the compile time rather than the runtime. Code editor support - IDEs or code editors like VS Code support autocomplete for a TypeScript codebase. They also provide inline documentation and highlight the errors. Use existing packages - You might want to use an npm package written in JavaScript. Since TypeScript is a superset of JavaScript, you can import and use that package. Moreover, the TypeScript community creates and maintains type definitions for popular packages that can be utilized in your project. 
+
+Visit the following resources to learn more:
+- [linguinecode - Reasons to use TypeScript](https://linguinecode.com/post/5-reasons-why-to-use-typescript)
+- [Codemotion - Reasons to use TypeScript](https://www.codemotion.com/magazine/backend/why-you-should-use-typescript-for-your-next-project/)
+
+### **Structural Typing** 
+Type compatibility in TypeScript is based on structural subtyping. Structural typing is a way of relating types based solely on their members. This is in contrast with nominal typing. 
+
+TypeScript's structural type system was designed based on how JavaScript code is typically written. Because JavaScript widely uses anonymous objects like function expressions and object literals, it's much more natural to represent the relationships found in JavaScript libraries with a structural type system instead of a nominal one. 
+
+Visit the following resources to learn more:
+- [Structural typings - Medium](https://medium.com/redox-techblog/structural-typing-in-typescript-4b89f21d6004)
+- [Structural typings - Typescriptlang](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)
+- [Structural typing video for Beginners](https://www.youtube.com/watch?v=kWtwsX_rT3k)
+
+### **Type Interface** 
+In TypeScript, several places where type inference is used to provide type information when there is no explicit type annotation. The type of the x variable is inferred to be a number. This inference occurs when variables and members are initialized, set parameter default values are, and determine function return types. For example, let x: number. In most cases, type inference is straightforward. In the following sections, we'll explore some nuances in how types are inferred. For example, let x: (number | null)[] 
+
+Visit the following resources to learn more: 
+- [Type Inference - typescriptlang](https://www.typescriptlang.org/docs/handbook/type-inference.html)
+- [Type Inference video for Beginners](https://www.youtube.com/watch?v=3ui_st7rtfA)
+
+### **Union Types** 
+In TypeScript, we can define a variable that can have multiple types of values. In other words, TypeScript can combine one or two types of data (i.e., number, string, etc.) in a single type, a union type. Union types are a powerful way to express a variable with multiple types. Two or more data types can be combined using the pipe ('|') symbol between the types. For example, (type1 | type2 | type3 | .. | typeN). 
+
+Visit the following resources to learn more:
+- [Union Types - typescriptlang](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html)
+- [Union Type video for Beginners](https://www.youtube.com/watch?v=uxjpm4W5pCo)
+- [Union Types - typescriptlang](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)
+
+### **Builtin Types** 
+The Builtin types represent the different types of values supported by the language. The builtin types check the validity of the supplied values before they are stored or manipulated by the program. This ensures that the code behaves as expected. The Builtin types further allow for richer code hinting and automated documentation too. 
+
+Visit the following resources to learn more: 
+- [TypeScript Types - Tutorialspoint](https://www.tutorialspoint.com/typescript/typescript_types.htm)
+- [Builtin Type video for Beginners](https://www.youtube.com/watch?v=Nt9ajBrqV_M)
+
+### **Type Guard** 
+A type guard is a TypeScript technique used to get information about the type of a variable, usually within a conditional block. Type guards are regular functions that return a boolean, taking a type and telling TypeScript if it can be narrowed down to something more specific. Type guards have the unique property of assuring that the value tested is of a set type depending on the returned boolean.
+TypeScript uses built-in JavaScript operators like typeof, instanceof, and the in operator, which is used to determine if an object contains a property. Type guards enable you to instruct the TypeScript compiler to infer a specific type for a variable in a particular context, ensuring that the type of an argument is what you say it is.
+Type guards are typically used for narrowing a type and are pretty similar to feature detection, allowing you to detect the correct methods, prototypes, and properties of a value. Therefore, you can quickly figure out how to handle that value. 
+
+Visit the following resources to learn more: 
+- [Types Guards - Blog](https://blog.logrocket.com/how-to-use-type-guards-typescript/)
+- [TypeScript Type Guards Explained](https://www.youtube.com/watch?v=feeeitmtdwg)
+
+
+## **Level 5: RxJS Basics** 
+
+Reactive Extensions for JavaScript, or RxJS, is a reactive library used to implement reactive programming to deal with async implementation, callbacks, and event-based programs. 
+
+The reactive paradigm can be used in many different languages through the use of reactive libraries. These libraries are downloaded APIs that provide functionalities for reactive tools like observers and operators. It can be used in your browser or with Node.js. 
+
+### **Observable Patterns**
+
+The observer pattern is a software design pattern in which an object, named the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods. 
+
+Angular uses the Observer pattern which simply means - Observable objects are registered, and other objects observe (in Angular using the subscribe method) them and take action when the observable object is acted on in some way. 
+
+Visit the following resources to learn more: 
+
+- [Angular and Observable](https://medium.com/fuzzycloud/angular-and-observable-4bf890b2a282)
+
+### **Observable Lifecycle** 
+
+An observable is a function that acts as a wrapper for a data stream. They support passing messages inside your application. An observable is useless until an observer subscribes to it. An observer is an object which consumes the data emitted by the observable. An observer keeps receiving data values from the observable until the observable is completed, or the observer unsubscribes from the observable. Otherwise observers can receive data values from the observable continuously and asynchronously. So we can perform various operations such as updating the user interface, or passing the JSON response. 
+
+There are 4 stages for a life cycle of an observable.
+- Creation
+- Subscription
+- Execution
+- Destruction 
+
+Visit the following resources to learn more: 
+- [Understanding Observable LifeCycle](https://medium.com/analytics-vidhya/understanding-rxjs-observables-ad5b34d9607f)
+
+### **Marble Diagram** 
+
+Marble testing allows you to test asynchronous RxJS code synchronously and step-by-step with the help of RxJS TestScheduler test utility and using virtual time steps.
+
+Visit the following resources to learn more: 
+- [Angular Marble Testing: A Brief Introduction](https://www.altamira.ai/blog/angular-marble-testing-a-brief-introduction/)
+- [IUnderstanding Marble Diagrams for Reactive Streams](https://medium.com/@jshvarts/read-marble-diagrams-like-a-pro-3d72934d3ef5)
+- [Interactive Diagrams](https://rxmarbles.com/#from)
+
+### **RxJs vs Promises**
+In a nutshell, the main differences between the Promise and the Observable are as follows:
+
+- The Promise is eager, whereas the Observable is lazy,
+- The Promise is always asynchronous, while the Observable can be either asynchronous or synchronous,
+- The Promise can provide a single value, whereas the Observable is a stream of values (from 0 to multiple values), you can apply RxJS operators to the Observable to get a new tailored stream.
+
+Visit the following resources to learn more:
+- [Why RxJS? RxJS vs Promises](https://javascript.plainenglish.io/why-rxjs-rxjs-vs-promises-b28962771d68)
+
+### **RxJs Operators**
+
+RxJS is mostly useful for its operators, even though the Observable is the foundation. Operators are the essential pieces that allow complex asynchronous code to be easily composed in a declarative manner. 
+
+Operators are functions. There are two kinds of operators: 
+
+Pipeable Operators are the kind that can be piped to Observables using the syntax observableInstance.pipe(operator()). These include, filter(…), and mergeMap(…). When called, they do not change the existing Observable instance. Instead, they return a new Observable, whose subscription logic is based on the first Observable. 
+
+A Pipeable Operator is essentially a pure function which takes one Observable as input and generates another Observable as output. Subscribing to the output Observable will also subscribe to the input Observable.
+
+Creation Operators are the other kind of operator, which can be called as standalone functions to create a new Observable. For example: of(1, 2, 3) creates an observable that will emit 1, 2, and 3, one right after another. Creation operators will be discussed in more detail in a later section.
+
+- **Piping**: Pipeable operators are functions, so they could be used like ordinary functions: op()(obs) - but in practice, there tend to be many of them convolved together, and quickly become unreadable: op4()(op3()(op2()(op1()(obs)))). For that reason, Observables have a method called .pipe() that accomplishes the same thing while being much easier to read: obs.pipe(op1(), op2(), op3(), op4());
+- **Creation Operators**: 
+    What are creation operators? Distinct from pipeable operators, creation operators are functions that can be used to create an Observable with some common predefined behavior or by joining other Observables. 
+
+    A typical example of a creation operator would be the interval function. It takes a number (not an Observable) as input argument, and produces an Observable as output: 
+
+    import { interval } from 'rxjs'; const observable = interval(1000 /* number of milliseconds */); 
+
+    Visit the following resources to learn more:
+    - [List of creation operators](https://rxjs.dev/guide/operators#creation-operators-list)
+    - [Full RxJS Operators Documentation](https://rxjs.dev/guide/operators)
+
