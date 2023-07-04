@@ -652,3 +652,163 @@ Visit the following resources to learn more:
     - [Template driven form](https://www.youtube.com/watch?v=whr14XxB8-M)
     - [Template driven form Validations](https://www.youtube.com/watch?v=cVd4ZCIXprs)
 
+### **Built in Directives**
+
+SKDirectives are classes that add additional behavior to elements in your Angular applications. Use Angular's built-in directives to manage forms, lists, styles, and what users see. 
+
+NgClass Adds and removes a set of CSS classes. | NgStyle Adds and removes a set of HTML styles. | NgModel Adds two-way data binding to an HTML form element. 
+
+Visit the following resources to learn more:
+- [Understanding BuiltIn Directives](https://angular.io/guide/built-in-directives)
+- [BuiltIn Directives Types](https://thinkster.io/tutorials/angular-2-directives)
+
+### **Built in Pipes**
+Use pipes to transform strings, currency amounts, dates, and other data for display. Pipes are simple functions to use in template expressions to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, some common pipes are:
+
+DatePipe | UpperCasePipe | LowerCasePipe | CurrencyPipe | DecimalPipe | PercentPipe 
+
+Visit the following resources to learn more:
+
+- [Understanding BuiltIn Pipes](https://angular.io/guide/pipes)
+- [BuiltIn Pipes - examples](https://codecraft.tv/courses/angular/pipes/built-in-pipes/)
+
+### **Change Detection**
+Change detection is the process through which Angular checks to see whether your application state has changed, and if any DOM needs to be updated. At a high level, Angular walks your components from top to bottom, looking for changes. Angular runs its change detection mechanism periodically so that changes to the data model are reflected in an application's view. Change detection can be triggered either manually or through an asynchronous event
+
+Visit the following resources to learn more:
+
+- [Understanding Change detection](https://angular.io/guide/change-detection)
+- [4 Runtime Performance Optimizations ( Change detection )](https://www.youtube.com/watch?v=f8sA-i6gkGQ)
+
+### **Lifecycle Hooks**
+A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The life cycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar life cycle, as Angular creates, updates, and destroys instances in the course of execution.
+
+Your application can use lifecycle hook methods to tap into key events in the lifecycle of a component or directive to initialize new instances, initiate change detection when needed, respond to updates during change detection, and clean up before deletion of instances.
+
+The following life cycle hooks of angular are :
+OnChanges, OnInit, DoCheck, OnDestroy, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked
+
+Visit the following resources to learn more:
+
+- [What are Life Cycle Hooks? - Angular.io](https://angular.io/guide/lifecycle-hooks)
+- [The life cycle hooks of angular - Blog](https://blog.logrocket.com/angular-lifecycle-hooks/)
+
+
+### **State Management**
+Application state management is the process of maintaining knowledge of an application's inputs across multiple related data flows that form a complete business transaction - or a session - to understand the condition of the app at any given moment. In computer science, an input is information put into the program by the user and state refers to the condition of an application according to its stored inputs - saved as variables or constants. State can also be described as the collection of preserved information that forms a complete session.
+
+Visit the following resources to learn more:
+- [What is State Management?](https://www.techtarget.com/searchapparchitecture/definition/state-management)
+- [Angular state management made simple with NgRx](https://blog.logrocket.com/angular-state-management-made-simple-with-ngrx/)
+- [Angular State Management with NgRx](https://www.syncfusion.com/blogs/post/angular-state-management-with-ngrx.aspx)
+
+
+1. **Ngxs**:
+    Ngxs is a state management pattern for the Angular framework. It acts as a single source of truth for our application. Ngxs is very simple and easily implementable. It reduces lots of boilerplate code. It is a replacement for Ngrx. In Ngrx we are creating state, action, reducer, and effects but in Ngxs, we are creating only state and actions instead of all of this. Like Ngrx, Ngxs is also asynchronous and when we dispatch any action we can get a response back.
+
+    Visit the following resources to learn more:
+    - [What is NGXS ? - Ngxs.io](https://www.ngxs.io/)
+    - [Details about NGXS - Medium](https://medium.com/@knoldus/introduction-to-ngxs-state-management-pattern-library-for-angular-ec76f681ceba)
+    - [Practice of NGXS](https://www.youtube.com/watch?v=SGj11j4hxmg)
+
+2. **Ngrx**:
+    Ngrx is a group of Angular libraries for reactive extensions that implements the Redux pattern and it's supercharged with RXJS.
+
+    Visit the following resources to learn more:
+   - [What is NGRX? - ngrx.io](https://ngrx.io/)
+   - [Details about NGRX - Medium](https://ahmedrebai.medium.com/introduction-to-state-management-with-ngrx-and-angular-91f4ff27ec9f)
+   - [Practice of NGRX](https://www.youtube.com/watch?v=f97ICOaekNU)
+
+## **Level 8: CSS Framework**
+
+A CSS framework provides the user with a fully functional CSS stylesheet, allowing them to create a web page by simply coding the HTML with appropriate classes, structure, and IDs. Classes for popular website features like the footer, slider, navigation bar, hamburger menu, column-based layouts, and so on are already included in the framework.
+
+Visit the following resources to learn more:
+- [CSS Frameworks Introduction](https://en.wikipedia.org/wiki/CSS_framework) 
+- [What are the benefits of using a css framework](https://css-tricks.com/what-are-the-benefits-of-using-a-css-framework/)
+
+### **Material UI**
+Material-UI is an open-source framework that features Angular components that implement Google's Material Design.
+
+Visit the following resources to learn more:
+- [Official Website](https://material.angular.io/)
+- [Official Documentation](https://material.angular.io/guide/getting-started)
+
+### **Bootstrap (Recommended)**
+
+Quickly design and customize responsive mobile-first sites with Bootstrap, the world's most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive pre-built components, and powerful JavaScript plugins.
+
+Visit the following resources to learn more:
+- [Bootstrap Website](https://getbootstrap.com/)
+- [Bootstrap Official Blog](https://blog.getbootstrap.com/2022/07/19/bootstrap-5-2-0/)
+- [Bootstrap CSS Framework - Full Course for Beginners](https://www.youtube.com/watch?v=-qfEOE4vtxE)
+
+### **NgBootstrap**
+
+Angular widgets built from the ground up using Bootstrap 5 CSS with APIs designed for the Angular ecosystem.
+- [Official Website](https://ng-bootstrap.github.io/#/home)
+- [Official Documentation](https://ng-bootstrap.github.io/#/getting-started)
+
+### **PrimeNg**
+
+Consists of a diverse collection of over 70 different UI components. From native widgets to pre-built themes, it has a lot to offer if you are considering Angular for web development. PrimeNG makes it very easy for you to add components like menus, form inputs, overlays, charts, etc. to the front end of your web application. The widgets of the PrimeNG Angular framework are all open-source and you can use them under the MIT license.
+- [Official Website](https://primeng.org/#/)
+- [Official Documentation](https://primeng.org/installation)
+
+## **Level 9: API Calls**
+
+APIs, short for Application Programming Interfaces, are software-to-software interfaces. Meaning, they allow different applications to talk to each other and exchange information or functionality. This allows businesses to access another business's data, piece of code, software, or services in order to extend the functionality of their own products - all while saving time and money. There are several options available to make API calls from your Angular application.
+
+Visit the following resources to learn more:
+- [AJAX and APIs](https://reactjs.org/docs/faq-ajax.html)
+- [How to fetch data in Angular](https://medium.com/bb-tutorials-and-thoughts/how-to-make-api-calls-in-angular-applications-ab5364cf9533)
+- [Official Documentation](https://angular.io/guide/understanding-communicating-with-http)
+
+## **Level 10: Testing Your Application**
+In any software development process, Testing the application plays a vital role. If Bugs and crashes are not figured out and solved they can defame the development company as well as hurt the clients too. But, Angular's architecture comes with built-in testability features. As soon as you create a new project with Angular CLI, two essential testing tools are installed.They are: Jasmine and Karma. Jasmine is the testing library which structures individual tests into specifications (“specs”) and suites. And Karma is the test runner, which enables the different browsers to run the tests mentioned by Jasmine and the browsers will finally report the test results back.
+
+### **Testing Pipes**
+An Angular Pipe is a special function that is called from a Component template. Its purpose is to transform a value: You pass a value to the Pipe, the Pipe computes a new value and returns it.
+
+Visit the following resources to learn more:
+- [Angular.io Website](https://angular.io/guide/testing-pipes)
+- [Testing-Angular.com](https://testing-angular.com/testing-pipes/)
+
+### **Services with Dependencies**
+In an Angular application, Services are responsible for fetching, storing and processing data. Services are singletons, meaning there is only one instance of a Service during runtime. They are fit for central data storage, HTTP and WebSocket communication as well as data validation.
+Visit the following resources to learn more:
+- [Angular.io Website](https://angular.io/guide/testing-services)
+- [Testing-Angular.com](https://testing-angular.com/testing-services/)
+
+### **Component Binding**
+Angular processes all data bindings once for each JavaScript event cycle, from the root of the application component tree through all child components. Data binding plays an important role in communication between a template and its component, and is also important for communication between parent and child components.
+
+Visit the following resources to learn more:
+- [Angular.io Website](https://angular.io/guide/architecture-components)
+
+### **Testing Directives**
+Directives are classes that add new behavior or modify the existing behavior to the elements in the template. Basically directives are used to manipulate the DOM, for example adding/removing the element from DOM or changing the appearance of the DOM elements.
+
+Visit the following resources to learn more:
+- [Angular.io Website](https://angular.io/guide/testing-attribute-directives)
+- [tesing-angular Website](https://testing-angular.com/testing-directives/)
+
+### **Component Templates**
+With a component template, you can save and reuse component processes and properties and create components from them; template-based components inherit the template's properties and process.
+
+Visit the following resources to learn more:
+- [Angular.io Website](https://angular.io/guide/architecture-components)
+
+## **Level 11: Server Side Rendering**
+A normal Angular application executes in the browser, rendering pages in the DOM in response to user actions. Angular Universal executes on the server, generating static application pages that later get bootstrapped on the client. This means that the application generally renders more quickly, giving users a chance to view the application layout before it becomes fully interactive.
+
+Visit the following resources to learn more:
+- [Angular Universal](https://angular.io/guide/universal)
+- [Rendering on the Web](https://web.dev/rendering-on-the-web/)
+
+## **Level 12: Static Site Generation**
+SSG (Static Site Generator), helps in building the HTML full website, during the process of building and serving that HTML Page. This method helps to generate the HTML website on the client side before its being served on the server side. Therefore, whenever a user requests a HTML Page, firstly the HTML page will be rendered and secondly, the angular app will be rendered. The SSG can be used only if your website is static (or) its content doesn't change frequently.
+
+## **References and credit**
+- [Frontend Roadmap](https://roadmap.sh/frontend)
+- [Angular Roadmap](https://roadmap.sh/angular)
