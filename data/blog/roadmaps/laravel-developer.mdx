@@ -1164,6 +1164,7 @@ Under the hood, the Laravel HTTP client utilizes the Guzzle HTTP client library,
 	$client = Http::getHttpClient(); // Get the underlying Guzzle client
 		// Configure Guzzle client options
 	$client->setDefaultOption('verify', false);
+	```
 	
 With the Guzzle integration, you can configure various aspects of the HTTP client, such as SSL verification, 	timeouts, request options, and more. Guzzle provides extensive documentation that covers advanced use cases and 	configuration options.
 
@@ -1226,5 +1227,50 @@ Laravel provides helpful tools and commands to monitor and manage queues. You ca
 **Resources:**
 -   [Laravel Documentation - Queues](https://laravel.com/docs/10.x/queues)
 -   [Laravel Horizon Documentation](https://laravel.com/docs/10.x/horizon)
+---
+
+## API Advanced
+
+Building advanced APIs in Laravel requires additional features and techniques to handle specific requirements. Here are some key aspects to consider when working with advanced APIs:
+
+- **Upload Files by API:**
+Handling file uploads through APIs is a common requirement. In Laravel, you can leverage the `Illuminate\Http\Request` object to handle file uploads and process them accordingly. You can receive files as multipart/form-data or send them as base64-encoded strings. Laravel provides methods and helper functions to store and retrieve uploaded files, validate file types and sizes, and handle file processing tasks.
+
+- **General API Documentation:**
+Proper documentation is crucial for an API to be easily understood and consumed by developers. Laravel offers various tools and libraries to generate API documentation. One popular choice is Swagger (OpenAPI) and related Laravel packages such as `laravel-swagger` or `l5-swagger`. These packages allow you to define API endpoints, request/response schemas, authentication requirements, and more in a standardized format. By generating API documentation, you provide clear instructions on how to interact with your API, improving the developer experience.
+
+- **API Versioning:**
+As your API evolves, it may require changes or additions to its functionality. API versioning helps manage these changes and maintain backward compatibility for existing clients. Laravel provides several approaches to version your API, such as URL-based versioning, header-based versioning, or namespace-based versioning. By implementing API versioning, you can introduce breaking changes or new features while ensuring existing clients can continue using the previous versions of the API.
+
+**Reaources:**
+-   [Laravel Documentation - File Storage](https://laravel.com/docs/8.x/filesystem)
+-   [Laravel Documentation - API Documentation](https://laravel.com/docs/8.x/passport)
+-   [Swagger (OpenAPI)](https://swagger.io/)
+-   [Laravel-Swagger Package](https://github.com/DarkaOnLine/L5-Swagger)
+-   [L5-Swagger Package](https://github.com/DarkaOnLine/L5-Swagger)
+
+---
+
+## Payments
+Processing payments is a critical aspect of many web applications. Laravel provides integrations with popular payment gateways and tools, making it easier to handle payments within your application. Here are some key points to consider when working with payments in Laravel:
+
+- **Payment Gateway Integrations:**
+Laravel offers integrations with various payment gateways, allowing you to process payments seamlessly. Some popular payment gateways supported by Laravel include Stripe, PayPal, Braintree, and Authorize.Net. These integrations provide pre-built APIs and libraries that handle the communication with the payment gateway, making it easier to implement payment functionality in your application.
+
+- **Payment Processing Flow:**
+Understanding the payment processing flow is crucial for handling payments effectively. In Laravel, you typically initiate a payment request by collecting necessary customer and payment details. You then interact with the chosen payment gateway to process the payment. Once the payment is processed, you receive a response containing the transaction details. Laravel provides methods and tools to handle the payment response, update the status of the transaction, and perform any additional actions required for successful payment processing.
+
+- **Subscriptions and Recurring Payments:**
+If your application requires subscription-based services or recurring payments, Laravel provides mechanisms to handle these scenarios. With tools like Laravel Cashier, you can manage subscription plans, handle trial periods, and automatically charge customers on a recurring basis. Laravel Cashier integrates with popular payment gateways and simplifies subscription management, including features like prorating, subscription cancellation, and upgrading/downgrading plans.
+
+- **Security and PCI Compliance:**
+When dealing with payments, security is of utmost importance. Laravel takes security seriously and provides features to help you meet PCI (Payment Card Industry) compliance standards. It offers secure data encryption, protection against cross-site scripting (XSS) attacks, and methods for securely storing sensitive payment information.
+
+**Resources:**
+-   [Laravel Cashier Documentation](https://laravel.com/docs/8.x/billing)
+-   [Stripe Laravel Integration](https://stripe.com/docs/payments/integration-builder)
+-   [PayPal Laravel Integration](https://github.com/srmklive/laravel-paypal)
+-   [Braintree Laravel Integration](https://github.com/laravel/cashier-braintree)
+-   [Authorize.Net Laravel Integration](https://github.com/AuthorizeNet/sdk-php)
 ---
 
