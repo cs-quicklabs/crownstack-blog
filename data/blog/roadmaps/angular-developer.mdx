@@ -1,0 +1,567 @@
+---
+title: "Angular Developer Roadmap"
+date: '2023-06-30'
+lastmod: '2023-07-04'
+tags: ['roadmaps', 'guide', 'angular']
+draft: false
+summary: "Angular developer roadmap"
+layout: PostSimple
+images: []
+authors: ['vinay-kumar']
+---
+
+## **Overview** 
+
+Everything that is there to learn about Angular and the ecosystem.
+
+- Level 1: HTML Basics
+- Level 2: CSS Basics
+- Level 3: Javascript Basics 
+- Level 4: Typescript Basics
+- Level 5: RxJs Basics
+- Level 6: Angular CLI
+- Level 7: Angular Framework
+- Level 8: CSS Framework
+- Level 9: API Calls
+- Level 10: Testing Your Application
+- Level 11: Server Side Rendering
+- Level 12: Static Site Generation 
+- References and credit
+
+## **Level 1: HTML Basics** 
+HTML stands for HyperText Markup Language. It is used on the frontend and gives the structure to the webpage which you can style using CSS and make interactive using JavaScript.
+
+
+
+
+## **Level 1: Typescript Basics** 
+In order to enter into the world of Angular application development, typescript is necessary and it is the primary language here. Typescript is a superset of JavaScript. It comes with design-time support which is useful for type safety and tooling. Since browsers cannot execute the TypeScript directly, it will be ‘Transpiled’ into JavaScript using the tsc compiler. 
+
+Visit the following resources to learn more: 
+- Typescript a Beginners Guide
+- TypeScript Playground
+
+### **What is Typescript?** 
+TypeScript is a strongly typed, object-oriented, compiled programming language that builds on JavaScript. It is a superset of the JavaScript language, designed to give you better tooling at any scale. TypeScript calls itself “JavaScript with syntax for types.” In short, it is JavaScript with some additional features. The secret to the success of TypeScript is in the type checking, ensuring that the data flowing through the program is of the correct kind of data. 
+
+Visit the following resources to learn more: 
+- What is TypeScript
+- W3Schools - TypeScript Tutorial
+- Tutorials point - TypeScript Tutorial
+- TypeScript Crash Course for Beginners
+
+### **Why use Typescript?** 
+TypeScript extends JavaScript, providing a better developer experience. The benefits of using TypeScript over JavaScript include.Static typing – TypeScript comes with optional static typing and a type inference system, which means that a variable declared with no type may be inferred by TypeScript based on its value. Object-oriented programming – TypeScript supports object-oriented programming concepts like classes, inheritance, etc. Compile time checks – JavaScript is an interpreted programming language. There is no compilation involved. Hence, the errors get caught during the runtime. Since TypeScript compiles into JavaScript, errors get reported during the compile time rather than the runtime. Code editor support – IDEs or code editors like VS Code support autocomplete for a TypeScript codebase. They also provide inline documentation and highlight the errors. Use existing packages – You might want to use an npm package written in JavaScript. Since TypeScript is a superset of JavaScript, you can import and use that package. Moreover, the TypeScript community creates and maintains type definitions for popular packages that can be utilized in your project. 
+
+Visit the following resources to learn more:
+- linguinecode - Reasons to use TypeScript
+- Codemotion - Reasons to use TypeScript
+
+### **Structural Typing** 
+Type compatibility in TypeScript is based on structural subtyping. Structural typing is a way of relating types based solely on their members. This is in contrast with nominal typing. 
+
+TypeScript’s structural type system was designed based on how JavaScript code is typically written. Because JavaScript widely uses anonymous objects like function expressions and object literals, it’s much more natural to represent the relationships found in JavaScript libraries with a structural type system instead of a nominal one. 
+
+Visit the following resources to learn more:
+- Structural typings — Medium
+- Structural typings — Typescriptlang
+- Structural typing video for Beginners 
+
+### **Type Interface** 
+In TypeScript, several places where type inference is used to provide type information when there is no explicit type annotation. The type of the x variable is inferred to be a number. This inference occurs when variables and members are initialized, set parameter default values are, and determine function return types. For example, let x: number. In most cases, type inference is straightforward. In the following sections, we’ll explore some nuances in how types are inferred. For example, let x: (number | null)[] 
+
+Visit the following resources to learn more: 
+- Type Inference - typescriptlang
+- Type Inference video for Beginners 
+
+### **Union Types** 
+In TypeScript, we can define a variable that can have multiple types of values. In other words, TypeScript can combine one or two types of data (i.e., number, string, etc.) in a single type, a union type. Union types are a powerful way to express a variable with multiple types. Two or more data types can be combined using the pipe (’|’) symbol between the types. For example, (type1 | type2 | type3 | .. | typeN). 
+
+Visit the following resources to learn more:
+- Union Types - typescriptlang
+- Union Type video for Beginners
+- Union Types - typescriptlang
+
+### **Builtin Types** 
+The Builtin types represent the different types of values supported by the language. The builtin types check the validity of the supplied values before they are stored or manipulated by the program. This ensures that the code behaves as expected. The Builtin types further allow for richer code hinting and automated documentation too. 
+
+Visit the following resources to learn more: 
+- TypeScript Types - Tutorialspoint 
+- Builtin Type video for Beginners 
+
+### **Type Guard** 
+A type guard is a TypeScript technique used to get information about the type of a variable, usually within a conditional block. Type guards are regular functions that return a boolean, taking a type and telling TypeScript if it can be narrowed down to something more specific. Type guards have the unique property of assuring that the value tested is of a set type depending on the returned boolean.
+TypeScript uses built-in JavaScript operators like typeof, instanceof, and the in operator, which is used to determine if an object contains a property. Type guards enable you to instruct the TypeScript compiler to infer a specific type for a variable in a particular context, ensuring that the type of an argument is what you say it is.
+Type guards are typically used for narrowing a type and are pretty similar to feature detection, allowing you to detect the correct methods, prototypes, and properties of a value. Therefore, you can quickly figure out how to handle that value. 
+
+Visit the following resources to learn more: 
+- Types Guards - Blog 
+- TypeScript Type Guards Explained 
+
+
+### **Level 2: RxJS Basics** 
+
+Reactive Extensions for JavaScript, or RxJS, is a reactive library used to implement reactive programming to deal with async implementation, callbacks, and event-based programs. 
+
+The reactive paradigm can be used in many different languages through the use of reactive libraries. These libraries are downloaded APIs that provide functionalities for reactive tools like observers and operators. It can be used in your browser or with Node.js. 
+
+### **Observable Patterns**
+
+The observer pattern is a software design pattern in which an object, named the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods. 
+
+Angular uses the Observer pattern which simply means — Observable objects are registered, and other objects observe (in Angular using the subscribe method) them and take action when the observable object is acted on in some way. 
+
+Visit the following resources to learn more: 
+
+- Angular and Observable 
+
+### **Observable Lifecycle** 
+
+An observable is a function that acts as a wrapper for a data stream. They support passing messages inside your application. An observable is useless until an observer subscribes to it. An observer is an object which consumes the data emitted by the observable. An observer keeps receiving data values from the observable until the observable is completed, or the observer unsubscribes from the observable. Otherwise observers can receive data values from the observable continuously and asynchronously. So we can perform various operations such as updating the user interface, or passing the JSON response. 
+
+There are 4 stages for a life cycle of an observable.
+- Creation
+- Subscription
+- Execution
+- Destruction 
+
+Visit the following resources to learn more: 
+- Understanding Observable LifeCycle 
+
+### **Marble Diagram** 
+
+Marble testing allows you to test asynchronous RxJS code synchronously and step-by-step with the help of RxJS TestScheduler test utility and using virtual time steps.
+
+Visit the following resources to learn more: 
+- Angular Marble Testing: A Brief Introduction
+- IUnderstanding Marble Diagrams for Reactive Streams
+- Interactive Diagrams
+
+### **RxJs vs Promises**
+In a nutshell, the main differences between the Promise and the Observable are as follows:
+
+- The Promise is eager, whereas the Observable is lazy,
+- The Promise is always asynchronous, while the Observable can be either asynchronous or synchronous,
+- The Promise can provide a single value, whereas the Observable is a stream of values (from 0 to multiple values), you can apply RxJS operators to the Observable to get a new tailored stream.
+
+Visit the following resources to learn more:
+- Why RxJS? RxJS vs Promises
+
+### **RxJs Operators**
+
+RxJS is mostly useful for its operators, even though the Observable is the foundation. Operators are the essential pieces that allow complex asynchronous code to be easily composed in a declarative manner. 
+
+Operators are functions. There are two kinds of operators: 
+
+Pipeable Operators are the kind that can be piped to Observables using the syntax observableInstance.pipe(operator()). These include, filter(…), and mergeMap(…). When called, they do not change the existing Observable instance. Instead, they return a new Observable, whose subscription logic is based on the first Observable. 
+
+A Pipeable Operator is essentially a pure function which takes one Observable as input and generates another Observable as output. Subscribing to the output Observable will also subscribe to the input Observable.
+
+Creation Operators are the other kind of operator, which can be called as standalone functions to create a new Observable. For example: of(1, 2, 3) creates an observable that will emit 1, 2, and 3, one right after another. Creation operators will be discussed in more detail in a later section.
+
+- **Piping**: Pipeable operators are functions, so they could be used like ordinary functions: op()(obs) — but in practice, there tend to be many of them convolved together, and quickly become unreadable: op4()(op3()(op2()(op1()(obs)))). For that reason, Observables have a method called .pipe() that accomplishes the same thing while being much easier to read: obs.pipe(op1(), op2(), op3(), op4());
+- **Creation Operators**: 
+    What are creation operators? Distinct from pipeable operators, creation operators are functions that can be used to create an Observable with some common predefined behavior or by joining other Observables. 
+
+    A typical example of a creation operator would be the interval function. It takes a number (not an Observable) as input argument, and produces an Observable as output: 
+
+    import { interval } from 'rxjs'; const observable = interval(1000 /* number of milliseconds */); 
+
+    Visit the following resources to learn more:
+    - List of creation operators
+    - Full RxJS Operators Documentation
+
+### **Level 3: Angular CLI**
+
+The Angular CLI is a command-line interface tool that you use to initialize, develop, scaffold, and maintain Angular applications directly from a command shell. we can install angular latest CLI using the following command 
+
+npm install -g @angular/cli 
+
+Visit the following resources to learn more:
+- Angular CLI - Angular.io
+- Angular CLI - setup 
+
+### **AngularJs vs Angular**
+AngularJS was the older version of Angular, whose support officially ended in January 2022. Angular is a component-based front-end development framework built on TypeScript, which includes a collection of well-integrated libraries that include features like routing, forms management, client-server communication, and more. 
+
+Visit the following resources to learn more: 
+- AngularJS Website
+- Official - Getting started with Angular 
+
+### **Lng build**
+The command can be used to build a project of type “application” or “library”. When used to build a library, a different builder is invoked, and only the ts-config, configuration, and watch options are applied. All other options apply only to building applications. 
+
+Visit the following resources to learn more:
+- Ng Build - Angular.io
+- Building an Angular project 
+
+### **ng serve**
+ng serve — This command builds, deploy, serves and every time watches your code changes. if find any change in code it builds and serves that code automatically. How do Angular builds? After coding our Angular apps using TypeScript, we use the Angular CLI command to build the app. 
+
+Visit the following resources to learn more:
+- Ng serve - Angular.io
+- Running a project with ng serve 
+
+### **ng generate**
+
+ng generate is used to create the component in angular project. These are the two main ways to generate a new component in Angular: using ng g c <component_name>, and using ng generate component <component_name>. Using either of these two commands, the new component can be generated pretty easily and followed by the suitable component name of your choice. 
+
+Visit the following resources to learn more:
+- Ng generate - Angular.io
+- Angular cli generate component
+### **ng test**
+ng test is used to runs unit tests in angular project. 
+
+ng test `<project>` [options] | ng t `<project>` [options] 
+
+Visit the following resources to learn more:
+- Ng test - Angular.io
+- Angular Ng test commands 
+
+### **ng e2e**
+End-to-end testing (E2E) of Angular applications is performed using the Protractor testing framework, which is created by the Angular team themselves. Protractor can perform end to end tests on Angular applications that are running in a real browser by interacting with it, similar to that of an end-user. 
+
+Visit the following resources to learn more:
+- Ng e2e - Angular.io
+- Angular cli generate component 
+
+### **ng new**
+ $ ng new [name]
+
+That’s the default usage of the command and creating a new project folder with name. The project which is created in that folder is containing:
+
+The default Angular project, All dependencies installed in node_modules folder , Testing files for each components 
+
+Visit the following resources to learn more: 
+- Ng New - Angular.io
+- ng New command 
+
+### **Level 4: Angular Framework** 
+
+Angular is a strong front-end JavaScript framework which means that it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.
+
+In this module, we will have a look at some of the most basic concepts that you need to understand before diving into the framework with more advanced concepts.
+
+### **Schematics**
+
+A schematic is a template-based code generator that supports complex logic. It is a set of instructions for transforming a software project by generating or modifying code. 
+
+Visit the following resources to learn more:
+- Angular Website
+- Angular Blog 
+
+### **Components**
+
+Components are the main building block for Angular applications. Each component consists of:
+- An HTML template that declares what renders on the page
+- A TypeScript class that defines the behavior
+- A CSS selector that defines how the component is used in a template
+- Optionally, CSS styles applied to the template
+
+Visit the following resources to learn more:
+- Angular Components Overview
+- Standalone Components in Angular
+
+### **Templates**
+
+A Template is a form of HTML which tells Angular to go towards another component. To create many Angular features, special syntax within the templates is used.
+
+Visit the following resources to learn more:
+- Understanding Templates
+- Template Syntax
+- Introduction to Components and Templates
+
+Following are the main concepts of templates
+1. **Interpolation**: Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters. Angular replaces currentCustomer with the string value of the corresponding component property.
+
+    Visit the following resources to learn more:
+    - Angular Official Website 
+
+2. **Property Binding**: Property binding helps you set values for properties of HTML elements or directives. To bind to an element’s property, enclose it in square brackets [] which causes Angular to evaluate the right-hand side of the assignment as a dynamic expression.
+
+    Visit the following resources to learn more:
+    - Angular Official Website
+
+3. **Template Statements**: Template statements are methods or properties that you can use in your HTML to respond to user events. With template statements, your application can engage users through actions such as displaying dynamic content or submitting forms. Enclose the event in () which causes Angular to evaluate the right hand side of the assignment as one or more template statements chained together using semicolon ;.
+
+    Visit the following resources to learn more:
+    - Angular Official Website
+
+4. **Binding data props attr event**: In an Angular template, a binding creates a live connection between view and the model and keeps them both in sync.
+    - property: helps you set values for properties of HTML elements or directives.
+    - attributes: helps you set values for attributes of HTML elements directly.
+    - event: lets you listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.
+    - data: It’s a combination of property and event binding and helps you share data between components. 
+    
+    Visit the following resources to learn more:
+    - Angular Official Website
+
+5. **Reference Vars**: Template reference variables help you use data from one part of a template in another part of the template. A template variable can refer to a DOM element within a template, component or directive. In the template, use the hash symbol, #, to declare a template reference variable.
+
+    Visit the following resources to learn more:
+    - Angular Official Website
+
+6. **@Input @Output**: @Input() and @Output() give a child component a way to communicate with its parent component. @Input() lets a parent component update data in the child component. Conversely, @Output() lets the child send data to a parent component.
+
+    Visit the following resources to learn more:
+    - Angular Official Website
+    
+
+### **Modules**
+
+Modules in Angular act like a container where we can group the components, directives, pipes, and services related to the application.
+
+Visit the following resources to learn more:
+- Introduction to Modules
+
+### **Dependency Injection**
+
+Dependency Injection is one of the fundamental concepts in Angular. DI is wired into the Angular framework and allows classes with Angular decorators, such as Components, Directives, Pipes, and Injectables, to configure dependencies that they need.
+
+Visit the following resources to learn more:
+- Understanding Dependency Injection
+- Dependency Injection in Action
+
+### **Services**
+
+Services let you define code or functionalities that are then accessible and reusable in many other components in the Angular project. It also helps you with the abstraction of logic and data that is hosted independently but can be shared across other components.
+
+Visit the following resources to learn more:
+- Services
+- What is an Angular Service
+- Service for API Calls
+- Service Tutorial with Example
+
+### **Routing**
+
+Routing in Angular allows the users to create a single-page application with multiple views and allows navigation between them.
+
+Visit the following resources to learn more:
+- Angular Routing
+- Common Routing Tasks
+
+1. **Router Outlets**: 
+    The router-outlet is a directive that’s available from the @angular/router package and is used by the router to mark where in a template, a matched component should be inserted.
+
+    Thanks to the router outlet, your app will have multiple views/pages and the app template acts like a shell of your application. Any element you add to the shell will be rendered in each view, only the part marked by the router outlet will be changed between views.
+
+    Visit the following resources to learn more:
+    - Understanding Router Outlets  
+
+2. **Router Links**: In Angular, routerLink when applied to an element in a template, makes that element a link that initiates navigation to a route. Navigation opens one or more routed components in one or more `<router-outlet>` locations on the page.
+
+    Visit the following resources to learn more:
+    - Understanding Router Links
+    - Angular Router: Navigation Using RouterLink, Navigate, or NavigateByUrl
+
+3. **Router Events**: The Angular Router raises events when it navigates from one route to another route. It raises several events such as NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ResolveStart, etc. You can listen to these events and find out when the state of the route changes. Some of the useful events are route change start (NavigationStart) and route change end (NavigationEnd).
+
+    - Angular Official Website
+
+4. **Guards**: 
+    Angular route guards are interfaces provided by Angular which, when implemented, allow us to control the accessibility of a route based on conditions provided in class implementation of that interface.
+    Some types of angular guards are CanActivate, CanActivateChild, CanLoad, CanDeactivate and Resolve.
+
+    Visit the following resources to learn more:
+    - Angular Official Website
+    - Can Activate Guard
+    - Can Activate Child
+    - Can Deactivate
+    - Angular Can Load
+    - Can Match
+    - Resolve
+
+5. **Lazy Loading**: Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously when a specific route is activated. It improves the application load time speed by splitting the application into several bundles. The bundles are loaded as required when the user navigates through the app.
+
+    Visit the following resources to learn more:
+    - What is Lazy loading ? - Angular.io
+    - Angular Tutorial - Lazy Loading
+
+### **Forms**
+
+Forms are used to handle user inputs in many applications. It enables users from entering sensitive information to performing several data entry tasks.
+
+Angular provides two approaches to handle user inputs trough forms: reactive and template-driven forms.
+
+Visit the following resources to learn more:
+- Introduction to forms in Angular
+- Angular Forms
+- Angular Forms Tutorial
+- Building Forms in Angular Apps
+
+1. **Reactive Forms**:
+Reactive Forms in angular are those which are used to handle the inputs coming from the user. We can define controls by using classes such as FormGroup and FormControl.
+
+    Visit the following resources to learn more:
+
+    - Reactive forms - Angular
+    - Angular Reactive Forms
+    - How To Use Reactive Forms in Angular
+    - Reactive Form in Angular
+
+2. **Template Driven Forms**
+    A Template driven form is the simplest form we can build in Angular. It is mainly used for creating simple form applications.
+
+    It uses two-way data-binding (ngModel) to create and handle the form components.
+
+    Visit the following resources to learn more:
+    - Building a template-driven form
+    - Template-Driven Forms
+    - Template driven form
+    - Template driven form Validations
+
+### **Built in Directives**
+
+SKDirectives are classes that add additional behavior to elements in your Angular applications. Use Angular’s built-in directives to manage forms, lists, styles, and what users see. 
+
+NgClass Adds and removes a set of CSS classes. | NgStyle Adds and removes a set of HTML styles. | NgModel Adds two-way data binding to an HTML form element. 
+
+Visit the following resources to learn more:
+- Understanding BuiltIn Directives
+- BuiltIn Directives Types
+
+### **Built in Pipes**
+Use pipes to transform strings, currency amounts, dates, and other data for display. Pipes are simple functions to use in template expressions to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application , some common pipes are
+
+DatePipe | UpperCasePipe | LowerCasePipe | CurrencyPipe | DecimalPipe | PercentPipe 
+
+Visit the following resources to learn more:
+- Understanding BuiltIn Pipes
+- BuiltIn Pipes - examples 
+
+### **Change Detection**
+Change detection is the process through which Angular checks to see whether your application state has changed, and if any DOM needs to be updated. At a high level, Angular walks your components from top to bottom, looking for changes. Angular runs its change detection mechanism periodically so that changes to the data model are reflected in an application’s view. Change detection can be triggered either manually or through an asynchronous event
+
+Visit the following resources to learn more:
+- Understanding Change detection
+- 4 Runtime Performance Optimizations ( Change detection )
+
+### **Lifecycle Hooks**
+A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The life cycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar life cycle, as Angular creates, updates, and destroys instances in the course of execution.
+
+Your application can use lifecycle hook methods to tap into key events in the lifecycle of a component or directive to initialize new instances, initiate change detection when needed, respond to updates during change detection, and clean up before deletion of instances.
+
+The following life cycle hooks of angular are :
+OnChanges , OnInit , DoCheck , OnDestroy , AfterContentInit , AfterContentChecked , AfterViewInit , AfterViewChecked
+
+Visit the following resources to learn more:
+- What are Life Cycle Hooks? - Angular.io
+- The life cycle hooks of angular - Blog
+
+### **State Management**
+Application state management is the process of maintaining knowledge of an application’s inputs across multiple related data flows that form a complete business transaction — or a session — to understand the condition of the app at any given moment. In computer science, an input is information put into the program by the user and state refers to the condition of an application according to its stored inputs — saved as variables or constants. State can also be described as the collection of preserved information that forms a complete session.
+
+Visit the following resources to learn more:
+- What is State Management?
+- Angular state management made simple with NgRx
+- Angular State Management with NgRx
+
+
+1. **Ngxs**:
+    Ngxs is a state management pattern for the Angular framework. It acts as a single source of truth for our application. Ngxs is very simple and easily implementable. It reduces lots of boilerplate code . It is a replacement for Ngrx. In Ngrx we are creating state, action, reducer, and effects but in Ngxs, we are creating only state and actions instead of all of this. Like Ngrx, Ngxs is also asynchronous and when we dispatch any action we can get a response back.
+
+    Visit the following resources to learn more:
+    - What is NGXS ? - Ngxs.io
+    - Details about NGXS - Medium
+    - Practice of NGXS
+
+2. **Ngrx**:
+    Ngrx is a group of Angular libraries for reactive extensions that implements the Redux pattern and it’s supercharged with RXJS.
+
+    Visit the following resources to learn more:
+    - What is NGRX ? - ngrx.io
+    - Details about NGRX - Medium
+    - Practice of NGRX
+
+### **Level 5: CSS Framework**
+
+A CSS framework provides the user with a fully functional CSS stylesheet, allowing them to create a web page by simply coding the HTML with appropriate classes, structure, and IDs. Classes for popular website features like the footer, slider, navigation bar, hamburger menu, column-based layouts, and so on are already included in the framework.
+
+Visit the following resources to learn more:
+- CSS Frameworks Introduction 
+- What are the benefits of using a css framework
+
+### **Material UI**
+Material-UI is an open-source framework that features Angular components that implement Google’s Material Design.
+
+Visit the following resources to learn more:
+- Official Website
+- Official Documentation
+
+### **Bootstrap (Recommended)**
+
+Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive pre-built components, and powerful JavaScript plugins.
+
+Visit the following resources to learn more:
+- Bootstrap Website
+- Bootstrap Official Blog
+- Bootstrap CSS Framework - Full Course for Beginners
+
+### **NgBootstrap**
+
+Angular widgets built from the ground up using Bootstrap 5 CSS with APIs designed for the Angular ecosystem.
+- Official Website
+- Official Documentation
+
+### **PrimeNg**
+
+Consists of a diverse collection of over 70 different UI components. From native widgets to pre-built themes, it has a lot to offer if you are considering Angular for web development. PrimeNG makes it very easy for you to add components like menus, form inputs, overlays, charts, etc. to the front end of your web application. The widgets of the PrimeNG Angular framework are all open-source and you can use them under the MIT license.
+- Official Website
+- Official Documentation
+
+### **Level 6: API Calls**
+
+APIs, short for Application Programming Interfaces, are software-to-software interfaces. Meaning, they allow different applications to talk to each other and exchange information or functionality. This allows businesses to access another business’s data, piece of code, software, or services in order to extend the functionality of their own products — all while saving time and money. There are several options available to make API calls from your Angular application.
+
+Visit the following resources to learn more:
+- AJAX and APIs
+- How to fetch data in Angular
+- Official Documentation
+
+### **Level 7: Testing Your Application**
+In any software development process, Testing the application plays a vital role. If Bugs and crashes are not figured out and solved they can defame the development company as well as hurt the clients too. But, Angular’s architecture comes with built-in testability features. As soon as you create a new project with Angular CLI, two essential testing tools are installed.They are: Jasmine and Karma. Jasmine is the testing library which structures individual tests into specifications (“specs”) and suites. And Karma is the test runner, which enables the different browsers to run the tests mentioned by Jasmine and the browsers will finally report the test results back.
+
+### **Testing Pipes**
+An Angular Pipe is a special function that is called from a Component template. Its purpose is to transform a value: You pass a value to the Pipe, the Pipe computes a new value and returns it.
+
+Visit the following resources to learn more:
+- Angular.io Website
+- Testing-Angular.com
+
+### **Services with Dependencies**
+In an Angular application, Services are responsible for fetching, storing and processing data. Services are singletons, meaning there is only one instance of a Service during runtime. They are fit for central data storage, HTTP and WebSocket communication as well as data validation.
+Visit the following resources to learn more:
+- Angular.io Website
+- Testing-Angular.com
+
+### **Component Binding**
+Angular processes all data bindings once for each JavaScript event cycle, from the root of the application component tree through all child components. Data binding plays an important role in communication between a template and its component, and is also important for communication between parent and child components.
+
+Visit the following resources to learn more:
+- Angular.io Website
+
+### **Testing Directives**
+Directives are classes that add new behavior or modify the existing behavior to the elements in the template. Basically directives are used to manipulate the DOM, for example adding/removing the element from DOM or changing the appearance of the DOM elements.
+
+Visit the following resources to learn more:
+- Angular.io Website
+- tesing-angular Website
+
+### **Component Templates**
+With a component template , you can save and reuse component processes and properties and create components from them; template-based components inherit the template’s properties and process.
+
+Visit the following resources to learn more:
+- Angular.io Website
+
+### **Level 8: Server Side Rendering**
+A normal Angular application executes in the browser, rendering pages in the DOM in response to user actions. Angular Universal executes on the server, generating static application pages that later get bootstrapped on the client. This means that the application generally renders more quickly, giving users a chance to view the application layout before it becomes fully interactive.
+
+Visit the following resources to learn more:
+- Angular Universal
+- Rendering on the Web
+
+### **Level 9: Static Site Generation**
+SSG (Static Site Generator), helps in building the HTML full website, during the process of building and serving that HTML Page. This method helps to generate the HTML website on the client side before its being served on the server side. Therefore, whenever a user requests a HTML Page, firstly the HTML page will be rendered and secondly, the angular app will be rendered. The SSG can be used only if your website is static (or) its content doesn’t change frequently.
+
+### **References and credit**
+- Angular Roadmap
