@@ -470,7 +470,7 @@ Visit the following resources to learn more:
 
 That's the default usage of the command and creating a new project folder with name. The project which is created in that folder is containing:
 
-The default Angular project, All dependencies installed in node_modules folder , Testing files for each components 
+The default Angular project, All dependencies installed in node_modules folder, Testing files for each components 
 
 Visit the following resources to learn more: 
 - [Ng New - Angular.io](https://angular.io/cli/new)
@@ -618,4 +618,79 @@ Visit the following resources to learn more:
     Visit the following resources to learn more:
     - [What is Lazy loading? - Angular.io](https://angular.io/guide/lazy-loading-ngmodules)
     - [Angular Tutorial - Lazy Loading](https://www.youtube.com/watch?v=JjIQq9lh-Bw)
+
+### **Forms**
+
+Forms are used to handle user inputs in many applications. It enables users from entering sensitive information to performing several data entry tasks.
+
+Angular provides two approaches to handle user inputs trough forms: reactive and template-driven forms.
+
+Visit the following resources to learn more:
+- [Introduction to forms in Angular](https://angular.io/guide/forms-overview)
+- [Angular Forms](https://www.w3schools.com/angular/angular_forms.asp)
+- [Angular Forms Tutorial](https://www.youtube.com/watch?v=-bGgjgx3fGs)
+- [Building Forms in Angular Apps](https://www.youtube.com/watch?v=hAaoPOx_oIw)
+
+1. **Reactive Forms**:
+    Reactive Forms in angular are those which are used to handle the inputs coming from the user. We can define controls by using classes such as FormGroup and FormControl.
+
+     Visit the following resources to learn more:
+
+    - [Reactive forms - Angular](https://angular.io/guide/reactive-forms)
+    - [Angular Reactive Forms](https://www.javatpoint.com/angular-reactive-forms)
+    - [How To Use Reactive Forms in Angular](https://www.digitalocean.com/community/tutorials/angular-reactive-forms-introduction)
+    - [Reactive Form in Angular](https://www.youtube.com/watch?v=8k4ctDmVn7w)
+
+2. **Template Driven Forms**
+    A Template driven form is the simplest form we can build in Angular. It is mainly used for creating simple form applications.
+
+    It uses two-way data-binding (ngModel) to create and handle the form components.
+
+    Visit the following resources to learn more:
+    - [Building a template-driven form](https://angular.io/guide/forms)
+    - [Template-Driven Forms](https://codecraft.tv/courses/angular/forms/template-driven/)
+    - [Template driven form](https://www.youtube.com/watch?v=whr14XxB8-M)
+    - [Template driven form Validations](https://www.youtube.com/watch?v=cVd4ZCIXprs)
+
+### **Built in Directives**
+
+SKDirectives are classes that add additional behavior to elements in your Angular applications. Use Angular's built-in directives to manage forms, lists, styles, and what users see. 
+
+NgClass Adds and removes a set of CSS classes. | NgStyle Adds and removes a set of HTML styles. | NgModel Adds two-way data binding to an HTML form element. 
+
+Visit the following resources to learn more:
+- [Understanding BuiltIn Directives](https://angular.io/guide/built-in-directives)
+- [BuiltIn Directives Types](https://thinkster.io/tutorials/angular-2-directives)
+
+### **Built in Pipes**
+Use pipes to transform strings, currency amounts, dates, and other data for display. Pipes are simple functions to use in template expressions to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application, some common pipes are:
+
+DatePipe | UpperCasePipe | LowerCasePipe | CurrencyPipe | DecimalPipe | PercentPipe 
+
+Visit the following resources to learn more:
+
+- [Understanding BuiltIn Pipes](https://angular.io/guide/pipes)
+- [BuiltIn Pipes - examples](https://codecraft.tv/courses/angular/pipes/built-in-pipes/)
+
+### **Change Detection**
+Change detection is the process through which Angular checks to see whether your application state has changed, and if any DOM needs to be updated. At a high level, Angular walks your components from top to bottom, looking for changes. Angular runs its change detection mechanism periodically so that changes to the data model are reflected in an application's view. Change detection can be triggered either manually or through an asynchronous event
+
+Visit the following resources to learn more:
+
+- [Understanding Change detection](https://angular.io/guide/change-detection)
+- [4 Runtime Performance Optimizations ( Change detection )](https://www.youtube.com/watch?v=f8sA-i6gkGQ)
+
+### **Lifecycle Hooks**
+A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The life cycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar life cycle, as Angular creates, updates, and destroys instances in the course of execution.
+
+Your application can use lifecycle hook methods to tap into key events in the lifecycle of a component or directive to initialize new instances, initiate change detection when needed, respond to updates during change detection, and clean up before deletion of instances.
+
+The following life cycle hooks of angular are :
+OnChanges, OnInit, DoCheck, OnDestroy, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked
+
+Visit the following resources to learn more:
+
+- [What are Life Cycle Hooks? - Angular.io](https://angular.io/guide/lifecycle-hooks)
+- [The life cycle hooks of angular - Blog](https://blog.logrocket.com/angular-lifecycle-hooks/)
+
 
