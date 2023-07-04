@@ -1041,6 +1041,7 @@ Here's how you can leverage task scheduling in Laravel:
 -**Defining Scheduled Tasks:**
 To define a scheduled task, you need to make use of the `schedule` method provided by the `Illuminate\Console\Scheduling\Schedule` class. Within the `schedule` method, you can define the frequency and the command or closure that should be executed.
 
+```
     // Example: Running a command every day at 8:00 AM
 	$schedule->command('your:command')->dailyAt('8:00');
 
@@ -1050,6 +1051,7 @@ To define a scheduled task, you need to make use of the `schedule` method provid
 	    // Your task logic here
 	
 	})->hourly();
+```
 
 - **Task Frequency Options:**
 Laravel provides several options to specify the frequency of your scheduled tasks:
