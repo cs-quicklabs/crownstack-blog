@@ -548,3 +548,74 @@ Following are the main concepts of templates:
     - [Angular Official Website](https://angular.io/guide/inputs-outputs)
     
 
+### **Modules**
+
+Modules in Angular act like a container where we can group the components, directives, pipes, and services related to the application.
+
+Visit the following resources to learn more:
+- [Introduction to Modules](https://angular.io/guide/architecture-modules)
+
+### **Dependency Injection**
+
+Dependency Injection is one of the fundamental concepts in Angular. DI is wired into the Angular framework and allows classes with Angular decorators, such as Components, Directives, Pipes, and Injectables, to configure dependencies that they need.
+
+Visit the following resources to learn more:
+
+- [Understanding Dependency Injection](https://angular.io/guide/dependency-injection)
+- [Dependency Injection in Action](https://angular.io/guide/dependency-injection-in-action)
+
+### **Services**
+
+Services let you define code or functionalities that are then accessible and reusable in many other components in the Angular project. It also helps you with the abstraction of logic and data that is hosted independently but can be shared across other components.
+
+Visit the following resources to learn more:
+- [Services](https://angular.io/tutorial/toh-pt4)
+- [What is an Angular Service](https://www.javatpoint.com/what-is-an-angular-service)
+- [Service for API Calls](https://www.knowledgehut.com/blog/web-development/make-api-calls-angular)
+- [Service Tutorial with Example](https://www.positronx.io/angular-service-tutorial-with-example/)
+
+### **Routing**
+
+Routing in Angular allows the users to create a single-page application with multiple views and allows navigation between them.
+
+Visit the following resources to learn more:
+- [Angular Routing](https://angular.io/guide/routing-overview)
+- [Common Routing Tasks](https://angular.io/guide/router)
+
+1. **Router Outlets**: 
+    The router-outlet is a directive that's available from the `@angular/router` package and is used by the router to mark where in a template, a matched component should be inserted.
+
+    Thanks to the router outlet, your app will have multiple views/pages and the app template acts like a shell of your application. Any element you add to the shell will be rendered in each view, only the part marked by the router outlet will be changed between views.
+
+    Visit the following resources to learn more:
+    - [Understanding Router Outlets](https://angular.io/api/router/RouterOutlet) 
+
+2. **Router Links**: In Angular, routerLink when applied to an element in a template, makes that element a link that initiates navigation to a route. Navigation opens one or more routed components in one or more `<router-outlet>` locations on the page.
+
+    Visit the following resources to learn more:
+    - [Understanding Router Links](https://angular.io/api/router/RouterLink)
+    - [Angular Router: Navigation Using RouterLink, Navigate, or NavigateByUrl](https://www.digitalocean.com/community/tutorials/angular-navigation-routerlink-navigate-navigatebyurl)
+
+3. **Router Events**: The Angular Router raises events when it navigates from one route to another route. It raises several events such as `NavigationStart`, `NavigationEnd`, `NavigationCancel`, `NavigationError`, `ResolveStart`, etc. You can listen to these events and find out when the state of the route changes. Some of the useful events are `route change start (NavigationStart)` and `route change end (NavigationEnd)`.
+
+    - [Angular Official Website](https://angular.io/api/router/RouterEvent)
+
+4. **Guards**: 
+    Angular route guards are interfaces provided by Angular which, when implemented, allow us to control the accessibility of a route based on conditions provided in class implementation of that interface.
+    Some types of angular guards are CanActivate, CanActivateChild, CanLoad, CanDeactivate and Resolve.
+
+    Visit the following resources to learn more:
+    - [Angular Official Website](https://angular.io/api/router)
+    - [Can Activate Guard](https://angular.io/api/router/CanActivate)
+    - [Can Activate Child](https://angular.io/api/router/CanActivateChild)
+    - [Can Deactivate](https://angular.io/api/router/CanDeactivate)
+    - [Angular Can Load](https://angular.io/api/router/CanLoad)
+    - [Can Match](https://angular.io/api/router/CanMatch)
+    - [Resolve](https://angular.io/api/router/Resolve)
+
+5. **Lazy Loading**: Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously when a specific route is activated. It improves the application load time speed by splitting the application into several bundles. The bundles are loaded as required when the user navigates through the app.
+
+    Visit the following resources to learn more:
+    - [What is Lazy loading? - Angular.io](https://angular.io/guide/lazy-loading-ngmodules)
+    - [Angular Tutorial - Lazy Loading](https://www.youtube.com/watch?v=JjIQq9lh-Bw)
+
