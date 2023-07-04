@@ -476,3 +476,246 @@ Visit the following resources to learn more:
 - [Ng New - Angular.io](https://angular.io/cli/new)
 - [ng New command](https://www.youtube.com/watch?v=NdEpZezptkQ)
 
+## **Level 7: Angular Framework** 
+
+Angular is a strong front-end JavaScript framework which means that it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.
+
+In this module, we will have a look at some of the most basic concepts that you need to understand before diving into the framework with more advanced concepts.
+
+### **Schematics**
+
+A schematic is a template-based code generator that supports complex logic. It is a set of instructions for transforming a software project by generating or modifying code. 
+
+Visit the following resources to learn more:
+- [Angular Website](https://angular.io/guide/schematics)
+- [Angular Blog](https://blog.angular.io/schematics-an-introduction-dc1dfbc2a2b2?gi=ad9571373944)
+
+### **Components**
+
+Components are the main building block for Angular applications. Each component consists of:
+- An HTML template that declares what renders on the page
+- A TypeScript class that defines the behavior
+- A CSS selector that defines how the component is used in a template
+- Optionally, CSS styles applied to the template
+
+Visit the following resources to learn more:
+- [Angular Components Overview](https://angular.io/guide/component-overview)
+- [Standalone Components in Angular](https://www.youtube.com/watch?v=x5PZwb4XurU)
+
+### **Templates**
+
+A Template is a form of HTML which tells Angular to go towards another component. To create many Angular features, special syntax within the templates is used.
+
+Visit the following resources to learn more:
+- [Understanding Templates](https://angular.io/guide/template-overview)
+- [Template Syntax](https://angular.io/guide/template-syntax)
+- [Introduction to Components and Templates](https://angular.io/guide/architecture-components)
+
+Following are the main concepts of templates:
+
+1. **Interpolation**: Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters. Angular replaces currentCustomer with the string value of the corresponding component property.
+
+    Visit the following resources to learn more:
+    - [Angular Official Website](https://angular.io/guide/interpolation)
+
+2. **Property Binding**: Property binding helps you set values for properties of HTML elements or directives. To bind to an element's property, enclose it in square brackets [] which causes Angular to evaluate the right-hand side of the assignment as a dynamic expression.
+
+    Visit the following resources to learn more:
+    - [Angular Official Website](https://angular.io/guide/property-binding)
+
+3. **Template Statements**: Template statements are methods or properties that you can use in your HTML to respond to user events. With template statements, your application can engage users through actions such as displaying dynamic content or submitting forms. Enclose the event in () which causes Angular to evaluate the right hand side of the assignment as one or more template statements chained together using semicolon ;.
+
+    Visit the following resources to learn more:
+    - [Angular Official Website](https://angular.io/guide/template-statements)
+
+4. **Binding data props attr event**: In an Angular template, a binding creates a live connection between view and the model and keeps them both in sync.
+    - property: helps you set values for properties of HTML elements or directives.
+    - attributes: helps you set values for attributes of HTML elements directly.
+    - event: lets you listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.
+    - data: It's a combination of property and event binding and helps you share data between components. 
+    
+    Visit the following resources to learn more:
+    - [Angular Official Website](https://angular.io/guide/binding-overview)
+
+5. **Reference Vars**: Template reference variables help you use data from one part of a template in another part of the template. A template variable can refer to a DOM element within a template, component or directive. In the template, use the hash symbol, #, to declare a template reference variable.
+
+    Visit the following resources to learn more:
+    - [Angular Official Website](https://angular.io/guide/template-reference-variables)
+
+6. **@Input @Output**: @Input() and @Output() give a child component a way to communicate with its parent component. @Input() lets a parent component update data in the child component. Conversely, @Output() lets the child send data to a parent component.
+
+    Visit the following resources to learn more:    
+    - [Angular Official Website](https://angular.io/guide/inputs-outputs)
+    
+
+### **Modules**
+
+Modules in Angular act like a container where we can group the components, directives, pipes, and services related to the application.
+
+Visit the following resources to learn more:
+- [Introduction to Modules](https://angular.io/guide/architecture-modules)
+
+### **Dependency Injection**
+
+Dependency Injection is one of the fundamental concepts in Angular. DI is wired into the Angular framework and allows classes with Angular decorators, such as Components, Directives, Pipes, and Injectables, to configure dependencies that they need.
+
+Visit the following resources to learn more:
+
+- [Understanding Dependency Injection](https://angular.io/guide/dependency-injection)
+- [Dependency Injection in Action](https://angular.io/guide/dependency-injection-in-action)
+
+### **Services**
+
+Services let you define code or functionalities that are then accessible and reusable in many other components in the Angular project. It also helps you with the abstraction of logic and data that is hosted independently but can be shared across other components.
+
+Visit the following resources to learn more:
+- [Services](https://angular.io/tutorial/toh-pt4)
+- [What is an Angular Service](https://www.javatpoint.com/what-is-an-angular-service)
+- [Service for API Calls](https://www.knowledgehut.com/blog/web-development/make-api-calls-angular)
+- [Service Tutorial with Example](https://www.positronx.io/angular-service-tutorial-with-example/)
+
+### **Routing**
+
+Routing in Angular allows the users to create a single-page application with multiple views and allows navigation between them.
+
+Visit the following resources to learn more:
+- [Angular Routing](https://angular.io/guide/routing-overview)
+- [Common Routing Tasks](https://angular.io/guide/router)
+
+1. **Router Outlets**: 
+    The router-outlet is a directive that's available from the @angular/router package and is used by the router to mark where in a template, a matched component should be inserted.
+
+    Thanks to the router outlet, your app will have multiple views/pages and the app template acts like a shell of your application. Any element you add to the shell will be rendered in each view, only the part marked by the router outlet will be changed between views.
+
+    Visit the following resources to learn more:
+    - [Understanding Router Outlets](https://angular.io/api/router/RouterOutlet) 
+
+2. **Router Links**: In Angular, routerLink when applied to an element in a template, makes that element a link that initiates navigation to a route. Navigation opens one or more routed components in one or more `<router-outlet>` locations on the page.
+
+    Visit the following resources to learn more:
+    - [Understanding Router Links](https://angular.io/api/router/RouterLink)
+    - [Angular Router: Navigation Using RouterLink, Navigate, or NavigateByUrl](https://www.digitalocean.com/community/tutorials/angular-navigation-routerlink-navigate-navigatebyurl)
+
+3. **Router Events**: The Angular Router raises events when it navigates from one route to another route. It raises several events such as NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ResolveStart, etc. You can listen to these events and find out when the state of the route changes. Some of the useful events are route change start (NavigationStart) and route change end (NavigationEnd).
+
+    - [Angular Official Website](https://angular.io/api/router/RouterEvent)
+
+4. **Guards**: 
+    Angular route guards are interfaces provided by Angular which, when implemented, allow us to control the accessibility of a route based on conditions provided in class implementation of that interface.
+    Some types of angular guards are CanActivate, CanActivateChild, CanLoad, CanDeactivate and Resolve.
+
+    Visit the following resources to learn more:
+    - [Angular Official Website](https://angular.io/api/router)
+    - [Can Activate Guard](https://angular.io/api/router/CanActivate)
+    - [Can Activate Child](https://angular.io/api/router/CanActivateChild)
+    - [Can Deactivate](https://angular.io/api/router/CanDeactivate)
+    - [Angular Can Load](https://angular.io/api/router/CanLoad)
+    - [Can Match](https://angular.io/api/router/CanMatch)
+    - [Resolve](https://angular.io/api/router/Resolve)
+
+5. **Lazy Loading**: Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously when a specific route is activated. It improves the application load time speed by splitting the application into several bundles. The bundles are loaded as required when the user navigates through the app.
+
+    Visit the following resources to learn more:
+    - [What is Lazy loading ? - Angular.io](https://angular.io/guide/lazy-loading-ngmodules)
+    - [Angular Tutorial - Lazy Loading](https://www.youtube.com/watch?v=JjIQq9lh-Bw)
+
+### **Forms**
+
+Forms are used to handle user inputs in many applications. It enables users from entering sensitive information to performing several data entry tasks.
+
+Angular provides two approaches to handle user inputs trough forms: reactive and template-driven forms.
+
+Visit the following resources to learn more:
+- [Introduction to forms in Angular](https://angular.io/guide/forms-overview)
+- [Angular Forms](https://www.w3schools.com/angular/angular_forms.asp)
+- [Angular Forms Tutorial](https://www.youtube.com/watch?v=-bGgjgx3fGs)
+- [Building Forms in Angular Apps](https://www.youtube.com/watch?v=hAaoPOx_oIw)
+
+1. **Reactive Forms**:
+    Reactive Forms in angular are those which are used to handle the inputs coming from the user. We can define controls by using classes such as FormGroup and FormControl.
+
+     Visit the following resources to learn more:
+
+    - [Reactive forms - Angular](https://angular.io/guide/reactive-forms)
+    - [Angular Reactive Forms](https://www.javatpoint.com/angular-reactive-forms)
+    - [How To Use Reactive Forms in Angular](https://www.digitalocean.com/community/tutorials/angular-reactive-forms-introduction)
+    - [Reactive Form in Angular](https://www.youtube.com/watch?v=8k4ctDmVn7w)
+
+2. **Template Driven Forms**
+    A Template driven form is the simplest form we can build in Angular. It is mainly used for creating simple form applications.
+
+    It uses two-way data-binding (ngModel) to create and handle the form components.
+
+    Visit the following resources to learn more:
+    - [Building a template-driven form](https://angular.io/guide/forms)
+    - [Template-Driven Forms](https://codecraft.tv/courses/angular/forms/template-driven/)
+    - [Template driven form](https://www.youtube.com/watch?v=whr14XxB8-M)
+    - [Template driven form Validations](https://www.youtube.com/watch?v=cVd4ZCIXprs)
+
+### **Built in Directives**
+
+SKDirectives are classes that add additional behavior to elements in your Angular applications. Use Angular's built-in directives to manage forms, lists, styles, and what users see. 
+
+NgClass Adds and removes a set of CSS classes. | NgStyle Adds and removes a set of HTML styles. | NgModel Adds two-way data binding to an HTML form element. 
+
+Visit the following resources to learn more:
+- [Understanding BuiltIn Directives](https://angular.io/guide/built-in-directives)
+- [BuiltIn Directives Types](https://thinkster.io/tutorials/angular-2-directives)
+
+### **Built in Pipes**
+Use pipes to transform strings, currency amounts, dates, and other data for display. Pipes are simple functions to use in template expressions to accept an input value and return a transformed value. Pipes are useful because you can use them throughout your application , some common pipes are
+
+DatePipe | UpperCasePipe | LowerCasePipe | CurrencyPipe | DecimalPipe | PercentPipe 
+
+Visit the following resources to learn more:
+
+- [Understanding BuiltIn Pipes](https://angular.io/guide/pipes)
+- [BuiltIn Pipes - examples](https://codecraft.tv/courses/angular/pipes/built-in-pipes/)
+
+### **Change Detection**
+Change detection is the process through which Angular checks to see whether your application state has changed, and if any DOM needs to be updated. At a high level, Angular walks your components from top to bottom, looking for changes. Angular runs its change detection mechanism periodically so that changes to the data model are reflected in an application's view. Change detection can be triggered either manually or through an asynchronous event
+
+Visit the following resources to learn more:
+
+- [Understanding Change detection](https://angular.io/guide/change-detection)
+- [4 Runtime Performance Optimizations ( Change detection )](https://www.youtube.com/watch?v=f8sA-i6gkGQ)
+
+### **Lifecycle Hooks**
+A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The life cycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar life cycle, as Angular creates, updates, and destroys instances in the course of execution.
+
+Your application can use lifecycle hook methods to tap into key events in the lifecycle of a component or directive to initialize new instances, initiate change detection when needed, respond to updates during change detection, and clean up before deletion of instances.
+
+The following life cycle hooks of angular are :
+OnChanges , OnInit , DoCheck , OnDestroy , AfterContentInit , AfterContentChecked , AfterViewInit , AfterViewChecked
+
+Visit the following resources to learn more:
+
+- [What are Life Cycle Hooks? - Angular.io](https://angular.io/guide/lifecycle-hooks)
+- [The life cycle hooks of angular - Blog](https://blog.logrocket.com/angular-lifecycle-hooks/)
+
+
+### **State Management**
+Application state management is the process of maintaining knowledge of an application's inputs across multiple related data flows that form a complete business transaction - or a session - to understand the condition of the app at any given moment. In computer science, an input is information put into the program by the user and state refers to the condition of an application according to its stored inputs - saved as variables or constants. State can also be described as the collection of preserved information that forms a complete session.
+
+Visit the following resources to learn more:
+- [What is State Management?](https://www.techtarget.com/searchapparchitecture/definition/state-management)
+- [Angular state management made simple with NgRx](https://blog.logrocket.com/angular-state-management-made-simple-with-ngrx/)
+- [Angular State Management with NgRx](https://www.syncfusion.com/blogs/post/angular-state-management-with-ngrx.aspx)
+
+
+1. **Ngxs**:
+    Ngxs is a state management pattern for the Angular framework. It acts as a single source of truth for our application. Ngxs is very simple and easily implementable. It reduces lots of boilerplate code . It is a replacement for Ngrx. In Ngrx we are creating state, action, reducer, and effects but in Ngxs, we are creating only state and actions instead of all of this. Like Ngrx, Ngxs is also asynchronous and when we dispatch any action we can get a response back.
+
+    Visit the following resources to learn more:
+    - [What is NGXS ? - Ngxs.io](https://www.ngxs.io/)
+    - [Details about NGXS - Medium](https://medium.com/@knoldus/introduction-to-ngxs-state-management-pattern-library-for-angular-ec76f681ceba)
+    - [Practice of NGXS](https://www.youtube.com/watch?v=SGj11j4hxmg)
+
+2. **Ngrx**:
+    Ngrx is a group of Angular libraries for reactive extensions that implements the Redux pattern and it's supercharged with RXJS.
+
+    Visit the following resources to learn more:
+   - [What is NGRX ? - ngrx.io](https://ngrx.io/)
+   - [Details about NGRX - Medium](https://ahmedrebai.medium.com/introduction-to-state-management-with-ngrx-and-angular-91f4ff27ec9f)
+   - [Practice of NGRX](https://www.youtube.com/watch?v=f97ICOaekNU)
+
