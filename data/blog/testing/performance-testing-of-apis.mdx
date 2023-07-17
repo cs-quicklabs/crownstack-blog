@@ -1,0 +1,174 @@
+---
+title: "Performance Testing for APIs"
+date: '2023-06-27'
+lastmod: '2023-06-27'
+tags: ['testing', 'performance-testing']
+draft: false
+summary: "In this article we are going to discuss about the API, Performance testing and how to evaluate the performance of an API."
+layout: PostSimple
+images: []
+authors: ['mannu-khariwal']
+---
+
+## **What is an API? Types of API and difference between both types.**
+
+An API, or Application Programming Interface, is a set of rules and protocols that allow different software applications to communicate and interact with each other. APIs define how different components of software systems should interact, what data can be accessed or manipulated, and what operations can be performed.
+
+The main difference between REST and SOAP APIs lies in their architectural styles, protocols, and data formats.
+
+## **REST (Representational State Transfer)**
+
+- REST is an architectural style that uses a stateless, client-server communication model.
+- It utilizes standard HTTP methods (*GET, POST, PUT, DELETE*) to perform operations on resources.
+- REST APIs are lightweight, simple, and scalable.
+- REST APIs typically use JSON (JavaScript Object Notation) as the data format for requests and responses.
+- REST APIs are designed to be stateless, meaning the server does not store any client-specific information between requests.
+
+## **SOAP (Simple Object Access Protocol)**
+
+- SOAP is a protocol that defines a set of rules for structuring messages to exchange data between applications.
+- It operates over various protocols such as HTTP, SMTP, and more.
+- SOAP APIs are based on XML (*eXtensible Markup Language*) for message formatting.
+- SOAP APIs provide a more formal and standardized approach to communication.
+- SOAP APIs often involve more complexity and overhead due to additional XML parsing and processing.
+
+### **Here are a few key differences between REST and SOAP APIs:**
+
+1. Communication Style: REST follows a stateless client-server communication model, while SOAP allows for more complex communication patterns and supports more advanced features like reliable messaging and transactions.
+2. Protocol: REST primarily uses HTTP, whereas SOAP can operate over multiple protocols such as HTTP, SMTP, or TCP.
+3. Data Format: REST commonly uses JSON as the data format, which is lightweight and easy to parse. SOAP uses XML, which offers more structure and supports data typing and validation.
+4. Ease of Use: REST APIs are generally considered easier to use, understand, and implement compared to SOAP APIs, which often require more configuration and tooling.
+5. Scalability: REST APIs are more scalable due to their stateless nature and lightweight design, making them suitable for distributed systems and web applications. SOAP APIs can be more resource-intensive and less scalable due to XML processing overhead.
+
+When choosing between REST and SOAP APIs, consider factors such as project requirements, interoperability needs, performance, simplicity, and the available tooling and ecosystem support. REST APIs are widely adopted and preferred for most modern web services due to their simplicity, scalability, and compatibility with web standards. However, SOAP APIs may still be relevant in specific scenarios that require advanced features or interoperability with legacy systems.
+
+## **Defining a REST API**
+
+Involves specifying its endpoints, resources, supported HTTP methods, request/response formats, and any additional conventions or rules. Here are the steps to define a REST API:
+
+1. **Identify Resources:** Determine the core resources that your API will expose. Resources represent the entities or objects that clients can interact with through the API. For example, if you are building an API for a blogging platform, resources could include "users," "blog posts," and "comments."
+2. **Define Resource Endpoints:** Assign a unique URL endpoint for each resource. The endpoint represents the address where clients can access or manipulate the resource. For example, `/users` could be the endpoint for managing user-related operations.
+3. **Specify HTTP Methods:** Determine the supported HTTP methods (verbs) for each endpoint. The common methods used in REST APIs are GET (to retrieve resource data), POST (to create a new resource), PUT (to update an existing resource), and DELETE (to delete a resource). Associate the appropriate HTTP method with each endpoint.
+4. **Design Request/Response Formats:** Define the structure and format of the request and response payloads for each endpoint. Specify the expected data formats, such as JSON or XML, and outline the required and optional parameters for requests. Also, define the structure of the response data, including any error handling conventions.
+5. **Establish Conventions:** Define any additional conventions or rules for your API to ensure consistency and ease of use. For example, you might specify naming conventions for endpoints, use standard HTTP status codes for response handling, and establish rules for authentication and authorization.
+6. **Document the API:** Create comprehensive API documentation that describes each endpoint, its purpose, the expected request format, and the response format. Include sample requests and responses to guide developers on how to interact with the API effectively. Documentation tools like Swagger or OpenAPI can be helpful in creating API documentation.
+7. **Versioning (optional):** If you anticipate making changes to the API in the future, consider implementing versioning to maintain backward compatibility. This involves incorporating version numbers in the API endpoints (e.g., `/v1/users`) to differentiate between different versions of the API.
+8. **Test the API:** Once defined, thoroughly test the API to ensure that it behaves as expected. Perform functional testing, validate request and response formats, and verify that the API adheres to the defined conventions.
+
+By following these steps, you can effectively define a REST API that is well-structured, easily understandable, and consistent in its design. Clear API documentation plays a crucial role in helping developers understand and consume your API correctly.
+
+# Performance Testing
+
+Performance testing is a type of software testing that evaluates the performance, responsiveness, scalability, and stability of a system or application under specific workload conditions. The goal of performance testing is to assess how well the system performs in terms of speed, reliability, resource utilization, and throughput.
+
+Performance testing involves simulating real-world scenarios and measuring various performance metrics to identify potential bottlenecks, areas for optimization, and to ensure that the system meets performance requirements. It helps determine if the system can handle the expected load and user concurrency while maintaining acceptable response times.
+
+When testing the performance of an API, there are several factors to consider. Here are some key factors to test at the performance level:
+
+1. **Response Time:** Measure the time taken by the API to respond to a request. This includes the time taken by the server to process the request and send back the response. Analyze the response time under different loads to ensure it meets the defined performance objectives.
+
+2. **Throughput:** Measure the number of requests the API can handle per unit of time. It indicates the capacity of the API to handle concurrent requests and the efficiency of the underlying infrastructure.
+
+3. **Concurrent User Capacity:** Determine the maximum number of concurrent users the API can support without degrading performance. Test the API with different numbers of concurrent users to identify the point at which performance starts to degrade.
+
+4. **Scalability:** Evaluate the API's ability to scale and handle increased loads. Test the API with a gradually increasing load to determine its scalability limits and identify any bottlenecks.
+
+5. **Resource Utilization**: Monitor the utilization of server resources such as CPU, memory, and network bandwidth during performance testing. Identify any resource bottlenecks that could impact the API's performance.
+
+6. **Caching:** If the API implements caching mechanisms, evaluate their effectiveness in reducing response times and improving performance. Test different caching scenarios to ensure they are functioning as expected.
+
+7. **Error Handling:** Test how the API handles errors and exceptions under various load conditions. Determine if error handling impacts overall performance or causes degradation.
+
+8. **Network Latency:** Consider the network latency between the client and server when testing API performance. Test the API with different network conditions, such as high latency or low bandwidth, to simulate real-world scenarios.
+
+9. **Stress Testing:** Apply extreme loads to the API to test its performance under stress conditions. This includes testing the API with a significantly higher number of concurrent users or a large number of requests in a short period.
+
+10. **Endurance Testing:** Evaluate the API's performance over an extended period to identify any performance degradation or memory leaks that may occur over time.
+
+11. **Third-Party Integrations:** If the API relies on third-party services or integrations, test the performance of those integrations to ensure they do not negatively impact the API's overall performance.
+
+These factors collectively help assess the performance and scalability of an API and identify potential performance bottlenecks or areas for improvement. It is essential to define performance objectives and benchmarks specific to your application and business requirements to effectively evaluate API performance
+
+![Performance testing of APIs](/static/images/blogs/testing/performance-testing-of-apis/performance-testing-of-an-API.png)
+
+### **Why Performance Tests for an API is recommended?**
+
+1. It can help you identify and troubleshoot bottlenecks, discover performance issues, determine the impact of changes, and measure overall performance.
+
+2. It can also help you understand how your API will handle different types of traffic. This enables you to anticipate and plan for peak loads.
+
+3. By testing your API before deployment, you can ensure that your API is flexible and can handle the demands of the real world.
+
+## **API Performance testing with Postman**
+
+### **Pre-requisites**
+
+To do API performance testing, you need to:
+
+1. Review the API documentation to understand the functionality and expected inputs and outputs.
+2. Determine the testing requirements of the API.
+3. Define input parameters.
+4. Create positive and negative tests.
+5. Select an API testing tool.
+
+For APIs, the process to measure and improve performance is load or stress.
+
+**Step 1.** Select a Postman collection or select an environment:
+
+![Select a Postman collection](/static/images/blogs/testing/performance-testing-of-apis/select-a-postman-collection.png)
+
+**Step 2.** Select an environment and click on run:
+
+![Select a Postman environment](/static/images/blogs/testing/performance-testing-of-apis/select-a-postman-environment.png)
+
+**Step 3.** Create a request on the Postman collection:
+
+![Create a request on the Postman collection](/static/images/blogs/testing/performance-testing-of-apis/create-a-request-in-postman-collection.png)
+
+**Step 4.** Go to the collection and select the Run collection:
+
+![Go to the collection and select the Run collection](/static/images/blogs/testing/performance-testing-of-apis/run-a-postman-collection.png)
+
+**Step 5.** Go to the performance section on the right side:
+
+![View performance of a Postman collection run](/static/images/blogs/testing/view-performance-of-Postman-collection.png)
+
+**Step 6.** Select the user and time at which you want to test the performance and click on the Run button
+
+**Step 7**. Observe the response times and throughput (requests per second) in real-time:
+
+![View request and response times of Postman run collection](/static/images/blogs/testing/request-and-response-times.png)
+
+**Step 8**. Once the run is completed, observe and identify bottlenecks in response times and requests per second:
+
+![identify bottlenecks](/static/images/blogs/testing/identify-bottlenecks.png)
+
+### **How to configure the load to simulate real-world traffic and current scenarios**
+
+You can now use the Collection Runner to simulate real-world traffic. You will be able to specify the following inputs to simulate the load condition:
+
+**Virtual users (VUs):** The maximum number of parallel users you want to simulate.
+
+**Test duration:** The amount of time (in minutes) for which you want to run the test.
+
+**Load profile:** The intensity of the load during the test's duration. We currently support two load profiles:
+
+1. **“Fixed” load profile:** This will apply a fixed number of virtual users throughout the test duration
+
+2. **“Ramp up” load profile:** This will slowly increase the number of virtual users during the “ramp up duration” to reach the specified load. Once reached, this number of virtual users will be maintained for the remaining duration
+
+### **Drill down into your metrics by request**
+
+Request drill down lets you drill down into every request that has been executed by the many virtual users. This helps you identify which request could have contributed to a spike in the commutative average response times, enabling you to fix the problem.
+
+You can also visualize the performance metrics of individual requests by selecting the required request in the available filter:
+
+### **Viewing past performance test runs**
+
+You can view the list of past performance test runs for a collection.
+
+Above is an approach to find the performance matrices for APIs using Postman. For better results we can perform the same tests using a dedicated performance testing tool i.e. Jmeter, LoadRunner etc. 
+
+In our next article we will talk about API Performance Tests using JMeter.
+
+Happy Reading!
