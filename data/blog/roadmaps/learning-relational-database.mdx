@@ -10,7 +10,7 @@ images: []
 authors: ['varun-kumar']
 ---
 
-## **Overview** 
+## Overview
 
 Learning SQL is a valuable skill for anyone working with databases or data analysis. SQL (Structured Query Language) is a programming language used to manage and manipulate relational databases.
 
@@ -32,7 +32,7 @@ Here are basic steps to help you get started with learning SQL using MySQL:
 - [Constraints in MySQL](#constraints-in-mysql)
 - [Further reading](#further-reading)
 
-## What is a database?
+## What is a database
 
 A database is an organized collection of data, so that it can be easily accessed and managed. You can organize data into tables, rows, columns, and index it to make it easier to find relevant information.
 
@@ -40,43 +40,43 @@ The main purpose of the database is to operate a large amount of information (mi
 
 Data within the most common types of databases in operation today is typically modeled in rows and columns in a series of tables to make processing and data querying efficient. The data can then be easily accessed, managed, modified, updated, controlled, and organized. Most databases use structured query language (SQL) for writing and querying data.
 
-### **Types of databases**
+### Types of databases
 
 There are many different types of databases. The best database for a specific organization depends on how the organization intends to use the data.
 
-#### **Relational databases**
+#### Relational databases
 
 - Items in a relational database are organized as a set of tables with columns and rows. Relational database technology provides the most efficient and flexible way to access structured information.
 
-#### **NoSQL databases**
+#### NoSQL databases
 
 - A NoSQL, or non-relational database, allows unstructured and semistructured data to be stored and manipulated (in contrast to a relational database, which defines how all data inserted into the database must be composed). NoSQL databases grew popular as web applications became more common and more complex.
 
-#### **Object-oriented databases**
+#### Object-oriented databases
 
 - Information in an object-oriented database is represented in the form of objects, as in object-oriented programming.
 
-#### **Time series databases**
+#### Time series databases
 
 - A time series database (TSDB) is a database optimized for time-stamped or time series data. Time series data are simply measurements or events that are tracked, monitored, downsampled, and aggregated over time. This could be server metrics, application performance monitoring, network data, sensor data, events, clicks, trades in a market, and many other types of analytics data.
 
-#### **Distributed databases**
+#### Distributed databases
 
 - A distributed database consists of two or more files located in different sites. The database may be stored on multiple computers, located in the same physical location, or scattered over different networks.
 
-#### **Data warehouses**
+#### Data warehouses
 
 - A central repository for data, a data warehouse is a type of database specifically designed for fast query and analysis.
 
-#### **Graph databases**
+#### Graph databases
 
 - A graph database stores data in terms of entities and the relationships between entities.
 
-#### **Document/JSON database**
+#### Document/JSON database
 
 - Designed for storing, retrieving, and managing document-oriented information, document databases are a modern way to store data in JSON format rather than rows and columns.
 
-#### **Self-driving databases**
+#### Self-driving databases
 
 - The newest and most groundbreaking type of database, self-driving databases (also known as autonomous databases) are cloud-based and use machine learning to automate database tuning, security, backups, updates, and other routine management tasks traditionally performed by database administrators.
 
@@ -86,9 +86,11 @@ In this blog we will be learning more about Relational databases.
 
 A relational database is a type of database that stores and provides access to data that are related to one another. Relational databases are based on the relational model, an intuitive, straightforward way of representing data in tables. In a relational database, each row in the table is a record with a unique ID called the key. The columns of the table hold attributes of the data, and each record usually has a value for each attribute, making it easy to establish the relationships among data points.
 
-[https://www.youtube.com/watch?v=NvrpuBAMddw](https://www.youtube.com/watch?v=NvrpuBAMddw)
+Watch the following video for more:
 
-### **DBMS (Database Management System)**
+[![Relational databases - basic concepts](https://img.youtube.com/vi/NvrpuBAMddw/0.jpg)](https://www.youtube.com/watch?v=NvrpuBAMddw "Relational databases - basic concepts")
+
+### DBMS (Database Management System)
 
 Database Management Systems (DBMS) are software systems used to store, retrieve, and run queries on data. A DBMS serves as an interface between an end-user and a database, allowing users to create, read, update, and delete data in the database.
 
@@ -96,17 +98,21 @@ DBMS manage the data, the database engine, and the database schema, allowing for
 
 DBMS optimizes the organization of data by following a database schema design technique called normalization, which splits a large table into smaller tables when any of its attributes have redundancy in values. DBMS offer many benefits over traditional file systems, including flexibility and a more complex backup system.
 
-[https://www.youtube.com/watch?v=lDpB9zF8LBw](https://www.youtube.com/watch?v=lDpB9zF8LBw)
+Watch the following video for more:
 
-### **SQL (Structured Query Language)**
+[![DBMS (Database Management System)](https://img.youtube.com/vi/lDpB9zF8LBw/0.jpg)](https://www.youtube.com/watch?v=lDpB9zF8LBw "DBMS (Database Management System)")
+
+### SQL (Structured Query Language)
 
 SQL stands for Structured Query Language. SQL is used to communicate with a database. It is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database.
 
 Although most database systems use SQL, most of them also have their own additional proprietary extensions that are usually only used on their system. However, the standard SQL commands such as “Select”, “Insert”, “Update”, “Delete”, “Create”, and “Drop” can be used to accomplish almost everything that one needs to do with a database.
 
-[https://www.youtube.com/watch?v=5L7TpWkHw-o](https://www.youtube.com/watch?v=5L7TpWkHw-o)
+Watch the following video for more:
 
-### **Why Is MySQL so Popular?**
+[![SQL (Structured Query Language)](https://img.youtube.com/vi/5L7TpWkHw-o/0.jpg)](https://www.youtube.com/watch?v=5L7TpWkHw-o "SQL (Structured Query Language)")
+
+### Why Is MySQL so Popular?
 
 Learning DDL commands
 
@@ -114,29 +120,29 @@ The MySQL development process focuses on offering a very efficient implementatio
 
 Many database management systems—even open source ones—preceded MySQL. Why has MySQL been the choice for so many beginners and small sites, and now for some heavyweight database users in government and industry? We can suggest a few factors:
 
-#### **Size and speed**
+#### Size and speed
 
 MySQL can run on very modest hardware and puts very little strain on system resources; many small users serve up information to their organizations by running MySQL on modest desktop systems. The speed with which it can retrieve information has made it a longstanding favorite of web administrators.
 
 Over the past few years, MySQL LAB has addressed the need of larger sites by adding features that necessarily slow down retrieval, but its modular design lets you ignore the advanced features and maintain the suppleness and speed for which MySQL is famous.
 
-#### **Ease of installation**
+#### Ease of installation
 
 Partly because MySQL is small and fast, it works the way most people want straight “out of the box.” It can be installed without a lot of difficult and sophisticated configuration. Now that many Linux distributions include MySQL, installation can be almost automatic.
 
 This doesn’t mean MySQL is free of administrative tasks. In particular, we’ll cover a few things you need to do at the start to tighten security. Very little configuration is shown in this book, however, which is a tribute to the database engine’s convenience and natural qualities.
 
-#### **Attention to standards**
+#### Attention to standards
 
 Multiple standards exist in the relational database world, and it’s impossible to claim total conformance. But learning MySQL certainly prepares you for moving to other database engines. Moving code from one database engine to another is never trivial, but MySQL does a reasonable job of providing a standard environment, and gets better as it develops more features.
 
-#### **Responsiveness to community**
+#### Responsiveness to community
 
 With a few hundred employees scattered around the globe, MySQL AB is a very flexible organization that keeps constant tabs on user needs. At its conferences, lead developers get out in front and make themselves available to everyone with a gripe or a new idea. There are also local MySQL user groups in almost every major city. This responsiveness is helped by the fact that MySQL is open and free; any sufficiently skilled programmer can look at the program code to find and perhaps help in fixing problems.
 
 MySQL actually has a dual-license approach: if you want to build your own product around it, you pay MySQL AB a license fee. If you just want to use MySQL to serve your own data, you don’t have to pay the license fee. MySQL also offers technical support, as do numerous other companies and consultants, some of them probably near you.
 
-#### **Easy interface to other software**
+#### Easy interface to other software
 
 It is easy to use MySQL as part of a larger software system. For example, you can write programs that can interact directly with a MySQL database. Most major programming languages have libraries of functions for use with MySQL; these include C, PHP, Perl, Python, Ruby, and the Microsoft .NET languages. MySQL also supports the Open Database Connectivity (ODBC) standard, making it accessible even when MySQL-specific functionality isn’t available.
 
@@ -146,53 +152,55 @@ Go to [this page](https://www.digitalocean.com/community/tutorial-collections/ho
 
 ## SQL - basic concepts
 
-[https://www.youtube.com/watch?v=27axs9dO7AE](https://www.youtube.com/watch?v=27axs9dO7AE)
+Watch the following video:
+
+[![SQL - basic concepts](https://img.youtube.com/vi/27axs9dO7AE/0.jpg)](https://www.youtube.com/watch?v=27axs9dO7AE "SQL - basic concepts")
 
 SQL (Structured Query Language) commands are needed to interact with database systems. These SQL commands can be used to build tables, insert data into tables, remove or drop tables, change tables, and set permissions for users. We can categorize the SQL commands as DDL, DQL, DCL, and DML.
 
 This article explains the complete overview of DDL and DML languages. The difference between DDL and DML commands is the most common part of an interview question. The key distinction is that the DDL command is used to create a database schema, while the DML command is used to modify the table's existing data.
 
-### **DDL commands**
+### DDL commands
 
 DDL stands for Data Definition Language. As the name suggests, the DDL commands help to define the structure of the databases or schema. When we execute DDL statements, it takes effect immediately. The changes made in the database using this command are saved permanently because its commands are auto-committed. The following commands come under DDL language:
 
-#### **CREATE**
+#### CREATE
 
 It is used to create a new database and its objects such as table, views, function, stored procedure, triggers, etc.
 
-#### **DROP**
+#### DROP
 
 It is used to delete the database and its objects, including structures, from the server permanently.
 
-#### **ALTER**
+#### ALTER
 
 It's used to update the database structure by modifying the characteristics of an existing attribute or adding new attributes.
 
-#### **TRUNCATE**
+#### TRUNCATE
 
 It is used to completely remove all data from a table, including their structure and space allocates on the server.
 
-#### **RENAME**
+#### RENAME
 
 This command renames the content in the database.
 
-### **DML commands**
+### DML commands
 
 It stands for Data Manipulation Language. The DML commands deal with the manipulation of existing records of a database. It is responsible for all changes that occur in the database. The changes made in the database using this command can't save permanently because its commands are not auto-committed. Therefore, changes can be rollback. The following commands come under DML language:
 
-#### **SELECT**
+#### SELECT
 
 This command is used to extract information from a table.
 
-#### **INSERT**
+#### INSERT
 
 It is a SQL query that allows us to add data into a table's row.
 
-#### **UPDATE**
+#### UPDATE
 
 This command is used to alter or modify the contents of a table.
 
-#### **DELETE**
+#### DELETE
 
 This command is used to delete records from a database table, either individually or in groups.
 
@@ -204,13 +212,13 @@ Read more about DDL and DML on:
 
 Watch the video below to learn how to use MySQL command line to login in the MySQL software. This will be used to practice the DDL and DML commands in the next lessons.
 
-[https://www.youtube.com/watch?v=Xrw0m_333OU](https://www.youtube.com/watch?v=Xrw0m_333OU)
+[![Using MySQL command line](https://img.youtube.com/vi/Xrw0m_333OU/0.jpg)](https://www.youtube.com/watch?v=Xrw0m_333OU "Using MySQL command line")
 
 ## Learning DDL commands
 
 All the commands given below have to be practiced after logging in MySQL server via command line.
 
-### **Creating database**
+### Creating database
 
 Practice in command line after reading [this article](https://www.w3schools.com/sql/sql_create_db.asp).
 
@@ -218,7 +226,7 @@ Practice in command line after reading [this article](https://www.w3schools.com/
 
 Practice in command line after reading [this article](https://www.w3schools.com/sql/sql_drop_db.asp).
 
-### **Data types in MySQL**
+### Data types in MySQL
 
 Each column in a database table is required to have a name and a data type. An SQL developer must decide what type of data that will be stored inside each column when creating a table. The data type is a guideline for SQL to understand what type of data is expected inside of each column, and it also identifies how SQL will interact with the stored data.
 
@@ -240,7 +248,7 @@ Practice in command line after reading [this article](https://www.w3schools.com/
 
 You may watch this video below and get some help if required:
 
-[https://www.youtube.com/watch?v=XGO1gU415u0](https://www.youtube.com/watch?v=XGO1gU415u0)
+[![Alter a table](https://img.youtube.com/vi/XGO1gU415u0/0.jpg)](https://www.youtube.com/watch?v=XGO1gU415u0 "Alter a table")
 
 Further reading:
 
@@ -251,15 +259,15 @@ Further reading:
 
 All the commands given below have to be practiced after logging in MySQL server via command line.
 
-### **Inserting data in a table**
+### Inserting data in a table
 
 Practice in command line after reading [this article](https://www.w3schools.com/sql/sql_insert.asp).
 
-### **Selecting data**
+### Selecting data
 
 Practice in command line after reading [this article](https://www.w3schools.com/sql/sql_select.asp) and [this article](https://www.w3schools.com/sql/sql_distinct.asp).
 
-### **Selecting only specific data (Where clause)**
+### Selecting only specific data (Where clause)
 
 Practice in command line after reading the following articles:
 
@@ -271,11 +279,11 @@ Practice in command line after reading the following articles:
 6. [BETWEEN operator](https://www.w3schools.com/sql/sql_between.asp)
 7. [IS NULL and IS NOT NULL](https://www.w3schools.com/sql/sql_null_values.asp)
 
-### **Ordering data**
+### Ordering data
 
 Practice in command line after reading [this article](https://www.w3schools.com/sql/sql_orderby.asp).
 
-### **Limiting data**
+### Limiting data
 
 Practice in command line after reading [this article](https://www.w3schools.com/mysql/mysql_limit.asp).
 
@@ -289,9 +297,9 @@ Practice in command line after reading [this article](https://www.w3schools.com/
 
 You may watch this video below and get some help if required:
 
-[https://www.youtube.com/watch?v=6CzfqZU2k0c](https://www.youtube.com/watch?v=6CzfqZU2k0c)
+[![Deleting data](https://img.youtube.com/vi/6CzfqZU2k0c/0.jpg)](https://www.youtube.com/watch?v=6CzfqZU2k0c "Deleting data")
 
-## **Aggregate functions in MySQL**
+## Aggregate functions in MySQL
 
 MySQL's aggregate function is used to perform calculations on multiple values and return the result in a single value like the average of all values, the sum of all values, and maximum & minimum value among certain groups of values. We mostly use the aggregate functions with SELECT statements in the data query languages.
 
@@ -317,7 +325,7 @@ We can easily produce these details with the help of aggregate functions.
 
 Watch this video below for practical examples of aggregate functions
 
-[https://www.youtube.com/watch?v=PaEpDMSScxw](https://www.youtube.com/watch?v=PaEpDMSScxw)
+[![Aggregate functions](https://img.youtube.com/vi/PaEpDMSScxw/0.jpg)](https://www.youtube.com/watch?v=PaEpDMSScxw "Aggregate functions")
 
 ## JOINS in MySQL
 
@@ -336,7 +344,7 @@ MySQL JOINS are used with SELECT statement. It is used to retrieve data from mul
 
 Go through the below video for practical examples of JOINS:
 
-[https://www.youtube.com/watch?v=bLL5NbBEg2I](https://www.youtube.com/watch?v=bLL5NbBEg2I)
+[![Types of JOINS](https://img.youtube.com/vi/bLL5NbBEg2I/0.jpg)](https://www.youtube.com/watch?v=bLL5NbBEg2I "Types of JOINS")
 
 ## UNION in MySQL
 
@@ -352,9 +360,9 @@ Read more about UNION from [this article](https://www.w3schools.com/mysql/mysql_
 
 Go through the below video for practical examples of UNION:
 
-[https://www.youtube.com/watch?v=sOXoAfiEQbE](https://www.youtube.com/watch?v=sOXoAfiEQbE)
+[![UNION in MySQL](https://img.youtube.com/vi/sOXoAfiEQbE/0.jpg)](https://www.youtube.com/watch?v=sOXoAfiEQbE "UNION in MySQL")
 
-## **Constraints in MySQL**
+## Constraints in MySQL
 
 The constraint in MySQL is used to specify the rule that allows or restricts what values/data will be stored in the table. They provide a suitable method to ensure data accuracy and integrity inside the table. It also helps to limit the type of data that will be inserted inside the table. If any interruption occurs between the constraint and data action, the action is failed.
 
@@ -371,7 +379,7 @@ We can define the constraints during a table created by using the CREATE TABLE s
 
 Watch the video to see practically how these constraints works:
 
-[https://www.youtube.com/watch?v=9WP35xwZ3tk](https://www.youtube.com/watch?v=9WP35xwZ3tk)
+[![Some common constraints in MySQL](https://img.youtube.com/vi/9WP35xwZ3tk/0.jpg)](https://www.youtube.com/watch?v=9WP35xwZ3tk "Some common constraints in MySQL")
 
 ## Further reading
 
