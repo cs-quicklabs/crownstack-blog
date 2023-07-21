@@ -1,0 +1,252 @@
+---
+title: "Node.js Learning Roadmap"
+date: '2023-07-21'
+lastmod: '2023-07-21'
+tags: ['roadmaps', 'nest js']
+draft: false
+summary: "A roadmap to learn Node.js, all the pre-required languages and technologies and Nest.js framework."
+layout: PostSimple
+images: []
+authors: ['varun-kumar']
+---
+
+## Overview
+
+Everything that is there to learn about Node and the ecosystem.
+
+- [Level 1: Basics of JavaScript](#basics-of-javascript)
+- [Level 2: Node.js, modules and NPM](#nodejs-modules-and-npm)
+- [Level 3: Basics of TypeScript](#basics-of-typescript)
+- [Level 4: Error handling in Node.js](#error-handling-in-node.js)
+- [Level 5: Asynchronous programming](#asynchronous-programming)
+- [Level 6: REST API design guidelines and best practices](#rest-api-design-guidelines-and-best-practices)
+- [Level 7: File handling](#file-handling)
+- [Level 8: Working with databases](#working-with-databases)
+- [Level 9: Learning TypeORM](#learning-typeorm)
+- [Level 10: Learning Nest.js](#learning-nestjs)
+
+## Basics of JavaScript
+
+JavaScript is a programming language used to create interactive web pages. JavaScript is a high-level, interpreted language that is easy to learn and use. It is used to add functionality to web pages, such as form validation, animations, and dynamic content. JavaScript can also be used on the server side through technologies like Node.js.
+
+Core topics to learn in JavaScript:
+
+- [Introduction of JavaScript](https://www.geeksforgeeks.org/introduction-to-javascript/)
+- [Variables and data types](https://www.w3schools.com/js/js_datatypes.asp)
+- Control flow statements ([if/else](https://www.w3schools.com/js/js_if_else.asp), [switch](https://www.w3schools.com/js/js_switch.asp), [For loops](https://www.w3schools.com/js/js_loop_for.asp), [For In loops](https://www.w3schools.com/js/js_loop_forin.asp), [For Of loops](https://www.w3schools.com/js/js_loop_forof.asp), [While loops](https://www.w3schools.com/js/js_loop_while.asp))
+- [Functions](https://www.w3schools.com/js/js_functions.asp) and [scope](https://www.w3schools.com/js/js_scope.asp)
+- [Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [Arrays](https://www.w3schools.com/js/js_arrays.asp) and [objects](https://www.w3schools.com/js/js_objects.asp)
+- [DOM manipulation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents) and [events](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
+- [Asynchronous programming and callbacks](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing)
+- [Promises and async/await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises)
+- [Modules](https://www.w3schools.com/js/js_modules.asp) and [dependencies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#importing_modules_using_import_maps)
+- [Error handling](https://www.w3schools.com/js/js_errors.asp)
+
+## Node.js, modules and NPM
+
+Node.js is an open-source server environment that allows you to run JavaScript on the server side. It provides an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js is built on top of the V8 JavaScript engine, which is the same engine used by Google Chrome.
+
+Node.js is used for building scalable network applications, real-time web applications, and APIs. It can also be used for building command-line applications.
+
+Some important things to learn about Node.js include:
+
+- [Why Choose Node.js?](https://medium.com/selleo/why-choose-node-js-b0091ad6c3fc)
+- [Installing and setting up Node.js](https://nodejs.org/en/download/)
+- [Differences between Node.js and the Browser](https://nodejs.dev/en/learn/differences-between-nodejs-and-the-browser/)
+- [Run Node.js scripts from the command line](https://nodejs.dev/en/learn/run-nodejs-scripts-from-the-command-line/)
+- [Asynchronous I/O](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/)
+- [Event-driven architecture](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+
+Node.js modules are reusable pieces of code that can be used in multiple applications. They are typically small, focused modules that perform a specific task. Modules can be installed and managed using the Node Package Manager (NPM), which allows developers to easily share and reuse code. Some popular modules include Express, Mongoose, and [Socket.io](http://socket.io/). Learn more about modules:
+
+- [Node.js modules](https://nodejs.org/docs/latest-v14.x/api/modules.html)
+- [How to Export and Require Modules in NodeJS](https://www.youtube.com/watch?v=pP4kjXykbio)
+- [Creating a Module in Node.js](https://www.youtube.com/watch?v=Cxo4UKpHv5s)
+
+NPM stands for Node Package Manager. It is a software package manager for Node.js, used to install and manage third-party libraries and packages. Developers can use NPM to easily share and reuse code, as well as manage dependencies for their Node.js applications.Node Package Manager (NPM) is a package manager for Node.js that is used to install, manage, and share packages and dependencies. It is a command-line utility that comes bundled with Node.js and can be used to install packages from the NPM registry or from a local file system.
+
+Developers can use NPM to easily manage dependencies for their Node.js applications. NPM creates a `package.json` file that lists all the dependencies required by the project. This file can be shared with other developers to ensure that all dependencies are installed correctly.
+
+NPM is also used to publish packages to the NPM registry, making it easy for other developers to find and use them. Developers can publish their own packages to the registry, and can also install packages published by other developers.
+
+In summary, NPM is a key tool for Node.js developers, enabling them to easily manage dependencies and share and reuse code.
+
+Learn more about NPM:
+
+- [What is NPM?](https://nodejs.dev/en/learn/an-introduction-to-the-npm-package-manager/)
+- [NPM (Node Package Manager) Official Website](https://www.npmjs.com/)
+- [Crash course on NPM](https://www.youtube.com/watch?v=jHDhaSSKmB0)
+- [Introduction to NPM scripts](https://www.geeksforgeeks.org/introduction-to-npm-scripts/)
+
+## Basics of TypeScript
+
+TypeScript is a superset of JavaScript that adds optional type annotations and other features such as interfaces, classes, and namespaces. JavaScript is a dynamically-typed language that is primarily used for client-side web development and can also be used for server-side development.
+
+Here are a few key differences between TypeScript and JavaScript:
+
+- **Types**: TypeScript has optional type annotations while JavaScript is dynamically-typed. This means that in TypeScript, you can specify the data type of variables, parameters, and return values, which can help catch type-related errors at compile-time.
+- **Syntax**: TypeScript extends JavaScript syntax with features like interfaces, classes, and namespaces. This provides a more robust and organized structure for large-scale projects.
+- **Tooling**: TypeScript has better tooling support, such as better editor integration, type checking, and code refactoring.
+- **Backwards Compatibility**: TypeScript is fully compatible with existing JavaScript code, which means you can use TypeScript in any JavaScript environment.
+
+### ****TS/JS Interoperability****
+
+TypeScript and JavaScript have full interoperability, meaning you can use TypeScript code in JavaScript projects and vice versa. TypeScript is a superset of JavaScript, which means that any valid JavaScript code is also valid TypeScript code.
+
+You can use JavaScript libraries in TypeScript projects by either including the JavaScript files directly or using type definitions for the library. Type definitions provide type information for JavaScript libraries, making it easier to use them in TypeScript.
+
+On the other hand, you can use TypeScript code in JavaScript projects by simply compiling the TypeScript code into JavaScript. The generated JavaScript code can be used in any JavaScript environment, and it will work the same way as regular JavaScript code.
+
+### ****Install TypeScript****
+
+TypeScript can be installed through three installation routes depending on how you intend to use it: an npm module, a NuGet package or a Visual Studio Extension.
+
+To install TypeScript, you'll need to have Node.js and npm installed on your system. Read how to install TypeScript using `npm` in [this link](https://www.typescriptlang.org/download).
+
+### **Running TypeScript**
+
+To run TypeScript code, you’ll need to have a TypeScript compiler installed. Read more about running TypeScript in [this link](https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html).
+
+### Learning TypeScript
+
+Here are some steps and resources to get you started with learning TypeScript:
+
+- [Typescript Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+- [Type Inference](https://www.typescriptlang.org/docs/handbook/type-inference.html#handbook-content)
+- [Type Compatibility](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)
+- [Type Guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards)
+- [Functions](https://www.typescriptlang.org/docs/handbook/2/functions.html)
+- [Interfaces](https://www.typescriptlang.org/docs/handbook/2/objects.html)
+- [Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html)
+- [Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+- [Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html)
+- [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+- [Advanced Types](https://www.youtube.com/playlist?list=PLw5h0DiJ-9PBIgIyd2ZA1CVnJf0BLFJg2)
+- [Modules](https://www.typescriptlang.org/docs/handbook/modules.html) ([video](https://www.youtube.com/watch?v=EpOPR03z4Vw))
+
+## Error handling in Node.js
+
+Error handling is an important aspect of any application, and Node.js is no exception. In Node.js, errors can occur in many different places, such as when reading or writing files, making network requests, or working with databases.
+
+Some common techniques for handling errors in Node.js include:
+
+- Using try/catch blocks to catch and handle errors
+- Using the `error` event to handle errors emitted by streams
+- Using the `callback` convention to pass errors to callbacks
+- Using the `Promise` API to handle asynchronous errors
+- Using a middleware function to handle errors in Express.js applications
+
+It's important to handle errors correctly to ensure that your Node.js applications are reliable and robust.
+
+Learn more about error handling in Node.js:
+
+- [Error Handling in Node.js](https://www.joyent.com/node-js/production/design/errors)
+- [Node.js Error Handling Techniques](https://blog.risingstack.com/node-js-error-handling-techniques/)
+- [Handling Errors in Node.js with try-catch](https://stackify.com/try-catch-in-javascript-node-js/)
+- [Node.js Error Handling: Best Practices](https://sematext.com/blog/node-js-error-handling/)
+- [What is stacktrace and how to print in Node.js ?](https://www.geeksforgeeks.org/what-is-stacktrace-and-how-to-print-in-node-js/)
+- [Debugging errors in Node.js](https://www.geeksforgeeks.org/node-js-debugging/)
+
+## Asynchronous programming
+
+Asynchronous programming in Node.js allows for non-blocking I/O operations, which can improve the efficiency and scalability of your application. With asynchronous programming, the application can continue to execute other tasks while waiting for I/O operations to complete, rather than blocking the entire program until the operation finishes.
+
+Asynchronous programming in Node.js can be achieved using callbacks, promises, and async/await. These techniques help to manage the complexity of asynchronous code and make it easier to reason about.
+
+With callbacks, a function is passed as an argument to another function and is called when the operation completes. Promises provide a cleaner syntax for handling asynchronous operations and allow you to chain multiple asynchronous operations together. Async/await provides a way to write asynchronous code that looks like synchronous code, making it easier to read and understand.
+
+Learn more about asynchronous programming in Node.js:
+
+- [Asynchronous Vs Synchronous Programming](https://www.youtube.com/watch?v=Kpn2ajSa92c)
+- [Understanding Asynchronous JavaScript](https://blog.bitsrc.io/understanding-asynchronous-javascript-the-event-loop-74cd408419ff)
+- [Callbacks in Node.js](https://nodejs.dev/learn/javascript-asynchronous-programming-and-callbacks)
+- [Promises in Node.js](https://nodejs.dev/learn/understanding-javascript-promises)
+- [Async/Await in Node.js](https://nodejs.dev/learn/modern-asynchronous-programming-with-async-and-await)
+- [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+- [setInterval](https://javascript.info/settimeout-setinterval)
+- [setImmediate](https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate)
+- [process.nextTick()](https://nodejs.dev/en/learn/understanding-processnexttick/)
+
+## REST API design guidelines and best practices
+
+Please go through [Crownstack's REST API design guidelines and best practices](https://blog.crownstack.com/blog/web/crownstack-rest-api-guidelines).
+
+## File handling
+
+You can programmatically manipulate files in Node.js with the built-in **`fs`** module. The name is short for “file system,” and the module contains all the functions you need to read, write, and delete files on the local machine.
+
+Visit the following resources to learn more:
+
+- [How To Work with Files using the fs Module in Node.js](https://www.digitalocean.com/community/tutorials/how-to-work-with-files-using-the-fs-module-in-node-js)
+
+## Working with databases
+
+Working with databases in Node.js involves connecting to a database system, performing CRUD (Create, Read, Update, Delete) operations, and handling data efficiently. Node.js offers several popular libraries and modules for interacting with databases.
+
+### Learning PostgreSQL / MySQL
+
+PostgreSQL and MySQL are both popular relational database management systems (RDBMS) that share some similarities, as well as key differences. Here are some of the main similarities between PostgreSQL and MySQL:
+
+1. **Relational Database Model:**
+Both PostgreSQL and MySQL follow the relational database model, which means they store data in tables with rows and columns. They use SQL (Structured Query Language) to interact with the database and perform CRUD (Create, Read, Update, Delete) operations.
+2. **ACID Compliance:**
+Both databases are ACID compliant, ensuring that transactions are Atomic, Consistent, Isolated, and Durable. This guarantees data integrity and consistency even in the presence of failures.
+3. **Indexes and Constraints:**
+Both PostgreSQL and MySQL support the use of indexes and constraints. Indexes help improve query performance, while constraints (e.g., primary keys, foreign keys, unique constraints) enforce data integrity rules.
+4. **Cross-Platform Support:**
+Both databases are cross-platform, meaning they can run on various operating systems like Windows, macOS, and Linux.
+5. **Community and Support:**
+PostgreSQL and MySQL have active and large communities, offering extensive documentation, forums, and community-driven support.
+6. **Data Types:**
+They both provide a wide range of data types to store various kinds of data, including numeric, text, date, and binary data.
+7. **Replication and High Availability:**
+Both databases offer replication features to create replicas of the database for high availability and fault tolerance.
+8. **Triggers and Stored Procedures:**
+Both PostgreSQL and MySQL support triggers and stored procedures, which are pieces of code that automatically execute in response to certain events or actions on the database.
+9. **Client Libraries and Drivers:**
+Both databases have client libraries and drivers available for various programming languages, including Node.js, Python, Java, etc.
+
+Despite these similarities, there are also some significant differences between PostgreSQL and MySQL, such as:
+
+- PostgreSQL has a reputation for being more feature-rich and capable of handling complex queries and data types compared to MySQL.
+- MySQL historically had a focus on speed and simplicity, making it a popular choice for web applications and startups.
+- PostgreSQL supports advanced features like JSONB (binary JSON), HSTORE (key-value storage), and full-text search capabilities, which MySQL may not handle as effectively.
+- MySQL traditionally used the MyISAM storage engine for performance reasons, while PostgreSQL uses its storage engine and has support for multiple storage engines like InnoDB, MyISAM, etc.
+
+PostgreSQL is another popular open-source relational database. To work with PostgreSQL in Node.js, you can use the **`pg`** library.
+
+MySQL is a widely used relational database management system. For Node.js, **`mysql2`** is a popular and performant library to interact with MySQL.
+
+For our purpose we will get our hands on MySQL. Please go through [Learning Relational Database Roadmap](https://blog.crownstack.com/blog/roadmaps/learning-relational-database) to learn more.
+
+### Learning TypeORM
+
+TypeORM is an ORM that can run in NodeJS, Browser, Cordova, PhoneGap, Ionic, React Native, NativeScript, Expo, and Electron platforms and can be used with TypeScript and JavaScript (ES5, ES6, ES7, ES8). Its goal is to always support the latest JavaScript features and provide additional features that help you to develop any kind of application that uses databases - from small applications with a few tables to large scale enterprise applications with multiple databases.
+
+TypeORM supports both **[Active Record](https://typeorm.io/active-record-data-mapper#what-is-the-active-record-pattern)** and **[Data Mapper](https://typeorm.io/active-record-data-mapper#what-is-the-data-mapper-pattern)** patterns, unlike all other JavaScript ORMs currently in existence, which means you can write high quality, loosely coupled, scalable, maintainable applications the most productive way.
+
+Visit the following resources to learn more:
+
+- [TypeORM Docs](https://typeorm.io/)
+- [TypeORM Crash Course](https://www.youtube.com/watch?v=JaTbzPcyiOE)
+
+## Learning Nest.js
+
+Nest.js is a popular backend framework for building scalable and maintainable server-side applications using Node.js and TypeScript. It is built on top of Express.js and provides a modular and structured approach to building APIs and web applications.
+
+Go through the following topics to learn in Nest.js:
+
+1. [Installation](https://docs.nestjs.com/#installation)
+2. [Core fundamentals of Nest](https://docs.nestjs.com/first-steps)
+3. [Controllers](https://docs.nestjs.com/controllers)
+4. [Providers](https://docs.nestjs.com/providers)
+5. [Modules](https://docs.nestjs.com/modules)
+6. [Middleware](https://docs.nestjs.com/middleware)
+7. [Exception filters](https://docs.nestjs.com/exception-filters)
+8. [Pipes](https://docs.nestjs.com/pipes)
+9. [Guards](https://docs.nestjs.com/guards)
+10. [Interceptors](https://docs.nestjs.com/interceptors)
+11. [Custom route decorators](https://docs.nestjs.com/custom-decorators)
+
+Go through the [Official Nest.js Documentation](https://docs.nestjs.com/) for more.
