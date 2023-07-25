@@ -25,7 +25,6 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, canonicalUrl 
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
       <meta name="google-site-verification" content="RYl-Nx17wbdHSIpw5HCNMhJc79XCrdIroEF2TcJGnEI" />
-      <meta http-equiv="Content-Security-Policy" content="frame-src youtube.com www.youtube.com" />
       <link
         rel="canonical"
         href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
