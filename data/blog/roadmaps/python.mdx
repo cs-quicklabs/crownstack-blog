@@ -1,0 +1,211 @@
+---
+title: "Python Learning Roadmap"
+date: '2023-07-26'
+lastmod: '2023-07-26'
+tags: ['roadmaps', 'Python']
+draft: false
+summary: "A roadmap to learn Python and a Python framework - Django or Flask."
+layout: PostSimple
+images: []
+authors: ['varun-kumar']
+---
+
+ ## Overview
+
+Python is a high-level, interpreted, and general-purpose programming language known for its simplicity and readability. It was created by Guido van Rossum and first released in 1991. Python has gained immense popularity among developers due to its ease of use, versatility, and extensive standard library.
+
+Here are some key features and aspects of Python:
+
+1. **Readable and Simple Syntax**: Python's syntax is designed to be clear and readable, emphasizing the use of indentation and whitespace rather than braces. This feature makes it easier for beginners to learn and understand the language.
+2. **Interpreted Language**: Python code is executed line by line by the Python interpreter, which allows for rapid development and testing without the need for a compilation step.
+3. **Object-Oriented Programming (OOP)**: Python supports object-oriented programming, allowing developers to create classes and objects for encapsulation, inheritance, and polymorphism.
+4. **Extensive Standard Library**: Python comes with a large standard library that provides modules and packages for various tasks, such as file I/O, networking, regular expressions, web development, and more. This extensive library reduces the need for external dependencies for many common tasks.
+5. **Dynamic Typing**: Python is dynamically typed, meaning you don't need to specify the variable's type explicitly. The type of a variable is determined at runtime.
+6. **Strong Typing**: Despite being dynamically typed, Python is considered strongly typed because it enforces strict type checking during runtime, which helps prevent certain classes of errors.
+7. **Cross-platform**: Python is available and runs on various platforms, including Windows, macOS, Linux, and many others.
+8. **Community and Libraries**: Python has a vast and active community of developers, making it easy to find support, resources, and third-party libraries for almost any task you might want to accomplish.
+9. **Uses**: Python can be used for a wide range of applications, including web development, scientific computing, data analysis, artificial intelligence, automation, scripting, and more.
+10. **Versions**: As of my last update in September 2021, the two major versions of Python in use were Python 2 and Python 3. However, Python 2 reached its end of life on January 1, 2020, and Python 3 is the recommended version for new projects and ongoing development.
+11. **Package Management**: Python uses package managers like pip (Python Package Installer) to install and manage external libraries easily.
+
+Python's versatility and approachability have contributed to its widespread adoption across various industries and domains. Whether you're a beginner or an experienced developer, Python is a powerful and rewarding language to learn and work with.
+
+Here are basic steps to help you get started with learning Python:
+
+- [Hello, World!](#hello-world)
+- [Basic Syntax](#basic-syntax)
+- [Variables and Data Types](#variables-and-data-types)
+- [Lists, Tuples, Sets, and Dictionaries](#lists-tuples-sets-and-dictionaries)
+- [Conditional Statements](#conditional-statements)
+- [Typecasting](#typecasting)
+- [Exception Handling](#exception-handling)
+- [Functions](#functions)
+- [Object Oriented Programming](#object-oriented-programming)
+- [Modules in Python](#modules-in-python)
+- [Python Package Manager - PIP](#python-package-manager---pip)
+- [Python Framework - Django](#python-framework---django)
+- [Python Framework - Flask](#python-framework---flask)
+- [Reference reading](#reference-reading)
+
+ ## Hello, World!
+
+Please go through the article [How To Write Your First Python 3 Program](https://www.digitalocean.com/community/tutorials/how-to-write-your-first-python-3-program) to write your first Python program.
+
+ ## Basic Syntax
+
+Please go through the article to learn [Python's basic syntax](https://www.tutorialspoint.com/python/python_basic_syntax.htm).
+
+ ## Variables and Data Types
+
+In Python, variables are used to store and represent data. A variable is like a named container that holds a value, and you can give it any name you like. The value stored in a variable can be of various data types, such as numbers, strings, lists, dictionaries, and more. Unlike some other programming languages, Python is dynamically typed, meaning you don't need to declare the variable's type explicitly; the type is determined based on the value it holds.
+
+Read more about [Variables in Python](https://realpython.com/python-variables/).
+
+ ## Lists, Tuples, Sets, and Dictionaries
+
+**Lists:** are just like dynamic sized arrays, declared in other languages (vector in C++ and ArrayList in Java). Lists need not be homogeneous always which makes it the most powerful tool in Python.
+
+**Tuple:** A Tuple is a collection of Python objects separated by commas. In some ways, a tuple is similar to a list in terms of indexing, nested objects, and repetition but a tuple is immutable, unlike lists that are mutable.
+
+**Set:** A Set is an unordered collection data type that is iterable, mutable, and has no duplicate elements. Python's set class represents the mathematical notion of a set.
+
+**Dictionary:** In python, Dictionary is an ordered (since Py 3.7) [unordered (Py 3.6 & prior)] collection of data values, used to store data values like a map, which, unlike other Data Types that hold only a single value as an element, Dictionary holds key:value pair. Key-value is provided in the dictionary to make it more optimized.
+
+Watch this video for more clarity:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n0krwG38SHI" title="Lists, Tuples, Sets, and Dictionaries" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+ ## Conditional Statements
+
+Conditional Statements in Python perform different actions depending on whether a specific condition evaluates to true or false. Conditional Statements are handled by IF-ELIF-ELSE statements and MATCH-CASE statements in Python.
+
+Read more at: [IF…Else, ELIF & Switch Case](https://www.guru99.com/if-loop-python-conditional-structures.html)
+
+ ## Typecasting
+
+The process of converting the value of one data type (integer, string, float, etc.) to another data type is called type conversion. Python has two types of type conversion: Implicit and Explicit.
+
+Read more at: [Python Type Conversion](https://www.programiz.com/python-programming/type-conversion-and-casting)
+
+ ## Exception Handling
+
+Exception handling in Python allows you to gracefully manage and handle runtime errors or exceptional situations that may occur during the execution of your code. When an error occurs, Python raises an exception, which can be caught and processed using try, except blocks. Exception handling prevents your program from abruptly terminating and gives you an opportunity to handle errors in a controlled manner.
+
+Here's a step-by-step explanation of how exception handling works in Python:
+
+1. The code inside the **`try`** block is executed. If an exception occurs within this block, the control flow immediately jumps to the corresponding **`except`** block.
+2. The **`except`** block catches the exception specified in its parentheses (e.g., **`SomeException`** in the example). If the raised exception matches the specified type, the code inside the **`except`** block is executed.
+3. If the exception raised does not match the type specified in the **`except`** block, the exception is propagated up the call stack to find a suitable **`except`** block to handle it. If no suitable **`except`** block is found in the program, the program will terminate with an unhandled exception traceback.
+4. Optionally, you can include an **`else`** block immediately after the **`except`** block. The code inside the **`else`** block is executed if no exception occurs in the **`try`** block.
+5. You can also use a **`finally`** block after the **`try`** and **`except`** blocks. The code inside the **`finally`** block is always executed, regardless of whether an exception was raised or not.
+
+Read more about Exception handling [here](https://www.w3schools.com/python/python_try_except.asp).
+
+ ## Functions
+
+In programming, a function is a reusable block of code that executes a certain functionality when it is called. Functions are integral parts of every programming language because they help make your code more modular and reusable.
+
+In Python, you define a function with the **`def`** keyword, then write the function identifier (name) followed by parentheses and a colon.
+
+Read more about Functions [here](https://www.w3schools.com/python/python_functions.asp).
+
+ ## Object Oriented Programming
+
+Object-Oriented Programming (OOP) is a programming paradigm that focuses on representing real-world entities and their interactions as objects. Python fully supports object-oriented programming, allowing developers to create classes, objects, and use inheritance, polymorphism, and encapsulation to model and organize code effectively. Here are the key concepts of OOP in Python:
+
+1. **Classes and Objects:**
+    - A class is a blueprint for creating objects. It defines the attributes (data) and methods (functions) that the objects will have.
+    - An object is an instance of a class, representing a specific entity based on the class's characteristics.
+2. **Attributes and Methods:**
+    - Attributes are variables that store data specific to each object created from a class.
+    - Methods are functions defined within a class that perform operations related to the class's data or behavior.
+3. **Encapsulation:**
+    - Encapsulation is the concept of bundling data and methods together within a class, allowing data to be hidden and accessed only through the class's methods.
+    - It helps in data protection and prevents direct access to internal data from outside the class.
+4. **Inheritance:**
+    - Inheritance allows a class (subclass) to inherit attributes and methods from another class (superclass).
+    - It promotes code reuse and facilitates the creation of specialized classes based on a general class.
+5. **Polymorphism:**
+    - Polymorphism allows objects of different classes to be treated as objects of a common superclass.
+    - It enables a single interface to represent different data types, providing flexibility and extensibility.
+
+By utilizing OOP in Python, you can create well-structured, modular, and maintainable code, making it easier to model complex systems and build scalable applications.
+
+Watch the following video:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-pEs-Bss8Wc" title="Object Oriented Programming" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+And then this video:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ej_02ICOIgs" title="Object Oriented Programming" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+
+ ## Modules in Python
+
+In Python, a module is a file containing Python definitions and statements. It allows you to organize code logically and break it into smaller, reusable components. Modules are essential for code reusability and maintainability. You can use modules to encapsulate related functions, classes, and variables, and then import them into other Python scripts or modules to use their functionality.
+
+Python comes with a vast standard library, which is a collection of modules that offer a wide range of functionalities, including file I/O, networking, regular expressions, mathematical operations, and more. In addition to the standard library, you can also create your own custom modules to organize your code effectively.
+
+To import a module in Python, you use the **`import`** keyword, followed by the name of the module (without the **`.py`** extension). You can then access the functions and variables defined in the module using the dot notation, like **`module_name.function_name()`**.
+
+You can also use the **`from`** keyword to import specific functions or variables from a module directly into your script, making them available without using the module name as a prefix.
+
+Modules are a fundamental concept in Python and are a powerful mechanism for organizing and managing code, making it easier to build complex and scalable applications.
+
+Read more on Modules in Python [here](https://docs.python.org/3/tutorial/modules.html).
+
+ ## Python Package Manager - PIP
+
+PIP (Package Installer for Python) is the default package manager for Python. It is a command-line tool that allows you to install, upgrade, and manage Python packages and their dependencies. PIP makes it easy to access a vast ecosystem of third-party libraries and modules that can enhance the capabilities of your Python applications.
+
+PIP is a command-line tool that interacts with the Python Package Index (PyPI), a repository of thousands of Python packages contributed by the Python community. These packages can range from simple utilities and libraries to full-fledged frameworks that enhance the capabilities of your Python applications.
+
+With PIP, you can install packages from PyPI and other package indexes, upgrade packages to their latest versions, uninstall packages, and manage project dependencies using a requirements file. It simplifies the process of installing external libraries and tools, making Python development more accessible and efficient.
+
+PIP comes bundled with Python versions 2.7.9 and later (including all Python 3 versions), so you can use it out-of-the-box without any additional installation.
+
+Read more about PIP on: [Using Python's pip to Manage Your Projects' Dependencies](https://realpython.com/what-is-pip/) and [this article](https://www.w3schools.com/python/python_pip.asp).
+
+ ## Python Framework - Django
+
+Django is a high-level web framework written in Python that enables rapid development of secure, scalable, and maintainable web applications. It follows the Model-View-Controller (MVC) architectural pattern, which is often referred to as the Model-View-Template (MVT) pattern in Django's context. Django comes with a built-in set of tools and features that simplify the development process, allowing developers to focus on building the application's functionality rather than handling low-level tasks.
+
+Key features of Django include:
+
+1. **Admin Interface:** Django provides an automatic admin interface that allows developers and administrators to manage application data easily. It generates an admin panel based on the application's models, making it simple to create, read, update, and delete records in the database.
+2. **ORM (Object-Relational Mapping):** Django's ORM abstracts the database interaction, allowing developers to define data models as Python classes. The ORM handles database queries and transactions, making it database-agnostic and straightforward to switch between different database backends (e.g., PostgreSQL, MySQL, SQLite, etc.).
+3. **URL Routing and Views:** Django's URL dispatcher allows developers to map URLs to specific views, which are Python functions responsible for handling HTTP requests and returning HTTP responses.
+4. **Template Engine:** Django's template engine enables the separation of HTML and Python code. Templates allow developers to define the presentation layer of the web application and easily render dynamic content.
+5. **Forms:** Django provides form handling and validation, making it easy to create and process HTML forms while maintaining data integrity.
+6. **Security Features:** Django includes built-in security features, such as protection against common web vulnerabilities like CSRF (Cross-Site Request Forgery) and SQL injection.
+7. **Authentication and Authorization:** Django offers a flexible authentication system that allows developers to handle user registration, login, and permissions easily.
+8. **Internationalization and Localization:** Django supports internationalization and localization, making it possible to create multilingual web applications.
+9. **Middleware:** Django middleware allows you to process requests and responses globally, providing a way to add functionalities like authentication checks, logging, or caching.
+10. **Testing Support:** Django includes a robust testing framework that enables developers to write and run tests to ensure the application's correctness and identify potential issues early in the development process.
+
+Django's "batteries-included" philosophy and its vast ecosystem of reusable packages and extensions make it a popular choice for web development projects. It is widely used in various domains, from small personal projects to large-scale enterprise applications.
+
+Watch the following video tutorial for Django:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rHux0gMZ3Eg" title="Learning Django" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+
+ ## Python Framework - Flask
+
+Flask is a lightweight and flexible web framework written in Python that is used to build web applications. It is known for its simplicity, ease of use, and minimalist design. Flask does not come with all the built-in features and components that Django provides, but it gives developers the freedom to choose and integrate third-party libraries as needed, making it a popular choice for small to medium-sized projects and APIs.
+
+Key features of Flask include:
+
+1. **Routing:** Flask provides a simple routing system that allows developers to map URLs to specific view functions. Each view function handles an HTTP request and returns an HTTP response.
+2. **Templating:** Flask includes a template engine called Jinja2, which separates HTML code from Python code, enabling the rendering of dynamic content in web pages.
+3. **URL Building:** Flask has a powerful URL building system that allows developers to generate URLs dynamically based on route patterns and view functions.
+4. **HTTP Methods:** Flask supports different HTTP methods like GET, POST, PUT, DELETE, etc., which can be easily mapped to view functions to handle different types of requests.
+5. **Request and Response Handling:** Flask provides a simple API to access data from incoming HTTP requests and to send HTTP responses.
+6. **Extensions and Libraries:** Flask has a rich ecosystem of extensions and libraries that developers can use to add functionalities like authentication, database integration, form handling, and more.
+7. **Lightweight Core:** Flask's core is minimalistic, providing only the essential functionality. This makes it easy to understand and allows developers to add or customize features as needed.
+8. **RESTful Support:** Flask can be used to build RESTful APIs by creating view functions that return JSON or XML responses.
+9. **Flexible Configuration:** Flask allows developers to configure the application using environment variables or configuration files.
+10. **Debugging and Development Server:** Flask comes with a built-in development server that allows developers to test their applications during development. It also provides excellent support for debugging and error handling.
+
+Since Flask is a micro-framework, it provides developers with more control over the application's architecture and components. This level of control makes it a great choice for developers who prefer to have a more hands-on approach to building web applications.
+
+Watch the following video tutorial for Flask:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Qr4QMBUPxWo" title="Learning Flask" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+
+ ## Reference reading
+
+1. [Programming in Python 3: a complete introduction to the Python language, 2nd edition](https://www.amazon.in/gp/product/9352869176/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1)
