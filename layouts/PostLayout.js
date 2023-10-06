@@ -18,6 +18,18 @@ const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day:
 
 export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
   const { slug, fileName, date, title, images, tags } = frontMatter
+  const authorNames = authorDetails?.map((author) => author.name).join(',')
+  const imageUrl =
+    process.env.NEXT_PUBLIC_BASE_URL +
+    '/api/ogImage?' +
+    'title=' +
+    encodeURIComponent(frontMatter.title) +
+    '&author=' +
+    encodeURIComponent(authorNames) +
+    '&date=' +
+    encodeURIComponent(frontMatter.date) +
+    '&cover=' +
+    encodeURIComponent('/static/images/Logo-light.png')
 
   return (
     <SectionContainer>
@@ -25,6 +37,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
         authorDetails={authorDetails}
         {...frontMatter}
+        images={[imageUrl]}
       />
       <ScrollTopAndComment />
       <article>
