@@ -10,16 +10,17 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
   const { date, title } = frontMatter
   const authorNames = authorDetails?.map((author) => author.name).join(',')
   const imageUrl =
-    process.env.NEXT_PUBLIC_BASE_URL +
-    '/api/ogImage?' +
-    'title=' +
-    encodeURIComponent(frontMatter.title) +
-    '&author=' +
-    encodeURIComponent(authorNames) +
-    '&date=' +
-    encodeURIComponent(frontMatter.date) +
-    '&cover=' +
-    encodeURIComponent('/static/images/Logo-light.png')
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    'https://blog.crownstack.com' +
+      '/api/ogImage?' +
+      'title=' +
+      encodeURIComponent(frontMatter.title) +
+      '&author=' +
+      encodeURIComponent(authorNames) +
+      '&date=' +
+      encodeURIComponent(frontMatter.date) +
+      '&cover=' +
+      encodeURIComponent('/static/images/Logo-light.png')
 
   return (
     <SectionContainer>
