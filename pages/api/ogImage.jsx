@@ -1,6 +1,5 @@
 import { ImageResponse } from '@vercel/og'
 import React from 'react'
-import Image from 'next/image'
 
 export const config = {
   runtime: 'experimental-edge',
@@ -18,26 +17,32 @@ export default function handler(req, res) {
       cover && `${protocol}//${host}/_next/image?url=${encodeURIComponent(cover)}&w=1200&q=75`
     const imageResponse = new ImageResponse(
       (
-        <div tw="w-full h-full flex flex-col justify-end items-stretch bg-white">
+        <div tw="w-full h-full flex flex-col justify-end bg-white items-stretch ">
           {coverUrl && (
-            <img
-              src={coverUrl}
-              alt="Crownstack Logo"
-              tw="mx-auto my-auto h-full w-full bg-white flex-1"
-              style={{ objectFit: 'contain', objectPosition: 'center', background: 'white' }}
-            />
+            <div tw="flex-1 flex my-auto px-16">
+              <img
+                src={coverUrl}
+                alt="Crownstack Logo"
+                tw="my-auto h-28"
+                style={{ objectFit: '', objectPosition: 'left' }}
+              />
+            </div>
           )}
-          <div tw="bg-white flex-1 flex">
-            <div tw="flex flex-col mx-8 my-auto">
-              <div tw="text-5xl mb-2">{title}</div>
-              <div tw="text-3xl">
+          <div tw="bg-white flex-1 flex px-16">
+            <div tw="flex flex-col my-auto">
+              <div tw="mb-6 text-6xl font-bold tracking-tighter">{title}</div>
+
+              <div tw="text-4xl">
                 {author + ' – ' + new Date(date).toLocaleDateString('en-US', { dateStyle: 'long' })}
               </div>
             </div>
           </div>
         </div>
       ),
-      { width: 1200, height: 628 }
+      {
+        width: 1200,
+        height: 630,
+      }
     )
     return imageResponse
   } catch (error) {
