@@ -14,21 +14,21 @@ export default function handler(req, res) {
     const date = searchParams?.get('date') || '2022-11-08T12:00:00.000Z'
     const cover = searchParams?.get('cover')
     const coverUrl =
-      cover && `${protocol}//${host}/_next/image?url=${encodeURIComponent(cover)}&w=1200&q=75`
+      cover && `${protocol}/${host}/_next/image?url=${encodeURIComponent(cover)}&w=1200&q=75`
     const imageResponse = new ImageResponse(
       (
         <div tw="w-full h-full flex flex-col justify-end bg-white items-stretch ">
           {coverUrl && (
-            <div tw="flex-1 flex my-auto px-16">
+            <div tw="flex-1 flex px-16 items-end">
               <img
                 src={coverUrl}
                 alt="Crownstack Logo"
-                tw="my-auto h-28"
+                tw="h-28"
                 style={{ objectFit: '', objectPosition: 'left' }}
               />
             </div>
           )}
-          <div tw="bg-white flex-1 flex px-16">
+          <div tw="bg-white flex-1 flex px-20">
             <div tw="flex flex-col my-auto">
               <div tw="mb-6 text-6xl font-bold tracking-tighter">{title}</div>
 
