@@ -30,7 +30,7 @@ export default function handler(req, res) {
           )}
           <div tw="bg-white flex-1 flex px-20">
             <div tw="flex flex-col my-auto">
-              <div tw="mb-6 text-6xl font-bold tracking-tighter">{title}</div>
+              <div tw="mb-6 text-6xl font-bold">{title}</div>
 
               <div tw="text-4xl">
                 {author + ' – ' + new Date(date).toLocaleDateString('en-US', { dateStyle: 'long' })}

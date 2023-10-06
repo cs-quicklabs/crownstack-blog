@@ -10,7 +10,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
-  font-src 'self';
+  font-src 'self' https://fonts.gstatic.com;
   frame-src giscus.app youtube.com www.youtube.com
 `
 

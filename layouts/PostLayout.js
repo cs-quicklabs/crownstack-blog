@@ -20,7 +20,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
   const { slug, fileName, date, title, images, tags } = frontMatter
   const authorNames = authorDetails?.map((author) => author.name).join(',')
   const imageUrl =
-    process.env.NEXT_PUBLIC_BASE_URL +
+    'https://blog.crownstack.com' +
     '/api/ogImage?' +
     'title=' +
     encodeURIComponent(frontMatter.title) +
