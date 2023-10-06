@@ -3,7 +3,7 @@ import kebabCase from '@/lib/utils/kebabCase'
 
 const Tag = ({ text }) => {
   return (
-    <Link href={`/tags/${kebabCase(text)}`}>
+    <Link legacyBehavior href={`/tags/${kebabCase(text)}`}>
       <a className="mr-3 text-sm font-medium uppercase text-primary hover:text-primary dark:hover:text-primary">
         {text.split(' ').join('-')}
       </a>
