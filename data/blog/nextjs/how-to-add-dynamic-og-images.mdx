@@ -1,0 +1,194 @@
+---
+title: 'How to add dynamic Open graph Image in next.js'
+date: '2023-10-09'
+lastmod: '2023-10-09'
+tags: ['nextjs', 'seo', 'og-image']
+draft: false
+summary: 'In this blog we will share how we can add dynamic open graph images in next.js project.'
+layout: PostSimple
+images: []
+authors: ['ankur-sharma']
+---
+
+**Open Graph (OG) image** is the thumbnail displayed on social networks (such as Facebook & LinkedIn) to preview your webpage whenever someone shares your link and play a crucial role in enhancing your website's visibility and sharing on social media platforms. These images provide a visual representation when you or others share links to your web content.
+
+Having a solid social media marketing strategy **can increase brand awareness and customer engagement**, especially for medium- and large-sized businesses.
+
+However, you must keep an eye on other aspects of your online presence too, particularly generating quality og:image - which is arguably the most important one.
+
+You can find them in the **< /head >** section of a page. Tags with **og:** before a property name are Open Graph tags.
+
+By default, **Open Graph meta tags** determine how URLs are displayed when shared on social media sites.
+While it's common to use static **Open Graph images,** **Next.js** allows you to generate dynamic **Open Graph images** on the fly. In this tutorial, we'll explore how to achieve this.
+
+### Prerequisites
+
+Before we begin, make sure you have the following set up:
+
+- Node.js 16 or newer by visiting [nodejs.org](https://nodejs.org/)
+- For Next.js implementations, make sure you are using Next.js v12.2.3 or newer
+- `@vercel/og` library to use `ImageResponse` Class
+
+### Technical details `(@vercel/og)`
+
+Recommended OG image size: 1200x630 pixels
+
+- `@vercel/og` uses [Satori](https://github.com/vercel/satori) and Resvg to convert HTML and CSS into PNG
+- `@vercel/og` [API reference](https://vercel.com/docs/functions/edge-functions/og-image-generation/og-image-api)
+- [Limitation](https://vercel.com/docs/functions/edge-functions/og-image-generation#limitations)
+
+## Steps to Add Dynamic Open Graph Images
+
+### 1. Install Dependencies
+
+To get started, we need to install `@vercel/og` :
+
+```shell
+# Using pnpm
+pnpm i @vercel/og
+
+# Using yarn
+yarn add @vercel/og
+
+# Using npm
+npm install @vercel/og
+```
+
+### 2. Create an API route
+
+In this example, your post image is made up of a static SVG logo, the post title, author name and published data. You will pass the post title as a parameter
+
+Create an `ogImage` route in `/pages/api` and paste the following code:
+
+```go
+//pages/api/ogImage.jsx
+
+import {ImageResponse} from "@vercel/og"
+import React from "react"
+
+/**
+Use Edge Runtime by enabling the runtime: 'edge' config flag as the default Node.js runtime is not supported
+**/
+export const config = {
+	runtime:"edge",
+}
+export default function handler(req, res) {
+	try {
+		const url = decodeURIComponent(req?.url || "", "http://localhost") // Provide a base URL if needed
+
+		const {searchParams, protocol, host} = new URL(url)
+
+		const title = searchParams?.get("title") || "No title"
+		const author = searchParams?.get("author") || "Anonymous"
+		const date = searchParams?.get("date") || "2022-11-08T12:00:00.000Z"
+		const cover = searchParams?.get("cover")
+
+		const coverUrl = cover && `${protocol}/${host}/_next/image?url=${encodeURIComponent(cover)}&w=1200&q=75`
+
+		const imageResponse = new  ImageResponse(
+		  (
+		    <div tw="w-full h-full flex flex-col justify-end bg-white items-stretch">
+		      {coverUrl && (
+			    <div tw="flex-1 flex px-16 items-end">
+				  <img
+				    src={coverUrl}
+					alt="Crownstack Logo"
+					tw="h-28"
+					style={{ objectFit: "", objectPosition: "left" }}
+				  />
+				</div>
+			  )}
+			  <div tw="bg-white flex-1 flex px-20">
+			    <div tw="flex flex-col my-auto">
+			      <div tw="mb-6 text-6xl font-bold">{title}</div>
+			      <div tw="text-4xl">
+				    {author + " – " + new Date(date).toLocaleDateString("en-US", { dateStyle: "long" })}
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  ),
+		  {
+			width: 1200,
+			height: 630,
+		  }
+		)
+	return  imageResponse
+	} catch (error) {
+		console.error(error)
+		return  res.status(500).end("Internal Server Error")
+	}
+}
+```
+
+In this code, we use the `ImageResponse` class to generate the image with the specified dimensions. You can take the request props as similiar to what you wanted to generate in your Image content. You can also customize the JSX content inside the template literal to match your requirements.
+
+### 3. Usage in Metadata
+
+To use this dynamic Open Graph image in your website's metadata, you can include it in your HTML `<head>` section. For example, in your Next.js layout or template:
+
+```go
+import Head from "next/head";
+
+function  PostSEO({title, author, date}) { //post data recevied as props from where the PostSEO component will used.
+	const postTitle = title;
+	const postAuthor = author;
+	const postDate= date;
+	const staticImage = "/static/images/Logo-light.png";
+	const localHostUrl = "http://localhost:3000"; 	//You can import or add your image here
+
+	const imageUrl = localHostUrl + "/api/ogImage?" +	//Replace this url with the actual URL of your Next.js application.
+					"title=" + encodeURIComponent(title) +
+					"&author=" + encodeURIComponent(author) +
+					"&date=" + encodeURIComponent(date) +
+					"&cover=" + encodeURIComponent(staticImage)
+	return (
+		<Head>
+			{/* Other metadata */}
+			<title>{title}</title>
+			<meta
+				property="og:image"
+				content={imageUrl}
+			 />
+		</Head>
+	);
+}
+export default PostSEO;
+```
+
+### 4. Add OG image API route(s) to `Allow` inside your `robots.txt`
+
+If you are using Next.js, review [robots.txt](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#static-robotstxt) to learn how to add or generate a `robots.txt` file.
+
+To avoid the possibility of social media providers not being able to fetch your image, it is recommended to add your OG image API route(s) to `Allow` inside your `robots.txt` file. For example, if your OG image API route is `/api/og/`, you can add the following line:
+
+```shell
+# robots.txt
+
+Allow: /api/og/*
+```
+
+### 5. Testing
+
+To test your dynamic Open Graph image, open your website in a browser and share a link to a page on a social media platform like Facebook, Linkedin or Twitter. The dynamic Open Graph image should appear in the shared link.
+
+### 6. Alternate ways to test
+
+#### (a) **Open you blog/post page and go to Inspect or Inspect element, then find `meta` tag with `property="og:image"`**
+
+![meta tag with og:image](/static/images/blogs/nextjs/meta-dynamic-og-image.png)
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+#### (b) **Open the url of `content` attribute in browser's new tab**
+
+![Dynamic OG Image](/static/images/blogs/nextjs/og-image.png)
+
+## Conclusion
+
+Generating dynamic Open Graph images in Next.js allows you to create personalized and engaging previews for your web content. By following these steps, you can enhance your website's appearance when shared on social media and improve its overall visibility.
+
+Explore different ways to customize your dynamic Open Graph images, such as adding logos, background images, and more, to create a compelling visual representation of your web content.
