@@ -44,7 +44,6 @@ export async function getStaticProps({ params }) {
 
 export default function Newsletter({ post, authorDetails, prev, next }) {
   const { mdxSource, toc, frontMatter } = post
-  console.log('the slug is rendering')
   return (
     <>
       {frontMatter.draft !== true ? (
