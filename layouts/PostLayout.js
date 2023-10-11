@@ -99,7 +99,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               </dd>
             </dl>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
+              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark text-xl tracking-tight text-black font-medium">
+                {children}
+              </div>
               <Comments frontMatter={frontMatter} />
             </div>
             <footer>
