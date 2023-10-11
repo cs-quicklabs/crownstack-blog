@@ -1,24 +1,77 @@
 ---
-title: 'How to add dynamic Open graph Image in next.js'
+title: 'How to add dynamic Open Graph Image in Next.js'
 date: '2023-10-09'
 lastmod: '2023-10-09'
 tags: ['nextjs', 'seo', 'og-image']
 draft: false
-summary: 'In this blog we will share how we can add dynamic open graph images in next.js project.'
+summary: 'In this blog we will share how we can add dynamic Open Graph Image in Next.js project.'
 layout: PostSimple
 images: []
 authors: ['ankur-sharma']
 ---
 
-**Open Graph (OG) image** is the thumbnail image that will be displayed on social networks (such as Facebook, LinkedIn, Slack etc) to preview your webpage whenever someone shares the links and it plays a crucial role in enhancing your website's visibility and sharing on social media platforms. These images provide a visual representation when you or others share links to your web content.
+**Open Graph Image** is the thumbnail or preview image that will be displayed on social media platforms (such as Facebook, LinkedIn, Slack, etc.) to preview your webpage whenever anyone shares the links and it plays a crucial role in enhancing your website's visibility and sharing on social media platforms. These images provide a visual representation when you or others share links to your web content.
+
+## What is Open Graph (OG)?
+
+**Open Graph (OG)** is basically a protocol that controls and decides what content will be displayed when anyone shares the link of your website to a social media channel. Open Graph Protocol allows you to decide what image content, title, and description should be displayed whenever someone or you share the web page link on a social media channel.
 \
 \
-**Open Graph meta tags** determine how URLs/links are displayed when shared on social media sites.
-\
-We can find meta tags in the **< /head >** section of a page.All meta Tags with **og:** before a property name are Open Graph tags.
+To achieve this Open Graph Protocol in web pages we use **Open Graph Meta Tags**. These are additional meta tags that will be added in **< head >** section with additional **og:** property
 \
 \
-While it's common to use static **Open Graph images,** **Next.js** allows you to generate dynamic **Open Graph images** at runtime. In this blog, we'll explore how we can create dynamic open graph images.
+Following are required properties for every page to include Open Graph Protocols:
+
+- `og: title` - The title that will be displayed when sharing links, e.g., **"How to add dynamic Open Graph Image in next.js"**.
+- `og: type` - The type of content, e.g., "article". Other properties will be required depending on what type you have added.
+- `og: image` - The image URL for what image should be displayed upon sharing the link.
+- `og: URL` - The canonical URL of your page, as it will be a permanent ID, e.g., "https://blog.crownstack.com/blog/nextjs/how-to-add-dynamic-og-images".
+
+Take a look at the example of how to add these tags to our web pages.
+
+```shell
+<html lang="en" class="scroll-smooth light" style="color-scheme: light;">
+<head>
+<meta charset="utf-8">
+<title>How to add dynamic Open Graph Image in Next.js</title>
+<meta property="og:title" content="How to add dynamic Open Graph Image in Next.js" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.crownstack.com/blog/nextjs/how-to-add-dynamic-og-images" />
+<meta property="og:image" content="https://blog.crownstack.com/api/ogImage?title=How%20to%20add%20dynamic%20Open%20Graph%20Image%20in%20Next.js&author=Ankur%20Sharma&date=2023-10-09T00%3A00%3A00.000Z&cover=%2Fstatic%2Fimages%2FLogo-light.png" />
+...
+</head>
+...
+</html>
+```
+
+For more information, you can directly visit [Open Graph Protocol](https://ogp.me/).
+
+## Dynamic Open Graph Images
+
+Open Graph Images can be added in `og:image` meta tag as following :
+
+```shell
+<html lang="en" class="scroll-smooth light" style="color-scheme: light;">
+<head>
+...
+<meta property="og:image" content="https://blog.crownstack.com/api/ogImage?title=How%20to%20add%20dynamic%20Open%20graph%20Image%20in%20next.js&author=Ankur%20Sharma&date=2023-10-09T00%3A00%3A00.000Z&cover=%2Fstatic%2Fimages%2FLogo-light.png" />
+...
+</head>
+...
+</html>
+```
+
+Unlike static Open Graph Images, dynamic Open Graph Images previews can be changed over time. The context in which dynamic Open Graph Images are implemented depends on the implementation of your requirements. It contains social image cards with variable content that are dynamic in nature.
+
+## Why to use Dynamic Open Graph Images?
+
+Static Open Graph Images, as the name suggested, are static. It means that every time you share a link it will display the same image in the preview thumbnail. As for developers, for each page you want to generate every time, you have to manually add a specific image. This is not the case for dynamic Open Graph Image
+
+## How to use Dynamic Open Graph Images?
+
+As mentioned earlier, it depends on your context. In this blog, we will add Open Graph Image dynamically based on our dynamic content. For example, blog website content is dynamic. Each time a blog is added to the website, what we want is that if someone shares the link of that blog, a new preview image should be generated dynamically that displays the title, description, and author name of that blog.  
+\
+While it is common to use static **Open Graph Images**, **Next.js** allows you to generate dynamic **Open Graph Images** at runtime. In this blog, we'll explore how we can create dynamic Open Graph Images using Next.js and Vercel OG Image generation.
 
 ### Prerequisites
 
@@ -120,7 +173,7 @@ In this code, we use the `ImageResponse` class to generate the image with the sp
 
 ### 3. Usage in Metadata
 
-To use this dynamic Open Graph image in your website's metadata, you can include it in your HTML `<head>` section. For example, in your Next.js layout or template:
+To use this dynamic Open Graph Image in your website's metadata, you can include it in your HTML `<head>` section. For example, in your Next.js layout or template:
 
 ```go
 import Head from "next/head";
@@ -161,7 +214,7 @@ Allow: /api/ogImage/*
 
 ### 5. Testing
 
-To test this dynamic Open Graph image, open website in a browser and share the link of a page on a social media platform like Facebook, Linkedin, Slack or Twitter. The dynamic Open Graph image should be appeared below the shared link.
+To test this dynamic Open Graph Image, open website in a browser and share the link of a page on a social media platform like Facebook, Linkedin, Slack or Twitter. The dynamic Open Graph Image should be appeared below the shared link.
 
 ### 6. Alternate ways to test
 
@@ -180,6 +233,6 @@ To test this dynamic Open Graph image, open website in a browser and share the l
 
 ## Conclusion
 
-Generating dynamic Open Graph images in Next.js allows us to create more engaging previews for our web content.
+Generating dynamic Open Graph Images in Next.js allows us to create more engaging previews for our web content.
 By following above steps, you can implement the dynamic Open Graph Image and can enhance your website's appearance when shared on social media.
-You can also modify and implemtn different ways to customize your dynamic Open Graph images, such as adding svgs logos, background images, blur effects and much more.
+You can also modify and implemtn different ways to customize your dynamic Open Graph Images, such as adding svgs logos, background images, blur effects and much more.
