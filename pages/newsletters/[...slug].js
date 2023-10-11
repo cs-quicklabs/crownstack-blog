@@ -25,7 +25,7 @@ export async function getStaticProps({ params }) {
   )
   const prev = allNewslettersPosts[postIndex + 1] || null
   const next = allNewslettersPosts[postIndex - 1] || null
-  const post = await getFileBySlug('blog', params.slug.join('/'))
+  const post = await getFileBySlug('newsletters', params.slug.join('/'))
   const authorList = post.frontMatter.authors || ['default']
   const authorPromise = authorList.map(async (author) => {
     const authorResults = await getFileBySlug('authors', [author])
