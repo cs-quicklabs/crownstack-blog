@@ -7,7 +7,7 @@ import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/l
 const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
-  const newslettersPosts = getFiles('blog')
+  const newslettersPosts = getFiles('newsletters')
   return {
     paths: newslettersPosts.map((p) => ({
       params: {
