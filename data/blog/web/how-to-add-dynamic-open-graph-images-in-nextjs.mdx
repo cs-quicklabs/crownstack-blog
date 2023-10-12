@@ -1,10 +1,10 @@
 ---
-title: 'How to add dynamic Open Graph Image in Next.js'
+title: 'How to add dynamic Open Graph Images in Next.js'
 date: '2023-10-09'
 lastmod: '2023-10-09'
 tags: ['nextjs', 'seo', 'og-image']
 draft: false
-summary: 'In this blog we will share how we can add dynamic Open Graph Image in Next.js project.'
+summary: 'In this blog we will share how we can add dynamic Open Graph Images in Next.js project.'
 layout: PostSimple
 images: []
 authors: ['ankur-sharma']
@@ -22,10 +22,10 @@ To achieve this Open Graph Protocol in web pages we use **Open Graph Meta Tags**
 \
 Following are required properties for every page to include Open Graph Protocols:
 
-- `og: title` - The title that will be displayed when sharing links, e.g., **"How to add dynamic Open Graph Image in next.js"**.
+- `og: title` - The title that will be displayed when sharing links, e.g., **"How we used AWS to run serverless cron jobs"**.
 - `og: type` - The type of content, e.g., "article". Other properties will be required depending on what type you have added.
 - `og: image` - The image URL for what image should be displayed upon sharing the link.
-- `og: URL` - The canonical URL of your page, as it will be a permanent ID, e.g., "https://blog.crownstack.com/blog/nextjs/how-to-add-dynamic-og-images".
+- `og: URL` - The canonical URL of your page, as it will be a permanent ID, e.g., "https://blog.crownstack.com/blog/cloud/aws/how-we-used-aws-to-run-serverless-cron-jobs".
 
 Take a look at the example of how to add these tags to our web pages.
 
@@ -33,16 +33,21 @@ Take a look at the example of how to add these tags to our web pages.
 <html lang="en" class="scroll-smooth light" style="color-scheme: light;">
 <head>
 <meta charset="utf-8">
-<title>How to add dynamic Open Graph Image in Next.js</title>
-<meta property="og:title" content="How to add dynamic Open Graph Image in Next.js" />
+<title>How we used AWS to run serverless cron jobs</title>
+<meta property="og:title" content="How we used AWS to run serverless cron jobs" />
+<meta property="og:description" content="In this blog we will share how we created serverless cron job solution for a client project.">
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.crownstack.com/blog/nextjs/how-to-add-dynamic-og-images" />
-<meta property="og:image" content="https://blog.crownstack.com/api/ogImage?title=How%20to%20add%20dynamic%20Open%20Graph%20Image%20in%20Next.js&author=Ankur%20Sharma&date=2023-10-09T00%3A00%3A00.000Z&cover=%2Fstatic%2Fimages%2FLogo-light.png" />
+<meta property="og:url" content="https://blog.crownstack.com/blog/cloud/aws/how-we-used-aws-to-run-serverless-cron-jobs" />
+<meta property="og:image" content="https://blog.crownstack.com/api/ogImage?title=How%20we%20used%20AWS%20to%20run%20serverless%20cron%20jobs&author=Varun%20Kumar&date=2023-10-04T00%3A00%3A00.000Z&cover=%2Fstatic%2Fimages%2FLogo-light.png" />
 ...
 </head>
 ...
 </html>
 ```
+
+Your link preview will look like this:
+
+![Link Preview](/static/images/blogs/web/how-to-add-dynamic-open-graph-images-in-nextjs/link-preview.png)
 
 For more information, you can directly visit [Open Graph Protocol](https://ogp.me/).
 
@@ -54,7 +59,7 @@ Open Graph Images can be added in `og:image` meta tag as following :
 <html lang="en" class="scroll-smooth light" style="color-scheme: light;">
 <head>
 ...
-<meta property="og:image" content="https://blog.crownstack.com/api/ogImage?title=How%20to%20add%20dynamic%20Open%20graph%20Image%20in%20next.js&author=Ankur%20Sharma&date=2023-10-09T00%3A00%3A00.000Z&cover=%2Fstatic%2Fimages%2FLogo-light.png" />
+<meta property="og:image" content="https://blog.crownstack.com/api/ogImage?title=How%20we%20used%20AWS%20to%20run%20serverless%20cron%20jobs&author=Varun%20Kumar&date=2023-10-04T00%3A00%3A00.000Z&cover=%2Fstatic%2Fimages%2FLogo-light.png" />
 ...
 </head>
 ...
@@ -220,7 +225,7 @@ To test this dynamic Open Graph Image, open the website in a browser and share t
 
 #### (a) **Open your blog/post page and go to Inspect or Inspect element, then find `meta` tag with `property="og: image"`**
 
-![meta tag with og:image](/static/images/blogs/nextjs/meta-dynamic-og-image.png)
+![meta tag with og:image](/static/images/blogs/web/how-to-add-dynamic-open-graph-images-in-nextjs/meta-dynamic-og-image.png)
 
 &nbsp;
 &nbsp;
@@ -229,7 +234,7 @@ To test this dynamic Open Graph Image, open the website in a browser and share t
 
 #### (b) **Open the url of `content` attribute in browser's new tab**
 
-![Dynamic OG Image](/static/images/blogs/nextjs/og-image.png)
+![Dynamic OG Image](/static/images/blogs/web/how-to-add-dynamic-open-graph-images-in-nextjs/og-image.png.png)
 
 ## Conclusion
 
