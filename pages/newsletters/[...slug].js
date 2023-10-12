@@ -7,7 +7,7 @@ import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/l
 const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
-  const newslettersPosts = getFiles('blog')
+  const newslettersPosts = getFiles('newsletters')
   return {
     paths: newslettersPosts.map((p) => ({
       params: {
@@ -19,13 +19,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const allNewslettersPosts = await getAllFilesFrontMatter('blog')
+  const allNewslettersPosts = await getAllFilesFrontMatter('newsletters')
   const postIndex = allNewslettersPosts.findIndex(
     (post) => formatSlug(post.slug) === params.slug.join('/')
   )
   const prev = allNewslettersPosts[postIndex + 1] || null
   const next = allNewslettersPosts[postIndex - 1] || null
-  const post = await getFileBySlug('blog', params.slug.join('/'))
+  const post = await getFileBySlug('newsletters', params.slug.join('/'))
   const authorList = post.frontMatter.authors || ['default']
   const authorPromise = authorList.map(async (author) => {
     const authorResults = await getFileBySlug('authors', [author])

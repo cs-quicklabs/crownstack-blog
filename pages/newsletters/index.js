@@ -6,7 +6,7 @@ import NewsletterListLayout from '@/layouts/NewsletterListLayout'
 export const POSTS_PER_PAGE = 25
 
 export async function getStaticProps() {
-  const newsletters = await getAllFilesFrontMatter('blog')
+  const newsletters = await getAllFilesFrontMatter('newsletters')
   const initialDisplayNewsletters = newsletters.slice(0, POSTS_PER_PAGE)
   const pagination = {
     currentPage: 1,
