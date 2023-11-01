@@ -26,8 +26,6 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
     encodeURIComponent(frontMatter.title) +
     '&author=' +
     encodeURIComponent(authorNames) +
-    '&date=' +
-    encodeURIComponent(frontMatter.date) +
     '&cover=' +
     encodeURIComponent('/static/images/Logo-light.png')
 
