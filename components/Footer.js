@@ -26,7 +26,7 @@ export default function Footer() {
           setButtonDisabled(true)
           const { data } = await axios({
             method: 'post',
-            url: 'https://www.crownstack.com/blog-subscribe.php',
+            url: 'https://api.crownstack.com/blog-subscribe.php',
             data: { email_address: emailInput },
             headers: {
               Accept: 'application/json',
