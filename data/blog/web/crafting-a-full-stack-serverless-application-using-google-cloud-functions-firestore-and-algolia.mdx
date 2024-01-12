@@ -10,10 +10,6 @@ images: []
 authors: ['mukul-kumar']
 ---
 
-# From Novices to Ninjas: Crafting a full-stack serverless application using Google Cloud Functions, Firestore and Algolia
-
-![driver-onboarding-architecture.svg](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/driver-onboarding-architecture.svg)
-
 ### **Problem Statement**
 
 We had to develop a Driver Onboarding Application which takes out leads from the marketing campaign and we are able to save their Documents. We had the requirements at bare minimum in the initial phase, deliver things fast and require single resource to develop, deploy and make changes.
@@ -26,6 +22,8 @@ Due to this we figured we need to develop an application where it would be ease 
 
 ## Tech Stack & Tools
 
+![driver-onboarding-architecture.svg](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/driver-onboarding-architecture.svg)
+
 In order to cater above we found following in the market that could be useful for us and would align with above three concerns:
 
 ### Front End: **Angular**
@@ -34,7 +32,7 @@ We are following Monolithic Architecture with Angular as Front End which is oper
 
 ### Back End: **Serverless / Firebase Cloud Functions**
 
-![backend-services.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/backend-services.png)
+![backend-services.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/backend-services.png)
 
 We wanted to keep this app serve separate from the rest of the Backend and we wanted to get things done Quickly without the overhead to think about Backend Server setup or maintaining it hence we went serverless.
 
@@ -52,29 +50,29 @@ We selected NoSQL / Firestore Database as we were developing an application that
 
 This came into the picture when we had to integrate whatsapp in our application, it served the purpose of setting up those fancy bots who would take care of getting the basic information of the user in the first phase of the application. We set up our bots and flows which would update our Database from outside.
 
-![truora.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/truora.png)
+![truora.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/truora.png)
 
 **Algolia**
 
 It became a game changer for us when we had to think about filtration of the data as the Firestore Database inhouse filtration has its own limitations. We used [Firestore Algolia Extension](https://extensions.dev/extensions/algolia/firestore-algolia-search) in Firestore and used integrated Algolia Search in our application. 
 
-![algolia.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/algolia.png)
+![algolia.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/algolia.png)
 
 **Twilio**
 
 With Twilio all we had to do was send those messages across and it was way easier as the [Twillio Firebase Extensions](https://extensions.dev/extensions/twilio/send-message) is available in Firestore Extensions with minimal efforts and integrations and use.
 
-![twilio.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/twilio.png)
+![twilio.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/twilio.png)
 
 **Slack Notifications**
 
 We also wanted the Admins / Developers to be notified when an Application moves from one funnel to another. Also, this came down handy when we had to get notified when it comes to deployments status or error logs in our cloud applications.
 
-![slack.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/slack.png)
+![slack.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/slack.png)
 
 ### Integrations
 
-![integrations.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/integrations.png)
+![integrations.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/integrations.png)
 
 To get things done, we require two things in our Database:
 
@@ -93,13 +91,13 @@ Now, for every user or admin in order to update them we wanted to enable Message
 
 **Authentications**
 
-![authentication.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/authentication.png)
+![authentication.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/authentication.png)
 
 In order to Authenticate users, we used Phone Based Authentication from Firestore Authentication. As our drivers phone number was saved as a part of our details collection we were able to authenticate and get the details of users in no time.
 
 **WhatsApp Integration**
 
-![whatsapp.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/whatsapp.png)
+![whatsapp.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/whatsapp.png)
 
 This was the next step for which we used **Truora.** But before that we created a Cloud Function that would work like a HTTPS REST API. Why? I will tell you shortly.
 
@@ -113,7 +111,7 @@ The solution we came up with was a CI/CD pipeline that would build and deploy fo
 
 **CI/CD pipeline**
 
-![ci_cd.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/ci_cd.png)
+![ci_cd.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/ci_cd.png)
 
 We decided to put the entire Cloud Functions code in a GitHub repo which contains a pipeline in order to deploy that code to the Cloud Functions.
 
@@ -139,7 +137,7 @@ Algolia provides indexes which we used to cater different environment data. It h
 
 Using Algolia, we also had to keep the data inside it updated so we added a Cloud Function that kept on updating that record for us. So whenever the admin tries to Visualize the data, they may see the latest version of the data.
 
-![kanban.png](crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/kanban.png)
+![kanban.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/kanban.png)
 
 ## Conclusion
 
