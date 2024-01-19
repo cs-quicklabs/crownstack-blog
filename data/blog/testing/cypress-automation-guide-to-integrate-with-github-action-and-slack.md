@@ -10,8 +10,6 @@ images: []
 authors: ['shashank-jaiswal']
 ---
 
-# Elevating Cypress Test Automation: A Guide to Seamless Integration with GitHub Actions and Slack
-
 ## Introduction
 
 The integration of GitHub Actions, Cypress codes, and Slack marks a significant advancement in our software development workflows. GitHub Actions efficiently coordinates Cypress tests with each code push, ensuring a robust continuous integration process. Notably, the incorporation of artifact capture, including screenshots and videos upon test failures, enhances our diagnostic capabilities and expedites issue resolution, facilitating quicker iterations.
@@ -23,8 +21,8 @@ The integration of Slack further enhances collaboration by seamlessly redirectin
 Follow the steps mentioned below to run your test script automatically upon every code push and effortlessly relay the generated report directly to your Slack group, regardless of the test outcome, whether it's a pass or fail.
 
 - Inside your project, create a new folder named `".github"`.
-- Inside the ".github" folder, create a new file. Name it with a ".yml" extension (for example, "build.yml").
-- Open the newly created ".yml" file and copy-paste the below-provided code into it.
+- Inside the `".github"` folder, create a new file. Name it with a `".yml"` extension (for example, `"build.yml"`).
+- Open the newly created `".yml"` file and copy-paste the below-provided code into it.
 
 ```yaml
 name: Cypress Test
@@ -75,7 +73,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 ```
 
-- Save the changes you made to the ".yml" file.
+- Save the changes you made to the `".yml"` file.
 
 Now, your project is set up to perform certain actions as defined below. Get ready to see the magic happen!
 
@@ -202,7 +200,7 @@ Setting up a Slack app with webhooks is like having a chat between your GitHub c
 
 10. As soon as You Select your channel your Webhook will be generated and ready to be used, So copy that webhook
 
-![Slack Add Webhook URL](public/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-webhook-url.png "Slack Add Webhook URL")
+![Slack Add Webhook URL](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-webhook-url.png "Slack Add Webhook URL")
 
 11. Now your webhook is ready to be used in your GitHub, so follow the steps below to get the webhook configuration done
 - Go to GitHub and Click on Setting
