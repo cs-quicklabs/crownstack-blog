@@ -3,7 +3,7 @@ title: "Elevating Cypress Test Automation: A Guide to Seamless Integration with 
 date: '2024-01-19'
 lastmod: '2024-01-19'
 tags: ['qa','automation-testing','cypress']
-draft: true
+draft: false
 summary: "In this article we are going to discuss about how to create an automated report using Github Actions and share it on Slack in Cypress."
 layout: PostSimple
 images: []
