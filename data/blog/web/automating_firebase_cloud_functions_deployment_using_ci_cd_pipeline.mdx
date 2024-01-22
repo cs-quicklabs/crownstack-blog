@@ -1,0 +1,173 @@
+---
+title: "Automating Firebase Cloud Functions deployment using CI/CD pipeline"
+date: '2024-01-11'
+lastmod: '2024-01-11'
+tags: ['cloud functions', 'firestore', 'github']
+draft: false
+summary: "Automate the code deployments for multiple environment using Github Actions with Slack Notifications."
+layout: PostSimple
+images: []
+authors: ['mukul-kumar']
+---
+
+## Introduction
+
+Using [Firebase Tools](https://www.npmjs.com/package/firebase-tools) to deploy Cloud Function from your local machine makes your life easy, as this has a clear documentation of using those commands and the deployment is on tip of your finger.
+
+The deployment seems to feel easier and we done in a couple minutes. But we found some issues using this way of deployments:
+
+- Given different environment we need to switch to different projects using firebase tools and then deploy which tends to be more error prone
+- Connection established during deployments fails due to timeouts causing failure in deployments which can happen due to network instability.
+- Tracing the deployments become difficult as during this we were directly affecting the live code
+
+These manual intervention motivates us to write a CI/CD pipeline. Our consumption was low so we went for Github Actions as its basic service was free and easy to integrate as well.
+
+### Service & Tools
+
+- GitHub
+    - Repository for Code
+    - Github Actions for deployments
+- Google Service
+    - Service Account for communications between GitHub and Google Cloud
+    - IAM for providing Roles and permission to Service Account
+- Slack App
+- [Slack Notify Github Action](https://github.com/rtCamp/action-slack-notify)
+
+### Integrations
+
+![ci_cd_pipeline_architecture.png](/static/images/blogs/web/ci_cd_pipeline_architecture.png)
+
+Assuming you have a Cloud Function up and running, your code is pushed in GitHub Repository and knows how CI/CD pipeline works.
+
+First thing, we need to think about our workflow. 
+
+1. Take code from the respective branch on GitHub
+2. Build the Code
+3. Setup environment of the project
+4. Deploy
+5. Notify (We are using slack for this)
+
+We want to create such a pipeline that would take our code and build it using firebase tools and then communicate with Google Cloud Platform(GCP) in order to authenticate as its identity and deploy our cloud functions to the Cloud.
+
+We will begin with creating a **Firebase Service Account** first. For that you need head over to the IAM section of the Google Cloud Console and select “Service Accounts” from the left-hand menu (or [click here](https://console.cloud.google.com/iam-admin/serviceaccounts))
+
+![service_account_select.png](/static/images/blogs/web/service_account_select.png)
+
+- Select Project
+- Click “Create Service Account”, give it a name in Step 1
+
+![service_account_create.png](/static/images/blogs/web/service_account_create.png)
+
+- In Step 2, Under Roles, add `Cloud Functions Admin`, `Artifact Registry Writer`, and `Firebase Authentication Viewer` roles
+
+![service_account_role.png](/static/images/blogs/web/service_account_role.png)
+
+- In Step 3, leave blank and click Done
+- In the “Service Accounts” list, select “Manage Keys”.
+- Select Manage Keys
+- Click Add Key and select JSON which will automatically download the file.
+    
+    ![manage_key.png](/static/images/blogs/web/manage_key.png)
+    
+    ![Sservice_account_create_key.png](/static/images/blogs/web/service_account_create_key.png)
+    
+
+Now, that we have the key from our service account which has all the permissions which is required to authenticate we will head over in GitHub, open up your repository and add the Key to the secrets
+
+Go to Settings > Secrets and variables > Actions and click on **New Repository Secret**
+
+![github_secret.png](/static/images/blogs/web/github_secret.png)
+
+Call your Secret `FIREBASE_SERVICE_ACCOUNT_<ENVIRONMENT_NAME>` and copy all the contents of the key file into it and Save.
+
+For the newly created service account to work correctly, we need to grant access to the newly created service account as a Service Account User role inside the **App Engine Default Service** account. It can be seen as `<PROJECT_ID>@appspot.gserviceaccount.com`
+
+Copy the newly created service account name email from list and open this
+
+![search_default_account.png](/static/images/blogs/web/search_default_account.png)
+
+Go to Permissions tab > Grant Access 
+
+In Principals past the email, Service Account User role and save.
+
+![select_default_role.png](/static/images/blogs/web/select_default_role.png)
+
+Now the last action is to ****Create GitHub Action****, In the source code repository, create the file `.github/workflows/firebase-deployment.yml` and use the following contents for the pipeline.
+
+```yaml
+name: Deploy Cloud Functions
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - main
+    paths:
+      - "functions/**"
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/functions/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      # BUILD
+      - name: Build Cloud Functions
+        run: npm ci
+        working-directory: functions
+      # SET ENV AND PROJECT IN FIREBASE
+      - name: Create DEV SA key
+        if: endsWith(github.ref, '/dev')
+        run: |
+          echo '${{ secrets.<Github secret key for DEV>}}' > $HOME/gcloud.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json
+          npx firebase-tools use <firebase dev project ID>
+      - name: Create MAIN SA key
+        if: endsWith(github.ref, '/main')
+        run: |
+          echo '${{ secrets.<GITHUB secrets key for MAIN>}}' > $HOME/gcloud.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json
+          npx firebase-tools use <firebase main project ID>
+      # DEPLOY
+      - name: Deploy Cloud Functions
+        run: export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json && npx firebase-tools deploy --only functions --json
+```
+
+This will take care of all the pushes to dev or main branch on Github.
+
+If you are able to do this correctly, you will see the workflow in the Github Actions tab.
+
+As an extra, you can also add Slack Notifications for different stages of the pipeline. To do this, you need to add a key inside secrets of Github as we did above naming SLACK_WEBHOOK . The key of this will be generated during Slack App creation. Whenever we create an Incoming Webhook for an App. 
+
+![slack_webhook.png](/static/images/blogs/web/slack_webhook.png)
+
+While adding webhook to workspace you need to also provide the channel where you want to be notified. Post creating that you will see the Webhook URL above. This will be the key for the SLACK_WEBHOOK variable inside secrets of Github. 
+
+We also need to update the pipeline in order to trigger the slack notification. We are using Slack Notify Github Action in order for this to trigger. 
+
+```yaml
+	- name: Notify Status On Slack
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ job.status }}
+          notify_when: 'success,failure'
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: <URL for the icon of the >
+          SLACK_USERNAME: 'Firebase Deployment Bot'
+```
+
+You can read more about configuring it [here](https://github.com/rtCamp/action-slack-notify)
+
+## Conclusion
+
+We built a CI/CD pipeline that can deploy the cloud function of different projects on Firebase which automated deployments for us without doing manual interventions.
