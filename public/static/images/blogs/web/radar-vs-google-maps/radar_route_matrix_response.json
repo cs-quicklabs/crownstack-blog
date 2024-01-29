@@ -1,0 +1,243 @@
+{
+    "meta": {
+        "code": 200
+    },
+    "origins": [
+        {
+            "latitude": 19.43407,
+            "longitude": -99.125082
+        },
+        {
+            "latitude": 19.42717,
+            "longitude": -99.160906
+        },
+        {
+            "latitude": 19.471337,
+            "longitude": -99.188318
+        },
+        {
+            "latitude": 19.42481,
+            "longitude": -99.194926
+        }
+    ],
+    "destinations": [
+        {
+            "latitude": 19.42717,
+            "longitude": -99.160906
+        },
+        {
+            "latitude": 19.471337,
+            "longitude": -99.188318
+        },
+        {
+            "latitude": 19.42481,
+            "longitude": -99.194926
+        },
+        {
+            "latitude": 19.433274,
+            "longitude": -99.089466
+        }
+    ],
+    "matrix": [
+        [
+            {
+                "distance": {
+                    "value": 5039,
+                    "text": "5.0 km"
+                },
+                "duration": {
+                    "value": 7.773333333333334,
+                    "text": "8 mins"
+                },
+                "originIndex": 0,
+                "destinationIndex": 0
+            },
+            {
+                "distance": {
+                    "value": 12960,
+                    "text": "13.0 km"
+                },
+                "duration": {
+                    "value": 17.398333333333333,
+                    "text": "17 mins"
+                },
+                "originIndex": 0,
+                "destinationIndex": 1
+            },
+            {
+                "distance": {
+                    "value": 14019,
+                    "text": "14.0 km"
+                },
+                "duration": {
+                    "value": 14.520000000000001,
+                    "text": "15 mins"
+                },
+                "originIndex": 0,
+                "destinationIndex": 2
+            },
+            {
+                "distance": {
+                    "value": 7953,
+                    "text": "8.0 km"
+                },
+                "duration": {
+                    "value": 9.680000000000001,
+                    "text": "10 mins"
+                },
+                "originIndex": 0,
+                "destinationIndex": 3
+            }
+        ],
+        [
+            {
+                "distance": {
+                    "value": 0,
+                    "text": "0 m"
+                },
+                "duration": {
+                    "value": 0,
+                    "text": "0 min"
+                },
+                "originIndex": 1,
+                "destinationIndex": 0
+            },
+            {
+                "distance": {
+                    "value": 9288,
+                    "text": "9.3 km"
+                },
+                "duration": {
+                    "value": 12.136666666666667,
+                    "text": "12 mins"
+                },
+                "originIndex": 1,
+                "destinationIndex": 1
+            },
+            {
+                "distance": {
+                    "value": 6320,
+                    "text": "6.3 km"
+                },
+                "duration": {
+                    "value": 11.110000000000001,
+                    "text": "11 mins"
+                },
+                "originIndex": 1,
+                "destinationIndex": 2
+            },
+            {
+                "distance": {
+                    "value": 11809,
+                    "text": "11.8 km"
+                },
+                "duration": {
+                    "value": 14.648333333333335,
+                    "text": "15 mins"
+                },
+                "originIndex": 1,
+                "destinationIndex": 3
+            }
+        ],
+        [
+            {
+                "distance": {
+                    "value": 6608,
+                    "text": "6.6 km"
+                },
+                "duration": {
+                    "value": 9.46,
+                    "text": "9 mins"
+                },
+                "originIndex": 2,
+                "destinationIndex": 0
+            },
+            {
+                "distance": {
+                    "value": 0,
+                    "text": "0 m"
+                },
+                "duration": {
+                    "value": 0,
+                    "text": "0 min"
+                },
+                "originIndex": 2,
+                "destinationIndex": 1
+            },
+            {
+                "distance": {
+                    "value": 10079,
+                    "text": "10.1 km"
+                },
+                "duration": {
+                    "value": 12.155000000000001,
+                    "text": "12 mins"
+                },
+                "originIndex": 2,
+                "destinationIndex": 2
+            },
+            {
+                "distance": {
+                    "value": 17240,
+                    "text": "17.2 km"
+                },
+                "duration": {
+                    "value": 17.765,
+                    "text": "18 mins"
+                },
+                "originIndex": 2,
+                "destinationIndex": 3
+            }
+        ],
+        [
+            {
+                "distance": {
+                    "value": 4356,
+                    "text": "4.4 km"
+                },
+                "duration": {
+                    "value": 7.865,
+                    "text": "8 mins"
+                },
+                "originIndex": 3,
+                "destinationIndex": 0
+            },
+            {
+                "distance": {
+                    "value": 7576,
+                    "text": "7.6 km"
+                },
+                "duration": {
+                    "value": 10.615000000000002,
+                    "text": "11 mins"
+                },
+                "originIndex": 3,
+                "destinationIndex": 1
+            },
+            {
+                "distance": {
+                    "value": 0,
+                    "text": "0 m"
+                },
+                "duration": {
+                    "value": 0,
+                    "text": "0 min"
+                },
+                "originIndex": 3,
+                "destinationIndex": 2
+            },
+            {
+                "distance": {
+                    "value": 17690,
+                    "text": "17.7 km"
+                },
+                "duration": {
+                    "value": 18.68166666666667,
+                    "text": "19 mins"
+                },
+                "originIndex": 3,
+                "destinationIndex": 3
+            }
+        ]
+    ]
+}
