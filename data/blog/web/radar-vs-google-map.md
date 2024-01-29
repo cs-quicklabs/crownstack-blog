@@ -33,8 +33,6 @@ As both Google Maps and Radar Maps provides lots of API such as  Geocoding, Rout
 - Similarities
 - Differences
 
-Along with that we will also compare the pricing of each service provider.
-
 These are the API we will talk about
 
 - **Google Maps**
@@ -44,7 +42,7 @@ These are the API we will talk about
     - Route Matrix API
     - Directions API
 
-## Google Maps: Distance Matrix *Vs* Radar Maps: Route Matrix
+## Google Maps: Distance Matrix Vs Radar Maps: Route Matrix
 
 Although the names are different but both of these API do the same work.
 
@@ -165,7 +163,7 @@ Google provides the response in two format, `json` and `xml`. Let’s see how th
 
 Due to large file size, I’ve attached the file which you can download to check the response.
 
-[Above file contains the Google’s Distance Matrix API’s response for above provided request payload.](/static/images/blogs/web/radar-vs-google-maps/google_distance_matrix_response.json "Google Distance Matrix Response")
+[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/google_distance_matrix_response.json "Google Distance Matrix Response")
 
 Above file contains the Google’s Distance Matrix API’s response for above provided request payload.
 
@@ -303,7 +301,7 @@ Radar provides response in `JSON` format which looks like this: Let’s see how 
 
 Due to large file size, I’ve attached the file which you can download to check the response.
 
-[Above file contains the Radar’s Route Matrix API’s response for above provided request payload.](/static/images/blogs/web/radar-vs-google-maps/radar_route_matrix_response.json "Radar Route Matrix Response")
+[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/radar_route_matrix_response.json "Radar Route Matrix Response")
 
 Above file contains the Radar’s Route Matrix API’s response for above provided request payload.
 
@@ -326,7 +324,7 @@ Now, we will talk about the similarities and differences between Radar’s & Goo
 
 ---
 
-## Google Maps: Directions API *Vs* Radar Maps: Directions API
+## Google Maps: Directions API Vs Radar Maps: Directions API
 
 The directions API is a service using which you can get directions/routes between two or more locations to visit in order. The directions API provides the following information:
 
@@ -462,7 +460,7 @@ Google provides the response in two format, `json` and `xml`. Let’s see how th
 
  I’ve added the response file due to the big size of file.
 
-[Above file contains the Google’s Direction API’s response for above provided request payload.](/static/images/blogs/web/radar-vs-google-maps/google_directions_api_response.json "Google Directions API Response")
+[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/google_directions_api_response.json "Google Directions API Response")
 
 Above file contains the Google’s Direction API’s response for above provided request payload.
 
