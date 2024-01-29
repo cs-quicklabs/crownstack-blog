@@ -1,7 +1,7 @@
 ---
 title: "Radar & Google Maps: A Side-by-Side Comparison"
 date: '2024-01-30'
-lastmod: '2024-01-30'
+lastmod: '2024-01-29'
 tags: ['maps','radar','google']
 draft: false
 summary: "In this article we are going to do comprehensive comparative analysis between two prominent mapping service providers: Radar Maps and Google Maps"
