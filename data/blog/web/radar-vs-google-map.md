@@ -313,7 +313,7 @@ Now, we will talk about the similarities and differences between Radar’s & Goo
 - Integration of both the API seems very easy and does not required any special challenge.
 - The response time of both the APIs are quite similar.
 
-**Comparison:**
+**Differences:**
 
 | Google Distance Matrix | Radar Route Matrix |
 | --- | --- |
@@ -611,7 +611,7 @@ Now, we will talk about the similarities and differences between Radar’s & Goo
 - Integration of both the API seems very easy and does not required any special challenge.
 - The response time of both the APIs are quite similar.
 
-**Comparison**
+**Diffrences**
 
 | Google Directions API | Radar Directions API |
 | --- | --- |
@@ -625,7 +625,10 @@ Now, we will talk about the similarities and differences between Radar’s & Goo
 ### **Pricing**
 
 The Radar’s official site provides a very details comparison of Google and Radar’s Pricing. Here are the articles of few links which can be used to compare pricing:
-- [https://radar.com/content/alternatives/google-maps-api-vs-radar](https://radar.com/content/alternatives/google-maps-api-vs-radar) 
+- [Radar Vs Google Price Comparison](https://radar.com/content/alternatives/google-maps-api-vs-radar) 
+- [Google Maps API Cost](https://radar.com/blog/google-maps-api-cost)
+
+These articles can be helpful in comparing the pricing plans of Google and Radar.
 
 ## **Conclusion**
 
