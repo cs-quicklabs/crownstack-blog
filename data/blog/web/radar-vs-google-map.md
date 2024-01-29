@@ -307,6 +307,7 @@ Above file contains the Radar’s Route Matrix API’s response for above provid
 
 
 **Comparison**
+
 Now, we will talk about the similarities and differences between Radar’s & Google Route & Distance  Matrix API respectively:
 
 **Similarities**:
@@ -607,6 +608,7 @@ Radar provides response in `JSON` format which looks like this: Let’s see how 
 ```
 
 **Comparison**
+
 Now, we will talk about the similarities and differences between Radar’s & Google Directions API respectively:
 
 **Similarities**:
