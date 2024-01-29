@@ -1,0 +1,1741 @@
+{
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJ9cd3NDX50YURTdLw8eZ3IWQ",
+            "types": [
+                "street_address"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJ39U8BaX_0YURZOHttjQn_Qs",
+            "types": [
+                "establishment",
+                "point_of_interest"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJK-WYjYH40YURstfHsreHbzY",
+            "types": [
+                "church",
+                "establishment",
+                "place_of_worship",
+                "point_of_interest"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJ-R6gAvwB0oURb42WS821FF4",
+            "types": [
+                "establishment",
+                "point_of_interest",
+                "tourist_attraction"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJW8MJYwj80YURc0q6XMSv-ks",
+            "types": [
+                "establishment",
+                "lodging",
+                "point_of_interest"
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": 19.4726891,
+                    "lng": -99.0832049
+                },
+                "southwest": {
+                    "lat": 19.3982123,
+                    "lng": -99.1958971
+                }
+            },
+            "copyrights": "Map data ©2024 INEGI",
+            "legs": [
+                {
+                    "distance": {
+                        "text": "5.3 km",
+                        "value": 5292
+                    },
+                    "duration": {
+                        "text": "23 mins",
+                        "value": 1363
+                    },
+                    "end_address": "Londres 61-Piso 14, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX, Mexico",
+                    "end_location": {
+                        "lat": 19.4269775,
+                        "lng": -99.1608028
+                    },
+                    "start_address": "República de Guatemala 639, Centro, Cuauhtémoc, 06020 Ciudad de México, CDMX, Mexico",
+                    "start_location": {
+                        "lat": 19.4340168,
+                        "lng": -99.12508989999999
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "79 m",
+                                "value": 79
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 28
+                            },
+                            "end_location": {
+                                "lat": 19.4339199,
+                                "lng": -99.12434479999999
+                            },
+                            "html_instructions": "Head <b>east</b> on <b>República de Guatemala</b> toward <b>Circunvalación</b>/<wbr/><b>Eje 1 Ote</b>",
+                            "polyline": {
+                                "points": "suruBxj_|QRuC"
+                            },
+                            "start_location": {
+                                "lat": 19.4340168,
+                                "lng": -99.12508989999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.9 km",
+                                "value": 930
+                            },
+                            "duration": {
+                                "text": "3 mins",
+                                "value": 166
+                            },
+                            "end_location": {
+                                "lat": 19.4256453,
+                                "lng": -99.12562620000001
+                            },
+                            "html_instructions": "Turn <b>right</b> at the 1st cross street onto <b>Circunvalación</b>/<wbr/><b>Eje 1 Ote</b><div style=\"font-size:0.9em\">Pass by Tienda Naturista (on the right in 500m)</div>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "_uruBbf_|Q|Eb@fDXnCTnALPDB@N@nCVTBX?rALR@zAL~@HP@bCP~E^N@~CZ"
+                            },
+                            "start_location": {
+                                "lat": 19.4339199,
+                                "lng": -99.12434479999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.6 km",
+                                "value": 620
+                            },
+                            "duration": {
+                                "text": "3 mins",
+                                "value": 164
+                            },
+                            "end_location": {
+                                "lat": 19.4258032,
+                                "lng": -99.1312441
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>Pasaje San Pablo</b>/<wbr/><b>Plaza de San Pablo</b>/<wbr/><b>Eje 1A Sur</b><div style=\"font-size:0.9em\">Continue to follow Eje 1A Sur</div>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "iaquBdn_|QT@OhBQ~Bg@rF]dDEr@OzBARMb@?Z@V@PBPDJBJXn@T^DHDNDLDJ"
+                            },
+                            "start_location": {
+                                "lat": 19.4256453,
+                                "lng": -99.12562620000001
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.3 km",
+                                "value": 321
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 110
+                            },
+                            "end_location": {
+                                "lat": 19.4260028,
+                                "lng": -99.13428399999999
+                            },
+                            "html_instructions": "Keep <b>left</b> to continue on <b>José María Izazaga</b>/<wbr/><b>Eje 1A Sur</b>",
+                            "maneuver": "keep-left",
+                            "polyline": {
+                                "points": "gbquBfq`|QDN@POpEGzA?HALUvF"
+                            },
+                            "start_location": {
+                                "lat": 19.4258032,
+                                "lng": -99.1312441
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 105
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 33
+                            },
+                            "end_location": {
+                                "lat": 19.4260945,
+                                "lng": -99.1352782
+                            },
+                            "html_instructions": "Keep <b>left</b> to stay on <b>José María Izazaga</b>/<wbr/><b>Eje 1A Sur</b>",
+                            "maneuver": "keep-left",
+                            "polyline": {
+                                "points": "ocquBfda|QGrAIrB"
+                            },
+                            "start_location": {
+                                "lat": 19.4260028,
+                                "lng": -99.13428399999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 107
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 39
+                            },
+                            "end_location": {
+                                "lat": 19.4251416,
+                                "lng": -99.1354193
+                            },
+                            "html_instructions": "Turn <b>left</b> after PASION (on the left)",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "adquBnja|Q~@F|BR"
+                            },
+                            "start_location": {
+                                "lat": 19.4260945,
+                                "lng": -99.1352782
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.7 km",
+                                "value": 721
+                            },
+                            "duration": {
+                                "text": "3 mins",
+                                "value": 184
+                            },
+                            "end_location": {
+                                "lat": 19.4259816,
+                                "lng": -99.1422307
+                            },
+                            "html_instructions": "Turn <b>right</b> at the 1st cross street onto <b>C. Nezahualcóyotl</b><div style=\"font-size:0.9em\">Pass by Dulceria vamyg (on the right)</div>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "c~puBjka|Qe@|KA\\IjBI`BIfBEhAAVO`D{@vGMbA"
+                            },
+                            "start_location": {
+                                "lat": 19.4251416,
+                                "lng": -99.1354193
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "69 m",
+                                "value": 69
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 34
+                            },
+                            "end_location": {
+                                "lat": 19.4265866,
+                                "lng": -99.1420787
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>Eje Central Lázaro Cárdenas</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "kcquB|ub|QyB]"
+                            },
+                            "start_location": {
+                                "lat": 19.4259816,
+                                "lng": -99.1422307
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.5 km",
+                                "value": 468
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 144
+                            },
+                            "end_location": {
+                                "lat": 19.4272488,
+                                "lng": -99.14614039999999
+                            },
+                            "html_instructions": "Turn <b>left</b> onto <b>Av Arcos de Belén</b>/<wbr/><b>Eje 1A Sur</b> (signs for <b>Zona Rosa</b>/<wbr/><b>Pl. de la Ciudadela</b>)<div style=\"font-size:0.9em\">Pass by Oxxo (on the left)</div>",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "egquB~tb|Qy@KCp@?D?D@D?F@D?F?D?@?L?L?FEt@Er@MdC?REh@APAZ?FEr@QvCGfA?FARC\\"
+                            },
+                            "start_location": {
+                                "lat": 19.4265866,
+                                "lng": -99.1420787
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.3 km",
+                                "value": 288
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 68
+                            },
+                            "end_location": {
+                                "lat": 19.4272383,
+                                "lng": -99.14885820000001
+                            },
+                            "html_instructions": "Keep <b>right</b> to stay on <b>Av Arcos de Belén</b>/<wbr/><b>Eje 1A Sur</b>",
+                            "maneuver": "keep-right",
+                            "polyline": {
+                                "points": "ikquBjnc|QAN?H?JMbE?PAJAPAXAr@A\\AN?J?H@LTjADX"
+                            },
+                            "start_location": {
+                                "lat": 19.4272488,
+                                "lng": -99.14614039999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "1.1 km",
+                                "value": 1093
+                            },
+                            "duration": {
+                                "text": "4 mins",
+                                "value": 216
+                            },
+                            "end_location": {
+                                "lat": 19.4247403,
+                                "lng": -99.1589084
+                            },
+                            "html_instructions": "Keep <b>right</b> to continue on <b>Av Chapultepec</b><div style=\"font-size:0.9em\">Pass by 7-Eleven (on the right)</div>",
+                            "maneuver": "keep-right",
+                            "polyline": {
+                                "points": "gkquBj_d|QF\\Hd@pAnHHl@Nn@Jj@dAlGNp@F^Hb@@@PT?L?ZF`@NdAJt@Lt@NjAHh@Jr@`@zCD\\DP@NJr@N`ABNb@zC@DR|AJt@"
+                            },
+                            "start_location": {
+                                "lat": 19.4272383,
+                                "lng": -99.14885820000001
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 199
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 60
+                            },
+                            "end_location": {
+                                "lat": 19.4263418,
+                                "lng": -99.15976069999999
+                            },
+                            "html_instructions": "Turn <b>right</b> after ChefWorks (on the right)",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "s{puBd~e|Q[NsB|@oDzA"
+                            },
+                            "start_location": {
+                                "lat": 19.4247403,
+                                "lng": -99.1589084
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 124
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 38
+                            },
+                            "end_location": {
+                                "lat": 19.4258571,
+                                "lng": -99.16082499999999
+                            },
+                            "html_instructions": "Turn <b>left</b> at the 2nd cross street onto <b>Liverpool</b>",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "sequBncf|QZ`ADHf@xAL\\FN"
+                            },
+                            "start_location": {
+                                "lat": 19.4263418,
+                                "lng": -99.15976069999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 110
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 42
+                            },
+                            "end_location": {
+                                "lat": 19.4267428,
+                                "lng": -99.161294
+                            },
+                            "html_instructions": "Turn <b>right</b> at the 1st cross street onto <b>Havre</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "sbquBbjf|QoD|A"
+                            },
+                            "start_location": {
+                                "lat": 19.4258571,
+                                "lng": -99.16082499999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "58 m",
+                                "value": 58
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 37
+                            },
+                            "end_location": {
+                                "lat": 19.4269775,
+                                "lng": -99.1608028
+                            },
+                            "html_instructions": "Turn <b>right</b> at the 1st cross street onto <b>Londres</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "chquB`mf|Qo@aB"
+                            },
+                            "start_location": {
+                                "lat": 19.4267428,
+                                "lng": -99.161294
+                            },
+                            "travel_mode": "DRIVING"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                },
+                {
+                    "distance": {
+                        "text": "7.7 km",
+                        "value": 7748
+                    },
+                    "duration": {
+                        "text": "22 mins",
+                        "value": 1329
+                    },
+                    "end_address": "Av. Centenario 25, Nextengo, Azcapotzalco, 02070 Ciudad de México, CDMX, Mexico",
+                    "end_location": {
+                        "lat": 19.4713483,
+                        "lng": -99.1884487
+                    },
+                    "start_address": "Londres 61-Piso 14, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX, Mexico",
+                    "start_location": {
+                        "lat": 19.4269775,
+                        "lng": -99.1608028
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 230
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 70
+                            },
+                            "end_location": {
+                                "lat": 19.4279034,
+                                "lng": -99.1588429
+                            },
+                            "html_instructions": "Head <b>northeast</b> on <b>Londres</b> toward <b>Nápoles</b>",
+                            "polyline": {
+                                "points": "siquB~if|Qs@mBoBkFSm@"
+                            },
+                            "start_location": {
+                                "lat": 19.4269775,
+                                "lng": -99.1608028
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 109
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 38
+                            },
+                            "end_location": {
+                                "lat": 19.4270223,
+                                "lng": -99.1583892
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>C. Dinamarca</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "koquBv}e|Qj@Ut@[~@a@LE"
+                            },
+                            "start_location": {
+                                "lat": 19.4279034,
+                                "lng": -99.1588429
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.9 km",
+                                "value": 868
+                            },
+                            "duration": {
+                                "text": "5 mins",
+                                "value": 287
+                            },
+                            "end_location": {
+                                "lat": 19.4235203,
+                                "lng": -99.1657862
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>Liverpool</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "{iquB|ze|QJN@@Zx@JZBDlAbDZ`ADHf@xAL\\FNXt@Tj@Nb@Vp@JZFLTp@Pf@Vp@r@jBj@|AnAjDvAzDL\\Pb@"
+                            },
+                            "start_location": {
+                                "lat": 19.4270223,
+                                "lng": -99.1583892
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.4 km",
+                                "value": 354
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 116
+                            },
+                            "end_location": {
+                                "lat": 19.4262449,
+                                "lng": -99.1673316
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>Florencia</b>/<wbr/><b>Eje 2 Pte</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "_tpuBdig|QFPmD|AqD|AKBUJeDtA"
+                            },
+                            "start_location": {
+                                "lat": 19.4235203,
+                                "lng": -99.1657862
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "47 m",
+                                "value": 47
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 19
+                            },
+                            "end_location": {
+                                "lat": 19.4266327,
+                                "lng": -99.1675159
+                            },
+                            "html_instructions": "Continue straight to stay on <b>Florencia</b>/<wbr/><b>Eje 2 Pte</b>",
+                            "maneuver": "straight",
+                            "polyline": {
+                                "points": "_equBxrg|Qk@Ta@N"
+                            },
+                            "start_location": {
+                                "lat": 19.4262449,
+                                "lng": -99.1673316
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.9 km",
+                                "value": 861
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 142
+                            },
+                            "end_location": {
+                                "lat": 19.4332157,
+                                "lng": -99.1709364
+                            },
+                            "html_instructions": "At <b>Ángel de la Independencia</b>, take the <b>2nd</b> exit onto <b>C. Río Tiber</b>/<wbr/><b>Eje 2 Pte</b><div style=\"font-size:0.9em\">Pass by Cassava Roots Reforma (on the right in 550m)</div>",
+                            "maneuver": "roundabout-right",
+                            "polyline": {
+                                "points": "mgquB~sg|QACAA?AAA?AACAAAAGIGGKEICKCK?K?KBA?C@A?A@C@A?A@A@GDGDEFEFCHCHAHAH?@?B?@?B?@?B@@?BCBGDEDGBQLEBEHKDA@[Ny@\\YLgAd@oBx@_@NaBp@a@Pa@N_@Pq@XmAf@w@^q@XiBt@KFSHA?sAj@w@\\C@g@RA@A@CB"
+                            },
+                            "start_location": {
+                                "lat": 19.4266327,
+                                "lng": -99.1675159
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.6 km",
+                                "value": 592
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 70
+                            },
+                            "end_location": {
+                                "lat": 19.4381661,
+                                "lng": -99.17279499999999
+                            },
+                            "html_instructions": "Keep <b>right</b> at the fork, follow signs for <b>Marina Nacional</b>/<wbr/><b>Bahia Ascension</b> and merge onto <b>Bahía de la Ascensión</b>",
+                            "maneuver": "fork-right",
+                            "polyline": {
+                                "points": "spruBjih|QM@C@C?g@TUHUF[H_@H?@A?]HA@A?ODu@R_@HMDIBGBKDkAd@_@Nm@VOFe@FcBn@gE`BQDIBK?w@EMAWC"
+                            },
+                            "start_location": {
+                                "lat": 19.4332157,
+                                "lng": -99.1709364
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "3.3 km",
+                                "value": 3313
+                            },
+                            "duration": {
+                                "text": "8 mins",
+                                "value": 467
+                            },
+                            "end_location": {
+                                "lat": 19.462207,
+                                "lng": -99.1901295
+                            },
+                            "html_instructions": "Turn <b>left</b> onto <b>Av. Marina Nacional</b><div style=\"font-size:0.9em\">Pass by Banamex ATM (on the right in 1.5 km)</div>",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "qosuB~th|QWEuA`Cs@nAqDlGILKNWZQTMLIJWTONIFIFQJiC|AgAt@c@\\u@l@}@p@oAbAQPSNgAz@IFa@ZKHm@d@m@`@m@d@IH{BnB{EtDEDaAt@eAz@[TKHKHu@j@{BdBSPOJUTQLoBxAoA`ASP[TiCrBeAx@OJaDhCcAv@WPSLqDrCQLMJg@`@sAfAi@b@WTQN[VURaBpAIHEBUPIJIFOLIFMHIDKFSFQFMDc@JiAVcFhAg@JE@]Hm@LSB_@HoAXSDOBC@e@Js@Ns@Nk@LGBs@PaATy@LYDUBO@k@Dw@B[@e@@m@?"
+                            },
+                            "start_location": {
+                                "lat": 19.4381661,
+                                "lng": -99.17279499999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "1.1 km",
+                                "value": 1120
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 60
+                            },
+                            "end_location": {
+                                "lat": 19.4722443,
+                                "lng": -99.18924539999999
+                            },
+                            "html_instructions": "Continue onto <b>Av. Aquiles Serdán</b>",
+                            "polyline": {
+                                "points": "yexuBhal|Qc@Ak@Ac@AaH[sDMs@EqMi@OAe@AOAiBIsDOSAUAm@Co@Ci@CUAUA]A[Aw@E_@Aa@CoCK"
+                            },
+                            "start_location": {
+                                "lat": 19.462207,
+                                "lng": -99.1901295
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "34 m",
+                                "value": 34
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 3
+                            },
+                            "end_location": {
+                                "lat": 19.4725029,
+                                "lng": -99.1891184
+                            },
+                            "html_instructions": "Take exit <b>3</b> toward <b>Aquiles Serdán</b>",
+                            "maneuver": "ramp-right",
+                            "polyline": {
+                                "points": "odzuBx{k|QAEAAAAAAAAC?UCG?CAAAA??A?A"
+                            },
+                            "start_location": {
+                                "lat": 19.4722443,
+                                "lng": -99.18924539999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "21 m",
+                                "value": 21
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 2
+                            },
+                            "end_location": {
+                                "lat": 19.4726891,
+                                "lng": -99.1891028
+                            },
+                            "html_instructions": "Merge onto <b>Av. Aquiles Serdán</b>",
+                            "maneuver": "merge",
+                            "polyline": {
+                                "points": "cfzuB~zk|QM?WC"
+                            },
+                            "start_location": {
+                                "lat": 19.4725029,
+                                "lng": -99.1891184
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "48 m",
+                                "value": 48
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 16
+                            },
+                            "end_location": {
+                                "lat": 19.4726231,
+                                "lng": -99.18864889999999
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>C. Cam. a Nextengo</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "igzuBzzk|QJgA@Q"
+                            },
+                            "start_location": {
+                                "lat": 19.4726891,
+                                "lng": -99.1891028
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 151
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 39
+                            },
+                            "end_location": {
+                                "lat": 19.4713483,
+                                "lng": -99.1884487
+                            },
+                            "html_instructions": "<b>C. Cam. a Nextengo</b> turns slightly <b>right</b> and becomes <b>Av. Centenario</b>/<wbr/><b>José F. Gutiérrez</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "polyline": {
+                                "points": "{fzuB`xk|Q?C@C@C@AFEBCLIDAHEBAJAFAF?F?Z@J@J?LAPApAF"
+                            },
+                            "start_location": {
+                                "lat": 19.4726231,
+                                "lng": -99.18864889999999
+                            },
+                            "travel_mode": "DRIVING"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                },
+                {
+                    "distance": {
+                        "text": "7.5 km",
+                        "value": 7489
+                    },
+                    "duration": {
+                        "text": "23 mins",
+                        "value": 1353
+                    },
+                    "end_address": "Av. P.º de la Reforma 50, Polanco V Secc, Miguel Hidalgo, 11580 Ciudad de México, CDMX, Mexico",
+                    "end_location": {
+                        "lat": 19.4250049,
+                        "lng": -99.1954739
+                    },
+                    "start_address": "Av. Centenario 25, Nextengo, Azcapotzalco, 02070 Ciudad de México, CDMX, Mexico",
+                    "start_location": {
+                        "lat": 19.4713483,
+                        "lng": -99.1884487
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 172
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 44
+                            },
+                            "end_location": {
+                                "lat": 19.4698091,
+                                "lng": -99.18859169999999
+                            },
+                            "html_instructions": "Head <b>south</b> on <b>Av. Centenario</b>/<wbr/><b>José F. Gutiérrez</b> toward <b>Polo Nte.</b><div style=\"font-size:0.9em\">Continue to follow José F. Gutiérrez</div>",
+                            "polyline": {
+                                "points": "}~yuBxvk|Q\\@B@fDLB@d@@~@D"
+                            },
+                            "start_location": {
+                                "lat": 19.4713483,
+                                "lng": -99.1884487
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 120
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 40
+                            },
+                            "end_location": {
+                                "lat": 19.4702225,
+                                "lng": -99.18965059999999
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>Av. Invierno</b><div style=\"font-size:0.9em\">Pass by Comex PINTURAS INVIERNO (on the right)</div>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "iuyuBtwk|QEREPCNA@CHADQl@KZIVEJCJGP"
+                            },
+                            "start_location": {
+                                "lat": 19.4698091,
+                                "lng": -99.18859169999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.5 km",
+                                "value": 520
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 67
+                            },
+                            "end_location": {
+                                "lat": 19.4655628,
+                                "lng": -99.19006469999999
+                            },
+                            "html_instructions": "Turn <b>left</b> after Parque Vía - Metro Refinería (on the left)",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "{wyuBh~k|QZ@P@J@x@Dj@BjBHfEPbBFR@X@b@Bn@BdDL?@bA@"
+                            },
+                            "start_location": {
+                                "lat": 19.4702225,
+                                "lng": -99.18965059999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "44 m",
+                                "value": 44
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 4
+                            },
+                            "end_location": {
+                                "lat": 19.4651758,
+                                "lng": -99.18999509999999
+                            },
+                            "html_instructions": "Take the ramp on the <b>left</b> to <b>Aquiles Serdán</b>/<wbr/><b>Mariano Escobedo</b>/<wbr/><b>Calz. Legaría</b>",
+                            "maneuver": "ramp-left",
+                            "polyline": {
+                                "points": "wzxuBz`l|QDADAD?f@AFAHC"
+                            },
+                            "start_location": {
+                                "lat": 19.4655628,
+                                "lng": -99.19006469999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "1.2 km",
+                                "value": 1249
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 76
+                            },
+                            "end_location": {
+                                "lat": 19.4544534,
+                                "lng": -99.18759539999999
+                            },
+                            "html_instructions": "Merge onto <b>Av. Aquiles Serdán</b>",
+                            "maneuver": "merge",
+                            "polyline": {
+                                "points": "kxxuBn`l|QxDN`BFv@B|BJb@BZ@X@`@?X?d@?L?P?`@A`@Cr@ETCB?RCPCn@I`@GTGREZIZIFA^KNETEPEDAJCn@Or@ONCDCr@Ov@Q^G\\INEFAt@OfFkAh@KtA]NEPIRKLINIfBqAFGHGFEJINKHE"
+                            },
+                            "start_location": {
+                                "lat": 19.4651758,
+                                "lng": -99.18999509999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.9 km",
+                                "value": 882
+                            },
+                            "duration": {
+                                "text": "3 mins",
+                                "value": 165
+                            },
+                            "end_location": {
+                                "lat": 19.4481793,
+                                "lng": -99.18244829999999
+                            },
+                            "html_instructions": "Continue onto <b>Av. Marina Nacional</b><div style=\"font-size:0.9em\">Pass by Punto Clinico Especialistas - Marina Nacional (on the right in 700m)</div>",
+                            "polyline": {
+                                "points": "iuvuBnqk|QHGTOHGVQl@e@ZUh@_@bBqALKZWpAcAxAgATQjA_Af@a@vAgA|AmAnAaAp@i@d@_@t@k@ROp@i@vAgAd@c@RM"
+                            },
+                            "start_location": {
+                                "lat": 19.4544534,
+                                "lng": -99.18759539999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "2.0 km",
+                                "value": 2022
+                            },
+                            "duration": {
+                                "text": "8 mins",
+                                "value": 489
+                            },
+                            "end_location": {
+                                "lat": 19.4305787,
+                                "lng": -99.18078299999999
+                            },
+                            "html_instructions": "Turn <b>right</b> after Sayer Lack (on the right)<div style=\"font-size:0.9em\">Pass by Azhar's Oriental Rugs (on the right in 1.7 km)</div>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "cnuuBhqj|QF?VBF@vAJRBJ@B?hAJxCTh@DTBhAFzAJnDXvAJ\\DZBj@BN@f@FVBP@F@F@nDVTBb@BfF`@xAJJ@X@H@ZBh@BdDI|@AxAE`@C\\ERCXGPEDARI^M~CcA@?lA_@VIRCTIRGDAxDiArBq@NGfA[B?JETEPEPELEHEfBi@f@O~@]ZKVOTKZIZKpAa@"
+                            },
+                            "start_location": {
+                                "lat": 19.4481793,
+                                "lng": -99.18244829999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 196
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 53
+                            },
+                            "end_location": {
+                                "lat": 19.429866,
+                                "lng": -99.1824838
+                            },
+                            "html_instructions": "Turn <b>right</b> after 7 Eleven Ruben Dario (on the right)",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "c`ruBzfj|QNj@Nb@JVJ\\DPHLx@lCBFFV"
+                            },
+                            "start_location": {
+                                "lat": 19.4305787,
+                                "lng": -99.18078299999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.9 km",
+                                "value": 874
+                            },
+                            "duration": {
+                                "text": "3 mins",
+                                "value": 163
+                            },
+                            "end_location": {
+                                "lat": 19.4266819,
+                                "lng": -99.1897855
+                            },
+                            "html_instructions": "At the roundabout, take the <b>2nd</b> exit and stay on <b>Rubén Darío</b>",
+                            "maneuver": "roundabout-right",
+                            "polyline": {
+                                "points": "u{quBnqj|QC@A@C?A@A@A@CBA@?@ABA@?BA@?BAB?B?B?@@B?B@B?@@B@@?@@@@@@@B@@@B@@@B?B@@?@?@?B?@?BADAPTBBr@zBHRDLFPL`@JVHVh@|An@nBTp@HPp@tB`@rAh@|A@@BJDR~@jC|@jCHRFRHTDLJVJ^Ph@Nd@"
+                            },
+                            "start_location": {
+                                "lat": 19.429866,
+                                "lng": -99.1824838
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.3 km",
+                                "value": 262
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 25
+                            },
+                            "end_location": {
+                                "lat": 19.4255372,
+                                "lng": -99.19193399999999
+                            },
+                            "html_instructions": "Slight <b>left</b> to stay on <b>Rubén Darío</b>",
+                            "maneuver": "turn-slight-left",
+                            "polyline": {
+                                "points": "wgquBd_l|QFFDBBDDHPh@`@hARh@X~@`@jARj@FLHLJLLJFB"
+                            },
+                            "start_location": {
+                                "lat": 19.4266819,
+                                "lng": -99.1897855
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.5 km",
+                                "value": 488
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 70
+                            },
+                            "end_location": {
+                                "lat": 19.4212439,
+                                "lng": -99.1927357
+                            },
+                            "html_instructions": "Continue onto <b>Calz. Chivatito</b>",
+                            "polyline": {
+                                "points": "s`quBpll|QLFFBD@L@VBbAHp@Fx@FfCRZDVDZFPDZDD?dCRdAH@?@@h@Dv@HJATD@@FH"
+                            },
+                            "start_location": {
+                                "lat": 19.4255372,
+                                "lng": -99.19193399999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "9 m",
+                                "value": 9
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 3
+                            },
+                            "end_location": {
+                                "lat": 19.4211657,
+                                "lng": -99.1927482
+                            },
+                            "html_instructions": "Turn <b>left</b> to stay on <b>Calz. Chivatito</b>",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "wepuBrql|QL@"
+                            },
+                            "start_location": {
+                                "lat": 19.4212439,
+                                "lng": -99.1927357
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 118
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 33
+                            },
+                            "end_location": {
+                                "lat": 19.4220208,
+                                "lng": -99.193377
+                            },
+                            "html_instructions": "Turn <b>right</b> at the 1st cross street toward <b>P.º Campo Marte</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "iepuBtql|QCHCBABC@MFG@]NWHSHMHEDCBQPQT"
+                            },
+                            "start_location": {
+                                "lat": 19.4211657,
+                                "lng": -99.1927482
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.5 km",
+                                "value": 520
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 118
+                            },
+                            "end_location": {
+                                "lat": 19.4250053,
+                                "lng": -99.19559769999999
+                            },
+                            "html_instructions": "At the roundabout, continue straight onto <b>P.º Campo Marte</b>",
+                            "maneuver": "roundabout-right",
+                            "polyline": {
+                                "points": "sjpuBrul|QC?A?C@C?A@A@C@A@A@ABA@ABA@?BA@?B?@?@?B?B?DEPCDABON{@|@UNETARe@pFAFCFCDCFCBA@GBIBK@I?KAyDa@k@EgBQ"
+                            },
+                            "start_location": {
+                                "lat": 19.4220208,
+                                "lng": -99.193377
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "13 m",
+                                "value": 13
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 3
+                            },
+                            "end_location": {
+                                "lat": 19.4250049,
+                                "lng": -99.1954739
+                            },
+                            "html_instructions": "Turn <b>right</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "i}puBncm|Q@Y"
+                            },
+                            "start_location": {
+                                "lat": 19.4250053,
+                                "lng": -99.19559769999999
+                            },
+                            "travel_mode": "DRIVING"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                },
+                {
+                    "distance": {
+                        "text": "17.3 km",
+                        "value": 17272
+                    },
+                    "duration": {
+                        "text": "30 mins",
+                        "value": 1820
+                    },
+                    "end_address": "Blvd. Puerto Aéreo 390, Moctezuma 2da Secc, Venustiano Carranza, 15530 Ciudad de México, CDMX, Mexico",
+                    "end_location": {
+                        "lat": 19.4334212,
+                        "lng": -99.0892973
+                    },
+                    "start_address": "Av. P.º de la Reforma 50, Polanco V Secc, Miguel Hidalgo, 11580 Ciudad de México, CDMX, Mexico",
+                    "start_location": {
+                        "lat": 19.4250049,
+                        "lng": -99.1954739
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "13 m",
+                                "value": 13
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 2
+                            },
+                            "end_location": {
+                                "lat": 19.4250053,
+                                "lng": -99.19559769999999
+                            },
+                            "html_instructions": "Head <b>west</b> toward <b>P.º Campo Marte</b>",
+                            "polyline": {
+                                "points": "g}puBtbm|QAX"
+                            },
+                            "start_location": {
+                                "lat": 19.4250049,
+                                "lng": -99.1954739
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.4 km",
+                                "value": 369
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 80
+                            },
+                            "end_location": {
+                                "lat": 19.4227884,
+                                "lng": -99.19445739999999
+                            },
+                            "html_instructions": "Turn <b>left</b> onto <b>P.º Campo Marte</b>",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "i}puBncm|QfBPj@DxD`@J@H?JAHCFC@ABCBGBEBG@Gd@qF"
+                            },
+                            "start_location": {
+                                "lat": 19.4250053,
+                                "lng": -99.19559769999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 108
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 22
+                            },
+                            "end_location": {
+                                "lat": 19.4220519,
+                                "lng": -99.19378759999999
+                            },
+                            "html_instructions": "Turn <b>right</b> to stay on <b>P.º Campo Marte</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "mopuBj|l|Q|BwBHEJG"
+                            },
+                            "start_location": {
+                                "lat": 19.4227884,
+                                "lng": -99.19445739999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 187
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 83
+                            },
+                            "end_location": {
+                                "lat": 19.4210852,
+                                "lng": -99.192759
+                            },
+                            "html_instructions": "At the roundabout, take the <b>2nd</b> exit",
+                            "maneuver": "roundabout-right",
+                            "polyline": {
+                                "points": "yjpuBdxl|QB?@?B?B?@?B?BA@?BA@A@ABC@A@A@C@A?C@C?E@A?C?CAC?AAC?CAAACAAAACCAACAA?EC^a@NOVKTKZKNGFCFCDEBCBEBE"
+                            },
+                            "start_location": {
+                                "lat": 19.4220519,
+                                "lng": -99.19378759999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "25 m",
+                                "value": 25
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 21
+                            },
+                            "end_location": {
+                                "lat": 19.4208562,
+                                "lng": -99.192763
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>Calz. Chivatito</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "ydpuBvql|QV?T?"
+                            },
+                            "start_location": {
+                                "lat": 19.4210852,
+                                "lng": -99.192759
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.5 km",
+                                "value": 465
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 50
+                            },
+                            "end_location": {
+                                "lat": 19.4169662,
+                                "lng": -99.1941209
+                            },
+                            "html_instructions": "Keep <b>left</b> to stay on <b>Calz. Chivatito</b>",
+                            "maneuver": "keep-left",
+                            "polyline": {
+                                "points": "kcpuBvql|QT?V@dBPb@Hl@RjAp@v@`@TLNHb@XZNHFPFLFFBVHNDJBJBXFL@XDbAD`AA"
+                            },
+                            "start_location": {
+                                "lat": 19.4208562,
+                                "lng": -99.192763
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.6 km",
+                                "value": 568
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 46
+                            },
+                            "end_location": {
+                                "lat": 19.4124338,
+                                "lng": -99.1916859
+                            },
+                            "html_instructions": "Continue onto <b>Molino del Rey</b>",
+                            "polyline": {
+                                "points": "akouBfzl|QJ?LAZEPCHCZM\\Mx@]nB{@LGdAe@VMXMh@Yf@Y`@U?A\\Q?A~@i@RKbAm@XONKJGDCDCJGDAFCDAp@OPE"
+                            },
+                            "start_location": {
+                                "lat": 19.4169662,
+                                "lng": -99.1941209
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.6 km",
+                                "value": 562
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 102
+                            },
+                            "end_location": {
+                                "lat": 19.4077432,
+                                "lng": -99.18970159999999
+                            },
+                            "html_instructions": "Continue onto <b>Av. Parque Lira</b><div style=\"font-size:0.9em\">Pass by papeleria (on the left in 350m)</div>",
+                            "polyline": {
+                                "points": "unnuB`kl|Qd@Kd@KNCLG`@KXIxDkAbA[LExAg@d@Qh@S^MHEBADANEHC`Bm@bA_@@?h@SJCJETI"
+                            },
+                            "start_location": {
+                                "lat": 19.4124338,
+                                "lng": -99.1916859
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.8 km",
+                                "value": 778
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 100
+                            },
+                            "end_location": {
+                                "lat": 19.4014634,
+                                "lng": -99.18645409999999
+                            },
+                            "html_instructions": "Continue straight past Flautas La Fiesta to stay on <b>Av. Parque Lira</b>",
+                            "maneuver": "straight",
+                            "polyline": {
+                                "points": "kqmuBr~k|QTIXI|@_@VKVKl@WhAc@NG`@Qh@U\\ORIbAc@TI`@M~B{@j@UXK@??A@AJEFCRI\\O@ADC`CgAbAg@JEPI~@c@p@]`@QHEl@U"
+                            },
+                            "start_location": {
+                                "lat": 19.4077432,
+                                "lng": -99.18970159999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 138
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 17
+                            },
+                            "end_location": {
+                                "lat": 19.4002276,
+                                "lng": -99.1864217
+                            },
+                            "html_instructions": "Continue onto <b>Heroes de Churubusco</b>",
+                            "polyline": {
+                                "points": "cjluBhjk|QRA@A@AJAD?NAV@~@@h@?x@?"
+                            },
+                            "start_location": {
+                                "lat": 19.4014634,
+                                "lng": -99.18645409999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 143
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 14
+                            },
+                            "end_location": {
+                                "lat": 19.3999312,
+                                "lng": -99.185244
+                            },
+                            "html_instructions": "Take the ramp on the <b>left</b> to <b>Aeropuerto</b>",
+                            "maneuver": "ramp-left",
+                            "polyline": {
+                                "points": "mbluBbjk|QFCBADADCBCBA?AHGJKFMBIBG?A@O?M?c@CKAC?E?a@?EAM?E?CCI"
+                            },
+                            "start_location": {
+                                "lat": 19.4002276,
+                                "lng": -99.1864217
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "5.2 km",
+                                "value": 5226
+                            },
+                            "duration": {
+                                "text": "9 mins",
+                                "value": 549
+                            },
+                            "end_location": {
+                                "lat": 19.4033604,
+                                "lng": -99.13679309999999
+                            },
+                            "html_instructions": "Merge onto <b>Viad. Pdte. Miguel Alemán Valdés</b>",
+                            "maneuver": "merge",
+                            "polyline": {
+                                "points": "q`luBvbk|QF{BBu@Bi@@WBo@@MBaBFaDJsDLcF?I@[@I?WHqDHuC@W@M@ODUDUDQDSFUBKBKJSJWJQz@mBvAyCFODMBKBS@G?A@M@O?MAI?KCQESGYKk@CMCKCM?SI]]cBEGCGAIEMe@_CYsAWeAS{@}@uDQs@YaBi@yD?AGc@]kCKu@Ku@?ACQAGGUOc@o@{Ba@sAq@aC}AyFm@{BSw@k@}BS{@Ke@AIACI]UcAKi@GWAGc@uBw@yDWkA[yA]_BCQ[aBc@yBKo@COCOEc@C]Ac@C{@?s@?cABU?E?kB?eB@aAAIAuDAqA?k@?q@@kAAq@@_AA}@@_B?c@?C?e@?g@?uA?cBF{GDwDDmABuBBkABc@@a@@k@FqCHgEBwAJ{DJsF@g@@I@i@DkB@s@FiCBiABiA@i@DiB@Y"
+                            },
+                            "start_location": {
+                                "lat": 19.3999312,
+                                "lng": -99.185244
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "4.3 km",
+                                "value": 4344
+                            },
+                            "duration": {
+                                "text": "5 mins",
+                                "value": 305
+                            },
+                            "end_location": {
+                                "lat": 19.4100373,
+                                "lng": -99.09726909999999
+                            },
+                            "html_instructions": "Continue onto <b>Viad. Río de la Piedad</b>",
+                            "polyline": {
+                                "points": "_vluB|sa|Q@w@B{@@[?]DsADqBBcADyB@aADkA?I@[@e@DoA@k@FmADmA?y@@[AOAc@C_ACYAOAIAMCK?ECOE[EYMq@Oy@Qy@Oy@I]I_@c@{BAEOw@EUAIIi@AEGi@UaBGg@Is@Is@OyAWiCGi@OwAGi@c@mE{@cIs@_HEk@Ei@Eq@Au@?OAyDAsD?K?W@gB?M?gAAo@Cq@Ci@Iy@ScBS{AQ{AWkB{@iHKw@_@sC_@}C_AsH?COoAWoBMcA[aCa@gDGe@u@cGKy@QuAg@aEOqAAGUoB]uCUeBGq@CUASAQ?UAUAS@U?O@SBs@?K?SASCMAMEOAGCEACEICECECCECECEEIEGCMCKAEAA?CAE?C?E@E?C?E@OBODG?O@G@G@A@_@H"
+                            },
+                            "start_location": {
+                                "lat": 19.4033604,
+                                "lng": -99.13679309999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.6 km",
+                                "value": 581
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 47
+                            },
+                            "end_location": {
+                                "lat": 19.4151982,
+                                "lng": -99.09813969999999
+                            },
+                            "html_instructions": "Continue onto <b>Cto. Interior</b>/<wbr/><b>Av. Jesús G. Y Villa</b>",
+                            "polyline": {
+                                "points": "w_nuB||y{QYFWDYDa@D_@De@Dw@Fa@DkCR{APqBNcAJ}@HyBNyAL[Fe@DG@"
+                            },
+                            "start_location": {
+                                "lat": 19.4100373,
+                                "lng": -99.09726909999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "2.2 km",
+                                "value": 2243
+                            },
+                            "duration": {
+                                "text": "3 mins",
+                                "value": 169
+                            },
+                            "end_location": {
+                                "lat": 19.4331949,
+                                "lng": -99.08884259999999
+                            },
+                            "html_instructions": "Keep <b>left</b> to continue on <b>Cto. Interior</b>",
+                            "maneuver": "keep-left",
+                            "polyline": {
+                                "points": "_`ouBjbz{Qk@Ho@Di@@k@@aASg@Qg@Wk@Qi@WUK]QECCASI_@QMGMEECa@SMGEAAACAOIMGa@Sc@SaAc@aAe@cAc@yAq@CAUMKEUKOICACAwAo@_@Qk@Ys@]UKm@Wa@Sk@U_Ag@cEkBeIuDcGmCa@Q_@QmAm@oAk@gAe@KEy@c@YMeBw@_@Q{As@kGsCeBw@QIc@SCAmAm@c@Sc@Qi@UOGk@Y"
+                            },
+                            "start_location": {
+                                "lat": 19.4151982,
+                                "lng": -99.09813969999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.3 km",
+                                "value": 286
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 27
+                            },
+                            "end_location": {
+                                "lat": 19.4338589,
+                                "lng": -99.08638879999999
+                            },
+                            "html_instructions": "Take exit <b>4-D</b> toward <b>Circuito Bicentenario</b>/<wbr/><b>Terminal 1</b>/<wbr/><b>Aeropuerto</b>/<wbr/><b>Terminal 2</b>",
+                            "maneuver": "ramp-right",
+                            "polyline": {
+                                "points": "mpruBfhx{Q@U?A?CAAACCAACUQYUSUCCAEEGWo@Oc@Ga@Ia@?SAK@Y?IDg@@S?GB]@I?C?KAY"
+                            },
+                            "start_location": {
+                                "lat": 19.4331949,
+                                "lng": -99.08884259999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.4 km",
+                                "value": 357
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 80
+                            },
+                            "end_location": {
+                                "lat": 19.4354728,
+                                "lng": -99.08344719999999
+                            },
+                            "html_instructions": "Continue onto <b>Av. Capitán Carlos León</b>/<wbr/><b>C. Sonora</b>",
+                            "polyline": {
+                                "points": "struB|xw{QEUIUGOUc@EISk@Ym@GOKOIOo@qAsAqCg@iAMYCECI"
+                            },
+                            "start_location": {
+                                "lat": 19.4338589,
+                                "lng": -99.08638879999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 185
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 36
+                            },
+                            "end_location": {
+                                "lat": 19.4353758,
+                                "lng": -99.0843086
+                            },
+                            "html_instructions": "Sharp <b>left</b> onto <b>Capitán Carlos León</b>",
+                            "maneuver": "turn-sharp-left",
+                            "polyline": {
+                                "points": "u~ruBpfw{QG@A?IES]ACCCGCCAC?CAC@A@ABA?CDADAHCFRd@b@z@Xl@NVFN"
+                            },
+                            "start_location": {
+                                "lat": 19.4354728,
+                                "lng": -99.08344719999999
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "36 m",
+                                "value": 36
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 5
+                            },
+                            "end_location": {
+                                "lat": 19.435175,
+                                "lng": -99.0845753
+                            },
+                            "html_instructions": "Slight <b>left</b> at <b>Puerto México</b>",
+                            "maneuver": "turn-slight-left",
+                            "polyline": {
+                                "points": "c~ruB|kw{QZ^LT"
+                            },
+                            "start_location": {
+                                "lat": 19.4353758,
+                                "lng": -99.0843086
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 163
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 19
+                            },
+                            "end_location": {
+                                "lat": 19.4350732,
+                                "lng": -99.0861039
+                            },
+                            "html_instructions": "Keep <b>right</b> to continue on <b>C. Puerto México</b>",
+                            "maneuver": "keep-right",
+                            "polyline": {
+                                "points": "y|ruBrmw{Q@B@BFLDJ?D?D?H?B?X@vB?\\?X?J?D?V"
+                            },
+                            "start_location": {
+                                "lat": 19.435175,
+                                "lng": -99.0845753
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.4 km",
+                                "value": 371
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 30
+                            },
+                            "end_location": {
+                                "lat": 19.43404,
+                                "lng": -99.0885847
+                            },
+                            "html_instructions": "Keep <b>right</b> at the fork, follow signs for <b>Viaducto</b>/<wbr/><b>Fray Servando</b>",
+                            "maneuver": "fork-right",
+                            "polyline": {
+                                "points": "e|ruBbww{QEVALCJENIRO^OZADILGLM\\GRAFAJ?L@J@H@JDJDFFHFHFBLHB@bAd@ZNh@Vf@Tl@ZZL"
+                            },
+                            "start_location": {
+                                "lat": 19.4350732,
+                                "lng": -99.0861039
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 98
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 9
+                            },
+                            "end_location": {
+                                "lat": 19.4333168,
+                                "lng": -99.0890806
+                            },
+                            "html_instructions": "Keep <b>right</b> at the fork, follow signs for <b>Circuito Bicentenario</b>/<wbr/><b>Puebla</b>/<wbr/><b>México 150</b>/<wbr/><b>Iztaccíhuatl</b>/<wbr/><b>Galindo y Villa</b>/<wbr/><b>Av Economia</b> and merge onto <b>Blvd. Puerto Aéreo</b>",
+                            "maneuver": "fork-right",
+                            "polyline": {
+                                "points": "wuruBrfx{Q?B?@?@@@BBB@NJHDZPFBBB@@@@?@d@TXJ"
+                            },
+                            "start_location": {
+                                "lat": 19.43404,
+                                "lng": -99.0885847
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "26 m",
+                                "value": 26
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 7
+                            },
+                            "end_location": {
+                                "lat": 19.4334212,
+                                "lng": -99.0892973
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>C. Nte. 33</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "gqruBvix{QSj@"
+                            },
+                            "start_location": {
+                                "lat": 19.4333168,
+                                "lng": -99.0890806
+                            },
+                            "travel_mode": "DRIVING"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "suruBxj_|QRuC|Eb@vHn@tBVrGh@`EZrOnAT@OhBy@rJu@hJM~@Bh@f@xAf@fAJZMbF_@jJQfE|DZ{@hSa@jJiAzIsDi@AbA@ZYhHi@zJUlHKnDzCdQhBjKJd@PT?LF|@ZzBr@~ErB|NTbBJt@[NcHxC`@jAt@vBFNoD|AcBoEcCyGnDyAt@fBjErLpCvHfGpP^`AFPmD|A}D`B{D`BmAd@CECISUm@M]D]RSb@CX?JINe@ZQN]PkGjCeEbBsKtEaEfBeD~@iCp@uEhBiCv@yEfBUBeAGo@IiCpE_FfIaAdAu@j@qErCyAjAsDvCsG`F_L`JyBdB}LnJmOtLcL~IuExDq@f@{@\\yMxCeGnA{Cr@kDl@oCLcDAea@aBeNk@gCKsEWi@KGEMAWCJgA@UBGZU^Kr@?v@AzGXh@B~@DERI`@EJi@fBIVGPZ@\\BdBHjLd@rGVnA?~@GpMf@zEFlCOxAQzD}@lDu@|FoAvJ{BbAi@pDkC|GcFh\\kWZM^DzBPpUdBhXrBd@DnEEvEQdAStE{AvM}DnDaAxE}AdBq@lBm@^nAf@tA|@tCBXIDMT@\\LPTFNCTX|@nCf@xAxBvGrEfNhCxHVl@HHlAfDvAdEj@j@h@NfE\\bDXr@LxD^rBPzANTJGL[NwAl@m@p@WHKV?JK`@kAlAUNETg@dGENMRg@HyI{@@YAXrCVzE`@VML]d@qF|BwBTML?JARS@]OWEAEC^a@f@[p@Wd@UFIZEj@?|BRpA\\bCrAdB`Ah@Vz@VlARdCBXArA[tEoB`D{A~FiDzAy@tEgAdHwBhE{AtEaB|EgB|GqCbI{CpEsBlHgDVEx@AhB@`ACRKXWNa@@]Co@Aq@Ea@PsFl@_WTiJJkAXqA^cAfDiHNu@Bm@K{@[_BCa@g@aCQg@kBuIoAiFcA{Ge@qD[_CiA}D_FkQ_BwG}AoHyE}UQaBEwEBgCAgJ?kO?uBLmSf@{Uh@cWx@_a@^oLAiCKsBs@qEqBaKgAuI{Eae@S}DCiK@uESeEyE{_@{Dk[aEu\\c@aEEqADaDMs@OYSQe@Sm@CqAPsAXaCVaIr@mJt@cD\\{ANuABiBe@sAi@cBy@iCkA}MkGag@gUea@cRiCiA?]qAqA]w@WeAIu@?e@FmADw@Go@Qe@iAgC{E}JCIG@A?c@k@SGIFK\\`BfDr@hANb@@hFGbAc@nAc@|@YdADn@Zf@xFnCd@\\dAn@d@VXJSj@"
+            },
+            "summary": "Av Chapultepec",
+            "warnings": [],
+            "waypoint_order": [
+                0,
+                1,
+                2
+            ]
+        }
+    ],
+    "status": "OK"
+}
