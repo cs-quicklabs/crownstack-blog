@@ -1,6 +1,6 @@
 ---
 title: "Radar & Google Maps: A Side-by-Side Comparison"
-date: '2024-01-30'
+date: '2024-01-29'
 lastmod: '2024-01-29'
 tags: ['maps','radar','google']
 draft: false
@@ -81,7 +81,7 @@ where `outputFormat` maybe either of the following values:
 
 In my use case I was not using any of the optional parameters but if you want to learn about these option parameters, you can refer [here](https://developers.google.com/maps/documentation/distance-matrix/distance-matrix#optional-parameters).
 
-Sample Request:
+**Sample Request:**
 
 This is how a sample request will look like:
 
@@ -305,6 +305,8 @@ Due to large file size, I’ve attached the file which you can download to check
 
 Above file contains the Radar’s Route Matrix API’s response for above provided request payload.
 
+
+**Comparison**
 Now, we will talk about the similarities and differences between Radar’s & Google Route & Distance  Matrix API respectively:
 
 **Similarities**:
@@ -604,6 +606,7 @@ Radar provides response in `JSON` format which looks like this: Let’s see how 
 }
 ```
 
+**Comparison**
 Now, we will talk about the similarities and differences between Radar’s & Google Directions API respectively:
 
 **Similarities**:
