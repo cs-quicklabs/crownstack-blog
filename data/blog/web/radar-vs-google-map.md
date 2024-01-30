@@ -1,5 +1,5 @@
 ---
-title: "Radar & Google Maps: A Side-by-Side Comparison"
+title: "Radar Vs Google Maps"
 date: '2024-01-29'
 lastmod: '2024-01-29'
 tags: ['maps','radar','google']
