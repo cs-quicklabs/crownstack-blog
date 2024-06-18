@@ -45,16 +45,20 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <dl className="">
                 <dt className="sr-only">Authors</dt>
                 <dd className="mt-4">
-                  <div className="flex flex-wrap justify-center space-x-2">
+                  <div className="flex flex-wrap justify-center space-x-1">
                     <div className="flex items-center justify-center text-sm font-medium text-gray-400">
                       Written by :
                     </div>
-                    {authorDetails.map((author) => (
+                    {authorDetails.map((author, idx) => (
                       <>
                         <div className="flex items-center justify-center" key={author.name}>
                           <dl className="whitespace-nowrap text-base font-bold leading-5 text-gray-700">
                             <dt className="sr-only">Name</dt>
-                            <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
+                            <dd className="text-gray-900 dark:text-gray-100">
+                              {author.name}
+                              {authorDetails.length - 1 > idx &&
+                                `${authorDetails.length - 2 === idx ? ' and' : ','}`}
+                            </dd>
                           </dl>
                         </div>
                       </>
