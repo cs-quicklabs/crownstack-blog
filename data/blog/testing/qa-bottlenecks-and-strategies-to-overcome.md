@@ -1,17 +1,14 @@
 ---
-title: "QA Bottlenecks & Strategies to Overcome Them: Ensuring Smooth and Efficient Software Delivery"
+title: "QA Bottlenecks & Strategies to Overcome Them"
 date: '2024-06-20'
 lastmod: '2024-06-20'
-tags: ['qa','qa-practices','qa-strategies']
+tags: ['qa','strategy']
 draft: false
 summary: "In this article we are going to discuss about how to tackle the QA bottlenecks and the strategies to overcome the same."
 layout: PostSimple
 images: []
 authors: ['neha-arora']
 ---
-
-# QA Bottlenecks & Strategies to Overcome Them: Ensuring Smooth and Efficient Software Delivery
-
 
 ### **Introduction**
 
