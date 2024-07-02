@@ -176,11 +176,11 @@ Meta tags are HTML elements that provide metadata about a webpage. They do not a
 
 #### Open Graph (OG) tags
 
-Open Graph (OG) tags are meta tags that enable control over how URLs are displayed when shared on social media platforms like Facebook, LinkedIn, and Twitter. They allow web developers to specify which images, titles, descriptions, and other elements should appear when a URL is shared, enhancing the visibility and engagement of shared content.
+Open Graph (OG) tags are meta tags that enable control over how URLs are displayed when shared on social media platforms like Facebook, LinkedIn, Twitter etc. They allow web developers to specify which images, titles, descriptions, and other elements should appear when a URL is shared, enhancing the visibility and engagement of shared content.
 
 Some of the most important and effective Open Graph tags are:
 
-#### og:title
+##### og:title
 
 - `og:title` is a meta tag attribute used to specify the title of a webpage or content piece when shared on social media platforms.
 - If not specified in page, social media websites use the content of `<title>` tag.
@@ -188,55 +188,54 @@ Some of the most important and effective Open Graph tags are:
 
 Example:
 
-```jsx
+```html
 <meta name="og:title" content=”Automating Firebase Cloud Functions deployment using CI/CD pipeline”>
 ```
 
-#### og:description
+##### og:description
 
 - `og:description` is a meta tag attribute used to provide a brief summary or description of a webpage or content piece when shared on social media platforms.
 
 Example:
 
-```jsx
+```html
 <meta name="og:description" content=”Automate the code deployments for multiple environment using Github Actions with Slack Notifications.”>
 ```
 
-#### og:image
+##### og:image
 
 - `og:image` stands as a crucial meta tag attribute designed specifically to define the image that represents a webpage or content piece when shared on social media platforms.
 - If not specified in the page, social media websites picks up the first image they found on the page.
 
 Example:
 
-```jsx
+```html
 <meta name="og:image" content=”https://blog.crownstack.com/api/ogImage?title=Automating%20Firebase%20Cloud%20Functions%20deployment%20using%20CI%2FCD%20pipeline&author=Mukul%20Kumar&cover=%2Fstatic%2Fimages%2FLogo-light.png”>
 ```
 
-#### og:url
+##### og:url
 
 - `og:url` is a meta tag attribute used to specify the canonical URL of a webpage or content piece when shared on social media platforms.
 - Canonical URLs refer to the preferred URL of a webpage among several URLs that might point to the same content. They are used primarily to address issues related to duplicate content and consolidate the ranking signals for search engines.
 
 Example:
 
-```jsx
+```html
 <meta name="og:url" content=”https://blog.crownstack.com/blog/web/automating_firebase_cloud_functions_deployment_using_ci_cd_pipeline”>
 ```
 
-#### og:type
+##### og:type
 
 - `og:type` is a meta tag attribute used to specify the type of content being shared.
 - `og:type` allows you to categorize and define the type of content associated with a shared URL.
-- 
 
 Example:
 
-```jsx
+```html
 <meta name="og:type" content=”article”>
 ```
 
-#### Possible page types:
+Possible page types:
 
 - music.song
 - music.album
@@ -254,13 +253,17 @@ Example:
 
 Further reading: [Link](https://ogp.me/)
 
+An example preview how OG tags helps in rendering preview of links on Facebook, LinkedIn, Twitter and others:
+
+![How OG tags helps in rendering preview of links](/static/images/blogs/web/the-ultimate-checklist-on-page-seo-optimization-for-web-applications/og-tags-link-preview.webp)
+
 ### Twitter cards
 
 Twitter Cards are a feature provided by Twitter that allow you to attach rich media, such as images, videos, and other content, to tweets. They enhance the appearance and functionality of tweets beyond the standard 280-character text limit, making it easier to engage and attract followers. 
 
 #### Types of Twitter Cards:
 
-**Summary Card**:
+##### **Summary Card**:
 
 - **Description**: Includes a title, description, thumbnail image, and Twitter account attribution.
 - **Best Use**: Suitable for linking to blog posts, articles, or any content where a brief summary is sufficient.
@@ -271,7 +274,7 @@ Example:
 <meta name="twitter:card" content="summary">
 ```
 
-**Summary Card with Large Image**:
+##### **Summary Card with Large Image**:
 
 - **Description**: Similar to the Summary Card but includes a larger image alongside the title and description.
 - **Best Use**: Ideal for visually appealing content where the image plays a significant role in attracting attention.
@@ -282,7 +285,7 @@ Example:
 <meta name="twitter:card" content="summary_large_image">
 ```
 
-**App Card**:
+##### **App Card**:
 
 - **Description**: Highlights a mobile app with direct links to download from the App Store or Google Play.
 - **Best Use**: Promoting mobile applications directly from Twitter with clear call-to-action buttons.
@@ -293,7 +296,7 @@ Example:
 <meta name="twitter:card" content="app">
 ```
 
-**Player Card**:
+##### **Player Card**:
 
 - **Description**: Embeds audio or video media directly within the tweet, allowing users to play it without leaving Twitter.
 - **Best Use**: Sharing multimedia content such as music, podcasts, or video clips directly on Twitter.
@@ -304,7 +307,7 @@ Example:
 <meta name="twitter:card" content="player">
 ```
 
-**Poll Card**:
+##### **Poll Card**:
 
 - **Description**: Enables creation of polls directly in tweets, allowing followers to vote and see real-time results.
 - **Best Use**: Engaging followers with interactive polls on various topics or feedback gathering.
@@ -348,7 +351,7 @@ We can create structured data for:
 
 If you want to learn more about how to implement structured data in your web application, read [this documentation link from Google](https://developers.google.com/search/docs/appearance/structured-data/search-gallery).
 
-### Final words
+## Final words
 
 On-Page SEO is not just about appeasing search engine algorithms but also about creating a seamless and engaging experience for users. By implementing the techniques discussed in this blog, you can enhance your website's visibility, attract more targeted traffic, and ultimately achieve your business goals more effectively. Stay updated with the latest SEO trends and best practices to continually optimize your website and stay ahead of the competition in the digital landscape.
 
