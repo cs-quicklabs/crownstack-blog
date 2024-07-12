@@ -7,7 +7,7 @@ draft: false
 summary: "Release Testing ensures software readiness for deployment by validating performance, quality, and user satisfaction in a production-like environment."
 layout: PostSimple
 images: []
-authors: ['neha-arora']
+authors: ['komal-shrivas']
 ---
 
 # Introduction
@@ -61,7 +61,7 @@ Before starting User Acceptance Testing (UAT), thorough planning and preparation
     - How long should this take? ~1 week [This process is still WIP]
 - Find and finalize UAT & Release testers
 
-[https://lh7-us.googleusercontent.com/docsz/AD_4nXdS-DJ_1iuPS2_Jk7mH9DthyM8I9i54S2cdEtGdixCKEMKddTvtmp1Uk_5O6oSXouT7xM1LxWboLlUUyEbJYFJsswzS9QqGhHSX1QqIHKmyRv8ld4lLbYj5CCeUTBhXgX_o1h-B8_W5PTNg3k2Ai6i_6Sg?key=tU8kx59hB4VkCk6kr6Jfkw](https://lh7-us.googleusercontent.com/docsz/AD_4nXdS-DJ_1iuPS2_Jk7mH9DthyM8I9i54S2cdEtGdixCKEMKddTvtmp1Uk_5O6oSXouT7xM1LxWboLlUUyEbJYFJsswzS9QqGhHSX1QqIHKmyRv8ld4lLbYj5CCeUTBhXgX_o1h-B8_W5PTNg3k2Ai6i_6Sg?key=tU8kx59hB4VkCk6kr6Jfkw)
+![Release Readiness Testing Metrics](/static/images/blogs/testing/release-testing-and-production-readiness-testing/release-readiness-testing-metrics.png "Release Readiness Testing Metrics")
 
 ### **Stabilization and Deployment:**
 
