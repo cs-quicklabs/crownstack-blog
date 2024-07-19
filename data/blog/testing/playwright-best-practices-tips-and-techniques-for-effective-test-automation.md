@@ -138,7 +138,7 @@ env/
 
 3. To set the path of the `.env` file in `playwright.config.js`, use the dotenv package to load environment-specific configurations. Update the configuration as follows
 
-![Env Variable 3](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-2.png 'Env Variable 3')
+![Env Variable 3](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-3.png 'Env Variable 3')
 
 ### 4. Use of Custom Commands
 
