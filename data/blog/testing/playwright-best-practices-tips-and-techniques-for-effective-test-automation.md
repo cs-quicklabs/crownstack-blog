@@ -125,10 +125,13 @@ Below are High-level steps to setup `.env` files
 
 1. Create a package named `env` Within this package, create `.env.EnvironmentName` files according to your specific requirements.
 
+```jsx
 env/
-├── `.env.Development`
-├── `.env.Staging`
-└── `.env.Production`
+	|- .env.Development
+	|- .env.Qa
+	|- .env.Staging
+
+```
 
 ![Env Variable 1](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-1.png 'Env Variable 1')
 
