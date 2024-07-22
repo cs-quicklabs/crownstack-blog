@@ -61,7 +61,7 @@ Before starting User Acceptance Testing (UAT), thorough planning and preparation
     - How long should this take? ~1 week [This process is still WIP]
 - Find and finalize UAT & Release testers
 
-![Release Readiness Testing Metrics](/static/images/blogs/testing/release-testing-and-production-readiness-testing/release-readiness-testing-metrics.png "Release Readiness Testing Metrics")
+![Release Readiness Testing Metrics](/static/images/blogs/testing/release-testing-and-production-readiness-testing/release-readiness-testing-metrics.png)
 
 ### **Stabilization and Deployment:**
 
