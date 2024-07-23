@@ -1,7 +1,7 @@
 ---
 title: 'Playwright Best Practices: Tips and Techniques for Effective Test Automation'
-date: '2024-07-18'
-lastmod: '2024-07-18'
+date: '2024-07-22'
+lastmod: '2024-07-22'
 tags: ['testing', 'playwright']
 draft: false
 summary: 'This is guide to follow best practices for automation testing using Playwright'
@@ -71,9 +71,9 @@ test('Login functionality', async ({ page }) => {
 })
 ```
 
-### 2. Use of **.json files for Data-driven testing**
+### 2. Use of **JSON files for Data-driven testing**
 
-Using `.json` files in Playwright for data-driven testing simplifies managing login details. In `users.json`, we define `validUser` and `invalidUser` with usernames and passwords. These are used in `login.test.js` for tests: `userData.validUser` for successful logins and `userData.invalidUser` for failed logins. This keeps data organized, makes tests clear, and allows for easy updates. It's flexible and works well with different data sources, ensuring efficient testing in Playwright.
+Using `JSON` files in Playwright for data-driven testing simplifies managing login details. In `users.json`, we define `validUser` and `invalidUser` with usernames and passwords. These are used in `login.test.js` for tests: `userData.validUser` for successful logins and `userData.invalidUser` for failed logins. This keeps data organized, makes tests clear, and allows for easy updates. It's flexible and works well with different data sources, ensuring efficient testing in Playwright.
 
 ```json
 // Creating .json file and storing all positive and negative Test data
@@ -158,9 +158,9 @@ Cypress.Commands.add('login', (username, password) => {
 cy.login('user123', 'pass123')
 ```
 
-### 5. Use of .yml files
+### 5. Use of YML files
 
-In Playwright, `.yml` files for GitHub Actions or other CI tools manage test workflows. They set up environments, run test scripts, and define conditions for test execution. This automation supports continuous integration by running tests on code changes and reporting results.
+In Playwright, we use `YML` files for GitHub Actions or other CI tools manage test workflows. They set up environments, run test scripts, and define conditions for test execution. This automation supports continuous integration by running tests on code changes and reporting results.
 
 ```yaml
 name: Playwright Tests
