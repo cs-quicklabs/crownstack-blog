@@ -1,5 +1,5 @@
 ---
-title: 'Serverless Deployment using AWS Amplify'
+title: 'Streamlining Web Apps: Serverless Deployment with AWS Amplify'
 date: '2024-08-01'
 lastmod: '2024-08-01'
 tags: ['cloud', 'aws', 'serverless']
@@ -24,7 +24,7 @@ AWS Amplify is a comprehensive suite of tools and services provided by Amazon We
 
 ## Steps to deploy ReactJs application on amplify
 
-# **Prerequisites**
+## **Prerequisites**
 
 - A React application hosted on a GitHub repository.
 - An AWS account with access to Amazon Amplify.
