@@ -5,7 +5,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://blog.crownstack.com',
-  siteRepo: 'https://github.com/aashishdhawan/crownstack-tailwind-blog',
+  siteRepo: 'https://github.com/aashishdhawan/crownstack-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/social-banner.png',
