@@ -1,10 +1,10 @@
 ---
-title: "Release Testing And Production Readiness Testing"
+title: 'Release Testing And Production Readiness Testing'
 date: '2024-07-12'
 lastmod: '2023-07-12'
 tags: ['qa', 'guide']
 draft: false
-summary: "Release Testing ensures software readiness for deployment by validating performance, quality, and user satisfaction in a production-like environment."
+summary: 'Release Testing ensures software readiness for deployment by validating performance, quality, and user satisfaction in a production-like environment.'
 layout: PostSimple
 images: []
 authors: ['komal-shrivas']
@@ -47,21 +47,21 @@ Before starting User Acceptance Testing (UAT), thorough planning and preparation
 
 - Conduct usability sessions with external team members to get initial reviews.
 - Identifying test scenarios and writing test cases.
-    - Test cases should include a happy path taking a user through the major and critical components of the application.
-    - Pass/fail tests will be the primary metric for a successful UAT/ Release.
-    - Need to identify team members to start preparing this and take ownership.
-    - The internal team should execute all test cases with a “pass” result before considering the application “feature complete” and ready for UAT/Release.
+  - Test cases should include a happy path taking a user through the major and critical components of the application.
+  - Pass/fail tests will be the primary metric for a successful UAT/ Release.
+  - Need to identify team members to start preparing this and take ownership.
+  - The internal team should execute all test cases with a “pass” result before considering the application “feature complete” and ready for UAT/Release.
 - The backend is writing unit tests and the Frontend is doing manual and unit tests.
 - Mapping requirements to linear tickets — Traceability Matrix → think more in the future. Projects
 - Deployment timeline — code should be ready and the date for code freeze should be set before deployment
 - Setup criteria for how long a bug should take to be fixed during the UAT/Release phase
 - Legal Review — happens when the design phase starts
-    - Who will do it — Evan Seam one
-    - What does this review include? The legal team goes over copies/statements and approves or asks for any changes
-    - How long should this take? ~1 week [This process is still WIP]
+  - Who will do it — Evan Seam one
+  - What does this review include? The legal team goes over copies/statements and approves or asks for any changes
+  - How long should this take? ~1 week [This process is still WIP]
 - Find and finalize UAT & Release testers
 
-![Release Readiness Testing Metrics](/static/images/blogs/testing/release-testing-and-production-readiness-testing/release-readiness-testing-metrics.png)
+![Release Readiness Testing Metrics](/static/images/blogs/qa/release-testing-and-production-readiness-testing/release-readiness-testing-metrics.png)
 
 ### **Stabilization and Deployment:**
 
@@ -70,11 +70,11 @@ The stabilization phase focuses on ensuring the software is stable and free of c
 - Security Audits: Conduct security audits and testing to identify and fix vulnerabilities.
 - Required team members prepare for production deployment. (happens in 3 days).
 - Compliance Checks: Ensure the software complies with relevant security standards and regulations.
-    - Strictly follow to select the date & time for the code freeze.
-    - Staging QA/Dev environment for deployment
-    - Deployment day.
-    - Syn with the team.
-    - Maintained the checklist
+  - Strictly follow to select the date & time for the code freeze.
+  - Staging QA/Dev environment for deployment
+  - Deployment day.
+  - Syn with the team.
+  - Maintained the checklist
 
 ### **Best Practices for Final Testing:**
 
@@ -91,8 +91,8 @@ The stabilization phase focuses on ensuring the software is stable and free of c
 ### **Exit Criteria for UAT & Release:**
 
 - Zero bugs mentality OR exit with only cosmetic bugs
-    - We should strive to have zero bugs remaining that were discovered while executing the prepared test cases.
-    - We might exit UAT/Release with having some bugs or known issues in areas of the application that are neither covered by the prepared test cases nor likely to be encountered during exploratory (i.e., not following a prepared test case) usage.
+  - We should strive to have zero bugs remaining that were discovered while executing the prepared test cases.
+  - We might exit UAT/Release with having some bugs or known issues in areas of the application that are neither covered by the prepared test cases nor likely to be encountered during exploratory (i.e., not following a prepared test case) usage.
 - Sign-off meeting with all required stakeholders
 - Complete report with defect log and trace matrix (mapping of requirements to test cases)
 - ~70% test coverage — unit tests

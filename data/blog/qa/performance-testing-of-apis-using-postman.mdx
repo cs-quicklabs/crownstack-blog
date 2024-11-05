@@ -1,10 +1,10 @@
 ---
-title: "Performance Testing for APIs using Postman"
+title: 'Performance Testing for APIs using Postman'
 date: '2023-06-27'
 lastmod: '2023-06-27'
 tags: ['qa', 'guide', 'postman']
 draft: false
-summary: "In this article we are going to discuss about the API, Performance testing and how to evaluate the performance of an API in Postman."
+summary: 'In this article we are going to discuss about the API, Performance testing and how to evaluate the performance of an API in Postman.'
 layout: PostSimple
 images: []
 authors: ['mannu-khariwal']
@@ -19,7 +19,7 @@ The main difference between REST and SOAP APIs lies in their architectural style
 ## **REST (Representational State Transfer)**
 
 - REST is an architectural style that uses a stateless, client-server communication model.
-- It utilizes standard HTTP methods (*GET, POST, PUT, DELETE*) to perform operations on resources.
+- It utilizes standard HTTP methods (_GET, POST, PUT, DELETE_) to perform operations on resources.
 - REST APIs are lightweight, simple, and scalable.
 - REST APIs typically use JSON (JavaScript Object Notation) as the data format for requests and responses.
 - REST APIs are designed to be stateless, meaning the server does not store any client-specific information between requests.
@@ -28,7 +28,7 @@ The main difference between REST and SOAP APIs lies in their architectural style
 
 - SOAP is a protocol that defines a set of rules for structuring messages to exchange data between applications.
 - It operates over various protocols such as HTTP, SMTP, and more.
-- SOAP APIs are based on XML (*eXtensible Markup Language*) for message formatting.
+- SOAP APIs are based on XML (_eXtensible Markup Language_) for message formatting.
 - SOAP APIs provide a more formal and standardized approach to communication.
 - SOAP APIs often involve more complexity and overhead due to additional XML parsing and processing.
 
@@ -89,7 +89,7 @@ When testing the performance of an API, there are several factors to consider. H
 
 These factors collectively help assess the performance and scalability of an API and identify potential performance bottlenecks or areas for improvement. It is essential to define performance objectives and benchmarks specific to your application and business requirements to effectively evaluate API performance
 
-![Performance testing of APIs](/static/images/blogs/testing/performance-testing-of-apis-using-postman/performance-testing-of-an-API.png)
+![Performance testing of APIs](/static/images/blogs/qa/performance-testing-of-apis-using-postman/performance-testing-of-an-API.png)
 
 ### **Why Performance Tests for an API is recommended?**
 
@@ -115,33 +115,33 @@ For APIs, the process to measure and improve performance is load or stress.
 
 **Step 1.** Select a Postman collection or select an environment:
 
-![Select a Postman collection](/static/images/blogs/testing/performance-testing-of-apis-using-postman/select-a-postman-collection.png)
+![Select a Postman collection](/static/images/blogs/qa/performance-testing-of-apis-using-postman/select-a-postman-collection.png)
 
 **Step 2.** Select an environment and click on run:
 
-![Select a Postman environment](/static/images/blogs/testing/performance-testing-of-apis-using-postman/select-a-postman-environment.png)
+![Select a Postman environment](/static/images/blogs/qa/performance-testing-of-apis-using-postman/select-a-postman-environment.png)
 
 **Step 3.** Create a request on the Postman collection:
 
-![Create a request on the Postman collection](/static/images/blogs/testing/performance-testing-of-apis-using-postman/create-a-request-in-postman-collection.png)
+![Create a request on the Postman collection](/static/images/blogs/qa/performance-testing-of-apis-using-postman/create-a-request-in-postman-collection.png)
 
 **Step 4.** Go to the collection and select the Run collection:
 
-![Go to the collection and select the Run collection](/static/images/blogs/testing/performance-testing-of-apis-using-postman/run-a-postman-collection.png)
+![Go to the collection and select the Run collection](/static/images/blogs/qa/performance-testing-of-apis-using-postman/run-a-postman-collection.png)
 
 **Step 5.** Go to the performance section on the right side:
 
-![View performance of a Postman collection run](/static/images/blogs/testing/performance-testing-of-apis-using-postman/view-performance-of-Postman-collection.png)
+![View performance of a Postman collection run](/static/images/blogs/qa/performance-testing-of-apis-using-postman/view-performance-of-Postman-collection.png)
 
 **Step 6.** Select the user and time at which you want to test the performance and click on the Run button
 
 **Step 7**. Observe the response times and throughput (requests per second) in real-time:
 
-![View request and response times of Postman run collection](/static/images/blogs/testing/performance-testing-of-apis-using-postman/request-and-response-times.png)
+![View request and response times of Postman run collection](/static/images/blogs/qa/performance-testing-of-apis-using-postman/request-and-response-times.png)
 
 **Step 8**. Once the run is completed, observe and identify bottlenecks in response times and requests per second:
 
-![identify bottlenecks](/static/images/blogs/testing/performance-testing-of-apis-using-postman/identify-bottlenecks.png)
+![identify bottlenecks](/static/images/blogs/qa/performance-testing-of-apis-using-postman/identify-bottlenecks.png)
 
 ### **How to configure the load to simulate real-world traffic and current scenarios**
 
@@ -167,7 +167,7 @@ You can also visualize the performance metrics of individual requests by selecti
 
 You can view the list of past performance test runs for a collection.
 
-Above is an approach to find the performance matrices for APIs using Postman. For better results we can perform the same tests using a dedicated performance testing tool i.e. Jmeter, LoadRunner etc. 
+Above is an approach to find the performance matrices for APIs using Postman. For better results we can perform the same tests using a dedicated performance testing tool i.e. Jmeter, LoadRunner etc.
 
 In our next article we will talk about API Performance Tests using JMeter.
 

@@ -10,7 +10,7 @@ images: []
 authors: ['shashank-jaiswal']
 ---
 
-![Playwright](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/playwright.png 'Playwright')
+![Playwright](/static/images/blogs/qa/playwright-best-practices-tips-and-techniques-for-effective-test-automation/playwright.png 'Playwright')
 
 ## Introduction
 
@@ -133,15 +133,15 @@ env/
 
 ```
 
-![Env Variable 1](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-1.png 'Env Variable 1')
+![Env Variable 1](/static/images/blogs/qa/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-1.png 'Env Variable 1')
 
 2. Store environment-specific sensitive data in dedicated `.env.EnvironmentName` files under the `env` package. This practice ensures secure and organized management of configuration settings across different environments.
 
-![Env Variable 2](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-2.png 'Env Variable 2')
+![Env Variable 2](/static/images/blogs/qa/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-2.png 'Env Variable 2')
 
 3. To set the path of the `.env` file in `playwright.config.js`, use the dotenv package to load environment-specific configurations. Update the configuration as follows
 
-![Env Variable 3](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-3.png 'Env Variable 3')
+![Env Variable 3](/static/images/blogs/qa/playwright-best-practices-tips-and-techniques-for-effective-test-automation/env-variable-3.png 'Env Variable 3')
 
 ### 4. Use of Custom Commands
 
@@ -187,7 +187,7 @@ jobs:
 
 Allure reports provide detailed, interactive, and visually appealing test execution reports in various formats, helping testers and stakeholders easily analyze and understand test results.
 
-![Report](/static/images/blogs/testing/playwright-best-practices-tips-and-techniques-for-effective-test-automation/report.png 'Report')
+![Report](/static/images/blogs/qa/playwright-best-practices-tips-and-techniques-for-effective-test-automation/report.png 'Report')
 
 ## Use of Assertion with Clarity
 

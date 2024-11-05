@@ -2,7 +2,7 @@
 title: 'Self Healing mechanism in Katalon Studio'
 date: 2023-03-03T15:32:14Z
 lastmod: '2023-03-03'
-tags: ['qa', 'guide','katalon-studio']
+tags: ['qa', 'guide', 'katalon-studio']
 draft: false
 summary: 'In this guide, we are going to talk about the self-healing mechanism, which plays a crucial role in ensuring the stability and reliability of automated tests in Katalon Studio.'
 layout: PostSimple
@@ -38,7 +38,7 @@ Self Healing in Katalon Studio currently supports 4 locator methods:
 3. Attribute
 4. Images
 
-![Katlon Studio Project Settings](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/Katlon-Studio-Project-Settings.png "Katlon Studio Project Settings")
+![Katlon Studio Project Settings](/static/images/blogs/qa/self-healing-mechanism-in-katalon-studio/Katlon-Studio-Project-Settings.png 'Katlon Studio Project Settings')
 
 By simply selecting and unchecking the checkboxes, one can choose to employ one or more element location methods. The order of different approaches can also be prioritized by moving some of them up and down.
 
@@ -52,11 +52,11 @@ For example:
 
 1. Created a test case named “Self Healing” using record mode in Katalon Studio - the expected functionality got captured by performing the respective actions.
 
-![Self-healing test case](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/self-healing-test-case.png "Self-healing test case")
+![Self-healing test case](/static/images/blogs/qa/self-healing-mechanism-in-katalon-studio/self-healing-test-case.png 'Self-healing test case')
 
 2. Now we can see all the locators recorded while performing the test recording in the **Object Repository** folder in the repository named **"Page_CURA Healthcare Service"**
 
-![Page_CURA Healthcare Service](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/page-cura-healthcare-service.png "Page_CURA Healthcare Service")
+![Page_CURA Healthcare Service](/static/images/blogs/qa/self-healing-mechanism-in-katalon-studio/page-cura-healthcare-service.png 'Page_CURA Healthcare Service')
 
 However, over time, the application changes. Maybe the button you're interacting with is moved to a different location on the page, or the field ID is changed. When you run your test case again, it fails because the object can no longer be found.
 
@@ -68,17 +68,17 @@ And if self-healing is not enabled from the settings and your test case is faili
 
 4. As the test case is failing again and again - we have checked the self-healing insight tab beside the log viewer tab and we can see that the self healing insight has some suggestions for us in order to successfully test our application.
 
-![Self-healing Insights](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/self-healing-insights.png "Self-healing Insights")
+![Self-healing Insights](/static/images/blogs/qa/self-healing-mechanism-in-katalon-studio/self-healing-insights.png 'Self-healing Insights')
 
 5. Now what we need to do is simply:
-	1. identify the **Test Object ID** in the **Object Repository** and replace the **Broken locator** with the **Proposed locator**
-	2. Save the changes in the Object Repository and Rerun the test case 
+   1. identify the **Test Object ID** in the **Object Repository** and replace the **Broken locator** with the **Proposed locator**
+   2. Save the changes in the Object Repository and Rerun the test case
 
 Or - In the Self Healing Insight, we can see 3 action buttons at the right bottom of the page - Just click on the “APPROVE” button, and it will change the broken locator with the proposed one and automatically saves the changes.
 
 Now re-run the test case and voila! The test case got passed which is failing again and again due to the broken locator.
 
-![Re-run the test case](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/re-run-the-test-case.png "Re-run the test case")
+![Re-run the test case](/static/images/blogs/qa/self-healing-mechanism-in-katalon-studio/re-run-the-test-case.png 'Re-run the test case')
 
 ## Self-healing Insights
 
@@ -93,11 +93,11 @@ Next to the Log Viewer tab, the Self-healing Insights tab displays a table with 
 5. **Screenshot**: When finding an object with its alternative locator, Katalon would capture a screenshot of the test object for you to verify whether the found object is the wanted one. Click Preview to check the healed object
 6. **Select**: Decide which locator for you to take action
 
-![Log viewer tab](/static/images/blogs/testing/self-healing-mechanism-in-katalon-studio/log-viewer-tab.png "Log viewer tab")
+![Log viewer tab](/static/images/blogs/qa/self-healing-mechanism-in-katalon-studio/log-viewer-tab.png 'Log viewer tab')
 
 During the test run, the locator replacement is temporary. In Self-Healing Insights, you can discover broken locators that have been recovered at runtime.
 
-##  Benefits of self-healing mechanism in Katalon Studio
+## Benefits of self-healing mechanism in Katalon Studio
 
 The self-healing mechanism in Katalon Studio provides a number of benefits for testers and test automation professionals. Some of the key benefits include:
 
@@ -107,12 +107,12 @@ The self-healing mechanism helps to ensure that test cases continue to run succe
 
 ### Improved maintenance
 
-The object repository and smart object recognition feature in Katalon Studio make it easy to maintain test cases, even in the face of 
+The object repository and smart object recognition feature in Katalon Studio make it easy to maintain test cases, even in the face of
 changes in the application. This reduces the time and effort required to maintain test cases, freeing up more time for other tasks.
 
 ### Better test coverage
 
-With the self-healing mechanism in place, test cases are less likely to fail due to changes in the application or testing environment. 
+With the self-healing mechanism in place, test cases are less likely to fail due to changes in the application or testing environment.
 
 This allows testers to focus on better test coverage, rather than worrying about test failures.
 

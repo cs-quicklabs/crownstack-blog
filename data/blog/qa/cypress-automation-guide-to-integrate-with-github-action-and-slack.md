@@ -1,10 +1,10 @@
 ---
-title: "Elevating Cypress Test Automation: A Guide to Seamless Integration with GitHub Actions and Slack"
+title: 'Elevating Cypress Test Automation: A Guide to Seamless Integration with GitHub Actions and Slack'
 date: '2024-01-19'
 lastmod: '2024-01-19'
-tags: ['qa','guide','cypress']
+tags: ['qa', 'guide', 'cypress']
 draft: false
-summary: "In this article we are going to discuss about how to create an automated report using Github Actions and share it on Slack in Cypress."
+summary: 'In this article we are going to discuss about how to create an automated report using Github Actions and share it on Slack in Cypress.'
 layout: PostSimple
 images: []
 authors: ['shashank-jaiswal']
@@ -67,7 +67,7 @@ jobs:
         env:
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_MESSAGE: "Project Automation Report https://github.com/User_Name/Project/actions/runs/${{github.run_id}}"
+          SLACK_MESSAGE: 'Project Automation Report https://github.com/User_Name/Project/actions/runs/${{github.run_id}}'
           SLACK_TITLE: Project Web Test
           # SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -164,45 +164,46 @@ Setting up a Slack app with webhooks is like having a chat between your GitHub c
 
 1. Go to the Slack API page through the URL: [https://api.slack.com/](https://api.slack.com/) and click on your apps as mentioned in the Image.
 
-![Slack API Homepage](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-homepage.png "Slack API Homepage")
+![Slack API Homepage](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-homepage.png 'Slack API Homepage')
 
 2. Click on Create New App
 
-![Slack New App Page](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-new-app-page.png "Slack New App Page")
+![Slack New App Page](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-new-app-page.png 'Slack New App Page')
 
 3. Click on Create New App
 
-![Slack Create App](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slak-create-app.png "Slack Create App")
+![Slack Create App](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slak-create-app.png 'Slack Create App')
 
 4. Enter Your App Name (E.g. Web Automation Testing) and Select the Workspace where you want to Redirect your HTML Report
 
-![Slack Create App Form - 1](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-create-app-form-1.png "Slack Create App Form - 1")
+![Slack Create App Form - 1](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-create-app-form-1.png 'Slack Create App Form - 1')
 
 5. Click on the Create App Button
 
-![Slack Create App Form - 2](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-create-app-form-2.png "Slack Create App Form - 2")
+![Slack Create App Form - 2](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-create-app-form-2.png 'Slack Create App Form - 2')
 
 6. Click on Incoming Webhooks to generate a Webhook for Notification
 
-![Slack Incoming Webhook](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-incoming-webhook.png "Slack Incoming Webhook")
+![Slack Incoming Webhook](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-incoming-webhook.png 'Slack Incoming Webhook')
 
 7. Activate Incoming Webhooks by clicking on the Radio Button
 
-![Slack Activate Incoming Webhook](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-activate-incoming-webhook.png "Slack Activate Incoming Webhook")
+![Slack Activate Incoming Webhook](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-activate-incoming-webhook.png 'Slack Activate Incoming Webhook')
 
 8. As soon as you Activate incoming Webhooks you will get a button as “Add new Webhook to Workspace” click on it.
 
-![Slack Add Webhook](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-webhook.png "Slack Add Webhook")
+![Slack Add Webhook](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-webhook.png 'Slack Add Webhook')
 
 9. Select the Slack Channel you want your HTML reports to be Redirected to
 
-![Slack Add Channel](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-channel.png "Slack Add Channel")
+![Slack Add Channel](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-channel.png 'Slack Add Channel')
 
 10. As soon as You Select your channel your Webhook will be generated and ready to be used, So copy that webhook
 
-![Slack Add Webhook URL](/static/images/blogs/testing/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-webhook-url.png "Slack Add Webhook URL")
+![Slack Add Webhook URL](/static/images/blogs/qa/cypress-automation-guide-to-integrate-with-github-action-and-slack/slack-add-webhook-url.png 'Slack Add Webhook URL')
 
 11. Now your webhook is ready to be used in your GitHub, so follow the steps below to get the webhook configuration done
+
 - Go to GitHub and Click on Setting
 - Scroll down to find Secrets and Variables
 - Select Actions from “Secrets and Variables “ Drop-down
