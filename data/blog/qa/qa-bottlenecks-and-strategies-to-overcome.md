@@ -2,7 +2,7 @@
 title: "QA Bottlenecks and Strategies to Overcome Them"
 date: '2024-06-20'
 lastmod: '2024-06-20'
-tags: ['qa','strategy']
+tags: ['qa','guide']
 draft: false
 summary: "In this article we are going to discuss about how to tackle the QA bottlenecks and the strategies to overcome the same."
 layout: PostSimple
