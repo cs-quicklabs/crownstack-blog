@@ -1,10 +1,10 @@
 ---
-title: "Automating Firebase Cloud Functions deployment using CI/CD pipeline"
+title: 'Automating Firebase Cloud Functions deployment using CI/CD pipeline'
 date: '2024-01-11'
 lastmod: '2024-01-11'
-tags: ['cloud functions', 'firestore', 'github']
+tags: ['cloud functions', 'firestore', 'git']
 draft: false
-summary: "Automate the code deployments for multiple environment using Github Actions with Slack Notifications."
+summary: 'Automate the code deployments for multiple environment using Github Actions with Slack Notifications.'
 layout: PostSimple
 images: []
 authors: ['mukul-kumar']
@@ -25,11 +25,11 @@ These manual intervention motivates us to write a CI/CD pipeline. Our consumptio
 ### Service & Tools
 
 - GitHub
-    - Repository for Code
-    - Github Actions for deployments
+  - Repository for Code
+  - Github Actions for deployments
 - Google Service
-    - Service Account for communications between GitHub and Google Cloud
-    - IAM for providing Roles and permission to Service Account
+  - Service Account for communications between GitHub and Google Cloud
+  - IAM for providing Roles and permission to Service Account
 - Slack App
 - [Slack Notify Github Action](https://github.com/rtCamp/action-slack-notify)
 
@@ -39,7 +39,7 @@ These manual intervention motivates us to write a CI/CD pipeline. Our consumptio
 
 Assuming you have a Cloud Function up and running, your code is pushed in GitHub Repository and knows how CI/CD pipeline works.
 
-First thing, we need to think about our workflow. 
+First thing, we need to think about our workflow.
 
 1. Take code from the respective branch on GitHub
 2. Build the Code
@@ -66,11 +66,8 @@ We will begin with creating a **Firebase Service Account** first. For that you n
 - In the “Service Accounts” list, select “Manage Keys”.
 - Select Manage Keys
 - Click Add Key and select JSON which will automatically download the file.
-    
-    ![manage_key.png](/static/images/blogs/web/manage_key.png)
-    
-    ![Sservice_account_create_key.png](/static/images/blogs/web/service_account_create_key.png)
-    
+  ![manage_key.png](/static/images/blogs/web/manage_key.png)
+  ![Sservice_account_create_key.png](/static/images/blogs/web/service_account_create_key.png)
 
 Now, that we have the key from our service account which has all the permissions which is required to authenticate we will head over in GitHub, open up your repository and add the Key to the secrets
 
@@ -86,13 +83,13 @@ Copy the newly created service account name email from list and open this
 
 ![search_default_account.png](/static/images/blogs/web/search_default_account.png)
 
-Go to Permissions tab > Grant Access 
+Go to Permissions tab > Grant Access
 
 In Principals past the email, Service Account User role and save.
 
 ![select_default_role.png](/static/images/blogs/web/select_default_role.png)
 
-Now the last action is to ****Create GitHub Action****, In the source code repository, create the file `.github/workflows/firebase-deployment.yml` and use the following contents for the pipeline.
+Now the last action is to \***\*Create GitHub Action\*\***, In the source code repository, create the file `.github/workflows/firebase-deployment.yml` and use the following contents for the pipeline.
 
 ```yaml
 name: Deploy Cloud Functions
@@ -103,7 +100,7 @@ on:
       - dev
       - main
     paths:
-      - "functions/**"
+      - 'functions/**'
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -144,13 +141,13 @@ This will take care of all the pushes to dev or main branch on Github.
 
 If you are able to do this correctly, you will see the workflow in the Github Actions tab.
 
-As an extra, you can also add Slack Notifications for different stages of the pipeline. To do this, you need to add a key inside secrets of Github as we did above naming SLACK_WEBHOOK . The key of this will be generated during Slack App creation. Whenever we create an Incoming Webhook for an App. 
+As an extra, you can also add Slack Notifications for different stages of the pipeline. To do this, you need to add a key inside secrets of Github as we did above naming SLACK_WEBHOOK . The key of this will be generated during Slack App creation. Whenever we create an Incoming Webhook for an App.
 
 ![slack_webhook.png](/static/images/blogs/web/slack_webhook.png)
 
-While adding webhook to workspace you need to also provide the channel where you want to be notified. Post creating that you will see the Webhook URL above. This will be the key for the SLACK_WEBHOOK variable inside secrets of Github. 
+While adding webhook to workspace you need to also provide the channel where you want to be notified. Post creating that you will see the Webhook URL above. This will be the key for the SLACK_WEBHOOK variable inside secrets of Github.
 
-We also need to update the pipeline in order to trigger the slack notification. We are using Slack Notify Github Action in order for this to trigger. 
+We also need to update the pipeline in order to trigger the slack notification. We are using Slack Notify Github Action in order for this to trigger.
 
 ```yaml
 	- name: Notify Status On Slack
