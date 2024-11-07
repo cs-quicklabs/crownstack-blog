@@ -1,8 +1,8 @@
 ---
-title: "Crownstack's Git workflow"
+title: "Crownstack's Git workflow & Best Practices"
 date: '2023-04-15'
 lastmod: '2023-04-15'
-tags: ['git', 'git workflow', 'guide']
+tags: ['engineering', 'process', 'git']
 draft: false
 summary: "This is Crownstack's official guideline on how to use Git workflow for projects."
 layout: PostSimple
@@ -34,10 +34,10 @@ We at Crownstack have crafted our Git workflow we use for most our projects. Thi
 
 Every application has multiple environments, most commonly:
 
-* **Development environment**: where developers first release and test their code themselves
-* **QA environment**: when developers have tested their code and they find it working correctly, they pass their code to QA team for QA testing
-* **Staging environment**: where QAs approve the code on QA environment, code is moved to staging environment. Staging environment is mostly used by client approval, or a final round of testing on this pre-production environment
-* **Production environment**: once developer, QA and client testing is done, code is finally made live for actual customers released on production environment for customers
+- **Development environment**: where developers first release and test their code themselves
+- **QA environment**: when developers have tested their code and they find it working correctly, they pass their code to QA team for QA testing
+- **Staging environment**: where QAs approve the code on QA environment, code is moved to staging environment. Staging environment is mostly used by client approval, or a final round of testing on this pre-production environment
+- **Production environment**: once developer, QA and client testing is done, code is finally made live for actual customers released on production environment for customers
 
 ### Setting up primary branches for every application environment
 
@@ -47,12 +47,12 @@ Primary git branches are branches that points to the latest code in the above ap
 
 Also, the git branches except the one for production environment (most commonly `main` or `master` git branch) should be branched out from `main` or `master` branch in reverse order of code flow for different environments. This means that:
 
-Git branch | Branched out from | Code points to environment
-:---: | :---: | :---:
-main | Created by default in Git | Production environment
-staging | main | Staging environment
-qa | staging | QA environment
-development | qa | Development environment
+| Git branch  |     Branched out from     | Code points to environment |
+| :---------: | :-----------------------: | :------------------------: |
+|    main     | Created by default in Git |   Production environment   |
+|   staging   |           main            |    Staging environment     |
+|     qa      |          staging          |       QA environment       |
+| development |            qa             |  Development environment   |
 
 ![Primary branches and application environments](/static/images/blogs/web/crownstack-git-workflow/primary-branches-and-application-environments.png)
 
@@ -60,15 +60,14 @@ development | qa | Development environment
 
 All the code developers creates, it can be classified into one of the following types. For every code type, the non-primary git branch name should be named accordingly:
 
-Git branch | Type of code
-:---: | :---
-`feature/*` | Branch created when a new feature is being developed. One feature branch should represent complete code developed for one single feature
-`epic/*` | When the functionality being implemented is quite big that it will be divided into multiple individual features, an epic branch is created. Then multiple feature branches are branched out from this epic branch
-`hotfix/*` | When a high priority production bug fix comes up that needs to be resolved quickly
-`bugfix/*` | When a bug has been reported, but it's not high priority to be fixed and deployed on urgent priority
+| Git branch  | Type of code                                                                                                                                                                                                      |
+| :---------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `feature/*` | Branch created when a new feature is being developed. One feature branch should represent complete code developed for one single feature                                                                          |
+|  `epic/*`   | When the functionality being implemented is quite big that it will be divided into multiple individual features, an epic branch is created. Then multiple feature branches are branched out from this epic branch |
+| `hotfix/*`  | When a high priority production bug fix comes up that needs to be resolved quickly                                                                                                                                |
+| `bugfix/*`  | When a bug has been reported, but it's not high priority to be fixed and deployed on urgent priority                                                                                                              |
 
 ### Where to branch out non-primary branches from?
-
 
 We recommend that all the non-primary branches should be branched out from `main` or `master` branch of the repository. The reasons for this are:
 
