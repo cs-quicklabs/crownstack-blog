@@ -1,8 +1,8 @@
 ---
-title: 'Release Testing And Production Readiness Testing'
+title: 'Release Testing And Production Readiness Testing - Best Practices'
 date: '2024-07-12'
 lastmod: '2023-07-12'
-tags: ['qa', 'guide']
+tags: ['qa', 'process']
 draft: false
 summary: 'Release Testing ensures software readiness for deployment by validating performance, quality, and user satisfaction in a production-like environment.'
 layout: PostSimple
