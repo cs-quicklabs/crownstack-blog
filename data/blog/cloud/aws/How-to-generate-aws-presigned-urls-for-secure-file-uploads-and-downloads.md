@@ -1,8 +1,8 @@
 ---
 title: 'How to Generate AWS Presigned URLs for Secure File Uploads and Downloads'
-date: '2024-11-4'
-lastmod: '2024-11-4'
-tags: ['cloud', 'aws']
+date: '2024-11-8'
+lastmod: '2024-11-8'
+tags: ['engineering', 'guide', 'aws']
 draft: false
 summary: 'This blog will provide a comprehensive guide on generating presigned URLs for temporary, secure file uploads and downloads to and from AWS S3. You’ll learn how to leverage presigned URLs to handle user uploads directly to S3, without exposing sensitive AWS credentials.'
 layout: PostSimple
