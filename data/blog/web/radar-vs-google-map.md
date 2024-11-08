@@ -1,10 +1,10 @@
 ---
-title: "Radar Vs Google Maps"
+title: 'Radar Vs Google Maps'
 date: '2024-01-29'
 lastmod: '2024-01-29'
-tags: ['maps','radar','google']
+tags: ['engineering', 'guide']
 draft: false
-summary: "In this article we are going to do comprehensive comparative analysis between two prominent mapping service providers: Radar Maps and Google Maps"
+summary: 'In this article we are going to do comprehensive comparative analysis between two prominent mapping service providers: Radar Maps and Google Maps'
 layout: PostSimple
 images: []
 authors: ['abhishek-kumar']
@@ -14,7 +14,7 @@ In an era where digital maps have seamlessly woven into the fabric of our daily 
 
 This blog embarks on a comprehensive comparative analysis between two prominent mapping service providers: Radar Maps and Google Maps. Throughout this document, we will unravel insights into cost comparisons, assess the quality of responses, and delineate scenarios where each service excels, aiding in the strategic selection of the ideal mapping solution for diverse contexts.
 
-![Radar Vs Google](/static/images/blogs/web/radar-vs-google-maps/radar-logo.jpg "Radar Vs Google")
+![Radar Vs Google](/static/images/blogs/web/radar-vs-google-maps/radar-logo.jpg 'Radar Vs Google')
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Let me shed light on why Google Maps became essential in this scenario. The plat
 
 However, as time passed, the application's user base surged from hundreds to thousands. Consequently, the usage of the Google Maps API increased, leading to a significant rise in monthly billing costs from a few dollars to several thousand dollars. This prompted a search for an alternative to Google Maps that wouldn't compromise the quality of our results. That's when we discovered Radar Maps.
 
-As both Google Maps and Radar Maps provides lots of API such as  Geocoding, Routes and many more. But in this blog we will talk about the APIs I’ve used which are Routes API from both Google and Radar both. While comparing both the API we will talk about for each API:
+As both Google Maps and Radar Maps provides lots of API such as Geocoding, Routes and many more. But in this blog we will talk about the APIs I’ve used which are Routes API from both Google and Radar both. While comparing both the API we will talk about for each API:
 
 - Request Payload
 - Response
@@ -36,11 +36,11 @@ As both Google Maps and Radar Maps provides lots of API such as  Geocoding, Rout
 These are the API we will talk about
 
 - **Google Maps**
-    - Distance Matrix API
-    - Directions API
+  - Distance Matrix API
+  - Directions API
 - **Radar Maps**
-    - Route Matrix API
-    - Directions API
+  - Route Matrix API
+  - Directions API
 
 ## Google Maps: Distance Matrix Vs Radar Maps: Route Matrix
 
@@ -163,7 +163,7 @@ Google provides the response in two format, `json` and `xml`. Let’s see how th
 
 Due to large file size, I’ve attached the file which you can download to check the response.
 
-[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/google_distance_matrix_response.json "Google Distance Matrix Response")
+[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/google_distance_matrix_response.json 'Google Distance Matrix Response')
 
 Above file contains the Google’s Distance Matrix API’s response for above provided request payload.
 
@@ -187,7 +187,7 @@ Here also, `parameters` are divided into two groups Required & Optional:
 
 **Optional Parameters:**
 
-- `units` -  The distance units. A string, `metric` or `imperial`. Defaults to `imperial` if not provided.
+- `units` - The distance units. A string, `metric` or `imperial`. Defaults to `imperial` if not provided.
 
 In my use case I was only using above optional parameters but if you want to learn about remaining optional parameters, you can refer [here](https://radar.com/documentation/api#matrix).
 
@@ -301,14 +301,13 @@ Radar provides response in `JSON` format which looks like this: Let’s see how 
 
 Due to large file size, I’ve attached the file which you can download to check the response.
 
-[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/radar_route_matrix_response.json "Radar Route Matrix Response")
+[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/radar_route_matrix_response.json 'Radar Route Matrix Response')
 
 Above file contains the Radar’s Route Matrix API’s response for above provided request payload.
 
-
 **Comparison**
 
-Now, we will talk about the similarities and differences between Radar’s & Google Route & Distance  Matrix API respectively:
+Now, we will talk about the similarities and differences between Radar’s & Google Route & Distance Matrix API respectively:
 
 **Similarities**:
 
@@ -318,11 +317,11 @@ Now, we will talk about the similarities and differences between Radar’s & Goo
 
 **Differences:**
 
-| Google Distance Matrix | Radar Route Matrix |
-| --- | --- |
-| Google offers the flexibility to use latitude-longitude coordinates, place IDs, or string addresses for both origins and destinations in the request payload. | In contrast, Radar restricts the options by only permitting the use of latitude-longitude coordinates in the request payload. |
-| Google allows users to choose the response format by specifying either JSON or XML in the request payload. | In contrast, Radar lacks this feature, and the only available response format is JSON. |
-| Google offers a plethora of optional parameters that contribute to obtaining more nuanced and precise results. For instance, including parameters such as arrival_time or departure_time allows Google to factor in real-time traffic conditions when calculating the duration. The availability of various other parameters further enhances the customisation options for users. | In contrast, Radar provides some optional parameters, but they lack the advanced features found in Google's offerings. This limitation restricts the extent to which users can refine their queries, limiting the available information to basic details such as distance and duration. |
+| Google Distance Matrix                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Radar Route Matrix                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Google offers the flexibility to use latitude-longitude coordinates, place IDs, or string addresses for both origins and destinations in the request payload.                                                                                                                                                                                                                                                                                                                                                                                                                                                      | In contrast, Radar restricts the options by only permitting the use of latitude-longitude coordinates in the request payload.                                                                                                                                                                                                                                                                                                                                                 |
+| Google allows users to choose the response format by specifying either JSON or XML in the request payload.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | In contrast, Radar lacks this feature, and the only available response format is JSON.                                                                                                                                                                                                                                                                                                                                                                                        |
+| Google offers a plethora of optional parameters that contribute to obtaining more nuanced and precise results. For instance, including parameters such as arrival_time or departure_time allows Google to factor in real-time traffic conditions when calculating the duration. The availability of various other parameters further enhances the customisation options for users.                                                                                                                                                                                                                                 | In contrast, Radar provides some optional parameters, but they lack the advanced features found in Google's offerings. This limitation restricts the extent to which users can refine their queries, limiting the available information to basic details such as distance and duration.                                                                                                                                                                                       |
 | In its response, Google provides two keys: distance and duration. Each key contains both a text and a value field. The value field consistently represents the distance in meters, regardless of the unit specified in the request. On the other hand, the text field corresponds to a string representation and adjusts based on the unit passed in the request—displaying values in kilo-meters for metric units and in miles for imperial units. This approach is beneficial for developers, as it simplifies the implementation logic, eliminating the need to alter the function based on the unit parameter. | Similarly, Radar adheres to a comparable response structure. However, the key distinction lies in the value parameter, which varies according to the unit specified in the request payload. When the unit is metric, the value is expressed in meters, whereas with an imperial unit, it is provided in feet. This design places the responsibility on the developer to handle the value parameter in the function logic, adapting to the unit passed in the request payload. |
 
 ---
@@ -365,7 +364,7 @@ where `outputFormat` maybe either of the following values:
 
 **Optional Parameters:**
 
-- `units` -  The distance units. A string, `metric` or `imperial`. Defaults to `imperial` if not provided.
+- `units` - The distance units. A string, `metric` or `imperial`. Defaults to `imperial` if not provided.
 - `waypoints` - Waypoints are the locations we want the route for while reaching from origin to destination. Multiple waypoints can be passed using `|` as a separator. You can pass Place ID, address or lat-long as the waypoints.
 
 In my use case I was only using above optional parameters but if you want to learn about remaining optional parameters, you can refer [here](https://developers.google.com/maps/documentation/directions/get-directions#optional-parameters).
@@ -461,9 +460,9 @@ Google provides the response in two format, `json` and `xml`. Let’s see how th
 }
 ```
 
- I’ve added the response file due to the big size of file.
+I’ve added the response file due to the big size of file.
 
-[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/google_directions_api_response.json "Google Directions API Response")
+[Click here to download response json.](/static/images/blogs/web/radar-vs-google-maps/google_directions_api_response.json 'Google Directions API Response')
 
 Above file contains the Google’s Direction API’s response for above provided request payload.
 
@@ -486,7 +485,7 @@ Required Parameters:
 
 Optional Parameters:
 
-- `units` -  The distance units. A string, `metric` or `imperial`. Defaults to `imperial` if not provided.
+- `units` - The distance units. A string, `metric` or `imperial`. Defaults to `imperial` if not provided.
 
 In my use case I was only using above optional parameters but if you want to learn about remaining optional parameters, you can refer [here](A list of up to 25 coordinates to visit in order. A pipe-delimited string in the format).
 
@@ -618,19 +617,20 @@ Now, we will talk about the similarities and differences between Radar’s & Goo
 
 **Diffrences**
 
-| Google Directions API | Radar Directions API |
-| --- | --- |
-| Google APIs use separate parameters for origins and destinations. waypoints are specified as a set of latitude-longitude pairs separated by the pipe symbol | to indicate the locations between the specified origin and destination. The API then processes this information to provide directions. | Radar, on the other hand, accepts a list of latitude-longitude pairs separated by the pipe character (|). This list denotes specific geographic locations, allowing Radar to process and utilise this information accordingly. |
-| Google provides the flexibility of using a variety of optional parameters to enhance the precision and customisation of results, allowing users to tailor their queries for more accurate outcomes. | In contrast, Radar offers a limited set of optional parameters for filtering results. The available options are more constrained compared to Google's extensive set of parameters, providing users with fewer customisation choices. |
+| Google Directions API                                                                                                                                                                                                                                                                                | Radar Directions API                                                                                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Google APIs use separate parameters for origins and destinations. waypoints are specified as a set of latitude-longitude pairs separated by the pipe symbol                                                                                                                                          | to indicate the locations between the specified origin and destination. The API then processes this information to provide directions.                                                                                                    | Radar, on the other hand, accepts a list of latitude-longitude pairs separated by the pipe character ( | ). This list denotes specific geographic locations, allowing Radar to process and utilise this information accordingly. |
+| Google provides the flexibility of using a variety of optional parameters to enhance the precision and customisation of results, allowing users to tailor their queries for more accurate outcomes.                                                                                                  | In contrast, Radar offers a limited set of optional parameters for filtering results. The available options are more constrained compared to Google's extensive set of parameters, providing users with fewer customisation choices.      |
 | Google has the capability to furnish results that take into account both current live traffic conditions and future traffic predictions if users specify their arrival or departure time. The service can provide estimated durations for routes under both typical and congested traffic scenarios. | In contrast, Radar lacks the capability to offer results considering live or future traffic conditions based on specified arrival or departure times. The service does not provide estimated durations accounting for traffic variations. |
-| In its results, Google offers route steps that include HTML instructions, polyline points for individual steps, duration information for each step, and other details. This makes Google's response content rich, providing comprehensive information for users. | In contrast, Radar does not furnish detailed directions or step-wise polyline information. Instead, it provides a single overview polyline representing the entire route without the granularity of individual steps. |
+| In its results, Google offers route steps that include HTML instructions, polyline points for individual steps, duration information for each step, and other details. This makes Google's response content rich, providing comprehensive information for users.                                     | In contrast, Radar does not furnish detailed directions or step-wise polyline information. Instead, it provides a single overview polyline representing the entire route without the granularity of individual steps.                     |
 
 ---
 
 ### **Pricing**
 
 The Radar’s official site provides a very details comparison of Google and Radar’s Pricing. Here are the articles of few links which can be used to compare pricing:
-- [Radar Vs Google Price Comparison](https://radar.com/content/alternatives/google-maps-api-vs-radar) 
+
+- [Radar Vs Google Price Comparison](https://radar.com/content/alternatives/google-maps-api-vs-radar)
 - [Google Maps API Cost](https://radar.com/blog/google-maps-api-cost)
 
 These articles can be helpful in comparing the pricing plans of Google and Radar.

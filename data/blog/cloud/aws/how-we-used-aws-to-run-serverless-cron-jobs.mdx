@@ -1,10 +1,10 @@
 ---
-title: "How we used AWS to run serverless cron jobs"
+title: 'How we used AWS to run serverless cron jobs'
 date: '2023-10-04'
 lastmod: '2023-10-04'
-tags: ['cloud', 'aws', 'technical solutions']
+tags: ['engineering', 'guide', 'AWS']
 draft: false
-summary: "In this blog we will share how we created serverless cron job solution for a client project."
+summary: 'In this blog we will share how we created serverless cron job solution for a client project.'
 layout: PostSimple
 images: []
 authors: ['varun-kumar']
@@ -37,9 +37,9 @@ That basically means we need a server to run the cron daemon using which we will
 
 But with ever-increasing umbrella of cloud services provided by AWS, it is possible to create, deploy and execute cron jobs on AWS combining the following services:
 
-| Service | Purpose |
-| --- | --- |
-| [AWS Lambda](https://aws.amazon.com/lambda/) | To write the code that we want to run on scheduled basis. |
+| Service                                                                                                 | Purpose                                                                                                 |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [AWS Lambda](https://aws.amazon.com/lambda/)                                                            | To write the code that we want to run on scheduled basis.                                               |
 | [Amazon EventBridge Scheduler](https://docs.aws.amazon.com/eventbridge/latest/userguide/scheduler.html) | To setup a serverless scheduler on AWS cloud, that will be used to execute the code on scheduled basis. |
 
 For this blog we will be taking real-world example of one of our client projects. Here we are running serverless cron job to take the latest geo-location of drivers’ from a real-time location tracking integration and update them in our database for further processing. A diagram to explain the setup:

@@ -1,10 +1,10 @@
 ---
-title: "From Novices to Ninjas: Crafting a full-stack serverless application using Google Cloud Functions, Firestore and Algolia"
+title: 'From Novices to Ninjas: Crafting a full-stack serverless application using Google Cloud Functions, Firestore and Algolia'
 date: '2024-01-11'
 lastmod: '2024-01-11'
-tags: ['cloud functions', 'firestore', 'algolia']
+tags: ['engineering', 'guide', 'cloud']
 draft: false
-summary: "In this blog we will share how we created serverless functions solution for a client project."
+summary: 'In this blog we will share how we created serverless functions solution for a client project.'
 layout: PostSimple
 images: []
 authors: ['mukul-kumar']
@@ -54,7 +54,7 @@ This came into the picture when we had to integrate whatsapp in our application,
 
 **Algolia**
 
-It became a game changer for us when we had to think about filtration of the data as the Firestore Database inhouse filtration has its own limitations. We used [Firestore Algolia Extension](https://extensions.dev/extensions/algolia/firestore-algolia-search) in Firestore and used integrated Algolia Search in our application. 
+It became a game changer for us when we had to think about filtration of the data as the Firestore Database inhouse filtration has its own limitations. We used [Firestore Algolia Extension](https://extensions.dev/extensions/algolia/firestore-algolia-search) in Firestore and used integrated Algolia Search in our application.
 
 ![algolia.png](/static/images/blogs/web/crafting-a-full-stack-serverless-application-using-google-cloud-functions-firestore-and-algolia/algolia.png)
 
@@ -101,7 +101,7 @@ In order to Authenticate users, we used Phone Based Authentication from Firestor
 
 This was the next step for which we used **Truora.** But before that we created a Cloud Function that would work like a HTTPS REST API. Why? I will tell you shortly.
 
-Truora being a one stop solution for all the Chat Bots we had to create in order to cater the diverse Driver Base, be it from a motorcycle to 26 feet Flatbed trucks. All they had to do is to chat with our bots and those bots using Truora’s Web Integrations triggers our API Endpoints which we have hosted in our hosted HTTPS REST API inside cloud functions. 
+Truora being a one stop solution for all the Chat Bots we had to create in order to cater the diverse Driver Base, be it from a motorcycle to 26 feet Flatbed trucks. All they had to do is to chat with our bots and those bots using Truora’s Web Integrations triggers our API Endpoints which we have hosted in our hosted HTTPS REST API inside cloud functions.
 
 We created different endpoints to cater different needs, and hosted Node and Express based Cloud Function. Those endpoints we created, would simply listen to the calls being made by those Bots with the data set that user put and update our Database.
 
@@ -147,6 +147,6 @@ We were able to successfully deploy a working application that served to Drivers
 
 **Full-Stack Solution:** From Development till Deployments its one person job and can be done in a quick manner.
 
-**Agile Updations:** With WhatsApp Integrations we had to run our own Backend but things started to come out consistent once we realized the real power of Serverless Code. It made all the difference when it came down to changes from client’s end and we had to come up with the solutions in no time. 
+**Agile Updations:** With WhatsApp Integrations we had to run our own Backend but things started to come out consistent once we realized the real power of Serverless Code. It made all the difference when it came down to changes from client’s end and we had to come up with the solutions in no time.
 
 **Deployments Automation:** Once implemented, the CI/CD pipeline we never had any difficulties in release. In order to even move the code in different environments we used the Cloud functions endpoints and happily it made all the difference.

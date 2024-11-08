@@ -1,10 +1,10 @@
 ---
-title: "Learning Roadmap: AWS EC2, Auto Scaling, Load Balancing"
+title: 'Learning Roadmap: AWS EC2, Auto Scaling, Load Balancing'
 date: '2024-01-05'
 lastmod: '2024-01-05'
-tags: ['cloud', 'aws', 'roadmaps']
+tags: ['engineering', 'guide', 'aws']
 draft: false
-summary: "In this blog we present the learning roadmap for AWS services - EC2, Auto Scaling & Load Balancing"
+summary: 'In this blog we present the learning roadmap for AWS services - EC2, Auto Scaling & Load Balancing'
 layout: PostSimple
 images: []
 authors: ['abhishek-kumar']
@@ -19,9 +19,9 @@ Embarking on the journey to master Amazon Web Services (AWS) is an exciting ende
 We will first understand the concept of cloud computing. For this, you can refer to the below articles:
 
 - **[What is AWS Cloud Computing?](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/what-is-cloud-computing.html)**
-    - This article provides a foundational understanding of cloud computing principles and AWS's role in the cloud ecosystem.
+  - This article provides a foundational understanding of cloud computing principles and AWS's role in the cloud ecosystem.
 - **[Sign up for an AWS Account](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#sign-up-for-aws)**
-    - Learn the steps to sign up for an AWS account, an essential prerequisite for exploring and utilizing AWS services.
+  - Learn the steps to sign up for an AWS account, an essential prerequisite for exploring and utilizing AWS services.
 
 ## AWS EC2 (Elastic Compute Cloud)
 
@@ -32,99 +32,59 @@ Amazon EC2, or Elastic Compute Cloud, stands as the backbone of scalable and fle
 Now we will learn some basic topics of EC2:
 
 - **[What is Amazon EC2?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)**
-    
-    Gain insights into the fundamental concepts and capabilities of Amazon EC2, understanding its role in the AWS cloud.
-    
+  Gain insights into the fundamental concepts and capabilities of Amazon EC2, understanding its role in the AWS cloud.
 - **[What is an AMI?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)**
-    
-    Explore the concept of Amazon Machine Images (AMIs) and how they serve as the foundation for EC2 instances.
-    
+  Explore the concept of Amazon Machine Images (AMIs) and how they serve as the foundation for EC2 instances.
 - **[What are Instances?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html)**
-    
-    Learn about EC2 instances, their characteristics, and the various options available.
-    
+  Learn about EC2 instances, their characteristics, and the various options available.
 - **[EC2 Storage](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html)**
-    
-    Understand the storage options associated with EC2 instances, including Elastic Block Store (EBS) and instance store volumes.
-    
+  Understand the storage options associated with EC2 instances, including Elastic Block Store (EBS) and instance store volumes.
 - **[Networking in EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-networking.html)**
-    
-    Explore the networking aspects of EC2, covering Virtual Private Cloud (VPC), subnets, and security groups.
-    
+  Explore the networking aspects of EC2, covering Virtual Private Cloud (VPC), subnets, and security groups.
 - **[EC2 Security](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html)**
-    
-    Delve into the security considerations for EC2 instances, including security groups, key pairs, and IAM roles.
-    
+  Delve into the security considerations for EC2 instances, including security groups, key pairs, and IAM roles.
 - **[Launch an EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)**
-    
-    Step through the process of launching your first EC2 instance, gaining hands-on experience with the AWS Management Console.
-    
+  Step through the process of launching your first EC2 instance, gaining hands-on experience with the AWS Management Console.
 
 ## Auto Scaling
 
 Auto Scaling is a pivotal feature within Amazon Web Services (AWS) that revolutionizes the dynamics of cloud computing. Designed to dynamically adjust computing resources to meet varying application demands, Auto Scaling ensures optimal performance and cost-efficiency by automatically scaling the number of EC2 instances in response to changes in traffic. This indispensable AWS service enables users to define scaling policies based on specific conditions, such as increased load or traffic patterns, facilitating seamless adaptation to fluctuating workloads. By distributing applications across multiple instances and automatically adjusting capacity, Auto Scaling enhances system reliability, availability, and scalability, making it an essential tool for architects and developers seeking to build resilient and efficient cloud infrastructures. This roadmap explores the fundamentals of Auto Scaling, guiding users from the basics of configuration to the intricacies of advanced policies, ultimately empowering them to orchestrate a dynamic and responsive environment in the AWS cloud.
 
 - **[What is Amazon EC2 Auto Scaling?](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)**
-    
-    Gain an understanding of Amazon EC2 Auto Scaling and its role in automatically adjusting compute capacity based on predefined conditions.
-    
+  Gain an understanding of Amazon EC2 Auto Scaling and its role in automatically adjusting compute capacity based on predefined conditions.
 - **[Launch Configurations](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html)**
-    
-    Explore launch configurations, a crucial component in defining settings for instances launched in an Auto Scaling group.
-    
+  Explore launch configurations, a crucial component in defining settings for instances launched in an Auto Scaling group.
 - **[Auto Scaling Groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-groups.html)**
-    
-    Dive into Auto Scaling groups, understanding how they allow you to group and manage EC2 instances.
-    
+  Dive into Auto Scaling groups, understanding how they allow you to group and manage EC2 instances.
 
 ## Elastic Load Balancing
 
 Elastic Load Balancing (ELB) stands at the forefront of architecting highly available and fault-tolerant applications on Amazon Web Services (AWS). As an integral part of the AWS cloud infrastructure, ELB serves as a dynamic traffic distribution mechanism, efficiently balancing incoming requests across multiple EC2 instances to ensure optimal performance and minimize downtime. ELB comes in various types, including Classic Load Balancer, Application Load Balancer, and Network Load Balancer, catering to diverse application architectures. By seamlessly distributing workloads and automatically adapting to changing traffic patterns, ELB enhances the reliability, scalability, and resilience of applications, making it an essential component for achieving high availability in cloud environments. This roadmap will guide you through the fundamental concepts of load balancing, the configuration of different types of ELBs, and the integration of ELB with other AWS services, empowering you to architect robust and responsive applications in the AWS ecosystem.
 
 - **[What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)**
-    
-    Explore the core concepts of Elastic Load Balancing and its role in distributing incoming traffic across multiple EC2 instances.
-    
+  Explore the core concepts of Elastic Load Balancing and its role in distributing incoming traffic across multiple EC2 instances.
 - **[How Load Balancing Works?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html)**
-    
-    Understand the fundamental principles of how Elastic Load Balancing operates to ensure high availability and fault tolerance.
-    
+  Understand the fundamental principles of how Elastic Load Balancing operates to ensure high availability and fault tolerance.
 - **[Application Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html)**
-    
-    Delve into the specifics of Application Load Balancers, focusing on their capabilities and use cases.
-    
+  Delve into the specifics of Application Load Balancers, focusing on their capabilities and use cases.
 - **[Network Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html)**
-    
-    Explore the characteristics and benefits of Network Load Balancers, catering to specific networking requirements.
-    
+  Explore the characteristics and benefits of Network Load Balancers, catering to specific networking requirements.
 - **[Gateway Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/)**
-    
-    Understand the role of Gateway Load Balancers in handling traffic for applications with multiple VPCs.
-    
+  Understand the role of Gateway Load Balancers in handling traffic for applications with multiple VPCs.
 - **[Classic Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/)**
-    
-    Explore the Classic Load Balancer, understanding its features and how it differs from other types of load balancers.
-    
+  Explore the Classic Load Balancer, understanding its features and how it differs from other types of load balancers.
 
 ## Tutorials
 
 Following are the tutorials to understand the above topics:
 
 - **[Launching your first EC2](https://www.youtube.com/watch?v=8bIW7qlldLg)**
-    
-    Walk through the practical steps of launching your initial EC2 instance, gaining hands-on experience.
-    
+  Walk through the practical steps of launching your initial EC2 instance, gaining hands-on experience.
 - **[Auto Scaling Deep Dive](https://www.youtube.com/watch?v=xQeGrgQJJDc)**
-    
-    Dive deep into Auto Scaling, understanding its mechanisms and how to configure scalable environments.
-    
+  Dive deep into Auto Scaling, understanding its mechanisms and how to configure scalable environments.
 - **[Which Type of Load Balancer to Use](https://www.youtube.com/watch?v=VFwLffElIgc)**
-    
-    Gain insights into the considerations for choosing the appropriate type of load balancer for your applications.
-    
+  Gain insights into the considerations for choosing the appropriate type of load balancer for your applications.
 - **[AWS Network Load Balancer with Static IP Address](https://www.youtube.com/watch?v=cxRC1JJCLJo)**
-    
-    Explore the configuration of an AWS Network Load Balancer with a focus on static IP addresses for enhanced networking control.
-    
+  Explore the configuration of an AWS Network Load Balancer with a focus on static IP addresses for enhanced networking control.
 
 ---

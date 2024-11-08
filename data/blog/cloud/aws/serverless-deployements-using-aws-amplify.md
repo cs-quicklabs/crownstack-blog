@@ -2,7 +2,7 @@
 title: 'Streamlining Web Apps: Serverless Deployment with AWS Amplify'
 date: '2024-08-01'
 lastmod: '2024-08-01'
-tags: ['cloud', 'aws', 'serverless']
+tags: ['engineering', 'guide', 'AWS']
 draft: false
 summary: 'In this blog we will share the guide to do serverless deployment using AWS Amplify.'
 layout: PostSimple
