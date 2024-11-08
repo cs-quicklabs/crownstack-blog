@@ -2,7 +2,7 @@
 title: 'Ag-grid with react'
 date: '2024-11-07'
 lastmod: '2024-11-07'
-tags: ['ag-grid', 'react', 'react-query']
+tags: ['engineering', 'guide', 'react']
 draft: false
 summary: 'Guide to integrate ag-grid with react,react-query'
 layout: PostSimple
