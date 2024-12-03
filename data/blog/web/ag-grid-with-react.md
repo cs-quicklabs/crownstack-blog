@@ -1,5 +1,5 @@
 ---
-title: 'Ag-grid with react'
+title: 'Using Ag-Grid with React'
 date: '2024-11-07'
 lastmod: '2024-11-07'
 tags: ['engineering', 'guide', 'react']
