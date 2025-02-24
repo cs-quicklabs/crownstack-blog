@@ -2,7 +2,7 @@
 title: 'Before you create that pull request'
 date: '2025-02-24'
 lastmod: '2025-02-24'
-tags: ['engineering', 'process', 'pr']
+tags: ['engineering', 'process', 'git']
 draft: false
 summary: 'This article will guide you through the essential steps you must follow before creating a Pull Request (PR) on GitHub to ensure code quality, maintainability, and a smooth review process.'
 layout: PostSimple
@@ -13,7 +13,7 @@ authors: ['dinesh-tomar']
 A pull request (PR) involves more than just pushing your code and having it merged. It focuses on maintaining code quality, ensuring a smooth user experience, and avoiding unexpected issues. Before you click the 'Create PR' button, consider these essential steps to follow:
 
 - [UI Implementation](#ui-implementation)
-- [Type Error and Messaging (Grammer)](#type-error-and-messaging)
+- [Type Error and Messaging (Grammar)](#type-error-and-messaging)
 - [Data, Empty State, Load More](#data-empty-state-and-load-more)
 - [Data Loading with Slow Network](#data-loading-with-slow-network)
 - [API Guidelines](#api-guidelines)
@@ -25,20 +25,20 @@ A pull request (PR) involves more than just pushing your code and having it merg
 
 ### UI Implementation
 
-- Ensure the UI looks and behaves as expected, matching the approved mockups in terms of layout, styling, and functionality.
-- The layout must be responsive across different screen sizes if required. Sometimes, responsiveness for mobile devices is not necessary, so avoid putting extra effort into it if not needed.
-- UI components should be consistent with the existing design system, follow best practices, and be reusable for future development.
+- Ensure the UI looks and behaves as expected, matching the approved mockups in terms of layout, styling, and functionality. Developers sometimes take UI lightly and submit the UI that is not pixel perfect. Do not be such a developer.
+- The layout must be responsive across different screen sizes if required. Sometimes, responsiveness for mobile devices is not necessary, so avoid putting extra effort into it if not needed. Please check what the original requirement is. Ask for clarification if needed but do not overdo it or underdo it.
+- UI components should be consistent with the existing design system, follow best practices, and be reusable for future development. Make sure they can not only be reused in the current project but also in other projects as well.
 - Interactive elements like buttons, forms, and modals should function correctly, including hover states, transitions, and animations where applicable.
 - Verify that color schemes, typography, and spacing align with the design system to maintain a cohesive visual experience.
 - Ensure all basic form validations are implemented, including required fields, proper input formats, and constraints. Additionally, handle error messages effectively to improve user experience.
 - Test UI behavior across multiple browsers and devices to identify inconsistencies or compatibility issues.
-- Optimize images, assets, and stylesheets to improve loading performance without compromising quality.
+- Optimize images, assets, and stylesheets to improve loading performance without compromising quality. If you are submitting PRs that have some features related to images, please double-check image sizes on various screens and ensure they are optimised properly.
 
 ### Type error and messaging
 
-- Use clear, user-friendly language in messages, ensuring they are concise and actionable when applicable.
-- Maintain consistency in error message format, following a structured pattern for clarity, and log detailed errors for debugging purposes.
-- Ensure there are no TypeScript or JavaScript type errors by thoroughly testing and validating the codebase.
+- Use clear, user-friendly language in messages, ensuring they are concise and actionable when applicable. Do not show a message that only developers can understand. Do not expose debugging messages to users.
+- Maintain consistency in error message format, following a structured pattern for clarity, and log detailed errors for debugging purposes. Do not leave console errors or alerts in the code base.
+- Ensure there are no TypeScript or JavaScript type errors by thoroughly testing and validating the codebase. Also remove build errors and warning messages by fixing the root cause.
 - Validate that error messages, alerts, and notifications are grammatically correct, properly punctuated, and easy to understand for users.
 - Maintain consistency in wording, tone, and style across all messages to ensure a cohesive user experience.
 - Ensure there are no English grammar or spelling mistakes in any UI text, tooltips, or documentation.
@@ -50,15 +50,15 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - [Design and implement empty state UI gracefully by displaying meaningful messages or illustrations instead of blank screens to enhance the user experience](https://niamh-oshea.medium.com/the-art-of-designing-empty-states-316ca7a6be94)
 - Provide helpful guidance to users, especially for first-time interactions, ensuring they understand what to do next.
 - Implement proper pagination, infinite scrolling, or lazy loading where applicable to improve performance and usability.
-- Ensure that the "Load More" button or auto-loading functionality works seamlessly without delays, glitches, or unexpected behavior.
+- Ensure that the "Load More" button or auto-loading functionality works seamlessly without delays, glitches, or unexpected behaviour.
 - Manage error states effectively by displaying appropriate messages when data fails to load, ensuring users are informed of the issue and possible next steps.
 - Optimize data fetching to avoid unnecessary API calls and reduce performance bottlenecks.
 
 ### Data loading with slow network
 
-- Consider using the DataLoader pattern and implement proper loading states, such as skeleton loaders or spinners, to enhance user experience during data retrieval.
+- Consider using the DataLoader pattern and implementing proper loading states, such as skeleton loaders or spinners, to enhance user experience during data retrieval.
 - Add retry mechanisms to handle temporary failures, cache responses when possible to reduce redundant requests, and use optimistic updates to provide a smoother experience.
-- Avoid unnecessary API calls that may lead to performance issues, excessive server load, or increased data usage.
+- Avoid unnecessary API calls that may lead to performance issues, excessive server load, or increased data usage. Make sure no duplicate APIs are being called on screens.
 - Use proper caching strategies, batch requests, or efficient pagination techniques to optimize data fetching and improve performance.
 - Implement progress indicators and informative messages for users when loading takes longer than expected.
 - Test the application under various network conditions (3G, slow Wi-Fi, offline mode) to ensure stability, responsiveness, and usability even in low-bandwidth scenarios.
@@ -66,21 +66,21 @@ A pull request (PR) involves more than just pushing your code and having it merg
 
 ### API Guidelines
 
-- Implement proper error status codes (e.g., 400 for bad requests, 401 for unauthorized access, 500 for server errors etc) and ensure APIs are versioned (v1, v2, etc.) for backward compatibility.
-- [Ensure API calls follows RESTful API best practices, maintaining a consistent and scalable structure.](https://blog.crownstack.com/blog/web/crownstack-rest-api-guidelines)
-- Use proper HTTP methods (GET for retrieving data, POST for creating resources, PUT/PATCH for updates, DELETE for removal etc.) and avoid misuse of methods.
+- Implement proper error status codes (e.g., 400 for bad requests, 401 for unauthorised access, 500 for server errors, etc.) and ensure APIs are versioned (v1, v2, etc.) for backward compatibility.
+- [Ensure API calls follow RESTful API best practices, maintaining a consistent and scalable structure.](https://blog.crownstack.com/blog/web/crownstack-rest-api-guidelines)
+- Use proper HTTP methods (GET for retrieving data, POST for creating resources, PUT/PATCH for updates, DELETE for removal, etc.) and avoid misuse of methods.
 - Handle API errors gracefully with meaningful error messages, structured responses, and appropriate fallback mechanisms to prevent application crashes.
 - Ensure proper naming conventions are followed for endpoints, request parameters, and response structures to maintain clarity and predictability.
-- Optimize API responses by minimizing payload size, using compression techniques, and sending only the required fields to improve performance.
-- Secure APIs by implementing authentication and authorization (JWT, OAuth, API keys) and validating incoming requests to prevent abuse.
-- Use rate limiting and throttling to prevent excessive API calls and improve system stability.
+- Optimise API responses by minimising payload size, using compression techniques, and sending only the required fields to improve performance.
+- Secure APIs by implementing authentication and authorisation (JWT, OAuth, API keys) and validating incoming requests to prevent abuse.
+- Use rate limiting, debouncing, and throttling to prevent excessive API calls and improve system stability.
 - Test API responses for edge cases, such as invalid input, missing parameters, and large datasets, to ensure reliability.
 
 ### Database
 
 - Ensure proper database indexing to optimize query performance, reduce lookup time, and enhance overall efficiency.
 - Implement query optimization techniques such as indexing, caching, and avoiding full table scans to maintain performance as data volume increases.
-- Use clear, descriptive, and consistent table column names to improve readability, maintainability, and future scalability of the database schema.
+- Use clear, descriptive, and consistent table column names to improve the readability, maintainability, and future scalability of the database schema.
 - [Apply data normalization to eliminate redundancy, reduce anomalies, and improve data integrity across all database tables](https://medium.com/@ajayverma23/data-normalization-unlocking-efficiency-and-integrity-in-your-database-d94bdcc74cf0)
 - Define appropriate table constraints (e.g., primary keys, foreign keys, unique constraints, NOT NULL, default values) to enforce data consistency and accuracy.
 - [Avoid N+1 queries by using eager loading where necessary to optimize database queries and reduce the number of unnecessary database calls](https://www.freecodecamp.org/news/n-plus-one-query-problem/)
@@ -89,10 +89,11 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Use transactions where necessary to maintain atomicity, consistency, isolation, and durability (ACID) in critical database operations.
 - Monitor database performance metrics and optimize slow queries using tools like EXPLAIN ANALYZE in SQL-based databases.
 - Ensure proper data retention policies are in place, including archival strategies for old or unused records to improve database efficiency.
+- Consider the effect of large data size on your SQL queries. Analyse how performance of queries will be effected as data grows in your database.
 
 ### Documentation
 
-- Update API documentation consistently to reflect any changes, ensuring that endpoints, request/response formats, and expected behaviors should always accurate.
+- Update API documentation consistently to reflect any changes, ensuring that endpoints, request/response formats, and expected behaviours are always accurate.
 - [Ensure the README file is clear, up-to-date, and provides all necessary information, including project setup instructions, dependencies, and usage guidelines](https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
 - Revise help guides and user documentation whenever changes are made to specific features, ensuring developers can easily understand the updates.
 - Keep code comments updated whenever modifications are made to functions or methods, maintaining clarity and aiding future development and debugging.
@@ -100,7 +101,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Regularly update the status of JIRA tickets or any project management tool used to track progress, ensuring accurate reporting and collaboration among team members.
 - Implement and maintain test cases to ensure reliability, catch regressions early, and validate feature functionality across different scenarios.
 - Document database schema changes with proper migration notes to help developers understand updates and prevent inconsistencies.
-- Maintain a changelog to track feature additions, bug fixes, and improvements, helping teams and manager/developers to stay informed about updates.
+- Maintain a changelog to track feature additions, bug fixes, and improvements, helping teams and managers/developers to stay informed about updates.
 - Ensure deployment and configuration guides are up-to-date, especially when there are changes to environment variables, API keys, or infrastructure setups.
 
 ### Code Refactoring
@@ -116,6 +117,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Refactor large components or classes into smaller, reusable ones to improve scalability and ease of testing.
 - Ensure proper code documentation and inline comments where necessary to explain complex logic without cluttering the code.
 - Perform regular code reviews and peer programming to identify potential refactoring opportunities and improve overall code quality.
+- Ensure linters are properly working and no regression in code quality is being introduced.
 
 ### Testing (E2E), Test case results
 
@@ -136,9 +138,9 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Make sure all tests pass successfully (unit, integration, and E2E) and that there are no console errors, warnings, or linting issues when creating the build.
 - Verify that no sensitive data (e.g., API keys, credentials, or environment variables) is exposed in the PR and that security implications have been thoroughly reviewed.
 - Provide a clear, concise title and description of the changes, including the purpose, implementation details, and any relevant references (e.g., JIRA tickets or issue numbers).
-- [Check all the steps before create PR to avoid missing any crucial validation points](https://gist.github.com/katyhuff/845e06656f18784210190e4f46a4aa95)
+- [Check all the steps before creating a PR to avoid missing any crucial validation points](https://gist.github.com/katyhuff/845e06656f18784210190e4f46a4aa95)
 - Ensure backward compatibility and the changes do not break existing functionality or dependencies.
-- Add screenshots, GIFs, or screen recordings if the PR includes UI/UX changes for better visualization and review if applicable or required by the reviwer based upon project requirement.
+- Add screenshots, GIFs, or screen recordings if the PR includes UI/UX changes for better visualization and review if applicable or required by the reviewer based upon project requirements.
 - If applicable, update the API documentation, database migration files, or any related configuration changes.
-- Request code review from relevant team members or team lead and address feedback promptly before merging.
+- Request code review from relevant team members or the team lead and address feedback promptly before merging.
 - Double-check that merge conflicts are resolved and the branch is up to date with the latest changes from the main development branch.
