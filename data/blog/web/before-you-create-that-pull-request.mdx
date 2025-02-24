@@ -47,7 +47,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 
 ### Data, empty state, and load more
 
-- [Design and implement empty state UI gracefully by displaying meaningful messages or illustrations instead of blank screens to enhance the user experience](https://niamh-oshea.medium.com/the-art-of-designing-empty-states-316ca7a6be94)
+- Design and implement [empty state UI](https://niamh-oshea.medium.com/the-art-of-designing-empty-states-316ca7a6be94) gracefully by displaying meaningful messages or illustrations instead of blank screens to enhance the user experience
 - Provide helpful guidance to users, especially for first-time interactions, ensuring they understand what to do next.
 - Implement proper pagination, infinite scrolling, or lazy loading where applicable to improve performance and usability.
 - Ensure that the "Load More" button or auto-loading functionality works seamlessly without delays, glitches, or unexpected behaviour.
@@ -67,7 +67,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 ### API Guidelines
 
 - Implement proper error status codes (e.g., 400 for bad requests, 401 for unauthorised access, 500 for server errors, etc.) and ensure APIs are versioned (v1, v2, etc.) for backward compatibility.
-- [Ensure API calls follow RESTful API best practices, maintaining a consistent and scalable structure.](https://blog.crownstack.com/blog/web/crownstack-rest-api-guidelines)
+- Ensure API calls follow [RESTful API best practices](https://blog.crownstack.com/blog/web/crownstack-rest-api-guidelines), maintaining a consistent and scalable structure.
 - Use proper HTTP methods (GET for retrieving data, POST for creating resources, PUT/PATCH for updates, DELETE for removal, etc.) and avoid misuse of methods.
 - Handle API errors gracefully with meaningful error messages, structured responses, and appropriate fallback mechanisms to prevent application crashes.
 - Ensure proper naming conventions are followed for endpoints, request parameters, and response structures to maintain clarity and predictability.
@@ -81,9 +81,9 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Ensure proper database indexing to optimize query performance, reduce lookup time, and enhance overall efficiency.
 - Implement query optimization techniques such as indexing, caching, and avoiding full table scans to maintain performance as data volume increases.
 - Use clear, descriptive, and consistent table column names to improve the readability, maintainability, and future scalability of the database schema.
-- [Apply data normalization to eliminate redundancy, reduce anomalies, and improve data integrity across all database tables](https://medium.com/@ajayverma23/data-normalization-unlocking-efficiency-and-integrity-in-your-database-d94bdcc74cf0)
+- Apply [data normalization](https://medium.com/@ajayverma23/data-normalization-unlocking-efficiency-and-integrity-in-your-database-d94bdcc74cf0) to eliminate redundancy, reduce anomalies, and improve data integrity across all database tables
 - Define appropriate table constraints (e.g., primary keys, foreign keys, unique constraints, NOT NULL, default values) to enforce data consistency and accuracy.
-- [Avoid N+1 queries by using eager loading where necessary to optimize database queries and reduce the number of unnecessary database calls](https://www.freecodecamp.org/news/n-plus-one-query-problem/)
+- Avoid [N+1 queries](https://www.freecodecamp.org/news/n-plus-one-query-problem/) by using eager loading where necessary to optimize database queries and reduce the number of unnecessary database calls
 - Identify and remove duplicate database queries, redundant joins, and unnecessary fetch operations to enhance database performance.
 - If applicable, implement proper data migration strategies to handle schema changes effectively while preventing data loss or inconsistencies.
 - Use transactions where necessary to maintain atomicity, consistency, isolation, and durability (ACID) in critical database operations.
@@ -94,7 +94,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 ### Documentation
 
 - Update API documentation consistently to reflect any changes, ensuring that endpoints, request/response formats, and expected behaviours are always accurate.
-- [Ensure the README file is clear, up-to-date, and provides all necessary information, including project setup instructions, dependencies, and usage guidelines](https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
+- Ensure the [README file](https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/) is clear, up-to-date, and provides all necessary information, including project setup instructions, dependencies, and usage guidelines
 - Revise help guides and user documentation whenever changes are made to specific features, ensuring developers can easily understand the updates.
 - Keep code comments updated whenever modifications are made to functions or methods, maintaining clarity and aiding future development and debugging.
 - Ensure Swagger documentation accurately reflects the latest API changes, including new endpoints, updated parameters, and response structures.
@@ -110,7 +110,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Consolidate duplicate logic by creating reusable utility functions and break down complex functions into smaller, more manageable units for better readability and maintainability.
 - Apply consistent naming conventions for variables, functions, and components to improve clarity and maintain a uniform coding style.
 - Ensure the code is clean, modular, and well-structured, following the Single Responsibility Principle (SRP) and DRY (Don't Repeat Yourself) principles.
-- [Follow best practices for readability and maintainability ensuring that the code is easy to understand, navigate, and modify in the future.](https://blog.crownstack.com/blog/roadmaps/code-smells-and-code-refactoring)
+- Follow [best practices for readability and maintainability](https://blog.crownstack.com/blog/roadmaps/code-smells-and-code-refactoring) ensuring that the code is easy to understand, navigate, and modify in the future.
 - Optimize performance by reducing redundant computations, improving loops, and minimizing re-renders in frontend applications.
 - Use proper error handling to prevent unexpected crashes and enhance debugging capabilities.
 - Replace hardcoded values with constants or configuration files for better flexibility and maintainability.
@@ -125,7 +125,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Ensure sanity/smoke testing has been performed properly to catch any critical issues before submitting the PR.
 - Validate test case results and ensure adequate test coverage for all new changes, including edge cases and potential failure scenarios.
 - Fix any failing tests before submitting the PR to maintain code stability and prevent regressions.
-- [Write clear and effective test cases that cover both positive and negative scenarios, ensuring tests are well-structured and easy to understand.](https://blog.crownstack.com/blog/qa/writing-effective-test-cases)
+- Write [clear and effective test cases](https://blog.crownstack.com/blog/qa/writing-effective-test-cases) that cover both positive and negative scenarios, ensuring tests are well-structured and easy to understand.
 - Ensure the CI/CD pipeline runs successfully without errors, verifying that builds, deployments, and test executions function correctly.
 - Perform cross-browser and cross-device testing to confirm compatibility across different environments.
 - Mock external dependencies where applicable to avoid flaky tests and improve test reliability.
@@ -138,7 +138,7 @@ A pull request (PR) involves more than just pushing your code and having it merg
 - Make sure all tests pass successfully (unit, integration, and E2E) and that there are no console errors, warnings, or linting issues when creating the build.
 - Verify that no sensitive data (e.g., API keys, credentials, or environment variables) is exposed in the PR and that security implications have been thoroughly reviewed.
 - Provide a clear, concise title and description of the changes, including the purpose, implementation details, and any relevant references (e.g., JIRA tickets or issue numbers).
-- [Check all the steps before creating a PR to avoid missing any crucial validation points](https://gist.github.com/katyhuff/845e06656f18784210190e4f46a4aa95)
+- Check all the [steps before creating a PR](https://gist.github.com/katyhuff/845e06656f18784210190e4f46a4aa95) to avoid missing any crucial validation points
 - Ensure backward compatibility and the changes do not break existing functionality or dependencies.
 - Add screenshots, GIFs, or screen recordings if the PR includes UI/UX changes for better visualization and review if applicable or required by the reviewer based upon project requirements.
 - If applicable, update the API documentation, database migration files, or any related configuration changes.
