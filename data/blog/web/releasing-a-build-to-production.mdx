@@ -1,0 +1,109 @@
+---
+title: 'Releasing the Build to Production'
+date: '2025-03-03'
+lastmod: '2025-03-03'
+tags: ['engineering', 'process']
+draft: false
+summary: 'This guide outlines the key steps to follow before and after releasing a build to production.'
+layout: PostSimple
+images: []
+authors: ['dinesh-tomar']
+---
+
+Releasing a build to production is a critical process that requires careful planning and execution to ensure a smooth deployment and minimize risks. Below are the steps to follow **before** and **after** releasing the build to production:
+
+### **Before Releasing the Build to Production**
+
+1. **Code Freeze and Final Testing**:
+
+   - Implement a code freeze to prevent last-minute changes.
+   - Perform final rounds of testing, including:
+     - **Unit Testing:** Validate individual components or functions to ensure they work as expected in isolation.
+     - **Integration Testing:** Test how different modules or services interact to ensure seamless data flow and system communication.
+     - **Regression Testing:** Re-run existing test cases to confirm that recent changes haven’t broken any previously working functionality.
+     - **Performance Testing:** Assess system speed, scalability, and stability under different loads to identify bottlenecks.
+     - **Security Testing:** Conduct vulnerability scans and penetration tests to identify and mitigate potential security threats.
+
+2. **Review and Approve the Build**:
+
+   - Conduct a code review to ensure quality and adherence to coding standards.
+   - Verify that all features and bug fixes are included in the release notes.
+   - Get approval from respective person (e.g., product managers, QA team, security team).
+
+3. **Prepare the Production Environment**:
+
+   - Ensure the production environment is stable and matches the staging/QA environment.
+   - Validate infrastructure (servers, databases, networks) and configurations.
+   - Backup the current production environment (database, files, configurations).
+   - Ensure that deployment GitHub branches are up to date and free from any merge conflicts.
+
+4. **Create a Rollback Plan**:
+
+   - Define a clear rollback strategy in case the release fails or causes issues.
+   - Ensure all the relevant team members understand the rollback process.
+
+5. **Final Pre-Release Checks**:
+
+   - Verify that all documentation and dependencies (libraries, APIs, third-party services, etc.) are up-to-date and compatible.
+   - Ensure monitoring and logging tools are configured for the new build.
+   - Double-check environment variables, API keys, and other sensitive configurations.
+   - Ensure database migrations are properly sequenced and tested
+
+6. **Deploy to a Staging/Pre-Production Environment**:
+   - Deploy the build to a staging environment that mirrors production.
+   - Perform smoke tests and sanity checks to ensure everything works as expected.
+   - Ensure the CI/CD pipeline works properly for front-end and backend.
+
+---
+
+### **After Releasing the Build to Production**
+
+1. **Monitor the Deployment**:
+
+   - Ensure that deployment is completed successfully
+   - Use monitoring tools (e.g., APM, logs, dashboards etc.) to track the application's health
+   - Watch for errors, performance degradation, or unexpected behavior.
+
+2. **Perform Post-Deployment Testing**:
+
+   - Conduct smoke tests and sanity checks in the production environment.
+   - Verify critical workflows and features are functioning correctly.
+   - Monitor error rates, performance metrics, and system health
+   - Gradually increase traffic to the new build (if using blue-green deployment)
+   - Confirm all integrations with third-party services are functioning
+
+3. **Communicate the Release**:
+
+   - Notify all team members and end-users that the release is complete.
+   - Share release notes and update the documentation, README file etc.
+   - Ensure the team is aware of any new processes or features.
+
+4. **Gather Feedback**:
+
+   - Collect feedback from users and support teams to identify any issues.
+   - Monitor social media, forums, app/play store or support tickets for user-reported problems if applicable.
+
+5. **Address Issues Quickly**:
+
+   - Check logs for unexpected errors or warnings
+   - If issues arise, prioritize and resolve them immediately.
+   - Use the rollback plan if necessary to revert to the previous stable version.
+
+6. **Update Documentation**:
+
+   - Update technical documentation, user guides, and FAQs to reflect the changes in the new build.
+   - Make the release notes and share them with the team
+   - Create tags on github to identify the particular release and create a new release on github along with the release notes.
+   - Update project status, roadmap and JIRA tickets status
+
+7. **Conduct a Post-Release Review**:
+
+   - Conduct post-release review meeting to document lessons learned
+   - Identify what went well and areas for improvement.
+   - Document lessons learned for future releases.
+
+8. **Monitor Long-Term Performance**:
+   - Continuously monitor the application for performance, stability, and security.
+   - Use analytics to track user adoption and engagement with new features.
+
+Following these steps ensures a smooth and successful release process while minimizing risks and disruptions to your production environment. Thorough testing helps identify and fix issues before deployment, ensuring system stability, performance, and security. It also enhances user experience by delivering a reliable and optimized product, reducing post-release bugs and emergency fixes.
