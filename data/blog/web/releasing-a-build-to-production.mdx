@@ -1,0 +1,113 @@
+---
+title: 'Production release checklist'
+date: '2025-03-04'
+lastmod: '2025-03-04'
+tags: ['engineering', 'process']
+draft: false
+summary: 'This guide outlines the key steps to follow before and after releasing a build to production, ensuring a smooth deployment process. It covers essential pre-release checks, testing procedures, configuration validations, and post-deployment monitoring to maintain system stability and performance.'
+layout: PostSimple
+images: []
+authors: ['dinesh-tomar']
+---
+
+Releasing a build to production is a critical process that requires careful planning and execution to ensure a smooth deployment and minimize risks. It involves multiple steps, including thorough testing, code review, and monitoring to prevent potential issues from impacting end users. Proper coordination between development, QA, and DevOps teams is essential to ensure a seamless release.
+
+A well-defined release strategy helps mitigate risks, ensuring that any bugs or performance issues are identified and addressed before reaching production. It is crucial to have rollback plans in place in case unforeseen problems arise. Additionally, monitoring system performance and gathering user feedback after deployment are essential to continuously improve the application's stability and user experience. Below are the key steps to follow before and after releasing the build to production to maintain stability, reliability, and performance.
+
+### **Before releasing the build to production**
+
+1. **Code freeze and final testing**:
+
+   - Implement a code freeze to prevent last-minute changes.
+   - Perform final rounds of [testing](https://blog.crownstack.com/blog/qa/writing-effective-test-cases), including:
+     - **Unit Testing:** Validate individual components or functions to ensure they work as expected in isolation.
+     - **Integration Testing:** Test how different modules or services interact to ensure seamless data flow and system communication.
+     - **Regression Testing:** Re-run existing test cases to confirm that recent changes haven’t broken any previously working functionality.
+     - **Performance Testing:** Assess system speed, scalability, and stability under different loads to identify bottlenecks.
+     - **Security Testing:** Conduct vulnerability scans and penetration tests to identify and mitigate potential security threats.
+   - If automation testing has been performed, generate the test report and share it with your manager. If manual testing was conducted, compile a detailed PDF or DOC file outlining the test cases executed in the project and share it accordingly.
+
+2. **Review and approve the build**:
+
+   - Conduct a code review to ensure quality and adherence to [coding standards](https://blog.crownstack.com/blog/roadmaps/code-smells-and-code-refactoring).
+   - Verify that all features and bug fixes are included in the release notes. Ensure the release notes are well-documented and shared with relevant person for transparency.
+   - Get approval from respective person (e.g., product managers, QA team, security team).
+
+3. **Prepare the production environment**:
+
+   - Ensure the production environment is stable and matches the staging/QA environment.
+   - Validate the infrastructure, including servers, databases, and network configurations, to ensure they are correctly set up for production. Developers often forget to update environment-specific settings, such as API keys, live URLs, and configuration files, which can lead to deploying a development build on production servers. Double-check these settings to prevent misconfigurations and potential system failures.
+   - Backup the current production environment (database, files, configurations) to ensure recovery in case of any issues. Verify the integrity of the backup before proceeding with the deployment.
+   - Ensure that deployment GitHub branches are up to date and free from any merge conflicts.
+
+4. **Create a rollback plan**:
+
+   - Define a clear and well-documented rollback strategy to quickly revert to the previous stable version if the release fails or causes critical issues.
+   - Ensure all relevant team members, including developers, QA, and DevOps, fully understand the rollback process, have access to necessary resources, and are prepared to execute it efficiently if needed.
+
+5. **Final pre-release checks**:
+
+   - Verify that all documentation and dependencies (libraries, APIs, third-party services, etc.) are up-to-date and compatible.
+   - Make sure monitoring and logging tools are set up correctly for the new build. Check that crash reporting tools are working properly to track issues in real-time.
+   - Double-check environment variables, API keys, and other sensitive configurations, as developers sometimes make mistakes in setting them up. Ensure that the correct values are used for the production environment to prevent security and functionality issues.
+   - Ensure database migrations are properly sequenced and tested. Verify that the migrations do not cause data loss or inconsistencies before applying them to the production database.
+
+6. **Deploy to a staging/pre-production environment**:
+   - Deploy the build to a staging environment that mirrors production.
+   - Perform smoke tests and sanity checks to ensure everything works as expected.
+   - Ensure the CI/CD pipeline works properly for front-end and backend.
+
+- If you have successfully verified all the above steps, you can proceed with deploying the build to the production environment.
+
+---
+
+### **After releasing the build to production**
+
+1. **Monitor the deployment**:
+
+   - Ensure that deployment is completed successfully. Verify that all services are running as expected and functionalities are working properly.
+   - Use monitoring tools (e.g., APM, logs, dashboards, etc.) to track the application's health. Ensure that each environment (development, staging, production) has its own separate dashboard or APM tool environment to avoid confusion and accurately monitor performance on production.
+   - Watch for errors, performance degradation, or unexpected behavior.
+
+2. **Perform post-deployment testing**:
+
+   - Conduct smoke tests and sanity checks in the production environment and verify critical workflows and features are functioning correctly.
+   - Monitor error rates, performance metrics, and system health
+   - Gradually increase traffic to the new build (if using [blue-green deployment](https://www.spiceworks.com/tech/devops/articles/what-is-blue-green-deployment/))
+   - Confirm all integrations with third-party services are functioning. Perform end-to-end testing to verify data exchange, API responses, and authentication flows work as expected.
+
+3. **Communicate the release**:
+
+   - Notify all team members, manager, and end-users that the release has been successfully completed, ensuring everyone is informed.
+   - Share detailed release notes, update documentation, README files etc to reflect the latest changes.
+   - Ensure the team is fully aware of any new processes, features, or important updates, and provide necessary information or guidance if required.
+
+4. **Gather feedback**:
+
+   - Gather feedback from users, support teams, and other relevant people to find any issues, improvements, or feature suggestions.
+   - Keep an eye on social media, forums, app/play store reviews, and support tickets for user-reported problems, and respond quickly to fix any issues if needed.
+
+5. **Address issues quickly**:
+
+   - Check logs for unexpected errors or warnings. Analyze patterns and address any anomalies to prevent potential issues from escalating.
+   - If any issues come up, fix them as soon as possible. Keep the team informed so they can help resolve problems quickly and reduce the impact on users.
+   - Use the rollback plan if necessary to revert to the previous stable version. Ensure all team members are aware of the rollback procedure and verify system stability after reverting.
+
+6. **Update documentation**:
+
+   - Update technical documentation, user guides, and FAQs to reflect the changes in the new build.
+   - Make the release notes and share them with the team
+   - [Manage the github branches](https://blog.crownstack.com/blog/web/the-art-of-managing-github-repos#managing-branches) and create tags on github to identify the particular release and create a new release on github along with the release notes.
+   - Update the project status, roadmap, and JIRA ticket statuses to reflect the latest deployment progress. Ensure all completed tasks are marked appropriately and pending issues are addressed.
+
+7. **Conduct a post-release review**:
+
+   - Conduct a detailed post-release review meeting to document key lessons learned, challenges faced, and overall deployment effectiveness. Identify actionable insights to improve future releases.
+   - Evaluate what went well during the deployment process, highlight best practices, and pinpoint specific areas that need improvement for smoother future rollouts.
+   - Thoroughly document all lessons learned, including technical, operational, and process-related aspects, to create a reference guide for optimizing future release cycles.
+
+8. **Monitor long-term performance**:
+   - Continuously monitor the application for performance, stability, and security to ensure a seamless user experience and proactively address any potential issues.
+   - Use detailed analytics and performance metrics to track user adoption, engagement levels, and the overall impact of new features, making data-driven decisions for future improvements.
+
+Following these steps ensures a smooth and successful release process while minimizing risks and disruptions to your production environment. Thorough testing helps identify and fix issues before deployment, ensuring system stability, performance, and security. It also enhances user experience by delivering a reliable and optimized product, reducing post-release bugs and emergency fixes.
