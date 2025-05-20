@@ -59,8 +59,8 @@ To address this, first I chose to receive all incoming webhooks through an AWS L
 ![Receiving webhooks on AWS Lambda](/static/images/blogs/cloud/cloudflare/cloudflare-blocking-incoming-webhooks-securely-receive-and-validate-webhooks-using-aws-lambda-and-relay-it-to-your-back-end/receiving-webhooks-on-aws-lambda.jpeg)
 
 This approach solved two key problems:
-1. *Isolation from the back-end*: Since AWS Lambda operates independently of our back-end, it eliminates the risk of any direct impact on core systems.
-2. *Scalability*: AWS Lambda is highly scalable and can effortlessly handle sudden spikes in traffic, including potential webhook bursts.
+1. **Isolation from the back-end**: Since AWS Lambda operates independently of our back-end, it eliminates the risk of any direct impact on core systems.
+2. **Scalability**: AWS Lambda is highly scalable and can effortlessly handle sudden spikes in traffic, including potential webhook bursts.
 
 ### Performing basic webhook validations with an entry-point Lambda
 
