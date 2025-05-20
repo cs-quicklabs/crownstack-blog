@@ -1,0 +1,116 @@
+---
+title: 'Cloudflare WAF or Cloudflare Zero Trust blocking incoming webhooks? Securely receive and validate webhooks using AWS Lambda and relay it to your back-end'
+date: '2025-05-20'
+lastmod: '2025-05-20'
+tags: ['engineering', 'cloudflare', 'aws lambda', 'solutions']
+draft: false
+summary: "This blog explains how I designed a secure and reliable solution to allow incoming webhooks to bypass Cloudflare's firewall while ensuring they are fully validated before reaching the back end."
+layout: PostSimple
+images: []
+authors: ['varun-kumar']
+---
+
+In this blog, I'll discuss a common technical challenge faced by development teams using Cloudflare WAF, Cloudflare Zero Trust, or similar proxy services that are designed to block certain incoming HTTP requests based on their built-in security policies, rules and logics. I'll also explain how I engineered a fully reliable solution that balances both security and functionality - maintaining complete protection from Cloudflare while securely accepting incoming webhooks without conflicting each other.
+
+
+## Why Cloudflare WAF blocks incoming webhooks?
+
+[Cloudflare](https://www.cloudflare.com) is a famous web performance and security company that helps protect and accelerate websites, APIs, and internet applications.
+
+When you use Cloudflare, all your website's traffic is routed through its global network before reaching your servers. This gives you several key benefits:
+
+* DDoS Protection: Blocks large volumes of fake or malicious traffic.
+* Web Application Firewall (WAF): Stops common attacks like SQL injection, cross-site scripting (XSS), etc.
+* CDN (Content Delivery Network): Caches your static content (like images and scripts) at edge locations to deliver it faster worldwide.
+* SSL/TLS Encryption: Secures traffic between the user and your website.
+* Bot Protection: Detects and blocks harmful bots.
+* Rate Limiting: Prevents abuse by limiting how often someone can hit a URL.
+
+Since all incoming requests are intercepted by Cloudflare first, it inspects the traffic for threats (using bot detection, IP reputation, etc.). If the request is safe, it passes it to your server. If not, it can block or challenge the request.
+
+Webhooks are automated HTTP requests sent by services like Stripe, GitHub, Twilio, etc. Cloudflare's bot protection may mistake these automated requests as malicious bots. Even if the webhook is legitimate, it may block them.
+
+
+## Why Cloudflare Zero Trust may also block incoming webhooks?
+
+[Cloudflare Zero Trust](https://www.cloudflare.com/en-in/lp/dg/brand/zero-trust) provides secure application access by:
+1. Verifies the user's identity via SSO
+2. Checks the security and health status of the device a user is using
+3. Applies access policies (e.g., only allow Finance team to access finance dashboard)
+
+If all of the above checks pass, access is granted securely, without exposing the app to the public internet.
+
+Since most webhooks are automated services, not humans - they can't log in, use MFA, or pass browser-based checks. So, Cloudflare blocks them by default because they fail Zero Trust access requirements. Cloudflare Access also relies on browser cookies to track authenticated users. Since webhooks are server-to-server calls (not from browsers), they don't send these cookies. As a result, Cloudflare treats them as unauthenticated and blocks them.
+
+
+## Quick solution to the Cloudflare block problem
+
+One common solution to this problem is to create a dedicated webhook path or subdomain (e.g., `webhooks.example.com` or `example.com/webhooks`) and exclude it from Cloudflare Zero Trust policies or the Web Application Firewall (WAF). However, I chose not to follow this approach, as it introduces a potential attack surface. If exploited, such an endpoint could be used in a DDoS attack capable of impacting the entire back-end system.
+
+
+## Bypassing Cloudflare blocks yet still able to receive webhooks securely
+
+I needed to find a solution to the Cloudflare blocking issue, as removing Cloudflare was not an option, nor was abandoning the use of webhooks—both were critical to the success of the project.
+
+### Receiving webhooks on AWS Lambda instead of back-end
+
+To address this, first I chose to receive all incoming webhooks through an AWS Lambda function instead of routing them directly to our back-end, which is protected by Cloudflare. AWS Lambda provides a Function URL feature, which exposes an HTTPS endpoint that can be invoked over the internet. I deployed this Lambda function outside of Cloudflare's protection layer.
+
+![Receiving webhooks on AWS Lambda](/static/images/blogs/cloud/cloudflare/cloudflare-blocking-incoming-webhooks-securely-receive-and-validate-webhooks-using-aws-lambda-and-relay-it-to-your-back-end/receiving-webhooks-on-aws-lambda.jpeg)
+
+This approach solved two key problems:
+1. *Isolation from the back-end*: Since AWS Lambda operates independently of our back-end, it eliminates the risk of any direct impact on core systems.
+2. *Scalability*: AWS Lambda is highly scalable and can effortlessly handle sudden spikes in traffic, including potential webhook bursts.
+
+### Performing basic webhook validations with an entry-point Lambda
+
+Once the webhook traffic reaches the entry-point Lambda function, I implemented basic HTTP request validations, including:
+1. Verifying that the correct HTTP method (e.g., `POST`, `GET`) is used
+2. Performing basic origin validation by checking the `Referer` header
+2. Ensuring all required input parameters are present in the webhook payload
+
+While these checks are relatively simple and don't guarantee the authenticity of the webhook, they serve as an initial layer of validation before allowing the request to interact with the deeper parts of the application. If the code detects that it's a malicious request, our entry-point Lambda functions can stop propagation of the request in this step itself.
+
+### Forwarding the request to webhook-specific validation Lambdas for robust and trusted validations
+
+After the basic checks are completed, the entry-point Lambda function delegates the request to another Lambda - referred to as the webhook-specific validation Lambda - responsible for performing robust and thorough validation of the webhook request.
+
+I designed separate Lambda functions for each type of webhook vendor (like one for Twilio, one for Stripe and one for SendGrid), promoting a loosely coupled architecture. This approach allows different teams to independently develop and maintain their respective validation Lambdas, with the flexibility to use different programming languages. It also adheres to the Single Responsibility Principle, ensuring that each component of the system is focused on a specific task.
+
+This modular structure significantly improved unit testing and debugging, as each Lambda is isolated and purpose-built for a specific webhook type.
+
+![Passing control to validation Lambda](/static/images/blogs/cloud/cloudflare/cloudflare-blocking-incoming-webhooks-securely-receive-and-validate-webhooks-using-aws-lambda-and-relay-it-to-your-back-end/passing-control-to-validation-lambda.jpeg)
+
+#### What does thorough validation of the webhook mean?
+
+Most companies that offer webhook integrations implement measures to ensure the security and authenticity of the webhook requests they send. A common approach is to include a signature in the webhook request. This signature allows the receiving system to verify whether the request genuinely originated from the trusted source or if it might be a forgery or tampering attempt.
+
+In my implementation, I handled webhooks from Twilio, SendGrid, and QuickBooks. For reference, here are their official methods for validating webhook signatures to ensure request authenticity and security:
+
+1. [Twilio - Validating Signatures](https://www.twilio.com/docs/usage/webhooks/webhooks-security#validating-signatures-from-twilio)
+2. [SendGrid - Webhook Security](https://sendgrid.com/en-us/blog/protect-your-data-with-twilio-sendgrids-event-webhook-security)
+3. [Quickbooks - Validate Webhooks](https://developer.intuit.com/app/developer/qbo/docs/develop/webhooks#validate-notifications)
+
+**Note:**
+If you are using external services like AWS Secrets Manager to securely store the API keys and secrets, you might have to provide access of AWS Secrets Manager to your validation Lambda to perform signature validation.
+
+![Providing Secret Manager access to validation Lambda](/static/images/blogs/cloud/cloudflare/cloudflare-blocking-incoming-webhooks-securely-receive-and-validate-webhooks-using-aws-lambda-and-relay-it-to-your-back-end/secret-manager-access-for-validation-lambda.jpeg)
+
+
+### Using an Aggregator Lambda to normalize webhook payloads
+
+Once the webhook is thoroughly validated and confirmed to be from a trusted source, control is passed from the validation Lambdas to the final Lambda in the flow known as Aggregator Lambda. This Lambda is responsible for aggregating the various payloads received from different validation Lambdas, processing and transforming them into a unified format.
+
+![Using an Aggregator Lambda to normalize webhook payloads](/static/images/blogs/cloud/cloudflare/cloudflare-blocking-incoming-webhooks-securely-receive-and-validate-webhooks-using-aws-lambda-and-relay-it-to-your-back-end/using-an-aggregator-lambda-to-normalize-webhook-payloads.jpeg)
+
+
+### Forwarding normalized payloads to the back-end
+
+An important responsibility of the Aggregator Lambda is to securely bypass Cloudflare or any other firewall in order to communicate with the back-end API. Once the payload is normalized, the Aggregator Lambda invokes the appropriate back-end endpoint, delivering the data to trigger the core business logic and processing workflow.
+
+![Forwarding standardized payloads to the back-end](/static/images/blogs/cloud/cloudflare/cloudflare-blocking-incoming-webhooks-securely-receive-and-validate-webhooks-using-aws-lambda-and-relay-it-to-your-back-end/forwarding-standardized-payloads-to-the-back-end.jpeg)
+
+
+## Conclusion
+
+I hope this blog helped illustrate one of the practical and effective solutions for handling webhook delivery issues caused by Cloudflare or similar firewall systems. By combining security, scalability, and modular design, this approach ensures that webhook integrations remain reliable without compromising protection.
