@@ -1,5 +1,5 @@
 ---
-title: 'Cloudflare WAF or Cloudflare Zero Trust blocking incoming webhooks? Securely receive and validate webhooks using AWS Lambda and relay it to your back-end'
+title: 'Cloudflare blocking incoming webhooks? Securely receive and validate webhooks using AWS Lambda and relay it to your back-end'
 date: '2025-05-20'
 lastmod: '2025-05-20'
 tags: ['engineering', 'cloudflare', 'aws lambda', 'solutions']
@@ -52,15 +52,16 @@ One common solution to this problem is to create a dedicated webhook path or sub
 
 I needed to find a solution to the Cloudflare blocking issue, as removing Cloudflare was not an option, nor was abandoning the use of webhooks—both were critical to the success of the project.
 
-### Receiving webhooks on AWS Lambda instead of back-end
+### Receiving webhooks on AWS Lambda instead of back-end****
 
 To address this, first I chose to receive all incoming webhooks through an AWS Lambda function instead of routing them directly to our back-end, which is protected by Cloudflare. AWS Lambda provides a Function URL feature, which exposes an HTTPS endpoint that can be invoked over the internet. I deployed this Lambda function outside of Cloudflare's protection layer.
 
 ![Receiving webhooks on AWS Lambda](/static/images/blogs/cloud/cloudflare/cloudflare-blocking-incoming-webhooks-securely-receive-and-validate-webhooks-using-aws-lambda-and-relay-it-to-your-back-end/receiving-webhooks-on-aws-lambda.jpeg)
 
 This approach solved two key problems:
-1. *Isolation from the back-end*: Since AWS Lambda operates independently of our back-end, it eliminates the risk of any direct impact on core systems.
-2. *Scalability*: AWS Lambda is highly scalable and can effortlessly handle sudden spikes in traffic, including potential webhook bursts.
+
+1. **Isolation from the back-end**: Since AWS Lambda operates independently of our back-end, it eliminates the risk of any direct impact on core systems.
+2. **Scalability**: AWS Lambda is highly scalable and can effortlessly handle sudden spikes in traffic, including potential webhook bursts.
 
 ### Performing basic webhook validations with an entry-point Lambda
 
