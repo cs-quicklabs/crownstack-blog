@@ -52,7 +52,7 @@ One common solution to this problem is to create a dedicated webhook path or sub
 
 I needed to find a solution to the Cloudflare blocking issue, as removing Cloudflare was not an option, nor was abandoning the use of webhooks—both were critical to the success of the project.
 
-### Receiving webhooks on AWS Lambda instead of back-end****
+### Receiving webhooks on AWS Lambda instead of back-end
 
 To address this, first I chose to receive all incoming webhooks through an AWS Lambda function instead of routing them directly to our back-end, which is protected by Cloudflare. AWS Lambda provides a Function URL feature, which exposes an HTTPS endpoint that can be invoked over the internet. I deployed this Lambda function outside of Cloudflare's protection layer.
 
