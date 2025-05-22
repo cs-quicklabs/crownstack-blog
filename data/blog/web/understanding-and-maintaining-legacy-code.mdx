@@ -50,6 +50,12 @@ One of the most frustrating aspects of legacy code is the lack of proper documen
 - **Maintain a "decisions log" to record why certain changes were made**: This log provides context for future developers.
 - **Document system dependencies and integration points**: Clearly outline how different parts of the system interact.
 
+### [Action Items](#documentation-action-items)
+
+- Integrate Swagger (preferred) into the project or create a shared Postman collection.
+- Begin incorporating JSDoc or equivalent documentation tools into the codebase or add necessary comments while making changes.
+- Promote pair programming sessions to enhance team knowledge sharing.
+
 ## The Missing Tests Puzzle
 
 Legacy codebases often lack comprehensive testing, making changes risky and time-consuming. Here's how to gradually build a testing foundation:
@@ -59,6 +65,12 @@ Legacy codebases often lack comprehensive testing, making changes risky and time
 - **Implement unit tests when refactoring specific components**: Ensure individual components work correctly during refactoring.
 - **Use code coverage tools to identify untested areas**: Tools like Istanbul can highlight parts of the code that need tests.
 - **Create automated test suites to prevent regression**: Automate tests to catch issues early.
+
+### [Action Items](#testing-action-items)
+
+- Adopt Test-Driven Development (TDD) practices by writing tests before implementing new features or changes.
+- Use code coverage tools to identify untested areas and focus on adding integration and unit tests for high-impact components.
+- Set up automated test suites as part of the CI/CD pipeline to ensure early detection of regression issues
 
 ## Untangling Poor Code Structure
 
@@ -71,6 +83,13 @@ Disorganized code structure is a common legacy codebase issue. To improve mainta
 - **Create abstraction layers for complex logic**: Use layers to isolate complex algorithms and logic.
 - **Use design patterns to solve recurring problems**: Implement patterns like Singleton, Factory, and Observer.
 
+### [Action Items](#code-structure-action-items)
+
+- Refactor repetitive code into reusable components by identifying common patterns across the codebase.
+- Apply SOLID principles during refactoring to ensure cleaner, modular, and maintainable code.
+- Break down large monolithic components into smaller, more manageable pieces with clear separation of concerns.
+- Use design patterns like Singleton, Factory, or Observer to address recurring problems in the code.
+
 ## Code Smells and Technical Debt
 
 Identifying and addressing code smells is crucial for long-term maintenance:
@@ -82,16 +101,28 @@ Identifying and addressing code smells is crucial for long-term maintenance:
 - **Fix naming inconsistencies**: Ensure consistent naming conventions throughout the codebase.
 - **Address magic numbers and hardcoded values**: Replace them with constants or configuration settings.
 
+### [Action Items](#code-smells-action-items)
+
+- Consolidate duplicate code into reusable functions or modules to improve efficiency.
+- Simplify complex conditionals, remove dead code, and ensure consistent naming conventions.
+- Replace hardcoded values and magic numbers with constants or configurable settings.
+
 ## The Maintenance Nightmare
 
 Managing legacy code shouldn't feel like walking through a minefield. To make maintenance easier:
 
 - **Create a dependency graph to understand system relationships**: Visualize dependencies to manage changes effectively.
-- **Implement proper logging and monitoring**: Use tools like Winston and Prometheus to monitor system behavior.
+- **Implement proper logging and monitoring**: Use tools like new relic to monitor system behavior.
 - **Establish clear deployment procedures**: Define steps for deploying updates safely.
 - **Document known issues and workarounds**: Keep a record of existing problems and their solutions.
 - **Maintain a technical debt backlog**: Track and prioritize areas of the code that need improvement.
 - **Prioritize critical updates and security patches**: Focus on high-impact changes first.
+
+### [Action Items](#maintenance-action-items)
+
+- Build a dependency graph(use excalidraw or similar tool) to visualize system relationships and manage changes effectively.
+- Implement logging and monitoring tools like new relic to track system behavior.
+- Maintain a technical debt backlog and prioritize critical updates, including security patches, for focused improvements.
 
 ## Breaking the Blame Culture
 
@@ -114,6 +145,11 @@ Legacy systems often suffer from performance issues due to outdated practices or
 - **Update inefficient algorithms**: Replace outdated algorithms with more efficient ones.
 - **Monitor resource usage**: Track system resource consumption to identify areas for improvement.
 
+### [Action Items](#performance-action-items)
+
+- Use logging tools to analyze application performance and identify areas needing optimization.
+- Profile the application using tools like Chrome DevTools or Webpack Bundle Analyzer, optimize database queries, and implement caching strategies to reduce bottlenecks and improve efficiency.
+
 ## Dependency Management
 
 Outdated dependencies can lead to security vulnerabilities and compatibility issues:
@@ -124,6 +160,12 @@ Outdated dependencies can lead to security vulnerabilities and compatibility iss
 - **Test thoroughly after updates**: Ensure updates don't break existing functionality.
 - **Maintain compatibility matrices**: Document which versions of dependencies are compatible.
 - **Document update procedures**: Provide clear instructions for updating dependencies.
+
+### [Action Items](#dependency-management-action-items)
+
+- Create a dependency inventory and use tools like Dependabot to regularly assess vulnerabilities.
+- Plan and implement incremental updates for dependencies, followed by thorough testing to ensure compatibility and stability.
+- Maintain a compatibility matrix and document clear procedures for updating dependencies to streamline future updates.
 
 ## Moving Forward
 
