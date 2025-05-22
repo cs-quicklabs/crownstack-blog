@@ -474,9 +474,24 @@ export default function WebSocketExample() {
 | **SSE**          | Native browser support; Auto-reconnection; HTTP infrastructure; Event-driven | One-way only; Connection limits; No IE support; Proxy challenges                   | Live feeds; Stock tickers; Sports updates; Monitoring dashboards       |
 | **WebSockets**   | True real-time; Bi-directional; Low overhead; High performance               | Complex implementation; Connection management; Firewall issues; Scaling challenges | Chat apps; Collaborative editing; Multiplayer games; Trading platforms |
 
+
 ## Decision Framework: Choosing the Right Technology
 
-![image](/static/images/blogs/web/real_time_server_updates_to_clients:_an_advanced_analysis/decision_framework.png)
+| Consideration | Scenario | Recommended Technology |
+|---------------|----------|----------------------|
+| **Update Frequency** | Infrequent updates (minutes) | **Polling** |
+| | Moderate updates (seconds) | **Long Polling** or **SSE** |
+| | Continuous updates (sub-second) | **WebSockets** |
+| **Communication Pattern** | Server to client only | **SSE** (often optimal) |
+| | Bi-directional communication | **WebSockets** (necessary) |
+| **Scale Requirements** | Small scale (few users) | Any method works |
+| | Medium scale (hundreds) | **Long Polling** or **SSE** |
+| | Large scale (thousands+) | **WebSockets** with proper infrastructure |
+| **Network Environment** | Restrictive firewalls | **Polling** or **Long Polling** |
+| | Modern environments | **SSE** or **WebSockets** |
+| **Development Complexity** | Limited time/resources | **Polling** or **SSE** |
+| | Complex interaction needs | **WebSockets** |
+
 
 ---
 
