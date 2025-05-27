@@ -1,7 +1,7 @@
 ---
 title: "Crownstack's Git workflow & Best Practices"
 date: '2023-04-15'
-lastmod: '2023-04-15'
+lastmod: '2025-05-27'
 tags: ['engineering', 'process', 'git']
 draft: false
 summary: "This is Crownstack's official guideline on how to use Git workflow for projects."
@@ -103,6 +103,76 @@ Once the `epic/*` has new code, `epic/*` is merged into primary branch so that w
 Hotfix branches are used when the project is encountering a major production bug that's impacting the business. In these cases usually the team will not have too much time to deploy and test the bug fix on every primary branch in incremental way. Instead we would need fastest way of testing the bugfix quickly and push the fix on production as soon as possible.
 
 So after branching out from `main` or `master`, we would quickly fix the bug and test it directly on `staging` branch. Once the hotfix has been tested in `staging`, it is immediately moved to `main` or `master`. Parallelly the hotfix is now merged on `development` and `qa` to maintain code consistency and more thorough QA testing.
+
+
+### Resolving merge conflicts in branches
+
+A merge conflict in Git happens when Git cannot automatically combine code changes from different branches because the same part of a file was changed differently in both branches. Handling merge conflicts requires careful attention to detail and communication between developers to ensure that conflicting changes are resolved correctly without introducing errors into the codebase.
+
+For simple Git repos, merge conflicts can be resolved easily using GitHub's (or any other Git software) web interface. However, for complex repos with multiple branches and large codebases, it is recommended to resolve merge conflicts locally using temporary branches.
+
+#### Steps to resolve merge conflicts locally:
+
+**Target branch**: This is the branch where you want to merge changes from another branch, typically a primary branch like `development`, `qa`, or `staging`.
+
+**Source branch**: This is the branch that contains the changes you want to merge into the target branch, such as a `feature/*` or `bugfix/*` branch.
+
+**Temporary branch**: This is a new branch created to resolve merge conflicts without affecting the target branch or source branch directly.
+
+##### Step 1: Create a temporary branch from target branch
+
+At Crownstack we recommend creating your temporary branch in following format. For example, if you want to merge changes from source branch `feature/newlogin` into target branch `staging`, a temporary branch can be created as:
+
+```bash
+{target-branch}-{merge/cherrypick}>-{source-branch}-{current_date}
+```
+
+Example:
+```bash
+staging-cherrypick-feature-newlogin-20250527
+```
+
+##### Step 2: Pull in your source branch's code into the temporary branch
+
+Checkout into your temporary branch and pull in the source branch's code. This will create a merge conflict if there are any conflicting changes between the target branch and the source branch.
+
+```bash
+git checkout -b staging-cherrypick-feature-newlogin-20250527
+git pull origin feature/newlogin
+```
+
+
+##### Step 3: Resolve merge conflicts
+
+Open the files with merge conflicts in your code editor. Git will mark the conflicting sections with `<<<<<<<`, `=======`, and `>>>>>>>` markers. Carefully review the changes and decide how to resolve the conflicts by choosing one side, combining changes, or rewriting the code.
+After resolving the conflicts, remove the conflict markers and save the file.
+
+Once you have resolved all merge conflicts, commit the changes to your temporary branch:
+
+```bash
+git add .
+git commit -m "Resolved merge conflicts between staging and feature/newlogin"
+```
+
+
+##### Step 4: Create a pull request (PR) for the temporary branch
+
+Now, push the temporary branch to the remote repository:
+
+```bash
+git push origin staging-cherrypick-feature-newlogin-20250527
+```
+
+Now, create a pull request (PR) from the temporary branch to the target branch (e.g., `staging`). This allows other team members to review the changes and ensure that the merge conflict resolution is correct.
+
+##### Step 5: Delete the temporary branch after merging
+Once the PR is approved and merged into the target branch, you can safely delete the temporary branch both locally and remotely:
+
+```bash
+git branch -d staging-cherrypick-feature-newlogin-20250527
+git push origin --delete staging-cherrypick-feature-newlogin-20250527
+```
+
 
 ## Conclusion
 
