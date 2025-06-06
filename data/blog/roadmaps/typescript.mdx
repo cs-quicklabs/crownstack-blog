@@ -1,0 +1,528 @@
+---
+title: 'Typescript Learning Roadmap'
+date: '2025-05-23'
+lastmod: '2025-05-23'
+tags: ['engineering', 'roadmaps', 'Typescript', 'Javascript']
+draft: false
+summary: 'A roadmap to learn Typescript including all the important topics for Typescript.'
+layout: PostSimple
+images: []
+authors: ['varun-kumar']
+---
+
+TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript. It adds optional static types to JavaScript, enabling developers to catch errors early during development rather than at runtime. TypeScript is developed and maintained by Microsoft and has gained significant popularity for large-scale JavaScript applications. It offers features like type annotations, interfaces, classes, and modules, making it easier to build and maintain complex systems while leveraging the flexibility and ecosystem of JavaScript.
+
+## Why TypeScript was invented?
+
+TypeScript was invented to address the limitations of JavaScript in large-scale application development. While JavaScript is flexible and widely supported, it lacks features that are crucial for building and maintaining complex, large, or enterprise-grade projects.
+
+TypeScript enhances JavaScript with the features developers need for building robust, scalable applications without giving up the flexibility of JavaScript.
+
+## Advantages of using TypeScript over JavaScript
+
+Choosing TypeScript over JavaScript offers several advantages, especially for larger or more complex projects:
+
+1. **Modern features with backwards compatibility**: TypeScript supports the latest JavaScript features (like async/await, optional chaining) and compiles them down to older versions for browser compatibility.
+2. **Catch errors early** - TypeScript's static typing helps identify bugs during development rather than at runtime.
+3. **Scales better for large codebases** - Type safety and modularity make it easier to maintain and refactor large projects.
+4. **Improved Code Quality**: With type checks and clear contracts (via interfaces and types), TypeScript makes your code more predictable and easier to understand.
+
+| **Feature**               | **JavaScript**                         | **TypeScript**                              |
+| --------------------- | -------------------------------------- | ------------------------------------------- |
+| **Typing**            | Dynamic (no type enforcement)          | Static (optional, compile-time type checks) |
+| **Compilation**       | Interpreted directly by browsers       | Needs to be compiled to JavaScript          |
+| **Error Detection**   | Errors often found at runtime          | Errors caught during development            |
+| **IDE Support**       | Basic autocomplete and suggestions     | Advanced autocomplete, type checking        |
+| **Code Scalability**  | Harder to manage large codebases       | Easier to scale and maintain large apps     |
+| **Learning Curve**    | Easier for beginners                   | Slightly steeper due to typing and tooling  |
+| **Modern Features**   | Supports ES6+ (depends on environment) | Supports latest JS + extra features         |
+| **Community Support** | Very large and mature                  | Rapidly growing with strong backing         |
+| **Optional Typing**   | Not available                          | Available and optional                      |
+
+We assume you are already familiar with **JavaScript** before beginning your TypeScript learning. If not, please make sure to learn JavaScript first, at least the fundamentals. Once you're comfortable with JavaScript, transitioning to TypeScript will be much easier and more meaningful.
+
+## TypeScript Installation
+
+Follow along the below guide to install TypeScript on your machine: [Download TypeScript](https://www.typescriptlang.org/download/)
+
+## Understanding `tsconfig.json` file
+
+`tsconfig.json` is a configuration file in TypeScript that specifies the compiler options for building your project. It helps the TypeScript compiler understand the structure of your project and how it should be compiled to JavaScript. [Learn what is a tsconfig.json](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file.
+
+## Compiling TypeScript into JavaScript
+
+To run TypeScript code, we'll first need to use TypeScript compiler to compile TypeScript code into JavaScript code.
+
+`tsc` is the command line tool for the TypeScript compiler. It compiles TypeScript code into JavaScript code, making it compatible with the browser or any JavaScript runtime environment.
+
+You can use the `tsc` command to compile your TypeScript code by running the following command in your terminal or command prompt:
+
+```jsx
+tsc
+```
+
+This command will compile all TypeScript files in your project that are specified in your `tsconfig.json` file.
+
+If you want to compile a specific TypeScript file, you can specify the file name after the `tsc` command, like this:
+
+```jsx
+tsc index.ts
+```
+
+The `tsc` command has several options and flags that you can use to customize the compilation process. For example, you can use the `--target` option to specify the version of JavaScript to compile to, or the `--outDir` option to specify the output directory for the compiled JavaScript files.
+
+You can run `tsc --help` to see a list of all the available options and flags.
+
+Explore more options and flags through [tsc CLI Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html).
+
+## Running TypeScript
+
+Here's a general process to run TypeScript code:
+
+1. Write TypeScript code in a `.ts` file (e.g. `app.ts`)
+2. Compile the TypeScript code into JavaScript using the TypeScript compiler: `tsc app.ts`
+3. Run the generated JavaScript code using a JavaScript runtime environment such as Node.js: `node app.js`
+
+Learn more from this link: [TypeScript Tooling in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html)
+
+## TypeScript Data Types
+
+TypeScript has several built-in types, including:
+
+- number
+- string
+- boolean
+- any
+- void
+- null and undefined
+- never
+- object
+- Enumerated types (enum)
+- Tuple types
+- Array types
+- Union types
+- Intersection types
+- Type aliases
+- Type assertions
+
+You can also create custom types in TypeScript using interfaces, classes, and type aliases.
+
+Learn more about TypeScript types from: [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html).
+
+### Examples of Common Data Types
+
+**Number**:
+
+```tsx
+let intValue: number = 42;
+let floatValue: number = 3.14;
+```
+
+**Boolean**:
+
+```tsx
+let isTrue: boolean = true;
+let isFalse: boolean = false;
+```
+
+**String**:
+
+```tsx
+let greeting: string = "Hello, TypeScript!";
+```
+
+**Array**:
+
+```tsx
+let numbers: number[] = [1, 2, 3, 4];
+let names: Array<string> = ["Alice", "Bob"];
+```
+
+**Tuple**:
+
+```tsx
+let person: [string, number] = ["Alice", 25];
+```
+
+**Enum**:
+
+```tsx
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+let favoriteColor: Color = Color.Green;
+```
+
+**Never**:
+
+```tsx
+function throwError(): never {
+  throw new Error("This will never return");
+}
+```
+
+**Any**:
+
+```tsx
+let unknownValue: any = 42;
+unknownValue = "Now a string";
+```
+
+**Void**:
+
+```tsx
+function logMessage(): void {
+  console.log("This function returns nothing");
+}
+```
+
+**Null and Undefined**:
+
+```tsx
+let nothing: null = null;
+let notAssigned: undefined = undefined;
+```
+
+**Object**:
+
+```tsx
+let user: object = { name: "Alice", age: 30 };
+```
+
+## Type Inference
+
+Type inference in TypeScript refers to the process of automatically determining the type of a variable based on the value assigned to it. This allows you to write code that is more concise and easier to understand, as the TypeScript compiler can deduce the types of variables without you having to explicitly specify them.
+
+Here's an example of type inference in TypeScript:
+
+```tsx
+let name = "John Doe";
+```
+
+In this example, the TypeScript compiler automatically infers that the type of the name variable is string. This means that you can use the name variable just like any other string in your code, and the TypeScript compiler will ensure that you don't perform any invalid operations on it.
+
+Learn more: [Type inference](https://www.typescriptlang.org/docs/handbook/type-inference.html).
+
+## Interfaces and Type Aliases
+
+Interfaces and type aliases allow you to define custom types. Interfaces are typically used for object shapes, while type aliases are more flexible for unions, intersections, and primitives.
+
+**Interface**:
+
+```tsx
+interface User {
+  name: string;
+  age: number;
+}
+let user: User = { name: "Alice", age: 25 };
+```
+
+**Type Alias**:
+
+```tsx
+type Point = {
+  x: number;
+  y: number;
+};
+let point: Point = { x: 10, y: 20 };
+```
+
+Learn more: [Interfaces](https://www.typescriptlang.org/docs/handbook/2/objects.html).
+
+## Type Compatibility
+
+TypeScript uses structural typing to determine type compatibility. This means that two types are considered compatible if they have the same structure, regardless of their names.
+
+Here's an example of type compatibility in TypeScript:
+
+```tsx
+interface Point {
+  x: number;
+  y: number;
+}
+
+let p1: Point = { x: 10, y: 20 };
+let p2: { x: number; y: number } = p1;
+
+console.log(p2.x); // Output: 10
+```
+
+In this example, `p1` has the type `Point`, while `p2` has the type `{ x: number; y: number }`. Despite the fact that the two types have different names, they are considered compatible because they have the same structure. This means that you can assign a value of type `Point` to a variable of type `{ x: number; y: number }`, as we do with `p1` and `p2` in this example.
+Learn more: [Type Compatibility](https://www.typescriptlang.org/docs/handbook/type-compatibility.html).
+
+## Functions and Type Inference
+
+TypeScript enhances functions with typed parameters and return types. Type inference automatically determines types when possible.
+
+```tsx
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+**Optional Parameters**:
+
+```tsx
+function greet(name: string, greeting?: string): string {
+  return `${greeting || "Hello"}, ${name}!`;
+}
+```
+
+Learn more: [Functions](https://www.typescriptlang.org/docs/handbook/2/functions.html).
+
+## Classes and Inheritance
+
+TypeScript supports object-oriented programming with classes, inheritance, and access modifiers (`public`, `private`, `protected`).
+
+```tsx
+class Animal {
+  protected name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  public move(distance: number): void {
+    console.log(`${this.name} moved ${distance} meters`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  public bark(): void {
+    console.log("Woof!");
+  }
+}
+
+let dog = new Dog("Buddy");
+dog.move(10);
+dog.bark();
+```
+
+Learn more: [Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html).
+
+## Modules and Namespaces
+
+TypeScript supports modular code using ES modules or namespaces.
+
+**ES Modules**:
+
+```tsx
+// math.ts
+export function square(num: number): number {
+  return num * num;
+}
+
+// app.ts
+import { square } from "./math";
+console.log(square(5)); // 25
+```
+
+Learn more: [Modules](https://www.typescriptlang.org/docs/handbook/modules.html).
+
+## Generics
+
+Generics allow you to write reusable, type-safe functions, classes, and interfaces.
+
+```tsx
+function identity<T>(value: T): T {
+  return value;
+}
+let number = identity<number>(42);
+let text = identity<string>("Hello");
+```
+
+Learn more: [Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html).
+
+## Advanced Types
+
+TypeScript supports advanced types like union, intersection, and conditional types.
+
+**Union Types**:
+
+```tsx
+let value: string | number;
+value = "Hello";
+value = 42;
+```
+
+**Intersection Types**:
+
+```tsx
+interface A {
+  x: number;
+}
+interface B {
+  y: string;
+}
+let combined: A & B = { x: 10, y: "test" };
+```
+
+Learn more: [Advanced Types](https://www.typescriptlang.org/docs/handbook/2/narrowing.html).
+
+## Type Assertions
+
+Type assertions in TypeScript allow you to tell the compiler the specific type of a value when you are confident about it, even if TypeScript cannot infer it on its own. This helps in avoiding unnecessary type errors and improving type safety during development.
+
+### Syntax
+
+There are two ways to assert a type:
+
+```
+// Angle-bracket syntax
+let someValue: any = "This is a string";
+let strLength: number = (<string>someValue).length;
+
+// as-syntax (recommended, especially in React projects)
+let strLength2: number = (someValue as string).length;
+```
+
+### Use Cases
+
+- **DOM Manipulation**:
+
+```
+const inputElement = document.getElementById('username') as HTMLInputElement;
+inputElement.value = 'Jitender';
+```
+
+- **Working with Third-Party Libraries**: When the library doesn't provide proper types, you can assert types manually.
+- **Narrowing types after runtime checks**:
+
+```
+function getValue(value: string | number) {
+  if (typeof value === "string") {
+    return (value as string).toUpperCase();
+  }
+  return value;
+}
+```
+
+**Caution**:
+
+Type assertions do not perform runtime type checking or conversion. They are purely a compile-time construct.
+
+Reference: [TypeScript Docs - Type Assertions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-assertions)
+
+## Global Augmentation
+
+In TypeScript, global augmentation is a way to add declarations to the global scope. This is useful when you want to add new functionality to existing libraries or to augment the built-in types in TypeScript.
+
+Here's an example of how you can use global augmentation in TypeScript:
+
+```tsx
+Explain;
+
+// myModule.d.ts
+declare namespace NodeJS {
+  interface Global {
+    myGlobalFunction(): void;
+  }
+}
+
+// main.ts
+global.myGlobalFunction = function () {
+  console.log("I am a global function!");
+};
+
+myGlobalFunction(); // Output: "I am a global function!"
+```
+
+In this example, we declare a new namespace "NodeJS" and add an interface "Global" to it. Within the "Global" interface, we declare a new function "myGlobalFunction".
+
+Learn more : [Official Global augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#global-augmentation)
+
+## Utility Types
+
+TypeScript provides several utility types that can be used to manipulate and transform existing types. Here are some of the most common ones:
+
+- `Partial`: makes all properties of a type optional.
+- `Readonly`: makes all properties of a type read-only.
+- `Pick`: allows you to pick specific properties from a type.
+- `Omit`: allows you to omit specific properties from a type.
+- `Exclude`: creates a type that is the set difference of A and B.
+- ..and more.
+
+Learn more: [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+
+## Mapped Types
+
+Mapped types in TypeScript are a way to create a new type based on an existing type, where each property of the existing type is transformed in some way. Mapped types are declared using a combination of the `keyof` operator and a type that maps each property of the existing type to a new property type.
+
+For example, the following is a mapped type that takes an object type and creates a new type with all properties of the original type but with their type changed to `readonly`:
+
+```tsx
+Explain;
+
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+
+let obj = { x: 10, y: 20 };
+mo;
+let readonlyObj: Readonly<typeof obj> = obj;
+```
+
+In this example, the `Readonly` mapped type takes an object type `T` and creates a new type with all properties of `T` but with their type changed to `readonly`. The keyof `T` operator is used to extract the names of the properties of `T`, and the `T[P]` syntax is used to access the type of each property of `T`. The `readonly` keyword is used to make the properties of the new type `readonly`.
+
+Learn more: [Mapped Types](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html).
+
+## Integrating TypeScript with Frameworks
+
+TypeScript integrates seamlessly with popular frameworks like React, Angular, and Vue.js. For example, in React:
+
+```tsx
+import React from "react";
+
+interface Props {
+  name: string;
+}
+
+const Greeting: React.FC<Props> = ({ name }) => {
+  return <h1>Hello, {name}!</h1>;
+};
+
+export default Greeting;
+```
+
+Learn more: [TypeScript with React](https://www.typescriptlang.org/docs/handbook/react.html).
+
+## Useful Packages
+
+TypeScript has a large ecosystem of packages that can be used to extend the language or to add functionality to your project. Here is the list of some of the most useful packages.
+
+- [**@article@zod**](https://zod.dev/): A TypeScript-first data validation library
+- [**@opensource@ts-morph**](https://github.com/dsherret/ts-morph): A TypeScript-first API for manipulating TypeScript code
+- [**@article@ts-node**](https://typestrong.org/ts-node/): A TypeScript execution and REPL for node.js
+- [**@opensource@ts-jest**](https://github.com/kulshekhar/ts-jest): A Jest transformer with source map support that lets you use Jest to test projects written in TypeScript.
+- [**@opensource@typesync**](https://github.com/jeffijoe/typesync): Install missing TypeScript typings for dependencies in your package.json.
+- [**@opensource@tsd**](https://github.com/SamVerschueren/tsd) - TypeScript Definition Manager
+- [**@opensource@type-fest**](https://github.com/sindresorhus/type-fest) - A collection of essential TypeScript types
+
+## Assignments to Practice TypeScript
+
+### 1. Stopwatch CLI
+
+- Build a CLI stopwatch with start, stop, reset, and lap features.
+- Practice Date, timers, and strong typing.
+
+### 2. Weather CLI using TypeScript
+
+- Fetch real-time weather data using OpenWeatherMap API.
+- Practice API typing, enums, and `axios` with `async/await`.
+
+### 3. Journal CLI App
+
+- Add, read, delete personal journal entries to a local JSON file.
+- Practice interface design, I/O operations, and type safety.
+
+## Additional Resources
+
+- [TypeScript Official Documentation](https://www.typescriptlang.org/docs/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [TypeScript Playground](https://www.typescriptlang.org/play)
+- [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
+
+By following this roadmap and completing the assignments, you'll gain a solid understanding of TypeScript and be ready to use it in real-world projects.
