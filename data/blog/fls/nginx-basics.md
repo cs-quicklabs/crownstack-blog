@@ -1,0 +1,364 @@
+---
+title: 'NGINX Basics'
+date: 2025-06-16T03:47:00Z
+tags: ['engineering', 'training', 'fls']
+draft: false
+summary: 'Learn the basics of NGINX and its different usages.'
+layout: PostSimple
+authors: ['harshwardhan-singh']
+---
+
+Welcome to the NGINX Blog! Here, you'll discover practical guides, tips, and official resources to help you get the most out of NGINX—whether you're setting up your first web server or fine-tuning advanced configurations. Looking for help with a specific task? Explore the topics below to find exactly what you need.
+
+---
+
+## Getting Started with NGINX
+
+NGINX is a powerful open-source software that can be used as a web server, reverse proxy, load balancer, and more. This guide helps you set up NGINX and gives you a quick overview of its core use cases.
+
+---
+
+### Installation
+
+#### Ubuntu
+
+```bash
+sudo apt update
+sudo apt install nginx
+````
+
+#### macOS (via Homebrew)
+
+```bash
+brew install nginx
+```
+
+#### Windows
+
+Visit the [official NGINX site](https://nginx.org/en/download.html) to download the latest stable version for Windows.
+
+🔗 **More Info:** [NGINX Installation Guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/)
+
+---
+
+### Web Server
+
+As a web server, NGINX efficiently serves static files such as HTML, CSS, JavaScript, and images. Its lightweight architecture and high performance make it ideal for hosting websites and delivering content to users with minimal latency. By configuring a simple server block, you can point NGINX to your website’s root directory and start serving files immediately.
+
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+}
+```
+
+#### Root Directory and Index Files
+
+The `root` directive in NGINX specifies the base directory from which files will be served. The `index` directive defines the default file to return when a directory is requested, such as `index.html`. You can set different root directories for specific locations, allowing you to organize your static files, images, or media efficiently. This flexibility helps you serve content from various folders based on the request path, making your server configuration both powerful and easy to manage.
+
+```nginx
+server {
+    root /www/data;
+
+    location / {
+    }
+
+    location /images/ {
+    }
+
+    location ~ \.(mp3|mp4) {
+        root /www/media;
+    }
+}
+```
+
+🔗 [Serving Static Content with NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/)
+
+---
+
+### Reverse Proxy
+
+NGINX excels as a reverse proxy, forwarding client requests to backend servers or applications. This setup helps distribute traffic, improve security, and enable features like load balancing and SSL termination. By acting as an intermediary, NGINX can manage connections, cache responses, and shield backend services from direct exposure.
+
+```nginx
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+}
+```
+
+#### Passing a Request to a Proxied Server
+
+When NGINX proxies a request, it:
+1. Sends the request to a specified proxy server
+2. Fetches the response
+3. Sends the response back to the client.
+
+```nginx
+location /some/path/ {
+    proxy_pass http://www.example.com/link/;
+}
+```
+
+#### Passing Request Headers
+
+By default, NGINX modifies two header fields in proxied requests, “Host” and “Connection”, and eliminates the header fields whose values are empty strings. “Host” is set to the value of the $proxy_host variable, and “Connection” is set to close.
+
+To change these settings, as well as modify other header fields, use the proxy_set_header directive. This directive can be specified in a location or higher. It can also be specified in a particular server context or in the http block. For example:
+
+```nginx
+location /some/path/ {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://localhost:8000;
+}
+```
+
+🔗 [NGINX as a Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+
+---
+
+### Load Balancer
+
+With built-in load balancing capabilities, NGINX can distribute incoming traffic across multiple backend servers. This ensures high availability, better resource utilization, and improved fault tolerance for your applications. By defining an `upstream` group and configuring proxy settings, you can scale your infrastructure to handle increased demand seamlessly.
+
+```nginx
+http {
+    upstream app_servers {
+        server 127.0.0.1:3000;
+        server 127.0.0.1:3001;
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://app_servers;
+        }
+    }
+}
+```
+#### Choosing a Load-Balancing Method
+
+##### 1. Round Robin – Requests are distributed evenly across the servers, with server weights taken into consideration. This method is used by default (there is no directive for enabling it):
+
+```nginx
+upstream backend {
+   # no load balancing method is specified for Round Robin
+   server backend1.example.com;
+   server backend2.example.com;
+}
+```
+
+##### 2. Least Connections – A request is sent to the server with the least number of active connections, again with server weights taken into consideration:
+
+```nginx
+upstream backend {
+    least_conn;
+    server backend1.example.com;
+    server backend2.example.com;
+}
+```
+
+##### 3. IP Hash – The server to which a request is sent is determined from the client IP address. In this case, either the first three octets of the IPv4 address or the whole IPv6 address are used to calculate the hash value. The method guarantees that requests from the same address get to the same server unless it is not available.
+
+```nginx
+upstream backend {
+    ip_hash;
+    server backend1.example.com;
+    server backend2.example.com;
+}
+```
+
+##### 4. Generic Hash – The server to which a request is sent is determined from a user‑defined key which can be a text string, variable, or a combination. For example, the key may be a paired source IP address and port, or a URI as in this example:
+
+```nginx
+upstream backend {
+    hash $request_uri consistent;
+    server backend1.example.com;
+    server backend2.example.com;
+}
+```
+
+##### 5. Random – Each request will be passed to a randomly selected server. If the two parameter is specified, first, NGINX randomly selects two servers taking into account server weights, and then chooses one of these servers using the specified method:
+
+```nginx
+upstream backend {
+    random two least_time=last_byte;
+    server backend1.example.com;
+    server backend2.example.com;
+    server backend3.example.com;
+    server backend4.example.com;
+}
+```
+🔗 [NGINX Load Balancing Guide](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
+
+---
+
+### SSL Termination
+
+NGINX simplifies SSL termination by handling HTTPS connections and decrypting traffic before passing it to backend servers. This offloads the SSL processing from your application, enhancing performance and security. With a few configuration changes, you can enable SSL certificates and ensure encrypted communication for your users.
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name example.com;
+
+    ssl_certificate     /etc/nginx/ssl/example.crt;
+    ssl_certificate_key /etc/nginx/ssl/example.key;
+
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+}
+```
+You can obtain a free SSL certification with 3 months expiry using Let's Encrypt (https://letsencrypt.org/)
+
+🔗 [NGINX SSL Termination](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)
+
+---
+
+### Caching
+
+NGINX offers powerful caching features to boost application performance and reduce server load. By storing frequently accessed content in memory, NGINX can serve responses faster and minimize backend processing. Configuring proxy caching is straightforward and can significantly improve the speed and scalability of your web services.
+
+```nginx
+location / {
+    proxy_cache my_cache;
+    proxy_pass http://backend;
+}
+```
+
+#### Enable the Caching of Responses
+
+To enable caching, include the proxy_cache_path directive in the top‑level http {} context. The mandatory first parameter is the local filesystem path for cached content, and the mandatory keys_zone parameter defines the name and size of the shared memory zone that is used to store metadata about cached items:
+
+```nginx
+http {
+    # ...
+    proxy_cache_path /data/nginx/cache keys_zone=mycache:10m;
+}
+```
+
+#### Limit or Disable Caching
+
+By default, responses remain in the cache indefinitely. They are removed only when the cache exceeds the maximum configured size, and then in order by length of time since they were last requested. You can set how long cached responses are considered valid, or even whether they are used at all, by including directives in the http {}, server {}, or location {} context:
+```nginx
+proxy_cache_valid 200 302 10m;
+proxy_cache_valid 404      1m;
+```
+In this example, responses with the code 200 or 302 are considered valid for 10 minutes, and responses with code 404 are valid for 1 minute.
+
+#### Completely Remove Files from the Cache
+
+To completely remove cache files that match an asterisk, activate a special cache purger process that permanently iterates through all cache entries and deletes the entries that match the wildcard key. Include the purger parameter to the proxy_cache_path directive in the http {} context:
+
+```nginx
+http {
+    # ...
+    proxy_cache_path /data/nginx/cache levels=1:2 keys_zone=mycache:10m purger=on;
+
+    map $request_method $purge_method {
+        PURGE 1;
+        default 0;
+    }
+
+    server {
+        listen      80;
+        server_name www.example.com;
+
+        location / {
+            proxy_pass        https://localhost:8002;
+            proxy_cache       mycache;
+            proxy_cache_purge $purge_method;
+        }
+    }
+
+    geo $purge_allowed {
+       default         0;
+       10.0.0.1        1;
+       192.168.0.0/24  1;
+    }
+
+    map $request_method $purge_method {
+       PURGE   $purge_allowed;
+       default 0;
+    }
+}
+```
+
+🔗 [NGINX Caching Basics](https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/)
+
+---
+
+### Bonus Learning (Optional)
+
+#### API Gateway
+
+As an API gateway, NGINX manages API traffic, routes requests to appropriate services, and enforces policies such as authentication and rate limiting. This centralizes API management, simplifies microservices architectures, and enhances security. NGINX’s flexibility allows you to tailor routing and access controls to fit your API ecosystem.
+
+##### Example: Basic API Gateway Routing
+
+```nginx
+http {
+  server {
+    listen 80;
+    server_name api.example.com;
+
+    location /service1/ {
+      proxy_pass http://localhost:5001/;
+    }
+
+    location /service2/ {
+      proxy_pass http://localhost:5002/;
+    }
+  }
+}
+```
+
+##### Example: Simple Rate Limiting
+
+```nginx
+http {
+  limit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;
+
+  server {
+    listen 80;
+    server_name api.example.com;
+
+    location / {
+      limit_req zone=api_limit burst=20 nodelay;
+      proxy_pass http://backend_api;
+    }
+  }
+}
+```
+
+##### Example: Basic Authentication
+
+```nginx
+server {
+  listen 80;
+  server_name api.example.com;
+
+  location /secure-api/ {
+    auth_basic "Restricted API";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+    proxy_pass http://localhost:5003/;
+  }
+}
+```
+
+🔗 [NGINX as an API Gateway](https://www.nginx.com/blog/building-microservices-using-an-api-gateway/)
+
+---
+
+That’s it! With just a few config tweaks, NGINX transforms into whatever you need it to be — from a basic server to a secure, scalable, and fast gateway for your apps.
