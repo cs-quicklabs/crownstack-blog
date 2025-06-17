@@ -1,9 +1,9 @@
 ---
-title: 'NGINX Basics'
+title: 'Kickstart Your Web Infrastructure with NGINX'
 date: 2025-06-16T03:47:00Z
 tags: ['engineering', 'training', 'fls']
 draft: false
-summary: 'Learn the basics of NGINX and its different usages.'
+summary: 'Begin to make your web infrastructure with NGINX by exploring its core features like reverse proxying, load balancing, and caching.'
 layout: PostSimple
 authors: ['harshwardhan-singh']
 ---
@@ -41,7 +41,7 @@ Visit the [official NGINX site](https://nginx.org/en/download.html) to download 
 
 ---
 
-### Web Server
+### NGINX as Web Server
 
 As a web server, NGINX efficiently serves static files such as HTML, CSS, JavaScript, and images. Its lightweight architecture and high performance make it ideal for hosting websites and delivering content to users with minimal latency. By configuring a simple server block, you can point NGINX to your website’s root directory and start serving files immediately.
 
@@ -81,7 +81,7 @@ server {
 
 ---
 
-### Reverse Proxy
+### NGINX for Reverse Proxy
 
 NGINX excels as a reverse proxy, forwarding client requests to backend servers or applications. This setup helps distribute traffic, improve security, and enable features like load balancing and SSL termination. By acting as an intermediary, NGINX can manage connections, cache responses, and shield backend services from direct exposure.
 
@@ -126,7 +126,7 @@ location /some/path/ {
 
 ---
 
-### Load Balancer
+### NGINX as Load Balancer
 
 With built-in load balancing capabilities, NGINX can distribute incoming traffic across multiple backend servers. This ensures high availability, better resource utilization, and improved fault tolerance for your applications. By defining an `upstream` group and configuring proxy settings, you can scale your infrastructure to handle increased demand seamlessly.
 
@@ -203,9 +203,9 @@ upstream backend {
 
 ---
 
-### SSL Termination
+### NGINX SSL Installation
 
-NGINX simplifies SSL termination by handling HTTPS connections and decrypting traffic before passing it to backend servers. This offloads the SSL processing from your application, enhancing performance and security. With a few configuration changes, you can enable SSL certificates and ensure encrypted communication for your users.
+NGINX simplifies SSL by handling HTTPS connections and decrypting traffic before passing it to backend servers. This offloads the SSL processing from your application, enhancing performance and security. With a few configuration changes, you can enable SSL certificates and ensure encrypted communication for your users.
 
 ```nginx
 server {
@@ -226,7 +226,7 @@ You can obtain a free SSL certification with 3 months expiry using Let's Encrypt
 
 ---
 
-### Caching
+### NGINX for Caching
 
 NGINX offers powerful caching features to boost application performance and reduce server load. By storing frequently accessed content in memory, NGINX can serve responses faster and minimize backend processing. Configuring proxy caching is straightforward and can significantly improve the speed and scalability of your web services.
 
@@ -301,7 +301,7 @@ http {
 
 ### Bonus Learning (Optional)
 
-#### API Gateway
+#### NGINX as an API Gateway
 
 As an API gateway, NGINX manages API traffic, routes requests to appropriate services, and enforces policies such as authentication and rate limiting. This centralizes API management, simplifies microservices architectures, and enhances security. NGINX’s flexibility allows you to tailor routing and access controls to fit your API ecosystem.
 
