@@ -3,7 +3,7 @@ title: 'Kickstart Your Web Infrastructure with NGINX'
 date: 2025-06-16T03:47:00Z
 tags: ['engineering', 'training', 'fls']
 draft: false
-summary: 'Begin to make your web infrastructure with NGINX by exploring its core features like reverse proxying, load balancing, and caching.'
+summary: 'Kickstart your web infrastructure with NGINX by exploring its core features: reverse proxying, load balancing, and caching.'
 layout: PostSimple
 authors: ['harshwardhan-singh']
 ---
@@ -203,7 +203,7 @@ upstream backend {
 
 ---
 
-### NGINX SSL Installation
+### SSL Installation for NGINX
 
 NGINX simplifies SSL by handling HTTPS connections and decrypting traffic before passing it to backend servers. This offloads the SSL processing from your application, enhancing performance and security. With a few configuration changes, you can enable SSL certificates and ensure encrypted communication for your users.
 
@@ -220,7 +220,7 @@ server {
     }
 }
 ```
-You can obtain a free SSL certification with 3 months expiry using Let's Encrypt (https://letsencrypt.org/)
+You can obtain a free SSL certificate with 3 months expiry using Let's Encrypt (https://letsencrypt.org/)
 
 🔗 [NGINX SSL Termination](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)
 
