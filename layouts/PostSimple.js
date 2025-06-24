@@ -7,7 +7,7 @@ import formatDate from '@/lib/utils/formatDate'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
-  const { date, title } = frontMatter
+  const { date, title, lastmod } = frontMatter
   const authorNames = authorDetails?.map((author) => author.name).join(',')
   const imageUrl =
     'https://blog.crownstack.com' +
@@ -31,17 +31,6 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
         <div>
           <header>
             <div className="space-y-1 border-b border-gray-200 pb-8 text-center dark:border-gray-700">
-              <dl>
-                <div>
-                  <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date)}</time>
-                  </dd>
-                </div>
-              </dl>
-              <div>
-                <PageTitle>{title}</PageTitle>
-              </div>
               <dl className="">
                 <dt className="sr-only">Authors</dt>
                 <dd className="mt-4">
@@ -61,6 +50,28 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     ))}
                   </div>
                 </dd>
+              </dl>
+              <div>
+                <PageTitle>{title}</PageTitle>
+              </div>
+              <dl>
+                <div className="mt-4 flex flex-wrap justify-center gap-x-8 text-sm text-gray-500 dark:text-gray-400">
+                  <dt className="sr-only">Published on</dt>
+                  <dd className="flex items-center space-x-1">
+                    <span className="font-medium text-gray-400">Published On:</span>
+                    <time dateTime={date}>{formatDate(date)}</time>
+                  </dd>
+
+                  {lastmod && (
+                    <>
+                      <dt className="sr-only">Updated on</dt>
+                      <dd className="flex items-center space-x-1">
+                        <span className="font-medium text-gray-400">Updated On:</span>
+                        <time dateTime={lastmod}>{formatDate(lastmod)}</time>
+                      </dd>
+                    </>
+                  )}
+                </div>
               </dl>
             </div>
           </header>
