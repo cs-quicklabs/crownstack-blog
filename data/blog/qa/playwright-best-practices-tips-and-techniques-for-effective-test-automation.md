@@ -7,7 +7,7 @@ draft: false
 summary: 'This is guide to follow best practices for automation testing using Playwright'
 layout: PostSimple
 images: []
-authors: ['shashank-jaiswal']
+authors: ['puneet-yadav']
 ---
 
 ![Playwright](/static/images/blogs/qa/playwright-best-practices-tips-and-techniques-for-effective-test-automation/playwright.png 'Playwright')
@@ -148,14 +148,28 @@ env/
 Custom commands in an automation framework help by creating reusable functions for common actions. They make tests clearer, easier to maintain, and more organized, allowing you to handle repetitive tasks, manage test data, and streamline complex workflows.
 
 ```jsx
-Cypress.Commands.add('login', (username, password) => {
-  cy.get('input[name="username"]').type(username)
-  cy.get('input[name="password"]').type(password)
-  cy.get('button[type="submit"]').click()
-})
+// helpers/auth.js - Create reusable helper functions
+async function login(page, username, password) {
+  await page.fill('input[name="username"]', username)
+  await page.fill('input[name="password"]', password)
+  await page.click('button[type="submit"]')
+}
 
-// Usage
-cy.login('user123', 'pass123')
+module.exports = { login }
+```
+
+```jsx
+// test.spec.js - Usage in test files
+const { test, expect } = require('@playwright/test')
+const { login } = require('./helpers/auth')
+
+test('User login test', async ({ page }) => {
+  await page.goto('https://example.com/login')
+  await login(page, 'user123', 'pass123')
+
+  // Assert successful login
+  await expect(page.locator('h1')).toHaveText('Dashboard')
+})
 ```
 
 ### 5. Use of YML files
@@ -188,6 +202,351 @@ jobs:
 Allure reports provide detailed, interactive, and visually appealing test execution reports in various formats, helping testers and stakeholders easily analyze and understand test results.
 
 ![Report](/static/images/blogs/qa/playwright-best-practices-tips-and-techniques-for-effective-test-automation/report.png 'Report')
+
+### 7. Use of Fixtures for Reusable Setup
+
+Fixtures in Playwright provide reusable setup and teardown logic for tests. They help maintain clean, isolated tests by handling repetitive tasks like authentication, data setup, and browser configuration. Fixtures ensure consistency across tests and reduce code duplication.
+
+```jsx
+// fixtures/auth.fixture.js
+const { test as base } = require('@playwright/test')
+
+const test = base.extend({
+  // Custom fixture for authenticated user
+  authenticatedPage: async ({ page }, use) => {
+    // Setup: Login before each test
+    await page.goto('https://example.com/login')
+    await page.fill('[data-testid="username"]', 'testuser')
+    await page.fill('[data-testid="password"]', 'password123')
+    await page.click('[data-testid="login-button"]')
+    await page.waitForURL('**/dashboard')
+
+    // Use the authenticated page in tests
+    await use(page)
+
+    // Teardown: Logout after each test
+    await page.click('[data-testid="logout-button"]')
+  }
+})
+
+module.exports = { test }
+```
+
+```jsx
+// tests/dashboard.spec.js
+const { test, expect } = require('../fixtures/auth.fixture')
+
+test('Access dashboard with authenticated user', async ({ authenticatedPage }) => {
+  // Page is already authenticated via fixture
+  await expect(authenticatedPage.locator('h1')).toHaveText('Dashboard')
+  await expect(authenticatedPage.locator('[data-testid="user-menu"]')).toBeVisible()
+})
+```
+
+### 8. Keep Tests Isolated and Independent
+
+Each test should run independently without relying on other tests' data or state. Use `beforeEach` and `afterEach` hooks to reset the environment and ensure clean test isolation.
+
+```jsx
+const { test, expect } = require('@playwright/test')
+
+test.describe('User Management Tests', () => {
+  let testUser = null
+
+  test.beforeEach(async ({ page }) => {
+    // Setup fresh data before each test
+    await page.goto('https://example.com')
+    testUser = {
+      id: Date.now(),
+      name: `TestUser_${Date.now()}`,
+      email: `test_${Date.now()}@example.com`,
+    }
+  })
+
+  test.afterEach(async ({ page }) => {
+    // Cleanup after each test
+    if (testUser?.id) {
+      await page.request.delete(`/api/users/${testUser.id}`)
+    }
+  })
+
+  test('Create new user', async ({ page }) => {
+    // Test runs with fresh data and cleans up automatically
+    await page.fill('[data-testid="user-name"]', testUser.name)
+    await page.fill('[data-testid="user-email"]', testUser.email)
+    await page.click('[data-testid="create-user"]')
+
+    await expect(page.locator('[data-testid="success-message"]')).toBeVisible()
+  })
+})
+```
+
+### 9. Avoid Sleeps - Use Proper Waiting Mechanisms
+
+Never use `setTimeout` or hard sleeps. Instead, use Playwright's built-in waiting mechanisms to make tests more reliable and faster.
+
+```jsx
+// ❌ Bad: Using hard sleeps
+test('Bad example with sleep', async ({ page }) => {
+  await page.click('[data-testid="submit-button"]')
+  await page.waitForTimeout(3000) // Unreliable and slow
+  await expect(page.locator('[data-testid="result"]')).toBeVisible()
+})
+
+// ✅ Good: Using proper waiting mechanisms
+test('Good example with proper waits', async ({ page }) => {
+  await page.click('[data-testid="submit-button"]')
+
+  // Wait for specific conditions
+  await page.waitForSelector('[data-testid="result"]')
+  await expect(page.locator('[data-testid="result"]')).toBeVisible()
+
+  // Wait for network requests to complete
+  await page.waitForLoadState('networkidle')
+
+  // Wait for element with custom timeout
+  await expect(page.locator('[data-testid="success-message"]')).toBeVisible({ timeout: 10000 })
+})
+```
+
+### 10. Validate Critical Flows First - Focus on Smoke Tests
+
+Prioritize testing critical user journeys, smoke tests, and high-risk paths. Use test tags to organize and run selective test suites efficiently.
+
+```jsx
+// tests/smoke.spec.js
+const { test, expect } = require('@playwright/test')
+
+test.describe('Smoke Tests @smoke', () => {
+  test('Critical user journey - Login to Purchase', async ({ page }) => {
+    // Step 1: Login
+    await page.goto('https://example.com/login')
+    await page.fill('[data-testid="username"]', 'testuser')
+    await page.fill('[data-testid="password"]', 'password123')
+    await page.click('[data-testid="login-button"]')
+
+    // Step 2: Navigate to product
+    await page.click('[data-testid="products-menu"]')
+    await page.click('[data-testid="product-1"]')
+
+    // Step 3: Add to cart
+    await page.click('[data-testid="add-to-cart"]')
+    await expect(page.locator('[data-testid="cart-count"]')).toHaveText('1')
+
+    // Step 4: Checkout process
+    await page.click('[data-testid="cart-icon"]')
+    await page.click('[data-testid="checkout-button"]')
+    await expect(page.locator('h1')).toHaveText('Checkout')
+  })
+})
+
+// Run smoke tests: npx playwright test --grep @smoke
+```
+
+### 11. Parallelize Tests for Speed
+
+Configure parallel execution to speed up test runs using Playwright's built-in parallelization features.
+
+```jsx
+// playwright.config.js
+module.exports = {
+  // Run tests in parallel
+  workers: process.env.CI ? 2 : undefined,
+
+  // Parallel execution within test files
+  fullyParallel: true,
+
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+  ],
+}
+```
+
+```jsx
+// tests/parallel-tests.spec.js
+const { test, expect } = require('@playwright/test')
+
+// Run tests in this describe block in parallel
+test.describe.parallel('Parallel User Tests', () => {
+  test('User 1 registration', async ({ page }) => {
+    // This test runs in parallel with others
+    await page.goto('https://example.com/register')
+    // ... test logic
+  })
+
+  test('User 2 registration', async ({ page }) => {
+    // This test runs in parallel with others
+    await page.goto('https://example.com/register')
+    // ... test logic
+  })
+})
+```
+
+### 12. Maintain Readable and Clean Code
+
+Write clear test names, use proper commenting, and maintain consistent code structure for better maintainability.
+
+```jsx
+const { test, expect } = require('@playwright/test')
+
+test.describe('E-commerce Checkout Process', () => {
+  test('should complete purchase journey from product selection to payment confirmation', async ({
+    page,
+  }) => {
+    // Step 1: Navigate to product catalog
+    await page.goto('https://example.com/products')
+
+    // Step 2: Select first available product
+    const firstProduct = page.locator('[data-testid="product-card"]').first()
+    await firstProduct.click()
+
+    // Step 3: Add product to cart with quantity verification
+    await page.selectOption('[data-testid="quantity-select"]', '2')
+    await page.click('[data-testid="add-to-cart-button"]')
+
+    // Verify cart update with clear assertion message
+    await expect(page.locator('[data-testid="cart-badge"]')).toHaveText('2')
+
+    // Step 4: Proceed to checkout
+    await page.click('[data-testid="cart-icon"]')
+    await page.click('[data-testid="proceed-to-checkout"]')
+
+    // Verify checkout page loads correctly
+    await expect(page).toHaveURL(/.*\/checkout/)
+    await expect(page.locator('h1')).toHaveText('Checkout')
+  })
+})
+```
+
+### 13. Test Data Management and Cleanup
+
+Implement proper test data cleanup strategies to avoid environment pollution and ensure consistent test runs.
+
+```jsx
+const { test, expect } = require('@playwright/test')
+
+test.describe('User Data Management', () => {
+  const testUsers = []
+
+  test.afterAll(async ({ request }) => {
+    // Cleanup all test users created during test suite
+    for (const user of testUsers) {
+      try {
+        await request.delete(`/api/users/${user.id}`)
+        console.log(`Cleaned up user: ${user.email}`)
+      } catch (error) {
+        console.warn(`Failed to cleanup user: ${user.email}`)
+      }
+    }
+  })
+
+  test('Create multiple users with automatic cleanup', async ({ page, request }) => {
+    // Create test user data
+    const userData = {
+      name: `TestUser_${Date.now()}`,
+      email: `test_${Date.now()}@example.com`,
+      role: 'standard',
+    }
+
+    // Create user via API
+    const response = await request.post('/api/users', {
+      data: userData,
+    })
+    const createdUser = await response.json()
+    testUsers.push(createdUser) // Track for cleanup
+
+    // Verify user creation in UI
+    await page.goto('/admin/users')
+    await expect(page.locator(`[data-testid="user-${createdUser.id}"]`)).toBeVisible()
+  })
+})
+```
+
+### 14. Test Tagging and Selective Execution
+
+Use tags to organize tests into categories and run specific test suites based on requirements.
+
+```jsx
+// tests/regression.spec.js
+const { test, expect } = require('@playwright/test')
+
+test.describe('User Authentication @regression @auth', () => {
+  test('Login with valid credentials @smoke @critical', async ({ page }) => {
+    // Critical test logic
+  })
+
+  test('Password reset functionality @regression', async ({ page }) => {
+    // Regression test logic
+  })
+
+  test('Account lockout after failed attempts @security @edge-case', async ({ page }) => {
+    // Security test logic
+  })
+})
+```
+
+```bash
+# Run specific tagged tests
+npx playwright test --grep @smoke
+npx playwright test --grep "@regression and @auth"
+npx playwright test --grep "@critical or @smoke"
+```
+
+### 15. Screenshot and Video Capture for Debugging
+
+Configure automatic screenshot and video capture for failed tests to aid in debugging.
+
+```jsx
+// playwright.config.js
+module.exports = {
+  use: {
+    // Capture screenshot on failure
+    screenshot: 'only-on-failure',
+
+    // Record video for failed tests
+    video: 'retain-on-failure',
+
+    // Capture trace on failure for detailed debugging
+    trace: 'retain-on-failure',
+  },
+
+  projects: [
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        // Custom screenshot settings per project
+        screenshot: { mode: 'only-on-failure', fullPage: true },
+      },
+    },
+  ],
+}
+```
+
+```jsx
+// Custom screenshot capture in tests
+test('Custom screenshot example', async ({ page }) => {
+  await page.goto('https://example.com')
+
+  // Take screenshot at specific points
+  await page.screenshot({ path: 'before-action.png' })
+
+  await page.click('[data-testid="important-button"]')
+
+  // Screenshot after critical action
+  await page.screenshot({
+    path: 'after-action.png',
+    fullPage: true,
+  })
+})
+```
 
 ## Use of Assertion with Clarity
 
@@ -311,13 +670,111 @@ const playwright = require('playwright')
 })()
 ```
 
+## Managing Flaky Tests and Continuous Improvement
+
+Flaky tests are tests that produce inconsistent results without any code changes. They can significantly impact team confidence in automated testing. Here's how to identify, manage, and fix flaky tests:
+
+### Identifying Flaky Tests
+
+```jsx
+// playwright.config.js - Configure retries for flaky test detection
+module.exports = {
+  // Retry failed tests up to 2 times
+  retries: process.env.CI ? 2 : 0,
+
+  // Generate reports to track flaky tests
+  reporter: [['html'], ['json', { outputFile: 'test-results.json' }]],
+}
+```
+
+### Common Causes and Solutions
+
+```jsx
+// ❌ Flaky: Race conditions with network requests
+test('Flaky test example', async ({ page }) => {
+  await page.click('[data-testid="load-data"]')
+  await expect(page.locator('[data-testid="data-list"]')).toBeVisible() // May fail
+})
+
+// ✅ Stable: Wait for specific conditions
+test('Stable test example', async ({ page }) => {
+  await page.click('[data-testid="load-data"]')
+
+  // Wait for network request to complete
+  await page.waitForResponse((response) => response.url().includes('/api/data'))
+
+  // Wait for specific element state
+  await expect(page.locator('[data-testid="data-list"]')).toBeVisible()
+  await expect(page.locator('[data-testid="data-item"]')).toHaveCount(5)
+})
+```
+
+### Flaky Test Monitoring
+
+```jsx
+// scripts/flaky-test-report.js
+const fs = require('fs')
+
+function analyzeTestResults() {
+  const results = JSON.parse(fs.readFileSync('test-results.json', 'utf8'))
+
+  const flakyTests = results.suites
+    .flatMap((suite) => suite.specs)
+    .filter((spec) => spec.tests.some((test) => test.results.length > 1))
+
+  console.log('Flaky Tests Detected:')
+  flakyTests.forEach((test) => {
+    console.log(`- ${test.title}: ${test.results.length} attempts`)
+  })
+}
+
+analyzeTestResults()
+```
+
 ## Conclusion
 
-Mastering Playwright for web automation can significantly elevate your testing strategy. You can achieve efficient and reliable automation by implementing best practices like the Page Object Model, leveraging `.json` files for data-driven testing, and utilizing `.env` files for secure environment management. Incorporating custom commands, mocking APIs, and maintaining proper locators further enhances test effectiveness. Embrace these techniques to streamline your testing process and build high-quality software.
+Mastering Playwright for web automation requires a comprehensive approach that goes beyond basic test writing. By implementing these best practices, you can build a robust, maintainable, and efficient test automation framework:
 
-**Stay updated with the latest Playwright features and best practices. The Playwright team constantly evolves the framework, offering new features and improvements. Utilize the official documentation.**
+**Framework Foundations:**
 
-**Happy Learning!**
+- Use Page Object Model (POM) for better code organization
+- Implement fixtures for reusable setup and teardown
+- Leverage data-driven testing with JSON files
+- Secure sensitive data with environment variables
+
+**Test Quality and Reliability:**
+
+- Keep tests isolated and independent
+- Use proper waiting mechanisms instead of hard sleeps
+- Implement smart locator strategies with data-testid
+- Focus on critical user journeys and smoke tests
+
+**Performance and Efficiency:**
+
+- Parallelize test execution for faster feedback
+- Use test tagging for selective execution
+- Implement proper test data cleanup strategies
+- Configure screenshot and video capture for debugging
+
+**Continuous Improvement:**
+
+- Monitor and fix flaky tests regularly
+- Maintain readable and well-documented code
+- Integrate tests into CI/CD pipelines
+- Use comprehensive reporting tools like Allure
+
+**Key Takeaways:**
+
+- Prioritize test stability over speed
+- Automate repetitive tasks through fixtures and helpers
+- Keep tests simple, focused, and maintainable
+- Invest time in proper framework setup for long-term benefits
+
+By following these practices, your Playwright test suite will become a powerful tool that provides fast feedback, catches bugs early, and gives your team confidence in software releases. Remember, good test automation is an investment that pays dividends in reduced manual testing effort and improved software quality.
+
+**Stay updated with the latest Playwright features and best practices. The Playwright team constantly evolves the framework, offering new features and improvements. Utilize the official documentation for the most current information.**
+
+**Happy Testing and Automation!**
 
 ## References:
 
