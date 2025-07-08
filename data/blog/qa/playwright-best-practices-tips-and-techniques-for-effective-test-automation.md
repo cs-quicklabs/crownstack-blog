@@ -1,7 +1,7 @@
 ---
 title: 'Playwright Best Practices: Tips and Techniques for Effective Test Automation'
 date: '2024-07-22'
-lastmod: '2024-07-22'
+lastmod: '2025-07-08'
 tags: ['qa', 'guide', 'playwright']
 draft: false
 summary: 'This is guide to follow best practices for automation testing using Playwright'
