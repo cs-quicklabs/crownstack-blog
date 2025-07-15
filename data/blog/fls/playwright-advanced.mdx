@@ -1,0 +1,586 @@
+---
+title: 'Advanced Playwright: Mastering Web Automation and Testing'
+date: '2025-01-15'
+tags: ['QA', 'training', 'fls']
+draft: false
+summary: 'Master advanced Playwright techniques including custom fixtures, API testing, CI/CD integration, and performance optimization for professional web automation.'
+layout: PostSimple
+authors: ['puneet-yadav']
+---
+
+# Advanced Playwright: Mastering Web Automation and Testing
+
+This comprehensive guide covers advanced Playwright techniques for experienced developers and QA engineers. Building upon the fundamentals, we'll explore sophisticated testing strategies, optimization techniques, and real-world implementation patterns.
+
+## Advanced Selectors and Locators
+
+Mastering complex selectors is crucial for robust test automation. Playwright offers powerful locator strategies beyond basic CSS and XPath selectors.
+
+### Custom Locators and Filters
+
+```javascript
+// Using custom test-id attributes
+await page.locator('[data-testid="submit-button"]').click()
+
+// Chaining locators with filters
+await page.locator('.product-card').filter({ hasText: 'Premium Plan' }).locator('button').click()
+
+// Using nth() for specific elements
+await page.locator('.item').nth(2).click()
+
+// Complex filtering with custom functions
+await page
+  .locator('.user-row')
+  .filter({
+    has: page.locator('.status.active'),
+  })
+  .first()
+  .click()
+```
+
+Learn more about [Advanced Locators](https://playwright.dev/docs/locators) and [Filtering Strategies](https://playwright.dev/docs/locators#filtering-locators).
+
+## Custom Fixtures and Test Hooks
+
+Advanced test organization requires custom fixtures for setup, teardown, and shared resources.
+
+### Creating Custom Fixtures
+
+```javascript
+// fixtures.js
+import { test as base } from '@playwright/test'
+
+export const test = base.extend({
+  // Custom fixture for authenticated user
+  authenticatedPage: async ({ page }, use) => {
+    await page.goto('/login')
+    await page.fill('[data-testid="username"]', 'testuser')
+    await page.fill('[data-testid="password"]', 'password')
+    await page.click('[data-testid="login-button"]')
+    await page.waitForURL('/dashboard')
+    await use(page)
+  },
+
+  // Custom fixture for test data
+  testData: async ({}, use) => {
+    const data = {
+      users: await generateTestUsers(),
+      products: await generateTestProducts(),
+    }
+    await use(data)
+    // Cleanup after test
+    await cleanupTestData(data)
+  },
+})
+```
+
+### Global Setup and Teardown
+
+```javascript
+// playwright.config.js
+export default {
+  globalSetup: require.resolve('./global-setup'),
+  globalTeardown: require.resolve('./global-teardown'),
+  // ... other config
+}
+
+// global-setup.js
+async function globalSetup(config) {
+  // Setup test database
+  await setupDatabase()
+  // Seed initial data
+  await seedTestData()
+  // Start mock services
+  await startMockServices()
+}
+```
+
+Explore [Custom Fixtures](https://playwright.dev/docs/test-fixtures) and [Global Setup](https://playwright.dev/docs/test-global-setup-teardown) documentation.
+
+## Advanced Page Object Model
+
+Implement sophisticated Page Object patterns for maintainable test code.
+
+### Enhanced Page Objects with Actions and Assertions
+
+```javascript
+// pages/ProductPage.js
+export class ProductPage {
+  constructor(page) {
+    this.page = page
+    this.productGrid = page.locator('[data-testid="product-grid"]')
+    this.filterPanel = page.locator('[data-testid="filter-panel"]')
+    this.sortDropdown = page.locator('[data-testid="sort-dropdown"]')
+  }
+
+  // Action methods
+  async filterByCategory(category) {
+    await this.filterPanel.locator(`[data-category="${category}"]`).click()
+    await this.page.waitForLoadState('networkidle')
+  }
+
+  async sortBy(option) {
+    await this.sortDropdown.selectOption(option)
+    await this.page.waitForResponse(
+      (resp) => resp.url().includes('/api/products') && resp.status() === 200
+    )
+  }
+
+  // Assertion methods
+  async expectProductCount(count) {
+    await expect(this.productGrid.locator('.product-card')).toHaveCount(count)
+  }
+
+  async expectProductsInOrder(expectedOrder) {
+    const productTitles = await this.productGrid.locator('.product-title').allTextContents()
+    expect(productTitles).toEqual(expectedOrder)
+  }
+
+  // Helper methods
+  async getProductByName(name) {
+    return this.productGrid.locator(`.product-card:has-text("${name}")`)
+  }
+}
+```
+
+Learn about [Page Object Model Best Practices](https://martinfowler.com/bliki/PageObject.html) and [Advanced POM Patterns](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/).
+
+## Advanced API Testing
+
+Playwright excels at comprehensive API testing with request/response validation and mocking.
+
+### Complex API Testing Scenarios
+
+```javascript
+import { test, expect } from '@playwright/test'
+
+test.describe('Advanced API Testing', () => {
+  test('should handle complex API workflows', async ({ request }) => {
+    // Create user
+    const userResponse = await request.post('/api/users', {
+      data: {
+        name: 'Test User',
+        email: 'test@example.com',
+      },
+    })
+    expect(userResponse.ok()).toBeTruthy()
+    const user = await userResponse.json()
+
+    // Create order for user
+    const orderResponse = await request.post('/api/orders', {
+      data: {
+        userId: user.id,
+        items: [{ productId: 1, quantity: 2 }],
+      },
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    })
+    expect(orderResponse.ok()).toBeTruthy()
+
+    // Verify order in database
+    const dbOrder = await request.get(`/api/orders/${order.id}`)
+    const orderData = await dbOrder.json()
+    expect(orderData.status).toBe('pending')
+  })
+
+  test('should validate API response schemas', async ({ request }) => {
+    const response = await request.get('/api/products')
+    const products = await response.json()
+
+    // Schema validation
+    expect(products).toMatchObject({
+      data: expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.any(Number),
+          name: expect.any(String),
+          price: expect.any(Number),
+          category: expect.any(String),
+        }),
+      ]),
+      meta: expect.objectContaining({
+        total: expect.any(Number),
+        page: expect.any(Number),
+      }),
+    })
+  })
+})
+```
+
+### Request Interception and Mocking
+
+```javascript
+test('should mock API responses', async ({ page }) => {
+  // Mock API response
+  await page.route('**/api/products', (route) => {
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        data: [{ id: 1, name: 'Mocked Product', price: 99.99 }],
+      }),
+    })
+  })
+
+  await page.goto('/products')
+  await expect(page.locator('.product-card')).toContainText('Mocked Product')
+})
+
+// Advanced route handling with conditions
+test('should conditionally mock requests', async ({ page }) => {
+  await page.route('**/api/**', (route, request) => {
+    if (request.method() === 'POST' && request.url().includes('/orders')) {
+      // Mock order creation failure
+      route.fulfill({
+        status: 400,
+        contentType: 'application/json',
+        body: JSON.stringify({ error: 'Insufficient inventory' }),
+      })
+    } else {
+      route.continue()
+    }
+  })
+})
+```
+
+Explore [API Testing Guide](https://playwright.dev/docs/api-testing) and [Request Interception](https://playwright.dev/docs/network).
+
+## CI/CD Integration with Sharding
+
+Optimize Playwright for continuous integration using parallel test execution and sharding.
+
+### GitHub Actions with Test Sharding
+
+```yaml
+# .github/workflows/playwright.yml
+name: Playwright Tests
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shardIndex: [1, 2, 3, 4]
+        shardTotal: [4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests (Sharded)
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.shardIndex }}
+          path: playwright-report/
+```
+
+### Playwright Configuration for Sharding
+
+```javascript
+// playwright.config.js
+export default {
+  fullyParallel: true,
+  workers: process.env.CI ? 2 : undefined,
+  retries: process.env.CI ? 2 : 0,
+
+  // Projects for cross-browser testing
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+    { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+  ],
+
+  // Enable sharding for CI
+  shard: process.env.CI ? { current: 1, total: 4 } : null,
+}
+```
+
+### Local Sharding Commands
+
+```bash
+# Run tests in 4 shards locally
+npx playwright test --shard=1/4
+npx playwright test --shard=2/4
+npx playwright test --shard=3/4
+npx playwright test --shard=4/4
+
+# Run specific shard with browser
+npx playwright test --shard=1/4 --project=chromium
+```
+
+Learn about [CI Integration](https://playwright.dev/docs/ci) and [Test Sharding](https://playwright.dev/docs/test-parallel#shard-tests-between-multiple-machines).
+
+## Visual Testing and Screenshots
+
+Implement robust visual regression testing for UI consistency.
+
+### Advanced Visual Testing
+
+```javascript
+test('visual regression testing', async ({ page }) => {
+  await page.goto('/dashboard')
+
+  // Full page screenshot
+  await expect(page).toHaveScreenshot('dashboard-full.png')
+
+  // Element screenshot with options
+  await expect(page.locator('.chart-container')).toHaveScreenshot('chart.png', {
+    threshold: 0.2,
+    maxDiffPixels: 1000,
+  })
+
+  // Mobile viewport screenshot
+  await page.setViewportSize({ width: 375, height: 667 })
+  await expect(page).toHaveScreenshot('dashboard-mobile.png')
+})
+
+test('cross-browser visual testing', async ({ page, browserName }) => {
+  await page.goto('/product/123')
+  await expect(page.locator('.product-details')).toHaveScreenshot(`product-${browserName}.png`)
+})
+```
+
+### Custom Visual Assertions
+
+```javascript
+// utils/visual-helpers.js
+export async function expectVisualStability(page, locator, duration = 2000) {
+  const element = page.locator(locator)
+  const screenshot1 = await element.screenshot()
+  await page.waitForTimeout(duration)
+  const screenshot2 = await element.screenshot()
+
+  expect(screenshot1).toEqual(screenshot2)
+}
+
+// Usage in tests
+test('element should be visually stable', async ({ page }) => {
+  await page.goto('/animated-dashboard')
+  await expectVisualStability(page, '.loading-spinner', 3000)
+})
+```
+
+Explore [Visual Testing Documentation](https://playwright.dev/docs/test-screenshots) and [Visual Comparison Strategies](https://playwright.dev/docs/test-screenshots#generating-screenshots).
+
+## Advanced Debugging and Troubleshooting
+
+Master debugging techniques for complex test scenarios.
+
+### Advanced Debugging Tools
+
+```javascript
+test('debugging with trace viewer', async ({ page }) => {
+  // Start tracing
+  await page.context().tracing.start({
+    screenshots: true,
+    snapshots: true,
+    sources: true,
+  })
+
+  try {
+    await page.goto('/complex-form')
+    await page.fill('#username', 'testuser')
+    await page.click('#submit')
+    await expect(page.locator('.success-message')).toBeVisible()
+  } catch (error) {
+    // Save trace on failure
+    await page.context().tracing.stop({
+      path: `trace-${Date.now()}.zip`,
+    })
+    throw error
+  }
+
+  await page.context().tracing.stop()
+})
+
+test('custom debugging helpers', async ({ page }) => {
+  // Custom debug function
+  const debug = async (message) => {
+    console.log(`DEBUG: ${message}`)
+    await page.screenshot({ path: `debug-${Date.now()}.png` })
+    const html = await page.content()
+    console.log('Current page HTML:', html.slice(0, 200))
+  }
+
+  await page.goto('/')
+  await debug('After navigation')
+
+  await page.click('.menu-button')
+  await debug('After clicking menu')
+})
+```
+
+### Error Handling and Retry Mechanisms
+
+```javascript
+// Custom retry logic
+async function retryAction(action, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      await action()
+      return
+    } catch (error) {
+      if (i === maxRetries - 1) throw error
+      await page.waitForTimeout(1000 * (i + 1)) // Exponential backoff
+    }
+  }
+}
+
+test('resilient test with custom retry', async ({ page }) => {
+  await page.goto('/')
+
+  await retryAction(async () => {
+    await page.click('.dynamic-button')
+    await expect(page.locator('.result')).toBeVisible()
+  })
+})
+```
+
+Explore [Debugging Guide](https://playwright.dev/docs/debug) and [Trace Viewer](https://playwright.dev/docs/trace-viewer).
+
+## Test Data Management with JSON
+
+Manage test data using JSON files for better maintainability and separation from test logic.
+
+### JSON Test Data Structure
+
+```json
+// testData/users.json
+{
+  "validUsers": [
+    {
+      "id": 1,
+      "username": "john_doe",
+      "email": "john.doe@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "jane_user",
+      "email": "jane@example.com",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "role": "user"
+    }
+  ],
+  "loginCredentials": {
+    "valid": { "username": "john_doe", "password": "SecurePass123" },
+    "invalid": { "username": "wrong_user", "password": "wrongpass" }
+  }
+}
+```
+
+```json
+// testData/products.json
+{
+  "products": [
+    {
+      "id": 101,
+      "name": "Wireless Headphones",
+      "category": "Electronics",
+      "price": 99.99,
+      "inStock": true
+    },
+    {
+      "id": 102,
+      "name": "Programming Book",
+      "category": "Books",
+      "price": 49.99,
+      "inStock": false
+    }
+  ]
+}
+```
+
+### Simple Data Factory
+
+```javascript
+// utils/dataFactory.js
+import fs from 'fs'
+import path from 'path'
+
+export class TestData {
+  static loadJSON(fileName) {
+    const filePath = path.join(__dirname, '../testData', fileName)
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'))
+  }
+
+  // Get user by role
+  static getUser(role = 'user') {
+    const users = this.loadJSON('users.json')
+    return users.validUsers.find((user) => user.role === role)
+  }
+
+  // Get login credentials
+  static getCredentials(type = 'valid') {
+    const users = this.loadJSON('users.json')
+    return users.loginCredentials[type]
+  }
+
+  // Get product by category
+  static getProduct(category = null, index = 0) {
+    const data = this.loadJSON('products.json')
+    if (category) {
+      return data.products.filter((p) => p.category === category)[index]
+    }
+    return data.products[index]
+  }
+}
+```
+
+### Usage in Tests
+
+```javascript
+import { test, expect } from '@playwright/test'
+import { TestData } from '../utils/dataFactory.js'
+
+test('login with JSON data', async ({ page }) => {
+  const credentials = TestData.getCredentials('valid')
+
+  await page.goto('/login')
+  await page.fill('#username', credentials.username)
+  await page.fill('#password', credentials.password)
+  await page.click('#login-btn')
+
+  await expect(page.locator('.dashboard')).toBeVisible()
+})
+
+test('product filtering test', async ({ page }) => {
+  const product = TestData.getProduct('Electronics')
+
+  await page.goto('/products')
+  await page.selectOption('#category', 'Electronics')
+  await expect(page.locator(`.product:has-text("${product.name}")`)).toBeVisible()
+})
+```
+
+Learn about [Test Data Management](https://martinfowler.com/articles/practical-test-pyramid.html#TestDataBuilders) and [Factory Patterns](https://en.wikipedia.org/wiki/Factory_method_pattern).
+
+## Conclusion
+
+Advanced Playwright techniques enable you to build robust, maintainable, and scalable test automation frameworks. By mastering custom fixtures, advanced selectors, API testing, performance monitoring, and sophisticated debugging techniques, you can handle complex real-world testing scenarios with confidence.
+
+Key take aways for advanced Playwright usage:
+
+- Implement custom fixtures for reusable test infrastructure
+- Use advanced locators and filtering for robust element selection
+- Integrate comprehensive API testing into your test suite
+- Leverage CI/CD pipelines with parallel execution for faster feedback
+- Implement visual testing for UI consistency
+- Monitor performance metrics as part of your test suite
+- Master debugging tools for efficient troubleshooting
+
+Continue exploring the [Playwright Best Practices](https://playwright.dev/docs/best-practices) and stay updated with the latest features in the [Playwright Release Notes](https://github.com/microsoft/playwright/releases).
