@@ -66,7 +66,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     <>
                       <dt className="sr-only">Updated on</dt>
                       <dd className="flex items-center space-x-1">
-                        <span className="font-medium text-gray-400">Updated On:</span>
+                        <span className="font-medium text-gray-400">Last Updated On:</span>
                         <time dateTime={lastmod}>{formatDate(lastmod)}</time>
                       </dd>
                     </>
