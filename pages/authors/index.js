@@ -1,9 +1,8 @@
 import { getAllFilesFrontMatter, getFileBySlug } from '@/lib/mdx'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import Image from '@/components/Image'
 import Link from '@/components/Link'
-import SocialIcon from '@/components/social-icons'
+import AuthorLayout from '@/layouts/AuthorLayout'
 
 export async function getStaticProps() {
   const allPosts = await getAllFilesFrontMatter('blog')
@@ -86,57 +85,22 @@ export default function AuthorsPage({ authors }) {
                 key={author.id}
                 className="flex flex-col items-center rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800"
               >
-                <Link
-                  href={`/authors/${author.id}`}
-                  className="flex flex-col items-center space-y-4 text-center w-full"
-                >
-                  <div className="w-32 h-32 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-                    {author.avatar ? (
-                      <Image
-                        src={author.avatar}
-                        alt={author.name}
-                        width={128}
-                        height={128}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center">
-                        <span className="text-2xl font-bold text-gray-500 dark:text-gray-400">
-                          {author.name.charAt(0).toUpperCase()}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="space-y-2 w-full">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                      {author.name}
-                    </h2>
-
-                    {author.occupation && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        {author.occupation}
-                      </p>
-                    )}
-
-                    {author.company && (
-                      <p className="text-sm text-gray-500 dark:text-gray-500">{author.company}</p>
-                    )}
-
+                <Link href={`/authors/${author.id}`} className="w-full">
+                  <AuthorLayout
+                    frontMatter={author}
+                    layout="card"
+                    showSEO={false}
+                    imageSize="small"
+                    showSocialIcons={true}
+                    socialIconsPosition="bottom"
+                  >
                     <div className="flex items-center justify-center space-x-1">
                       <span className="text-sm text-gray-500 dark:text-gray-400">
                         {author.postCount} post{author.postCount !== 1 ? 's' : ''}
                       </span>
                     </div>
-                  </div>
+                  </AuthorLayout>
                 </Link>
-
-                <div className="mt-4 flex space-x-3">
-                  {author.email && <SocialIcon kind="mail" href={`mailto:${author.email}`} />}
-                  {author.github && <SocialIcon kind="github" href={author.github} />}
-                  {author.linkedin && <SocialIcon kind="linkedin" href={author.linkedin} />}
-                  {author.twitter && <SocialIcon kind="twitter" href={author.twitter} />}
-                </div>
               </div>
             ))}
           </div>
