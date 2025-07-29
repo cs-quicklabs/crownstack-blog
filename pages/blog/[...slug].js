@@ -25,9 +25,22 @@ export async function getStaticProps({ params }) {
   const next = allPosts[postIndex - 1] || null
   const post = await getFileBySlug('blog', params.slug.join('/'))
   const authorList = post.frontMatter.authors || ['default']
-  const authorPromise = authorList.map(async (author) => {
-    const authorResults = await getFileBySlug('authors', [author])
-    return authorResults.frontMatter
+
+  // Load author details with their IDs
+  const authorPromise = authorList.map(async (authorId) => {
+    try {
+      const authorResults = await getFileBySlug('authors', [authorId])
+      return {
+        ...authorResults.frontMatter,
+        id: authorId,
+      }
+    } catch (error) {
+      console.warn(`Author file not found for: ${authorId}`)
+      return {
+        name: authorId,
+        id: authorId,
+      }
+    }
   })
   const authorDetails = await Promise.all(authorPromise)
 

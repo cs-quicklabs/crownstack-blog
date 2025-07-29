@@ -1,6 +1,6 @@
 ---
 name: Pushpraj Chaudhary
-avatar: /static/images/authors/vinay-kumar.jpg
+avatar: /static/images/authors/pushpraj-chaudhary.jpg
 occupation: Team Lead - Full Stack
 company: Crownstack Technologies
 email: pushpraj@crownstack.com
