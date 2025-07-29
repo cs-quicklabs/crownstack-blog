@@ -39,14 +39,23 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       Written by :
                     </div>
                     {authorDetails.map((author) => (
-                      <>
-                        <div className="flex items-center justify-center" key={author.name}>
-                          <dl className="whitespace-nowrap text-base font-bold leading-5 text-gray-700">
-                            <dt className="sr-only">Name</dt>
-                            <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
-                          </dl>
-                        </div>
-                      </>
+                      <div className="flex items-center justify-center" key={author.name}>
+                        <dl className="whitespace-nowrap text-base font-bold leading-5 text-gray-700">
+                          <dt className="sr-only">Name</dt>
+                          <dd className="text-gray-900 dark:text-gray-100">
+                            {author.id ? (
+                              <Link
+                                href={`/authors/${author.id}`}
+                                className="text-primary hover:text-primary dark:hover:text-primary hover:underline"
+                              >
+                                {author.name}
+                              </Link>
+                            ) : (
+                              author.name
+                            )}
+                          </dd>
+                        </dl>
+                      </div>
                     ))}
                   </div>
                 </dd>
@@ -62,15 +71,17 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     <time dateTime={date}>{formatDate(date)}</time>
                   </dd>
 
-                  {lastmod && (
-                    <>
-                      <dt className="sr-only">Updated on</dt>
-                      <dd className="flex items-center space-x-1">
-                        <span className="font-medium text-gray-400">Last Updated On:</span>
-                        <time dateTime={lastmod}>{formatDate(lastmod)}</time>
-                      </dd>
-                    </>
-                  )}
+                  {lastmod &&
+                    new Date(lastmod).toISOString().slice(0, 10) !==
+                      new Date(date).toISOString().slice(0, 10) && (
+                      <>
+                        <dt className="sr-only">Updated on</dt>
+                        <dd className="flex items-center space-x-1">
+                          <span className="font-medium text-gray-400">Last Updated On:</span>
+                          <time dateTime={lastmod}>{formatDate(lastmod)}</time>
+                        </dd>
+                      </>
+                    )}
                 </div>
               </dl>
             </div>

@@ -2,7 +2,7 @@ import { TagSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
 import generateRss from '@/lib/generate-rss'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { getAllFilesFrontMatter, getFileBySlug } from '@/lib/mdx'
 import { getAllTags } from '@/lib/tags'
 import kebabCase from '@/lib/utils/kebabCase'
 import fs from 'fs'
@@ -25,9 +25,31 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const allPosts = await getAllFilesFrontMatter('blog')
-  const filteredPosts = allPosts.filter(
-    (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
+
+  // Load author details for each post
+  const postsWithAuthors = await Promise.all(
+    allPosts.map(async (post) => {
+      if (post.authors && post.authors.length > 0) {
+        const authorPromise = post.authors.map(async (author) => {
+          try {
+            const authorResults = await getFileBySlug('authors', [author])
+            return authorResults.frontMatter
+          } catch (error) {
+            console.warn(`Author file not found for: ${author}`)
+            return { name: author }
+          }
+        })
+        const authorDetails = await Promise.all(authorPromise)
+        return { ...post, authorDetails }
+      }
+      return post
+    })
   )
+
+  const filteredPosts = postsWithAuthors.filter((post) => {
+    const tagSlugs = post.tags.map((tag) => kebabCase(tag))
+    return tagSlugs.includes(params.tag)
+  })
 
   // rss
   if (filteredPosts.length > 0) {
