@@ -1,6 +1,6 @@
 ---
 name: Deepika Gupta
-avatar: /static/images/authors/neha-arora.png
+avatar: /static/images/authors/deepika-gupta.png
 occupation: Delivery Head
 company: Crownstack Technologies
 email: deepika@crownstack.com
