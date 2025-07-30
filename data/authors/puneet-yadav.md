@@ -1,6 +1,6 @@
 ---
 name: Puneet Yadav
-avatar: /static/images/authors/puneet-yadav.jpg
+avatar: /static/images/authors/puneet-yadav.jpeg
 occupation: Test Automation Lead – Software Engineer
 company: Crownstack Technologies
 email: puneet.yadav@crownstack.com
