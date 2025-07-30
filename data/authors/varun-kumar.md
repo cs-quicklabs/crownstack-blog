@@ -1,7 +1,7 @@
 ---
 name: Varun Kumar
 avatar: /static/images/authors/varun-kumar.jpeg
-occupation: Back-end Team Lead
+occupation: Engineering Manager
 company: Crownstack Technologies
 email: varun.kumar@crownstack.com
 twitter: https://twitter.com/VarunKu01510712
