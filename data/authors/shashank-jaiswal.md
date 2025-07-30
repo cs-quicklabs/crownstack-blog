@@ -1,6 +1,6 @@
 ---
 name: Shashank Jaiswal
-avatar: /static/images/authors/shashank-jaiswal.jpeg
+avatar:
 occupation: Senior Quality Analyst
 company: Crownstack Technologies
 email: shashank@crownstack.com
