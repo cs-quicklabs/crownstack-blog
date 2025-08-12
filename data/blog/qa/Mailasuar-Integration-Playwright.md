@@ -1,6 +1,14 @@
-# **“A Step-by-Step Guide to Email Testing with Mailosaur and Playwright" a little catch”**
-
-**Written by : Divanshu Gupta**
+---
+title: 'A Step-by-Step Guide to Email Testing with "Mailosaur and Playwright" a little catch'
+date: '2025-08-12'
+lastmod: '2025-08-12'
+tags: ['qa', 'guide', 'playwright']
+draft: false
+summary: 'This is guide to follow best Practices for Email Testing using Mailasuar'
+layout: PostSimple
+images: []
+authors: ['divanshu-gupta']
+---
 
 Email testing is crucial for modern web applications, especially when validating functionalities like signups, password resets, and email notifications. Tools like Mailosaur help make email testing easier by providing email addresses that can receive and store emails during your automated tests. In this blog, I will show you how to integrate the **Mailosaur API** with **Playwright**
 
@@ -10,13 +18,13 @@ Before diving into the integration steps, ensure you have the following:
 
 1. **Node.js** installed on your machine.
 2. **Playwright** installed in your project.
-3. A **Mailosaur account**. Sign up [**here**](https://mailosaur.com/) and get your API key and server ID.
+3. A **Mailosaur account**. Sign up [**Here**](https://mailosaur.com/) and get your API key and server ID.
 
 ### **Setup Playwright Configuration**
 
 If Playwright is not set up yet, initialize it by running:
 
-```jsx
+```bash
 npm install playwright
 ```
 
@@ -36,7 +44,7 @@ Now that you have your API key, the next step is to integrate Mailosaur with you
 
 If you're using Node.js (common in most modern test automation setups), you need to install Mailosaur’s official client library. Open your terminal and run:
 
-```jsx
+```bash
 npm install mailosaur
 ```
 
@@ -46,7 +54,7 @@ With Mailosaur installed, you can now import it into your test files and configu
 
 Here’s how you would set this up in a Playwright test:
 
-```jsx
+```javascript
 const { test, expect } = require("@playwright/test");
 const MailosaurClient = require("mailosaur");
 
@@ -117,9 +125,9 @@ exports.ForgotPassword = class ForgotPassword {
 };
 ```
 
-Now Just call Your Function in spec file 
+Now Just call Your Function in spec file:
 
-```jsx
+```javascript
 import { ForgotPassword } from "../e2e/forgotPassword";
 import { test, expect } from "@playwright/test";
 
