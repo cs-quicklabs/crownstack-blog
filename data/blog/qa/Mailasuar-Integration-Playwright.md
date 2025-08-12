@@ -1,10 +1,10 @@
 ---
-title: 'A Step-by-Step Guide to Email Testing with "Mailosaur and Playwright" a little catch'
+title: 'A Step-by-Step Guide to Email Testing with Mailosaur and Playwright'
 date: '2025-08-12'
-lastmod: '2025-08-12'
+lastmod: 
 tags: ['qa', 'guide', 'playwright']
 draft: false
-summary: 'This is guide to follow best Practices for Email Testing using Mailasuar'
+summary: 'This blog walks through integrating Mailosaur with Playwright to streamline automated email testing in Node.js environments.'
 layout: PostSimple
 images: []
 authors: ['divanshu-gupta']
