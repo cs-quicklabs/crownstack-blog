@@ -115,8 +115,8 @@ exports.ForgotPassword = class ForgotPassword {
 
   async resetPassword(resetLink) {
     await this.page.goto(resetLink);
-    await this.page.locator("#password").fill("Divanshu@1234");
-    await this.page.locator("#confirm-password").fill("Divanshu@1234");
+    await this.page.locator("#password").fill("---Password---");
+    await this.page.locator("#confirm-password").fill("---Password---");
     await this.page.getByText("Set Password").click();
   }
   async refreshMail() {
