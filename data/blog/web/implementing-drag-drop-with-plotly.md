@@ -1,4 +1,14 @@
-# Implementing Advanced Drag & Drop with dnd-kit and Plotly.js in React
+---
+title: 'Implementing Advanced Drag & Drop with dnd-kit and Plotly.js in React'
+date: '2025-08-22'
+lastmod: '2025-08-22'
+tags: ['engineering', 'guide', 'react']
+draft: false
+summary: 'Guide to integrate drag and drop with react,plotly.js'
+layout: PostSimple
+images: []
+authors: ['akash-srivastava']
+---
 
 Drag and drop functionality has become essential for modern data visualization interfaces. When working with complex scatter plots that need interactive reordering capabilities, combining **dnd-kit** with **Plotly.js** creates an elegant solution for intuitive data manipulation. In this article, we'll explore how we built a sophisticated drag and drop system that overlays interactive elements on top of Plotly.js charts.
 
