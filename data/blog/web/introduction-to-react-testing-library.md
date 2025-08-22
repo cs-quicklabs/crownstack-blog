@@ -1,3 +1,15 @@
+---
+title: 'Introduction to react testing library'
+date: '2025-08-22'
+lastmod: '2025-08-22'
+tags: ['engineering', 'guide', 'react']
+draft: false
+summary: 'Guide to unit test react components using react testing library'
+layout: PostSimple
+images: []
+authors: ['akash-srivastava']
+---
+
 React Testing Library (RTL) is a lightweight testing utility for React applications, designed to help developers write tests that focus on how components are used by the end user. Instead of testing implementation details, RTL emphasizes testing UI behavior by interacting with the DOM in a way similar to how users would—using accessible queries like text, labels, and roles. This approach promotes better test coverage and ensures that your application behaves as expected in real-world scenarios.
 
 # The Problem
