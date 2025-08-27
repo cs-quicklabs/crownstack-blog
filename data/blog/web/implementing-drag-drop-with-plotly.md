@@ -6,11 +6,13 @@ tags: ['engineering', 'guide', 'react']
 draft: false
 summary: 'Guide to integrate drag and drop with react,plotly.js'
 layout: PostSimple
-images: []
+images: ['/static/images/blogs/web/drag-drop-with-plotly/drag-drop-plotly.png']
 authors: ['akash-srivastava']
 ---
 
 Drag and drop functionality has become essential for modern data visualization interfaces. When working with complex scatter plots that need interactive reordering capabilities, combining **dnd-kit** with **Plotly.js** creates an elegant solution for intuitive data manipulation. In this article, we'll explore how we built a sophisticated drag and drop system that overlays interactive elements on top of Plotly.js charts.
+
+![Drag and Drop with Plotly.js Overview](/static/images/blogs/web/drag-drop-with-plotly/drag-drop-plotly.png)
 
 ## The Challenge: Interactive Plot Reordering
 
@@ -49,6 +51,8 @@ The drag and drop functionality allows users to reorder data sections by draggin
 - **Hover** over chart sections to see draggable indicators
 - **Drag** sections to new positions with visual feedback
 - **Drop** to reorder data, with the chart updating automatically
+
+![Drag and Drop Demo](/static/images/blogs/web/drag-drop-with-plotly/drag-drop.gif)
 
 ## Implementation Approach
 
