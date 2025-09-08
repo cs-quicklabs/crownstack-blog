@@ -1,0 +1,204 @@
+-
+title: "SDKs explained for QAs: What they are, what to test, and how"
+date: '2025-09-05'
+tags: ['negative testing', 'automation testing', 'qa', 'sdk']
+draft: false
+summary: "From a QA's perspective, this blog explains what an SDK is, breaks down its components, highlights how it differs from an API, and provides practical guidance on what and how to test - including negative testing approaches."
+layout: PostSimple
+authors: ['varun-kumar']
+-
+
+
+## Understanding what is an SDK
+
+Full form of an SDK is **Software Development Kit**. SDKs are commonly used as alternative way of integrating APIs of third-party platforms (like Shopify), service (like Twilio) or product within your software (like Google Sheets). SDKs helps developers save their time by not reinventing features and code. SDKs generally gives us:
+* Ready-made code (libraries & APIs) to interact with a platform, service or product
+* Documentation to understand how to use the code
+* Sample code to demonstrate how to use the SDK (like GitHub repos)
+* Utilities and tools to help with development and testing (like an Android emulator)
+
+
+## Who creates SDKs and why?
+
+SDKs are usually developed by the companies that owns a platform (like Shopify), a service (like Twilio), or a product (like Google Sheets). The main organizational goals behind creating an SDK are:
+
+1. **Make it easier for developers to use their platform or service** - Example: Google makes the Android SDK so developers can build Android apps without worrying about the low-level details of the OS.
+2. **To make it easy for developers to start using company's service, platform or product** - A well-built SDK lowers the entry barrier. If it's simple to integrate, more developers will use it.
+3. **Saves develop time** - SDKs provide pre-built functions and tools, so developers don't have to build everything from scratch.
+4. **Ensuring important compliances are met** - SDKs can include built-in features that help developers comply with legal and regulatory requirements, such as data privacy laws (like GDPR) or industry standards (like PCI-DSS for payment processing).
+
+
+## Why to use an SDK instead of directly calling third-party APIs?
+
+### Faster Development (Less Boilerplate Code)
+
+APIs require developers to manually build requests, handle responses, and write authentication code. SDKs abstract that complexity with ready-to-use functions. For example: Instead of writing 70+ lines of code in Python to upload a file on AWS S3 using their REST APIs:
+
+```python
+import requests
+import datetime
+import hashlib
+import hmac
+
+# ===== AWS Credentials & Config =====
+access_key = "YOUR_AWS_ACCESS_KEY"
+secret_key = "YOUR_AWS_SECRET_KEY"
+region = "us-east-1"
+bucket = "your-bucket-name"
+object_name = "test-file.txt"
+file_path = "local-file.txt"
+
+# Read file content
+with open(file_path, 'rb') as f:
+    file_data = f.read()
+
+# ===== Helper functions for AWS Signature v4 =====
+def sign(key, msg):
+    return hmac.new(key, msg.encode('utf-8'), hashlib.sha256).digest()
+
+def get_signature_key(key, date_stamp, regionName, serviceName):
+    kDate = sign(('AWS4' + key).encode('utf-8'), date_stamp)
+    kRegion = sign(kDate, regionName)
+    kService = sign(kRegion, serviceName)
+    kSigning = sign(kService, 'aws4_request')
+    return kSigning
+
+# ===== Prepare request =====
+method = 'PUT'
+service = 's3'
+host = f"{bucket}.s3.amazonaws.com"
+endpoint = f"https://{host}/{object_name}"
+content_type = "text/plain"
+
+# Timestamps
+t = datetime.datetime.utcnow()
+amz_date = t.strftime('%Y%m%dT%H%M%SZ')
+date_stamp = t.strftime('%Y%m%d')
+
+# Create canonical request
+canonical_uri = f'/{object_name}'
+canonical_querystring = ''
+canonical_headers = f'host:{host}\nx-amz-content-sha256:{hashlib.sha256(file_data).hexdigest()}\nx-amz-date:{amz_date}\n'
+signed_headers = 'host;x-amz-content-sha256;x-amz-date'
+payload_hash = hashlib.sha256(file_data).hexdigest()
+canonical_request = f"{method}\n{canonical_uri}\n{canonical_querystring}\n{canonical_headers}\n{signed_headers}\n{payload_hash}"
+
+# Create string to sign
+algorithm = 'AWS4-HMAC-SHA256'
+credential_scope = f'{date_stamp}/{region}/{service}/aws4_request'
+string_to_sign = f"{algorithm}\n{amz_date}\n{credential_scope}\n{hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()}"
+
+# Calculate signature
+signing_key = get_signature_key(secret_key, date_stamp, region, service)
+signature = hmac.new(signing_key, string_to_sign.encode('utf-8'), hashlib.sha256).hexdigest()
+
+# Authorization header
+authorization_header = f"{algorithm} Credential={access_key}/{credential_scope}, SignedHeaders={signed_headers}, Signature={signature}"
+
+# ===== Make the PUT request =====
+headers = {
+    'x-amz-date': amz_date,
+    'x-amz-content-sha256': payload_hash,
+    'Authorization': authorization_header,
+    'Content-Type': content_type
+}
+
+response = requests.put(endpoint, data=file_data, headers=headers)
+
+if response.status_code == 200:
+    print("File uploaded successfully!")
+else:
+    print("Upload failed:", response.text)
+```
+
+
+The AWS SDK for Python lets us do it in about 20 lines:
+
+```python
+import boto3
+
+# Create an S3 client
+s3 = boto3.client(
+    's3',
+    aws_access_key_id='YOUR_AWS_ACCESS_KEY',
+    aws_secret_access_key='YOUR_AWS_SECRET_KEY',
+    region_name='us-east-1'
+)
+
+# Upload a file
+file_path = 'local-file.txt'       # Local file to upload
+bucket_name = 'your-bucket-name'   # S3 bucket name
+object_name = 'uploaded-file.txt'  # Name in S3
+
+try:
+    s3.upload_file(file_path, bucket_name, object_name)
+    print(f"File uploaded successfully to s3://{bucket_name}/{object_name}")
+except Exception as e:
+    print("Error uploading file:", e)
+```
+
+### Built-In Error Handling
+
+With APIs, we need to handle every edge case (timeouts, retries, rate limits) ourselves. SDKs come with pre-tested error handling and retry logic. Example: AWS SDK automatically retries failed requests due to network glitches.
+
+### Up-to-Date with API Changes
+
+SDKs are maintained by the platform provider to stay compatible with the latest changes. If the underlying API changes, the SDK is updated accordingly by the provider. This saves developers from constantly updating their integration code.
+
+### Security and Best Practices Built-In
+
+SDKs include secure authentication flows (OAuth, token refresh, etc.) and handle sensitive data correctly. This reduces the risk of security vulnerabilities compared to manually implementing API calls.
+
+### Better Developer Experience (Docs, Samples, Tools)
+
+SDKs usually come with detailed documentation, tutorials, sample projects, and testing tools. This makes onboarding easier and shortens the learning curve.
+
+
+## How to test an SDK?
+
+Before starting testing an SDK, it is important to thoroughly understand the big picture and create an execution plan. Some of the important steps to follow in creating an SDK test plan are:
+
+### 1. Understand the SDK's purpose and functionality
+
+* Review documentation, features, and supported platforms.
+* Identify all available classes, methods and modules.
+* Write down each and every functionality in group along with its expected behavior.
+
+### 2. Categorize all the SDK functionalities into High, Medium and Low priorities
+
+Once you have a list of all functionalities, categorize them into three priority levels:
+
+**High-priority features** are the heart of the SDK - core methods, authentication, input validation, and error handling - because any failure here can seriously impact developers relying on it. **Medium-priority features** are important but not critical, like helper functions, logging tools, performance tweaks, and compatibility checks; issues here affect reliability and developer experience, but won't break the SDK. **Low-priority features** are nice-to-have extras, such as sample code, tutorials, or installation scripts. Organizing functions this way helps QA engineers focus on what matters most first while still ensuring the entire SDK is tested thoroughly and systematically.
+
+### 3. Understand the types of testing to be performed
+
+Once you have a clear understanding of the SDK's functionalities and their priorities, the next step is to identify the types of testing that need to be performed. It's crucial to cover all the types of testing below to be performed:
+
+1. Core Functionality - Verify that all main SDK functions/methods perform correctly
+2. Input Validation - Test how the SDK handles valid and invalid inputs
+3. Error Handling - Ensure the SDK gracefully handles errors and exceptions. Example: SDK should throw meaningful errors on timeout or server errors.
+4. Boundary and Edge Cases - Testing using large files, special characters, zero values, etc
+5. Performance Testing - Measure response times and resource usage under under normal and heavy loads
+6. Security Testing - Check data protection, authentication, and authorization mechanisms. Example: Sensitive data should never be logged or exposed.
+7. Compatibility Testing - Verify the SDK works across supported platforms, operating systems, and programming language versions
+8. Integration Testing - Test the SDK in real-world scenarios with actual third-party services or APIs it interacts with
+9. Negative Testing - Intentionally input invalid data or perform unexpected actions to ensure the SDK handles them gracefully without crashing or exposing vulnerabilities. Example: Passing null values, incorrect data types, or exceeding rate limits.
+
+### 4. Create detailed test cases
+
+For each identified functionality (as per step 1) and every functionality's priority (as per step 2), create detailed test cases covering maximum types of testing (as per step 3) mentioned above.
+
+### 5. Write code scripts and test the SDK automatically methodically
+
+Testing an SDK thoroughly is almost impossible to achieve through manual testing alone. Manually covering all possible scenarios - positive flows, negative cases, boundary values, and performance checks - would be time-consuming, error-prone, and inconsistent. This is why QA automation is essential when testing SDKs.
+
+Writing automated scripts allows you to repeatedly validate core functionalities, catch regressions quickly when new SDK versions are released, and simulate a wide range of edge cases that would be impractical to test by hand. Automation not only ensures deeper coverage but also gives confidence that the SDK will behave reliably for developers integrating it into their applications.
+
+### 6. Execute tests and log results
+
+Executing code scripts alone is not enough. Proper logging is what makes the results valuable. Detailed logs help capture which scenarios passed, which failed, and why they failed, making it easier to pinpoint issues and share findings with the development team. They also serve as a historical record, so when new versions of the SDK are released, you can compare outcomes and quickly spot regressions. Consistently executing tests and maintaining accurate logs is what transforms testing from a one-time effort into a repeatable, reliable process.
+
+
+## Conclusion
+
+SDKs are powerful tools that simplify development by providing pre-built code, documentation, and utilities. For QA engineers, understanding how to effectively test SDKs is crucial to ensure they function correctly, securely, and reliably for developers. By following a structured approach to testing - from understanding the SDK's purpose to creating detailed test cases and leveraging automation - QA teams can help deliver high-quality SDKs that developers can trust and rely on.
