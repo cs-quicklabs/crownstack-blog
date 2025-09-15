@@ -18,15 +18,15 @@ Many people think API testing is just about checking whether the API gives a suc
 
 ## Types of checks to perform inside API Automation Testing
 
-| Check Type                  | What to Verify                                                                 | Example                                                                 |
-|-----------------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| **Functional Checks**       | Verify status codes, response body, and correct use of HTTP methods.           | GET /users returns 200 OK with correct JSON structure.                  |
-| **Data Validation Checks**  | Ensure field types, formats, boundaries, and required inputs are handled properly. | POST /users with missing email returns 400 Bad Request.                |
-| **Security Checks**         | Test authentication, authorization, token handling, and data protection.       | Accessing /admin without token returns 401 Unauthorized.               |
-| **Performance Checks**      | Measure response time, load handling, stress limits, and rate limiting.        | API responds within 2 seconds under 100 requests/sec.                      |
-| **Error Handling Checks**   | Confirm proper error codes, messages, and graceful failures.                    | Invalid user ID in GET /users/abc returns 404 Not Found.               |
-| **Integration & Contract Checks** | Validate schema, API versions, and backward compatibility.               | Response of GET /orders matches Swagger schema v1.                     |
-| **Boundary & Edge Case Checks** | Test with large payloads, special characters, and unusual inputs.         | POST /products with 10,000-character name still handled correctly.     |
+| Check Type                  | What to Verify                                                                 |
+|-----------------------------|--------------------------------------------------------------------------------|
+| **Functional Checks**       | Verify status codes, response body, and correct use of HTTP methods.           |
+| **Data Validation Checks**  | Ensure field types, formats, boundaries, and required inputs are handled properly. |
+| **Security Checks**         | Test authentication, authorization, token handling, and data protection.       |
+| **Performance Checks**      | Measure response time, load handling, stress limits, and rate limiting.        |
+| **Error Handling Checks**   | Confirm proper error codes, messages, and graceful failures.                    |
+| **Integration & Contract Checks** | Validate schema, API versions, and backward compatibility.               |
+| **Boundary & Edge Case Checks** | Test with large payloads, special characters, and unusual inputs.         |
 
 
 
