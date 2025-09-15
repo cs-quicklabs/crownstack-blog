@@ -1,0 +1,112 @@
+---
+title: "The Ultimate Checklist for API Automation Testing"
+date: '2025-09-15'
+tags: ['api testing', 'automation-testing', 'qa']
+draft: false
+summary: "Let's explore the ultimate checklist of different types of checks you should perform to ensure complete and effective API automation testing."
+layout: PostSimple
+authors: ['varun-kumar']
+---
+
+
+## What is API Automation Testing?
+
+API automation testing means using software and code to automatically check if an API is working correctly. It helps save time, avoid manual effort, and quickly find issues so software runs smoothly. Instead of manually sending requests and checking responses, automation testing allows teams to quickly validate functionality, performance, security, and reliability of APIs through repeatable test cases.
+
+Many people think API testing is just about checking whether the API gives a successful response, like a 200 OK status. But in reality, that's only the surface. An API might return a success code and still have issues - such as incorrect data, missing validations, security gaps, or poor performance. True API testing goes deeper, ensuring that every aspect of the API - data accuracy, error handling, authentication, performance, and more - is thoroughly validated to guarantee reliability and full coverage.
+
+
+## Types of checks to perform inside API Automation Testing
+
+| Check Type                  | What to Verify                                                                 | Example                                                                 |
+|-----------------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **Functional Checks**       | Verify status codes, response body, and correct use of HTTP methods.           | GET /users returns 200 OK with correct JSON structure.                  |
+| **Data Validation Checks**  | Ensure field types, formats, boundaries, and required inputs are handled properly. | POST /users with missing email returns 400 Bad Request.                |
+| **Security Checks**         | Test authentication, authorization, token handling, and data protection.       | Accessing /admin without token returns 401 Unauthorized.               |
+| **Performance Checks**      | Measure response time, load handling, stress limits, and rate limiting.        | API responds within 2 seconds under 100 requests/sec.                      |
+| **Error Handling Checks**   | Confirm proper error codes, messages, and graceful failures.                    | Invalid user ID in GET /users/abc returns 404 Not Found.               |
+| **Integration & Contract Checks** | Validate schema, API versions, and backward compatibility.               | Response of GET /orders matches Swagger schema v1.                     |
+| **Boundary & Edge Case Checks** | Test with large payloads, special characters, and unusual inputs.         | POST /products with 10,000-character name still handled correctly.     |
+
+
+
+## Functional Checks
+
+| Check Type                  | What to Verify                                                                 | Example                                                                 |
+|-----------------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **Endpoint Reachability**   | Is the API accessible with the correct URL and method (GET, POST, PUT, DELETE, PATCH, etc.)? | GET /users returns 200 OK.                                              |
+| **Request Methods**         | Does the API respond correctly to allowed methods and reject disallowed ones?  | POST /users is allowed, but PUT /users/123 returns 405 Method Not Allowed. |
+| **Response Codes**          | Correct HTTP status codes (`200 OK`, `201 Created`, `400 Bad Request`, `401 Unauthorized`, `404 Not Found`, `500 Internal Server Error`). | |
+| **Response Body Structure** | Check if the response contains expected keys and their values have accurate datatypes | GET /users returns JSON with keys: id (int), name (string), email (string). |
+| **CRUD Operations**         | Verify Create, Read, Update, Delete flows.                                     | POST /products creates a product, GET /products/123 retrieves it.       |
+| **Idempotency**             | Repeated requests should behave as expected (e.g., `DELETE` should break on second call). | DELETE /users/123 first call deletes user, second call returns 404.    |
+
+
+
+## Data Validation Checks
+
+| Check Type            | What to Verify                                                                 | Example                                                                 |
+|-----------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **Input Validation**  | Invalid or malformed inputs should return proper errors.                        | Sending `age=-5` returns 400 Bad Request.                               |
+| **Required Fields**   | Missing mandatory fields should return meaningful error messages.               | POST /users without `email` returns 400 with message “Email is required.”|
+| **Boundary Testing**  | Test min/max values, length limits, and special characters.                     | POST /products with name of 5000 characters returns 400 error.          |
+| **Data Consistency**  | Ensure data created via API matches the database or system state.               | POST /orders creates record in DB with correct user ID and amount.      |
+| **Encoding / Formats**| Dates, numbers, JSON, and XML should be handled and formatted correctly.        | Sending date as `2025-09-15` returns same format in API response.       |
+
+
+
+## Authentication & Authorization Checks
+
+| Check Type              | What to Verify                                                  | Example                                                          |
+|-------------------------|-----------------------------------------------------------------|------------------------------------------------------------------|
+| **Authentication**      | Rejects unauthorized requests.                                  | Accessing /users without token returns 401 Unauthorized.        |
+| **Authorization**       | Users can only access resources they're allowed to.             | User with role "viewer" cannot POST /admin/data (403 Forbidden).|
+| **Token Expiry**        | Expired tokens should be invalid.                               | Using an expired JWT returns 401 Unauthorized.                  |
+| **Role-based Access**   | Different roles should only get proper access levels.           | Admin can DELETE /users/123, regular user cannot.               |
+
+
+
+## Error Handling Checks
+
+| Check Type          | What to Verify                                       | Example                                                         |
+|--------------------|------------------------------------------------------|-----------------------------------------------------------------|
+| **Error Codes**     | Proper 4xx/5xx codes.                               | GET /orders/999 returns 404 Not Found.                          |
+| **Error Messages**  | Clear, consistent, secure (no stack traces).        | Missing email returns "Email is required" instead of server error. |
+| **Graceful Failures** | Invalid data doesn't crash the API.               | POST /users with invalid JSON returns 400 Bad Request.          |
+
+
+
+## Performance Checks
+
+| Check Type         | What to Verify                                                   | Example                                                          |
+|--------------------|-----------------------------------------------------------------|------------------------------------------------------------------|
+| **Response Time**  | API responds within SLA (Service Level Agreement) (like <2 seconds for simple queries). | GET /users responds in 2 seconds under normal load.                 |
+| **Load Testing**   | Verify the API can handle a defined number of requests per second. | API handles 500 requests/sec without errors.                    |
+| **Stress Testing** | Check how the API behaves under extreme or unexpected load.      | Server gracefully returns 503 when overloaded.                  |
+| **Rate Limiting**  | Ensure exceeding allowed requests is handled properly.           | 101st request in a minute returns 429 Too Many Requests.        |
+
+
+
+## Security Checks
+
+| Security Check                 | What to Verify                                               | Example                                                                 |
+|--------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------|
+| **SQL Injection / XSS / Command Injection** | API should properly sanitize inputs to prevent attacks.    | Sending `'; DROP TABLE users;--` in a field should return 400 Bad Request without affecting the DB. |
+| **Sensitive Data Exposure**    | Ensure no passwords, tokens, or system information are leaked. | GET /users should not return passwords or API tokens in the response. |
+| **HTTPS Only**                 | API should enforce secure communication over HTTPS.        | HTTP request to /login should be redirected or rejected; only HTTPS works. |
+| **CORS Rules**                 | Only allowed domains should be able to access the API.     | Request from unapproved domain returns 403 Forbidden.                  |
+
+
+
+## Integration & Contract Testing Checks
+
+| Check Type                  | What to Verify                                                       | Example                                                                 |
+|-----------------------------|----------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **Schema Validation**       | Response matches OpenAPI/Swagger contract.                           | GET /orders returns JSON with keys: id (int), amount (float), status (string). |
+| **Backward Compatibility**  | Ensure old clients still work with the new API version.              | v1 client calling GET /users still works after API updated to v2.      |
+| **Dependency Handling**     | If another service is down, API should handle it gracefully.         | If payment service is down, GET /orders returns partial data with 503 warnings. |
+
+
+## Conclusion
+
+API automation testing goes far beyond simply checking whether an API returns a successful response. As we've seen, a thorough approach involves validating functionality, data accuracy, security, performance, error handling, and integration with other services. By systematically performing these checks, you not only ensure that your API works as intended under different conditions but also catch potential issues early, improve reliability, and deliver a robust experience for users and clients. Implementing a comprehensive checklist like this is essential for building high-quality, maintainable, and scalable APIs.
