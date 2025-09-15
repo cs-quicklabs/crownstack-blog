@@ -80,7 +80,7 @@ Many people think API testing is just about checking whether the API gives a suc
 
 | Check Type         | What to Verify                                                   | Example                                                          |
 |--------------------|-----------------------------------------------------------------|------------------------------------------------------------------|
-| **Response Time**  | API responds within SLA (Service Level Agreement) (like <2 seconds for simple queries). | GET /users responds in 2 seconds under normal load.                 |
+| **Response Time**  | API responds within SLA (Service Level Agreement) (like less than 2 seconds for simple queries). | GET /users responds in 2 seconds under normal load.                 |
 | **Load Testing**   | Verify the API can handle a defined number of requests per second. | API handles 500 requests/sec without errors.                    |
 | **Stress Testing** | Check how the API behaves under extreme or unexpected load.      | Server gracefully returns 503 when overloaded.                  |
 | **Rate Limiting**  | Ensure exceeding allowed requests is handled properly.           | 101st request in a minute returns 429 Too Many Requests.        |
