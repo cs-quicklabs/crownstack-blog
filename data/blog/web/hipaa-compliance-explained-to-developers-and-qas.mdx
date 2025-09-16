@@ -206,7 +206,7 @@ HIPAA requires software to make it mandatory to enforce various technical polici
 
 #### 3.1.1. **User Identity & Roles**:
 
-1. Assign every user a unique account/ID:
+##### 3.1.1.1. Assign every user a unique account/ID:
 
 | Check to perform | Developer Actions | QA Checks |
 | ---------------- | ----------------- | --------- |
@@ -215,7 +215,7 @@ HIPAA requires software to make it mandatory to enforce various technical polici
 | Rejecting generic login accounts | Don't allow shared or generic usernames like "admin" or "doctor" | Do negative testing by attempting to create accounts with generic usernames → it should be rejected |
 
 
-2. Use role-based (RBAC) or attribute-based access control to restrict PHI by job function or attributes:
+##### 3.1.1.2. Use role-based (RBAC) or attribute-based access control to restrict PHI by job function or attributes:
 
 | Check to perform | Developer Actions | QA Checks |
 | ---------------- | ----------------- | --------- |
@@ -225,7 +225,7 @@ HIPAA requires software to make it mandatory to enforce various technical polici
 | Audit Logging | Log all access attempts, including denied ones, with user ID + role + resource requested. | Perform access attempts (both allowed and denied). Check audit logs to confirm user ID, role, and access results are recorded properly. |
 
 
-3. Include "**break-glass**" or emergency roles so designated staff can retrieve PHI during emergencies:
+##### 3.1.1.3. Include "**break-glass**" or emergency roles so designated staff can retrieve PHI during emergencies:
 
 | Check to perform | Developer Actions | QA Checks |
 | ---------------- | ----------------- | --------- |
