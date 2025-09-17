@@ -392,3 +392,23 @@ HIPAA requires protecting ePHI when it's sent over a network. This means making 
 
 #### 3.5.1. Encryption in Transit
 
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| TLS Enforcement | Configure all APIs, backend services, and databases to use TLS 1.2+ (preferably 1.3) | Verify only TLS 1.2 or 1.3 connections are accepted |
+| TLS Enforcement | Disable fallback to HTTP or weak TLS versions (1.0, 1.1) | Attempt to connect to API endpoints over HTTP. Request should fail/reject |
+| Platform-Specific Security | iOS: Enable App Transport Security (ATS) to block non-TLS traffic | On iOS: Try to intercept traffic with a proxy (e.g., Burp/ZAP). ATS should block plain HTTP |
+| Platform-Specific Security | Android: Configure Network Security Config to require TLS and reject plain HTTP | On Android: Check Network Security Config. App should refuse HTTP calls |
+| Email PHI | If PHI must be emailed, ensure it uses TLS-secured SMTP with strong ciphers | If PHI is sent over email, verify SMTP uses STARTTLS/TLS (e.g., check headers) |
+
+#### 3.5.2. Certificate Management
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Cipher Suites | Enforce FIPS-validated cipher suites only (e.g., AES-GCM with SHA-2). Disable weak ciphers (e.g., RC4, MD5, DES, 3DES) | Check TLS config matches FIPS-approved suites. Confirm weak ciphers (e.g., RC4, DES, MD5) are not available |
+| Certificate Handling | Use certificates signed by trusted CAs (not self-signed) | Attempt MITM with self-signed cert. App/API should reject it |
+
+
+
+# Conclusion
+
+HIPAA compliance is not just a legal requirement - it's a critical responsibility for any company, developer, and QA team handling patient health information. By understanding HIPAA's rules and mapping them to practical implementation and testing steps, organizations can protect sensitive data, avoid costly penalties, and build trust with users and partners. Adopting robust administrative, physical, and technical safeguards ensures that software systems remain secure, reliable, and ready for the demands of modern healthcare. Ultimately, a proactive approach to HIPAA compliance benefits everyone: patients, providers, and technology teams alike.
