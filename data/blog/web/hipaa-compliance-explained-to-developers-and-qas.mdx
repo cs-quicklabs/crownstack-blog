@@ -219,18 +219,176 @@ HIPAA requires software to make it mandatory to enforce various technical polici
 
 | Check to perform | Developer Actions | QA Checks |
 | ---------------- | ----------------- | --------- |
-| Role and Attribute Definitions | Define clear roles (e.g., Doctor, Nurse, Biller, Admin) and attributes (e.g., department, specialty, clearance level). Ensure that eEach role/attribute must have **minimum necessary access** to PHI. | Create test users for each role/attribute. Verify each user can only access what their role allows. Example: A Biller should fail when trying to open clinical notes. |
-| Access Enforcement in Code | Implement middleware or authorization checks to enforce RBAC/ABAC before accessing PHI endpoints. | Try unauthorized actions with restricted roles and confirm access is denied. Ensure error messages don't leak sensitive info (e.g., "Access Denied" instead of "Record exists but you can't view it"). |
-| Least Privilege Principle | Default new accounts to the lowest privilege until explicitly assigned. | Attempt to modify tokens, cookies, or API calls to impersonate higher roles. Verify system blocks all privilege escalation attempts. |
-| Audit Logging | Log all access attempts, including denied ones, with user ID + role + resource requested. | Perform access attempts (both allowed and denied). Check audit logs to confirm user ID, role, and access results are recorded properly. |
+| Role and Attribute Definitions | Define clear roles (e.g., Doctor, Nurse, Biller, Admin) and attributes (e.g., department, specialty, clearance level). Ensure that eEach role/attribute must have **minimum necessary access** to PHI | Create test users for each role/attribute. Verify each user can only access what their role allows. Example: A Biller should fail when trying to open clinical notes |
+| Access Enforcement in Code | Implement middleware or authorization checks to enforce RBAC/ABAC before accessing PHI endpoints | Try unauthorized actions with restricted roles and confirm access is denied. Ensure error messages don't leak sensitive info (e.g., "Access Denied" instead of "Record exists but you can't view it") |
+| Least Privilege Principle | Default new accounts to the lowest privilege until explicitly assigned | Attempt to modify tokens, cookies, or API calls to impersonate higher roles. Verify system blocks all privilege escalation attempts |
+| Audit Logging | Log all access attempts, including denied ones, with user ID + role + resource requested | Perform access attempts (both allowed and denied). Check audit logs to confirm user ID, role, and access results are recorded properly |
 
 
 ##### 3.1.1.3. Include "**break-glass**" or emergency roles so designated staff can retrieve PHI during emergencies:
 
 | Check to perform | Developer Actions | QA Checks |
 | ---------------- | ----------------- | --------- |
-| Emergency Role Design | Define a special break-glass role that overrides normal access restrictions. Access should be **temporary** and **time-limited**. | Test that emergency roles can indeed bypass normal restrictions and access PHI. Confirm normal roles cannot access restricted data without break-glass. |
-| Strict Access Controls | Only specific users (e.g., emergency physicians, compliance officers) can be assigned this role. Require strong authentication (MFA, secure approval flow) before activation. | Attempt break-glass activation as unauthorized users → system must deny. Confirm only designated staff can activate emergency role. |
-| Audit Logging | Log every emergency access attempt with Who, When, What PHI and Why | Trigger emergency access and check logs: verify all details (who, when, what data, why). Ensure failed/denied break-glass attempts are also logged. Try to activate without giving a reason → system should block or require justification. |
-| Automatic Revocation | Emergency access should auto-expire after a set period (e.g., 1 hour). System should revert user to their normal role. | Activate break-glass, wait past time limit, then confirm access is revoked automatically. Verify system doesn’t let a user keep emergency access indefinitely. |
-| Alerting | Trigger real-time alerts (email, dashboard, SIEM integration) when break-glass access is used. | Trigger break-glass access and check that alerts/notifications were sent. |
+| Emergency Role Design | Define a special break-glass role that overrides normal access restrictions. Access should be **temporary** and **time-limited** | Test that emergency roles can indeed bypass normal restrictions and access PHI. Confirm normal roles cannot access restricted data without break-glass |
+| Strict Access Controls | Only specific users (e.g., emergency physicians, compliance officers) can be assigned this role. Require strong authentication (MFA, secure approval flow) before activation | Attempt break-glass activation as unauthorized users → system must deny. Confirm only designated staff can activate emergency role |
+| Audit Logging | Log every emergency access attempt with Who, When, What PHI and Why | Trigger emergency access and check logs: verify all details (who, when, what data, why). Ensure failed/denied break-glass attempts are also logged. Try to activate without giving a reason → system should block or require justification |
+| Automatic Revocation | Emergency access should auto-expire after a set period (e.g., 1 hour). System should revert user to their normal role | Activate break-glass, wait past time limit, then confirm access is revoked automatically. Verify system doesn't let a user keep emergency access indefinitely |
+| Alerting | Trigger real-time alerts (email, dashboard, SIEM integration) when break-glass access is used | Trigger break-glass access and check that alerts/notifications were sent |
+
+
+#### 3.1.2. **Authentication & Session Management**:
+
+##### 3.1.2.1. Integrate a secure login system
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Unique Credentials | Every user has their own account (no shared logins) | Verify that number of logins should be equal to the staff members |
+| Password Security | Strong password policies (length, complexity, no common passwords) | Test weak passwords (123456, password) → should be rejected |
+| Password Security | Store passwords securely using salted hashing (e.g., bcrypt, Argon2) | Verify passwords stored in database are encrypted or hashed |
+| Password Security | Prevent reuse of old passwords | Try reusing an old password → should be blocked |
+| Multi-Factor Authentication (MFA) | Add MFA (SMS, authenticator app, hardware token) for all users, at least for admins and PHI access | Confirm login requires second factor. Try bypassing MFA → should fail |
+| Audit Logging | Log all logins, failed attempts, and password resets with user ID, timestamp, and IP/device | Verify logs show correct login success/failure attempts with timestamps and user IDs |
+
+##### 3.1.2.2. Enforce auto-logout & account lockout
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Session Security | Enable automatic logout after inactivity | Log in and stay idle → system should auto-logout after timeout. Try session hijacking (reuse expired token) → should fail |
+| Account Lockout & Recovery | Lock account after repeated failed login attempts | Enter wrong password multiple times → account should lock after threshold |
+| Account Lockout & Recovery | Provide secure password reset with identity verification | Verify unlock procedure works securely |
+
+##### 3.1.2.3. Session Management
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Session Security | Use secure session tokens (JWT, opaque tokens) with expiration | Decode the JWT and inspect claims (exp, sub, iat). Change the payload slightly and try to reuse it |
+| Session Security | Use HTTPS only | Check if tokens are always sent over HTTPS. Tokens should never travel over HTTP or in query strings |
+| Unique Session | Every login session is tied to a unique user ID from the database | Log in with two users → confirm each gets a unique session ID |
+| Unique Session | No two users should share the same session identifier | Attempt to reuse session ID across accounts → should fail |
+
+
+#### 3.1.3. **Authorization Checks**:
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Enforce Role/Permission Check | Every API and backend endpoint that touches ePHI must check the authenticated user's roles/permissions before responding | Log in with a role that should NOT have access → call API → response must be 403 Forbidden or equivalent (no PHI returned) |
+| Centralized Authorization Logic | Use middleware, policy engine (e.g., RBAC/ABAC service), or decorators so access checks can't be skipped | Log in with a user role that should have access → call API → verify ePHI is returned correctly |
+| Least Privilege Principle | Default = deny access, only allow if roles/permissions explicitly match | Log in with a role that should NOT have access → call API → response must be 403 Forbidden or equivalent (no PHI returned) |
+
+
+#### 3.1.4. **Encryption**:
+
+Although not strictly mandatory, HIPAA strongly recommends encrypting all ePHI at rest.
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Enable Encryption for Data Stores | Turn on encryption for databases, file systems, object storage (e.g., AWS S3, RDS, EBS) | Review database/storage settings → confirm encryption at rest is enabled |
+| Encrypt Backups & Snapshots | Make sure automated and manual backups are encrypted the same way as live databases | Download/export data and verify it is encrypted (can't be opened without keys) |
+| Key Management | Use secure key management (e.g., AWS KMS, HashiCorp Vault) | Review and verify secure key management solution is in place |
+| Key Management | Ensure keys are rotated and access is restricted | Review and verify key rotation policies are appropriately implemented |
+| No Local/Unencrypted Copies | Prevent PHI from being stored in plaintext on dev laptops, temp directories, or logs | Try to access PHI files or DB storage outside the app (raw disk, snapshots). Data should appear encrypted/unreadable |
+
+
+
+### 3.2. Audit Controls
+
+HIPAA requires hardware, software, and/or procedural mechanisms that record and examine activity in systems with ePHI. In short, every access or change to PHI should generate an audit record. The goal is accountability and breach detection. NIST guidance advises tracking all critical events (login attempts, reads/writes of PHI, deletions, security changes, etc.) and periodically reviewing logs.
+
+#### 3.2.1. Comprehensive Logging
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Structured Logging Framework | Use a reliable logging library/framework (e.g., Winston, Bunyan, Log4j, Serilog) | Trigger different actions in the system (login, view PHI, failed attempt, update) |
+| Structured Logging Framework | Logs must be structured (JSON or key-value) for easy parsing | Verify the logs are well-structured |
+| Required Fields in Every Log | While logging, Always include: Timestamp (in UTC, standardized format like ISO 8601), User ID, Event type (e.g., VIEW_PHIRECORD, UPDATE_PATIENT, FAILED_LOGIN), Resource identifier (record ID, API endpoint, file reference). Success/Failure status | Review logs to confirm all required fields are present (timestamp, user ID, event type, resource ID, success/failure) |
+
+
+#### 3.2.2. Log Security
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| No PHI in Logs | Absolutely never log raw PHI (names, SSNs, diagnoses). Only log identifiers (e.g., record_id: 12345) | Perform actions with PHI data (e.g., patient record update). Verify that logs do not contain raw PHI, only identifiers |
+| Secure Log Storage | Ensure logs are tamper-resistant (append-only, stored in HIPAA-compliant systems like CloudWatch, ELK with restricted access) | Try modifying or deleting logs. Confirm logs are protected or monitored (alerts if altered) |
+
+
+#### 3.2.3. Log Retention and Review
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Retention Policy Implementation | Configure log storage to retain logs for at least the policy period (HIPAA recommends 6 years minimum) | Review storage configuration or policy files to confirm logs are set to be retained for the correct duration |
+| Immutable / Tamper-Proof Storage | Enable append-only storage or write-once-read-many (WORM) protection | Try modifying logs. Confirm access is denied or logged as a security event |
+| Immutable / Tamper-Proof Storage | Configure access controls to prevent deletion or modification of logs before expiry | Try deleting logs. Confirm access is denied or logged as a security event |
+| Automatic Rotation & Archiving | Implement log rotation so old logs don't bloat systems | Validate that older logs are retrievable from archive systems |
+| Automatic Rotation & Archiving | Archive logs securely when moved from active storage (e.g., S3 Glacier with encryption) | Validate that older logs are retrievable from archive systems |
+| Time Synchronization | Ensure timestamps across logs remain consistent (e.g., using NTP sync), since long-term storage must preserve accuracy | Ensure QA or auditors can still query historical logs within the retention window |
+
+
+### 3.3. Integrity
+
+HIPAA requires policies/procedures to protect ePHI from improper alteration or destruction. Ensure a "mechanism to authenticate" that ePHI hasn't been tampered with. In essence, ePHI must remain correct, consistent, and trustworthy. This means guarding against both malicious tampering (hacks, fraud) and accidental changes (data corruption).
+
+#### 3.3.1. Data Validation & Transactions
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Use ACID-Compliant Databases | Choose a database that supports Atomicity, Consistency, Isolation, Durability (e.g., PostgreSQL, MySQL with InnoDB, SQL Server) | Confirm database being used is ACID compliant |
+| Transaction Management | Wrap PHI operations (insert/update/delete) inside transactions so they all succeed or all roll back | Simulate failures during PHI operations (e.g., disconnect DB mid-insert). Verify no partial data is written (either full record is saved or nothing) |
+| Data Validation & Constraints | Enforce constraints at the database level (e.g., NOT NULL, foreign keys, unique indexes) to prevent bad or inconsistent data | Try to insert invalid data (nulls, duplicates, wrong references). Confirm DB rejects it and logs the error |
+| Error Handling & Retries | Implement retry logic for failed transactions to avoid partial writes | Implement retry logic for failed transactions to avoid partial writes. Check that committed data persists and isn't corrupted |
+| Backups with Integrity Checks | Ensure backup/restore processes validate data integrity (checksums, verification queries) | Ensure backup/restore processes validate data integrity (checksums, verification queries) |
+
+
+#### 3.3.2. Filesystem Integrity
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Integrity Mechanism in Place | Use filesystem features like Linux fs-verity, Windows EFS integrity streams, or application-level solutions (e.g., SHA-256/SHA-3 hashes, digital signatures) | Upload a file (e.g., patient scan), then manually alter its contents (hex editor, overwrite on disk). Try to access it through the system → confirm system blocks access or flags tampering |
+| Immutable Storage | Avoid direct overwrites - instead version files or store deltas with signatures | Replace a file intentionally → system should create a new version, not overwrite silently |
+| Tamper Detection Workflow | Store and validate checksums or signed metadata whenever a file is created/updated | Verify that when a file is stored, a hash or signature is generated. On retrieval, confirm that the stored hash is compared against the file |
+
+
+#### 3.3.3. Backup Integrity
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Automated Backup Process | Implement regular automated backups (daily/hourly depending on policy) | Verify backups are available for the required retention period (e.g., older snapshots still retrievable |
+| Encrypted Backups with Integrity | All PHI backups must be encrypted (AES-256 or stronger) | Corrupt a backup file intentionally → confirm restore fails or flags corruption |
+
+
+
+### 3.4. Person or Entity Authentication
+
+HIPAA requires verifying that a person or entity seeking access is the one claimed. In practice, this means enforcing authentication before granting access to ePHI. Multi-factor authentication (MFA) is highly recommended (especially for remote or high-risk access) though HIPAA itself does not mandate MFA, only that it's reasonable based on risk. NIST's SP 800-63B provides guidance on digital identity (password rules, MFA, etc.).
+
+#### 3.4.1. Multi-Factor Authentication (MFA)
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| MFA Integration | Implement MFA support in the authentication system (SMS OTP, TOTP authenticator apps, or hardware tokens) | Try logging in as admin/remote user without MFA → must be denied. Verify MFA is enforced for every session (not cached indefinitely) |
+| Recovery & Fallback | Provide secure fallback (backup codes, admin override) that's logged and monitored | Request account recovery/backup code → verify access is possible but logged |
+
+
+#### 3.4.2. Biometric/Device-Bound Auth
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Biometrics Integration | On iOS → use Keychain + LocalAuthentication (FaceID/TouchID). On Android → use BiometricPrompt + Keystore | Enable FaceID/TouchID → confirm login requires biometric check. Enable FaceID/TouchID → confirm login requires biometric check. Simulate failed biometric attempts → app should lock or require fallback MFA |
+| Secure Credential Storage | Store credentials/tokens in Keychain (iOS) or Android Keystore only | Inspect device storage (adb, jailbreak, rooted test) → no tokens/credentials should be visible in plaintext or files. Verify tokens are retrievable only via secure Keychain/Keystore APIs |
+| Binding to Device | Ensure tokens are tied to the device (cannot be copied/exported) | Try copying app data from Device A to Device B → credentials/tokens should not work on Device B |
+
+#### 3.4.3. Rate Limiting / Lockout
+
+| Check to perform | Developer Actions | QA Checks |
+| ---------------- | ----------------- | --------- |
+| Failure Counting & Thresholds | Implement a counter for failed login attempts per user account (and possibly per IP). Define thresholds (e.g., lock account after 5 failed attempts within 10 minutes) | Attempt multiple invalid logins for a single account → confirm lockout or throttling is triggered at the threshold |
+| Safe Error Messages | Return generic errors ("Invalid username or password") - never reveal which part is wrong | Ensure error responses are generic - no difference between "wrong username" vs. "wrong password" |
+| Unlock Mechanism | Provide safe unlock workflows: Provide safe unlock workflows: Admin/manual unlock, OR Password reset with secure verification | Test unlock process (timeout expiration, admin unlock, password reset). Confirm that locked accounts cannot bypass by calling APIs directly |
+
+
+
+### 3.5. Transmission Security
+
+HIPAA requires protecting ePHI when it's sent over a network. This means making sure the data can't be read or changed by unauthorized people. In practice, PHI should always be encrypted (like using TLS) and checked to confirm it hasn't been tampered with during transfer.
+
+#### 3.5.1. Encryption in Transit
+
