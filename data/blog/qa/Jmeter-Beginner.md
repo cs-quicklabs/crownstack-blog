@@ -1,8 +1,8 @@
 ---
-title: 'Jmeter Beginner'
-date: '2025-08-12'
-lastmod: '2025-08-12'
-tags: ['qa', 'guide', 'playwright']
+title: 'Getting Started with JMeter: A Beginner’s Guide'
+date: '2025-10-21'
+lastmod: '2025-10-21'
+tags: ['qa', 'guide', 'performance-testing', 'jmeter']
 draft: false
 summary: 'This is jmeter'
 layout: PostSimple
