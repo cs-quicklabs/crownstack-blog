@@ -1,0 +1,416 @@
+---
+title: "Load Testing at Scale with Artillery - Part 1/3 (Understanding Core Concepts)"
+date: '2025-10-22'
+tags: ['automation testing', 'load testing', 'fls']
+draft: false
+summary: "In this first part of the three-blog series on Artillery, learn all the core concepts first related to Artillery."
+layout: PostSimple
+authors: ['varun-kumar']
+---
+
+In the first part of this three-blog series on Artillery, we’ll focus on building a clear understanding of what Artillery is and how it fits into the world of performance and load testing.
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## What is Artillery?
+
+Artillery is a load-testing toolkit that uses JavaScript / TypeScript or YML-based scripting to simulate realistic traffic against your APIs or web apps to measure their performance under load.
+
+From the [official Artillery documentation](https://www.artillery.io/docs/get-started/core-concepts#high-level-model), Artillery is described as:
+Artillery puts load on apps by launching virtual users which arrive to use the app in phases. Those are two core concepts in Artillery. A load test is just load phases + virtual users.
+
+
+## What type of testing can be done using Artillery?
+
+Artillery supports multiple types of testing. Here's the complete list:
+
+### Load Testing
+
+* **Purpose**: Measure how your system performs under expected user load
+* **Use case**: “Can my API handle 1,000 requests per second?”
+* **How Artillery helps**: You define how many virtual users (VUs) to simulate and how frequently they send requests
+
+### Stress Testing
+
+* **Purpose**: Push the system beyond its limits to find the breaking point
+* **Use case**: “At what traffic level does the server crash or slow down?”
+* **How Artillery helps**: You can ramp up traffic gradually using multiple phases
+
+### Soak (Endurance) Testing
+
+* **Purpose**: Run a long-duration test to detect performance issues over time (e.g., memory leaks, slow degradation)
+* **Use case**: “Will my API remain stable after 6 hours of continuous traffic?”
+* **How Artillery helps**: You can set very long duration phases (e.g., hours) to simulate sustained traffic
+
+### Spike Testing
+
+* **Purpose**: Test how your system reacts to sudden surges in traffic
+* **Use case**: “What happens if traffic jumps from 100 to 5,000 users in 10 seconds?”
+* **How Artillery helps**: Define sharp ramp-ups in the phase configuration (useful for e-commerce or ticket-booking platforms that get sudden user spikes)
+
+### API (HTTP) Testing
+
+* **Purpose**: Test REST or GraphQL APIs for performance and correctness
+* **Use case**: “How fast does my /login API respond under load?”
+
+### Serverless Function Testing
+
+* **Purpose**: Load test serverless backends like AWS Lambda or Azure Functions
+* **Use case**: “How many concurrent Lambda invocations can my function handle?”
+* **How Artillery helps**: Directly runs tests from AWS Lambda or Fargate (distributed load). Simulates thousands of concurrent invocations easily
+
+### Browser / UI Load Testing (via Playwright)
+
+* **Purpose**: Test real browser interactions and front-end performance under load
+* **Use case**: “Does my web app stay responsive when 100 users log in and navigate simultaneously?”
+* **How Artillery helps**: Artillery uses the Playwright engine to launch real browsers per virtual user. Then it measures Web Vitals like load time, TTFB, and rendering speed
+
+### End-to-End Testing
+
+* **Purpose**: Combine API + UI flows into a single scenario to simulate complete user journeys
+* **Use case**: “A user logs in through the UI, makes an API call, and logs out”
+* **How Artillery helps**: You can define multiple scenarios with different engines (HTTP + Playwright). Then test real-world user experiences end-to-end
+
+### Regression & Continuous Performance Testing
+
+* **Purpose**: Run smaller “smoke” performance tests automatically in CI/CD pipelines
+* **Use case**: “Before deployment, make sure response times haven’t worsened.”
+* **How Artillery helps**: Runs in GitHub Actions, Jenkins, etc. You can set thresholds with the `ensure` plugin to fail builds if performance degrades
+
+
+## What type of applications can be tested using Artillery?
+
+Artillery can test applications that rely on HTTP, WebSocket, or serverless interactions:
+
+* **Web Applications (Front-End/UI)**: test browser-based interactions using Artillery’s browser testing engine, which uses Playwright under the hood
+* **APIs (Backend Services)**: Artillery is heavily used for API load testing, stress testing, and soak testing of RESTful and GraphQL APIs
+* **Serverless Functions**: Artillery can directly test serverless functions on AWS Lambda, Azure Functions, and Google Cloud Functions. It can invoke and measure performance of serverless endpoints, track cold starts, and monitor how functions scale under concurrent executions
+* **WebSocket & Real-Time Applications**: Artillery supports WebSocket protocol testing, useful for chat apps, gaming platforms, or live dashboards. It can simulate multiple clients connecting and sending messages in real-time
+
+
+## Where can Artillery run test cases?
+
+Artillery test cases can be run in multiple environments, depending on your setup and scalability needs.
+
+* **Local Machine**: You can run Artillery tests directly on your local development machine. This is useful for quick tests during development or debugging
+* **Artillery Cloud**: Artillery offers a cloud-based service where you can run large-scale load tests without managing infrastructure. Artillery Cloud handles distributed load generation, reporting, and analysis
+* **CI/CD Pipelines**: Artillery can be integrated into CI/CD tools like GitHub Actions, Jenkins, GitLab CI, or CircleCI
+* **Serverless Environments**: You can deploy Artillery tests on AWS Lambda, AWS Fargate, or Kubernetes. This allows you to generate load from the cloud, closer to your application’s hosting environment, reducing latency and improving test accuracy
+* **Distributed Environments**: For very large-scale tests, you can set up multiple load generators across different geographic locations to simulate global traffic patterns. Artillery supports distributed load testing configurations
+
+
+## Which programming languages does Artillery support?
+
+YAML is the primary configuration language, while JavaScript (JS) and TypeScript (TS) are extension languages for complex logic and specialized testing.
+
+### YAML (Configuration and Structure)
+
+* Artillery test scripts are written mainly in YAML (.yml or .yaml) files
+* YAML is used to define the overall structure of the test, including scenarios, phases, virtual users, and settings
+* It provides a human-readable format to configure load tests without deep programming knowledge
+
+Example:
+
+```yml
+config:
+  target: "https://api.example.com"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+scenarios:
+  - flow:
+      - get:
+          url: "/users"
+```
+
+### JavaScript / TypeScript (Extensions and Custom Logic)
+
+* JS or TS files are used to write custom logic, which is then loaded into the test via the `config.processor` attribute
+* You can write custom functions in JavaScript, perform dynamic data generation, add custom checks or assertions, import NPM packages to extend your test logic
+
+Example YML configuration file:
+
+```yml
+config:
+  target: "https://api.example.com"
+  processor: "./functions.js"
+scenarios:
+  - flow:
+      - function: "createUser"
+      - get:
+          url: "/users/{{ userId }}"
+
+```
+
+And in `functions.js`:
+
+```JavaScript
+module.exports = {
+  createUser: function (context, events, done) {
+    context.vars.userId = Math.floor(Math.random() * 1000);
+    return done();
+  }
+};
+
+```
+
+## Installing Artillery
+
+Artillery is available on `npm`, and should be installed globally.
+
+```bash
+npm install -g artillery@latest
+```
+
+You can also run the Artillery CLI with `npx`:
+
+```bash
+npx artillery@latest
+```
+
+After installing, verify the installation by checking the version:
+
+```bash
+npx artillery dino
+```
+
+You can also check the version of Artillery you have installed by running:
+
+```bash
+artillery version
+```
+
+Do check out the following installation-related topics:
+
+* **[Set up cloud reporting](https://www.artillery.io/docs/get-started/get-artillery#set-up-cloud-reporting)**: To use advanced reporting & visualizations for your load tests, you will need to create an Artillery Cloud account, and enable reporting when you run your tests.
+
+
+
+## Running your first Artillery test
+
+Walk through the [Run Your First Artillery Test](https://www.artillery.io/docs/get-started/first-test) from the official documentation to see how config (target URL, phases) and scenarios (VU actions) are defined.
+
+
+## Core components of Artillery
+
+Artillery puts load on apps by launching **virtual users** which arrive to use the app in **phases**. A load test is just load phases + virtual users. Let's break down all the core components:
+
+### Virtual users (VUs)
+
+* A virtual user emulates a real user interacting with your app. A “real user” may be a person, or an API client depending on your app
+* Artillery simulates virtual users, each representing a real user
+* Each VU follows the steps defined in your scenario flow in the test script
+* VUs run independently and concurrently
+
+Example:
+If you set `arrivalRate: 10`, Artillery creates 10 new virtual users every second.
+
+Read more about [Virtual Users from the Official Documentation](https://www.artillery.io/docs/get-started/core-concepts#virtual-users)
+
+
+
+### Test Script
+
+* Think of it as the blueprint of your load test
+* Every Artillery test is defined in a YAML file called a test script
+* It describes:
+    * What to test (target API or URL)
+    * How to test (load pattern, duration, and concurrency)
+    * What users do (the scenario or flow of actions)
+* The `artillery` CLI is then used to run that test definition
+* Test definition can be heavily customized with the option of using Node.js (JS or TS) code
+
+An Artillery test definition looks like this:
+
+```yml
+config:
+  target: http://asciiart.artillery.io:8080
+  phases:
+    - duration: 60
+      arrivalRate: 1
+    - duration: 300
+      arrivalRate: 10
+scenarios:
+  - flow:
+      - get:
+          url: '/dino'
+      - get:
+          url: '/armadillo'
+```
+
+
+## Structure of an Artillery test script
+
+An Artillery test definition is composed of two main parts:
+
+1. `config` - which defines the runtime configuration for the entire test, such as the target URL, load phases, and protocol-specific settings
+2. `scenarios` - which define the behavior of virtual users (VUs) in the test, such as the sequence of HTTP requests they make
+
+```yml
+config:      # Global configuration for the test
+scenarios:   # User behavior definition (the steps each virtual user takes)
+```
+
+#### `config` section
+
+This section defines global settings for the test — targets, environments, plugins, variables, etc.
+
+Read more about [`config` from the Official Documentation](https://www.artillery.io/docs/reference/test-script#config-section)
+
+##### `config.target`
+
+Specifies the base URL or hostname of the system under test.
+
+```yml
+config:
+  target: "https://api.example.com"
+```
+
+**All relative URLs in requests will use this as the base.**
+
+Read more about [`target` from the Official Documentation](https://www.artillery.io/docs/reference/test-script#target---target-service)
+
+
+##### `config.phases`
+
+Defines the load pattern — how many virtual users to create and how fast.
+
+```yml
+config:
+  phases:
+    - duration: 60        # Duration of this phase in seconds
+      arrivalRate: 10     # New users per second
+    - duration: 30
+      arrivalRate: 20     # Ramp up to 20 users/sec
+```
+
+Read more about [`phases` from the Official Documentation](https://www.artillery.io/docs/reference/test-script#phases---load-phases)
+
+
+##### `config.environments`
+
+Allows you to define different setups (e.g., dev, staging, prod) within one script.
+
+```yml
+config:
+  environments:
+    dev:
+      target: "https://dev.api.example.com"
+    prod:
+      target: "https://api.example.com"
+```
+
+To run Artillery with a specific environment:
+
+```bash
+artillery run --environment prod test.yml
+```
+
+Read more about [`environments` from the Official Documentation](https://www.artillery.io/docs/reference/test-script#environments---config-profiles)
+
+
+##### `config.processor`
+
+Specifies a JavaScript or TypeScript file that contains custom logic or functions used in the test.
+
+```yml
+config:
+  processor: "./functions.js"
+```
+
+Example `functions.js`:
+
+```JavaScript
+module.exports = {
+  randomId: (context, events, done) => {
+    context.vars.id = Math.floor(Math.random() * 1000);
+    return done();
+  }
+};
+```
+
+
+##### `config.payload`
+
+Used to load test data from external CSV files.
+
+```yml
+config:
+  payload:
+    path: "./users.csv"
+    fields:
+      - "username"
+      - "password"
+```
+
+**Each virtual user will get data from this file during the test.**
+
+Read more about [`payload` from the Official Documentation](https://www.artillery.io/docs/reference/test-script#payload---loading-data-from-csv-files) and [what payload file options are available](https://www.artillery.io/docs/reference/test-script#payload-file-options).
+
+
+##### `config.variables`
+
+You can define static variables accessible in scenarios.
+
+```yml
+config:
+  variables:
+    basePath: "/v1"
+```
+
+Use it in requests:
+
+```yml
+url: "{{ basePath }}/users"
+```
+
+Read more about [`variables` from the Official Documentation](https://www.artillery.io/docs/reference/test-script#variables---inline-variables).
+
+
+##### `config.ensure`
+
+Defines performance goals or assertions for the test.
+
+```yml
+config:
+  ensure:
+    - p95: response_time < 500   # 95% of requests under 500 ms
+    - max: errors < 10
+```
+
+**If conditions fail, Artillery marks the test as failed.**
+
+Read more about [`ensure` from the Official Documentation](https://www.artillery.io/docs/reference/extensions/ensure).
+
+
+##### `config.plugins`
+
+Load optional plugins to extend functionality (like metrics, reporting, etc.)
+
+```yml
+config:
+  plugins:
+    metrics-by-endpoint: {}
+```
+
+Read more about [`plugins` from the Official Documentation](https://www.artillery.io/docs/reference/extensions) and [how they can be used inside a test script](https://www.artillery.io/docs/reference/test-script#plugins---plugin-config).
+
+
+
+#### `scenario` section
+
+This section defines what each virtual user does — a series of steps (called a “flow”).
+
+Read more about [`scenario` from the Official Documentation](https://www.artillery.io/docs/reference/test-script#scenarios-section)
+
+
+## Artillery CLI
+
+Coming soon...
+
+### `artillery run` command
+
+
+## Artillery Dashboard
+
+Coming soon...
