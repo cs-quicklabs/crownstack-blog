@@ -4,7 +4,7 @@ date: '2025-10-21'
 lastmod: '2025-10-21'
 tags: ['qa', 'guide', 'performance-testing', 'jmeter']
 draft: false
-summary: 'This is jmeter'
+summary: 'This is jmeter Basic Guide'
 layout: PostSimple
 images: []
 authors: ['divanshu-gupta']
