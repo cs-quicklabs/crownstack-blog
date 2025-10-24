@@ -1,5 +1,5 @@
 ---
-title: 'Getting Started with JMeter: A Beginner’s Guide'
+title: 'Getting Started with JMeter: A Beginners Guide'
 date: '2025-10-21'
 lastmod: '2025-10-21'
 tags: ['qa', 'guide', 'performance-testing', 'jmeter']
