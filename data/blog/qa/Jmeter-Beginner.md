@@ -2,7 +2,7 @@
 title: 'Getting Started with JMeter: A Beginners Guide'
 date: '2025-10-21'
 lastmod: '2025-10-21'
-tags: ['qa', 'guide', 'performance-testing', 'jmeter']
+tags: ['qa', 'fls', 'load-testing']
 draft: false
 summary: 'This is jmeter Basic Guide'
 layout: PostSimple
@@ -10,7 +10,7 @@ images: []
 authors: ['divanshu-gupta']
 ---
 
-# JMeter for Beginners: Simulating Users & Analyzing Performance
+
 
 # **Introduction to Apache JMeter**
 
