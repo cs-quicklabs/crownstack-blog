@@ -10,10 +10,6 @@ images: []
 authors: ['divanshu-gupta']
 ---
 
-# <<<<<<< HEAD
-
-> > > > > > > 8cf1252812f32ad3584e0e6d39c1e5a91a49b1af
-
 # **Introduction to Apache JMeter**
 
 Apache **JMeter** is a powerful open-source tool designed for **load testing, performance testing, regression testing, and functional testing** across different protocols and technologies.
@@ -40,8 +36,6 @@ JMeter simulates a group of users sending requests to a target server, and retur
 
       ![Jmeter-beginner](/static/images/blogs/qa/Jmeter-beginner/workflow.png)
 
-<<<<<<< HEAD
-
 ### [Flow of JMeter Working](https://www.youtube.com/watch?v=1tJGRWABpW0)
 
 1. **Start**
@@ -65,32 +59,7 @@ JMeter simulates a group of users sending requests to a target server, and retur
 6. **Report Generation**
    - Based on the collected data, JMeter generates tables, graphs, and dashboards.
 7. **End**
-   - # Once execution is complete, results are saved and available for review.
-
-### [Flow of JMeter Working](https://www.youtube.com/watch?v=1tJGRWABpW0)
-
-1. **Start**
-   - The test begins with a **Test Plan** execution.
-2. **Creates Requests & Simulates Users**
-   - JMeter (via **Thread Groups**) creates multiple virtual users.
-   - These users send requests (HTTP, FTP, JDBC, SOAP, REST, etc.) to the target server/application.
-3. **Server Responds**
-   - The target server processes the requests and sends back responses.
-4. **JMeter Saves Responses**
-   - JMeter stores all responses (can be in memory or disk depending on listener/config).
-   - These responses can be validated using **Assertions**.
-5. **JMeter Gathers Data**
-   - It collects performance metrics such as:
-     - Response time
-     - Throughput
-     - Latency
-     - Error %
-     - Transactions per second
-   - This data is used for **statistical analysis**.
-6. **Report Generation**
-   - Based on the collected data, JMeter generates tables, graphs, and dashboards.
-7. **End** - Once execution is complete, results are saved and available for review.
-   > > > > > > > 8cf1252812f32ad3584e0e6d39c1e5a91a49b1af
+   - Once execution is complete, results are saved and available for review.
 
 ## **What is a Test Plan in JMeter?**
 
@@ -101,7 +70,6 @@ A Test Plan is made up of multiple components such as **Thread Groups, Controlle
 **Types of Testing We can Perform Using Jmeter**
 
 1. **Performance Testing**
-   <<<<<<< HEAD
 
 - Checks the responsiveness, throughput, reliability, and scalability of an application under load.
 - Examples: Stress test, spike test, endurance test.
@@ -119,26 +87,6 @@ A Test Plan is made up of multiple components such as **Thread Groups, Controlle
 - JMeter can also verify functional correctness of APIs or web applications using assertions.
 
 1. **API / Web Services Testing**
-
-=======
-
-- Checks the responsiveness, throughput, reliability, and scalability of an application under load.
-- Examples: Stress test, spike test, endurance test.
-
-1. **Load Testing**
-
-- Simulates expected user traffic to see how the system behaves under normal and peak load conditions.
-
-1. **Stress Testing**
-
-- Tests the system beyond its maximum load to find breaking points.
-
-1. **Functional Testing**
-
-- JMeter can also verify functional correctness of APIs or web applications using assertions.
-
-1. **API / Web Services Testing**
-   > > > > > > > 8cf1252812f32ad3584e0e6d39c1e5a91a49b1af
 
 - Supports REST, SOAP, and other service calls with request/response validation.
 
@@ -183,10 +131,7 @@ With listeners, you can analyze performance using **graphs, tables, and logs**.
 
 **4. Assertions :**Assertions are used for**validating server responses.**They ensure that your application returns the correct data. If an assertion fails, JMeter highlights it, helping testers catch issues quickly.
 
-# <<<<<<< HEAD
-
-> > > > > > > 8cf1252812f32ad3584e0e6d39c1e5a91a49b1af
-> > > > > > > ![Jmeter-beginner](/static/images/blogs/qa/Jmeter-beginner/response-assertion.png)
+![Jmeter-beginner](/static/images/blogs/qa/Jmeter-beginner/response-assertion.png)
 
 ![Jmeter-beginner](/static/images/blogs/qa/Jmeter-beginner/Json-response.png)
 
@@ -194,9 +139,4 @@ With listeners, you can analyze performance using **graphs, tables, and logs**.
 
 Apache JMeter is a versatile and widely used performance testing tool that supports multiple protocols, making it suitable for testing **web applications, databases, services, and servers**. By leveraging its **Test Plan structure**, testers can simulate real-world scenarios, validate responses with **Assertions**, and analyze results with **Listeners**.
 
-<<<<<<< HEAD
 Whether you’re testing application scalability or ensuring performance under heavy load, JMeter is an essential tool in every QA engineer’s toolkit.
-=======
-Whether you’re testing application scalability or ensuring performance under heavy load, JMeter is an essential tool in every QA engineer’s toolkit.
-
-> > > > > > > 8cf1252812f32ad3584e0e6d39c1e5a91a49b1af
