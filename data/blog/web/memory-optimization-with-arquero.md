@@ -273,6 +273,12 @@ function getStatsByCategory(dataFrame) {
 
 ## Results
 
+Here's a visual comparison of memory usage before and after optimization:
+
+![Memory usage before optimization](/static/images/blogs/web/before-optimization.png)
+
+![Memory usage after optimization](/static/images/blogs/web/after-optimization.png)
+
 | Metric           | Before (Arrays)  | After (Arquero) | Improvement        |
 | ---------------- | ---------------- | --------------- | ------------------ |
 | **Memory Usage** | 2.7 GB           | 812 MB          | **70% reduction**  |
