@@ -2,7 +2,7 @@
 title: 'Prompt Engineering Fundamentals: A Guide to Effective AI Communication'
 date: 2026-01-05
 lastmod: '2024-01-05'
-tags: ['engineering', 'fls', 'ai', 'llm']
+tags: ['fls', 'ai', 'llm']
 draft: false
 summary: 'Learn the fundamentals of prompt engineering, core principles for writing effective prompts, and practical strategies to build AI-powered workflows.'
 layout: PostSimple
