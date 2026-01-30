@@ -1,0 +1,252 @@
+---
+title: 'Getting Started with GitHub Actions'
+date: '2026-01-19'
+tags: ['engineering', 'training', 'fls']
+draft: false
+summary: 'Learn the fundamentals of using Github Actions for CI/CD'
+layout: PostSimple
+authors: ['shivraj-bhagat']
+---
+
+In this blog, you’ll find official resources and guides on using GitHub Actions to automate CI/CD pipelines and development workflows. Whether you’re just getting started or looking to strengthen your automation skills, this guide will help you use GitHub Actions effectively.
+
+![Github Actions](/static/images/blogs/fls/github-actions.svg)
+
+# Introduction to GitHub Actions
+
+**GitHub Actions** is GitHub’s native automation platform that enables teams to build CI/CD pipelines and automate workflows directly from their repositories. It allows you to run scripts, build applications, execute tests, perform code scans, and deploy services based on repository events.
+
+---
+
+## What Can GitHub Actions Be Used For?
+
+GitHub Actions supports automation across frontend, backend, and QA workflows.
+
+### For Frontend Teams
+
+- Run ESLint and Prettier checks on every pull request
+- Build React, Angular, or Next.js applications
+- Run UI tests
+- Deploy static frontend builds
+
+### For Backend Teams
+
+- Run unit and integration tests
+- Build and package services
+- Run security and dependency scans
+- Deploy APIs or serverless functions
+
+### For QA Teams
+
+- Trigger automated test suites
+- Run regression or smoke tests
+- Generate and publish test reports
+- Schedule periodic quality checks
+
+**Official overview:**
+[https://docs.github.com/en/actions](https://docs.github.com/en/actions)
+
+---
+
+## CI, CD, and Where GitHub Actions Fits
+
+### Continuous Integration (CI)
+
+CI automatically builds and tests code whenever changes are pushed or a pull request is created.
+
+### Continuous Delivery / Deployment (CD)
+
+CD automates the delivery of tested code to staging or production.
+
+### Where GitHub Actions Fits
+
+GitHub Actions acts as the automation layer in CI/CD by:
+
+- Listening to repository events
+- Running workflows for build, test, scan, and deploy
+- Integrating with GitHub pull requests and branch protection rules
+
+**CI/CD with GitHub Actions:**
+[https://docs.github.com/en/actions/deployment/about-deployments](https://docs.github.com/en/actions/deployment/about-deployments)
+
+---
+
+## Core Concepts of GitHub Actions
+
+### 1. Adding GitHub Actions to a Repository
+
+GitHub Actions is configured using workflow files placed under:
+
+```text
+.github/workflows/
+```
+
+Each workflow is a YAML file that defines triggers, jobs, and steps.
+
+**Workflow syntax reference:**
+[https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+
+---
+
+### 2. Events
+
+Events trigger workflows. Common types include:
+
+- `push` – when code is pushed
+- `pull_request` – when a PR is created or updated
+- `schedule` – run workflows using a cron expression
+- `workflow_dispatch` – manually trigger a workflow
+
+**Events reference:**
+[https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
+
+---
+
+### 3. Workflows
+
+A **workflow** defines:
+
+- When it runs
+- What jobs it runs
+- In what order
+
+Workflows can run one or multiple jobs in parallel or sequentially.
+
+**Workflows guide:**
+[https://docs.github.com/en/actions/using-workflows/about-workflows](https://docs.github.com/en/actions/using-workflows/about-workflows)
+
+---
+
+### 4. Jobs
+
+A **job** is a collection of steps that run on the same runner.
+
+- Jobs can run in parallel
+- Jobs can depend on each other
+- Each job runs in an isolated environment
+
+**Jobs reference:**
+[https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow](https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow)
+
+---
+
+### 5. Runners (GitHub-Hosted Only)
+
+Runners are machines that execute jobs.
+In this guide, we use **GitHub-hosted runners**, such as:
+
+- `ubuntu-latest`
+- `windows-latest`
+- `macos-latest`
+
+These runners are managed by GitHub and require no setup.
+
+**Runners guide:**
+[https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners)
+
+---
+
+### 6. Steps
+
+Steps are individual tasks inside a job.
+A step can either:
+
+- Run shell commands
+- Use a prebuilt action
+
+Steps execute in order and can share data using environment variables or files.
+
+**Steps reference:**
+[https://docs.github.com/en/actions/using-jobs/using-steps-in-a-job](https://docs.github.com/en/actions/using-jobs/using-steps-in-a-job)
+
+---
+
+### 7. Actions (Official Only)
+
+Actions are reusable units of work.
+In this guide, we use only official GitHub actions such as:
+
+- `actions/checkout` – checks out repository code
+- `actions/setup-node` – sets up a Node.js environment
+- `actions/upload-artifact` – uploads build outputs or reports
+
+**Official actions:**
+[https://github.com/actions](https://github.com/actions)
+
+---
+
+## Sample Workflows
+
+### 1. Basic Workflow: List All Files in the Repo
+
+**Purpose**
+
+- Understand workflow structure
+- Learn about jobs, steps, and runners
+
+**What It Does**
+
+- Triggered on every push
+- Checks out repository code
+- Runs `ls` to list all files
+
+**Key Concepts Used**
+
+- `push` event
+- `actions/checkout`
+- GitHub-hosted runner
+
+---
+
+### 2. Run JS/TS Lint on Pull Requests
+
+**Purpose**
+
+- Enforce code quality
+- Catch lint issues before merge
+
+**What It Does**
+
+- Triggered on `pull_request`
+- Sets up Node.js
+- Installs dependencies
+- Runs ESLint or a TypeScript linter
+- Fails the PR if lint errors are found
+
+**Relevant action:**
+[https://github.com/actions/setup-node](https://github.com/actions/setup-node)
+
+---
+
+### 3. Daily Static Code Scan with Email Report
+
+**Purpose**
+
+- Automate scheduled quality checks
+- Share scan results with the team
+
+**What It Does**
+
+- Triggered using a scheduled cron event
+- Runs a static code scan (for example, ESLint or a security scanner)
+- Generates a report file
+- Uploads the report as an artifact
+- Emails the report to a configured email address
+
+**Schedule events:**
+[https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
+
+**Artifacts action:**
+[https://github.com/actions/upload-artifact](https://github.com/actions/upload-artifact)
+
+---
+
+## Summary
+
+- GitHub Actions is GitHub’s native automation platform for CI/CD and workflows
+- It supports frontend, backend, and QA automation
+- Core concepts include workflows, jobs, steps, runners, events, and actions
+- Official actions provide reusable building blocks
+- Common workflows include linting, scheduled scans, and repository automation
+
+This foundation helps teams build reliable CI/CD pipelines and automate development workflows using GitHub Actions.
